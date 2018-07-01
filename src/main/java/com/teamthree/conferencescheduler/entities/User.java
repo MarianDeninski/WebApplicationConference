@@ -26,8 +26,8 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @Transient
-    private List<Conferences> conferencesList;
+    @OneToMany(mappedBy = "user")
+    private List<Conference> conferencesList;
 
     public User() {
         this.conferencesList = new ArrayList<>();
@@ -41,7 +41,7 @@ public class User {
         this.roles = new HashSet<>();
     }
 
-    public User(String username, Set<Role> roles, String password, List<Conferences> conferencesList) {
+    public User(String username, Set<Role> roles, String password, List<Conference> conferencesList) {
         this.username = username;
         this.roles = roles;
         this.password = password;
@@ -57,11 +57,11 @@ public class User {
         this.username = username;
     }
 
-    public List<Conferences> getConferencesList() {
+    public List<Conference> getConferencesList() {
         return this.conferencesList;
     }
 
-    public void setConferencesList(List<Conferences> conferencesList) {
+    public void setConferencesList(List<Conference> conferencesList) {
         this.conferencesList = conferencesList;
     }
 

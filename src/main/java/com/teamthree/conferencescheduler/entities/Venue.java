@@ -7,6 +7,7 @@ import java.util.List;
 @Entity
 @Table(name = "venues")
 public class Venue {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -14,8 +15,11 @@ public class Venue {
     @Column(name = "address")
     private String address;
 
-    @Transient
+    @OneToMany(mappedBy = "venue")
     private List<Hall> halls;
+
+    @OneToMany(mappedBy = "venue")
+    private List<Conference> conferences;
 
     public Venue() {
         this.halls = new ArrayList<>();

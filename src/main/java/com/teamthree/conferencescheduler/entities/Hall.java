@@ -17,10 +17,10 @@ public class Hall {
     @Column(name = "seat_capacity")
     private long seatCapacity;
 
-    @Transient
+    @ManyToOne()
     private Venue venue;
 
-    @Transient
+    @OneToMany(mappedBy = "hall")
     private List<Session> sessions;
 
     public Hall() {

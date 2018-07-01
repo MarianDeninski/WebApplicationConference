@@ -1,11 +1,11 @@
 package com.teamthree.conferencescheduler.entities;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 
 @Entity
-@Table(name = "sessions")
-public class Session {
+@Table(name = "conferences")
+public class Conference {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -16,32 +16,34 @@ public class Session {
     @Column(name = "description")
     private String description;
 
+    @ManyToOne()
+    private Venue venue;
+
+    @ManyToOne()
+    private User owner;
+
     @Column(name = "start_date")
     private Date startDate;
 
     @Column(name = "end_date")
     private Date endDate;
 
-    @Transient
-    private Speaker speaker;
+    public Conference() {
 
-    @ManyToOne()
-    private Hall hall;
-
-    public Session() {
     }
 
-    public Session(String name, String description, Date startDate, Date endDate, Speaker speaker) {
+    public Conference(String name, String description, Venue venue, Date startDate, Date endDate) {
         this.name = name;
         this.description = description;
+        this.venue = venue;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.speaker = speaker;
     }
 
     public long getId() {
         return this.id;
     }
+
 
     public String getName() {
         return this.name;
@@ -73,13 +75,5 @@ public class Session {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
-    }
-
-    public Speaker getSpeaker() {
-        return this.speaker;
-    }
-
-    public void setSpeaker(Speaker speaker) {
-        this.speaker = speaker;
     }
 }
