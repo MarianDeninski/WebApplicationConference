@@ -1,10 +1,11 @@
 package com.teamthree.conferencescheduler.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="venue")
+@Table(name="venues")
 public class Venue {
 
     @Id
@@ -12,6 +13,8 @@ public class Venue {
      private Long id;
 
     public Venue() {
+        this.halls = new ArrayList<Hall>();
+
     }
 
     public Venue( String address, List<Hall> halls) {
@@ -23,6 +26,7 @@ public class Venue {
     private String address;
 
     @Column(name ="halls")
+    @OneToMany(mappedBy = "hall")
     private List<Hall> halls;
 
     public void setAddress(String address) {
@@ -34,7 +38,7 @@ public class Venue {
     }
 
     public List<Hall> getHalls() {
-        return halls;
+        return this.halls;
     }
 
     public Long getId() {
@@ -42,6 +46,6 @@ public class Venue {
     }
 
     public String getAddress() {
-        return address;
+        return this.address;
     }
 }
