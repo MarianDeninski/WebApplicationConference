@@ -1,40 +1,37 @@
 package com.teamthree.conferencescheduler.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="venue")
+@Table(name = "venues")
 public class Venue {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-     private Long id;
-
-    public Venue() {
-    }
-
-    public Venue( String address, List<Hall> halls) {
-        this.address = address;
-        this.halls = halls;
-    }
+    private Long id;
 
     @Column(name = "address")
     private String address;
 
-    @Column(name ="halls")
+    @Transient
     private List<Hall> halls;
 
-    public void setAddress(String address) {
-        this.address = address;
+    public Venue() {
+        this.halls = new ArrayList<>();
     }
 
-    public void setHalls(List<Hall> halls) {
+    public Venue(String address, List<Hall> halls) {
+        this.address = address;
         this.halls = halls;
     }
 
     public List<Hall> getHalls() {
         return halls;
+    }
+
+    public void setHalls(List<Hall> halls) {
+        this.halls = halls;
     }
 
     public Long getId() {
@@ -43,5 +40,9 @@ public class Venue {
 
     public String getAddress() {
         return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }
