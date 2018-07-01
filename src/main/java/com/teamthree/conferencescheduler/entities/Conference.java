@@ -19,7 +19,7 @@ public class Conference {
     @ManyToOne()
     private Venue venue;
 
-    @ManyToOne()
+    @ManyToOne
     private User owner;
 
     @Column(name = "start_date")
@@ -75,5 +75,21 @@ public class Conference {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    public Venue getVenue() {
+        return this.venue;
+    }
+
+    public void setVenue(Venue venue) {
+        this.venue = venue;
+    }
+
+    public User getOwner() {
+        return this.owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
     }
 }
