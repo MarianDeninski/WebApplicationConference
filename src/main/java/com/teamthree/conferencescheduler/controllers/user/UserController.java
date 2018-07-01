@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.USER_LOGIN;
 import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.USER_REGISTER;
 import static com.teamthree.conferencescheduler.constants.user_roles.UserRoles.ROLE_USER;
 import static com.teamthree.conferencescheduler.constants.views.ViewConstants.BASE_LAYOUT;
@@ -28,6 +29,15 @@ public class UserController {
         this.userService = userService;
         this.roleService = roleService;
     }
+
+    @GetMapping("/login")
+    public String login(Model model) {
+
+
+        model.addAttribute(VIEW, USER_LOGIN);
+        return BASE_LAYOUT;
+    }
+
 
     @GetMapping("/register")
     public String register(Model model) {

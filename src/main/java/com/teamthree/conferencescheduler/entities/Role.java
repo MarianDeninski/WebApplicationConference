@@ -1,6 +1,7 @@
 package com.teamthree.conferencescheduler.entities;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -18,6 +19,7 @@ public class Role {
 
 
     public Role() {
+        this.users = new HashSet<>();
     }
 
     public Role(String name) {

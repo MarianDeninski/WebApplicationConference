@@ -1,6 +1,8 @@
 package com.teamthree.conferencescheduler.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -28,12 +30,15 @@ public class User {
     private List<Conferences> conferencesList;
 
     public User() {
+        this.conferencesList = new ArrayList<>();
     }
 
     public User(String username, String fullName, String password) {
         this.username = username;
         this.fullName = fullName;
         this.password = password;
+        this.conferencesList = new ArrayList<>();
+        this.roles = new HashSet<>();
     }
 
     public User(String username, Set<Role> roles, String password, List<Conferences> conferencesList) {
