@@ -1,7 +1,6 @@
 package com.teamthree.conferencescheduler.entities;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -84,5 +83,9 @@ public class User {
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
+    }
+
+    public void addRole(Role role) {
+        this.roles.add(role);
     }
 }

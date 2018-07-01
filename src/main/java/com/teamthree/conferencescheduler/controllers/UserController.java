@@ -1,25 +1,43 @@
 package com.teamthree.conferencescheduler.controllers;
 
-import com.teamthree.conferencescheduler.repositories.RoleRepository;
-import com.teamthree.conferencescheduler.repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.teamthree.conferencescheduler.dto.user.UserRegisterDto;
+import com.teamthree.conferencescheduler.entities.Role;
+import com.teamthree.conferencescheduler.entities.User;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.USER_REGISTER;
+import static com.teamthree.conferencescheduler.constants.user_roles.UserRoles.ROLE_USER;
+import static com.teamthree.conferencescheduler.constants.views.ViewConstants.BASE_LAYOUT;
+import static com.teamthree.conferencescheduler.constants.views.ViewConstants.VIEW;
 
 @Controller
 public class UserController {
 
-    @Autowired
-    private RoleRepository roleRepository;
-
-    @Autowired
-    private UserRepository userRepository;
 
     @GetMapping("/register")
     public String register(Model model) {
-        model.addAttribute("view", "user/register");
 
-        return "base-layout";
+
+        model.addAttribute(VIEW, USER_REGISTER);
+        return BASE_LAYOUT;
+    }
+
+    @PostMapping("/register")
+    public String processRegister(Model model, UserRegisterDto dto) {
+
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        User user = new User(dto.getUsername(),
+                dto.getFullName(),
+                passwordEncoder.encode(dto.getPassword()));
+
+        Role role = new Role(ROLE_USER);
+
+
+        model.addAttribute(VIEW, USER_REGISTER);
+        return BASE_LAYOUT;
     }
 }
