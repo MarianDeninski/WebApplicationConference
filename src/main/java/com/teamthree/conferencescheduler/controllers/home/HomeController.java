@@ -1,4 +1,4 @@
-package com.teamthree.conferencescheduler.controllers;
+package com.teamthree.conferencescheduler.controllers.home;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

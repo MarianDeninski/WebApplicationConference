@@ -1,8 +1,11 @@
-package com.teamthree.conferencescheduler.controllers;
+package com.teamthree.conferencescheduler.controllers.user;
 
 import com.teamthree.conferencescheduler.dto.user.UserRegisterDto;
 import com.teamthree.conferencescheduler.entities.Role;
 import com.teamthree.conferencescheduler.entities.User;
+import com.teamthree.conferencescheduler.service.api.RoleService;
+import com.teamthree.conferencescheduler.service.api.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +20,14 @@ import static com.teamthree.conferencescheduler.constants.views.ViewConstants.VI
 @Controller
 public class UserController {
 
+    private UserService userService;
+    private RoleService roleService;
+
+    @Autowired
+    public UserController(UserService userService, RoleService roleService) {
+        this.userService = userService;
+        this.roleService = roleService;
+    }
 
     @GetMapping("/register")
     public String register(Model model) {
@@ -27,17 +38,17 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String processRegister(Model model, UserRegisterDto dto) {
+    public String processRegister(UserRegisterDto dto) {
 
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         User user = new User(dto.getUsername(),
                 dto.getFullName(),
                 passwordEncoder.encode(dto.getPassword()));
 
-        Role role = new Role(ROLE_USER);
+        Role role = this.roleService.findByName(ROLE_USER);
+        user.addRole(role);
+        this.userService.createNewUser(user);
 
-
-        model.addAttribute(VIEW, USER_REGISTER);
-        return BASE_LAYOUT;
+        return "redirect:/login";
     }
 }

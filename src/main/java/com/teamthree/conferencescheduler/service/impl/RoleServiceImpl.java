@@ -17,7 +17,7 @@ public class RoleServiceImpl implements RoleService {
 
 
     @Override
-    public void addNewRole(Role role) {
-        this.roleRepository.save(role);
+    public Role findByName(String roleName) {
+        this.roleRepository.findByName(roleName);
     }
 }
