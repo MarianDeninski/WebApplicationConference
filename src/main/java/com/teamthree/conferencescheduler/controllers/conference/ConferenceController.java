@@ -7,9 +7,15 @@ import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.teamthree.conferencescheduler.constants.views.ViewConstants;
+
+import static com.teamthree.conferencescheduler.constants.views.ViewConstants.BASE_LAYOUT;
+import static com.teamthree.conferencescheduler.constants.views.ViewConstants.CREATE_CONFERENCE;
 
 @Controller
 @RequestMapping("/conference")
@@ -23,14 +29,14 @@ public class ConferenceController {
         this.userRepository = userRepository;
     }
     //Get createConference view
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String getCreateConference(){
-        String path = "";
-        return path ;
+    @RequestMapping(value = "/create", method = RequestMethod.GET)
+    public String getCreateConference(Model model){
+        model.addAttribute("view",CREATE_CONFERENCE);
+        return BASE_LAYOUT ;
     }
 
     //Post data to db
-    @PostMapping(path = "/add")
+    @PostMapping(path = "/create")
     public String createConference(){
         
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
