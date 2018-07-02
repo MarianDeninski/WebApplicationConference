@@ -82,7 +82,7 @@ public class UserController {
             new SecurityContextLogoutHandler().logout(request, response, auth);
 
         }
-        return "redirect:/login?logout";
+        return "redirect:/user/login?logout";
     }
 
 
