@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="27610da9-1891-4f74-9e40-3b23ffd2355a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/constants/roadsMappings/RoadMapping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/constants/roadsMappings/RoadMapping.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/constants/user_roles/UserRoles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/constants/user_roles/UserRoles.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/entities/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/teamthree/conferencescheduler/entities/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/teamthree/conferencescheduler/entities/User.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -479,7 +475,7 @@
       <workItem from="1530486257421" duration="1397000" />
       <workItem from="1530512641082" duration="1735000" />
       <workItem from="1530518451092" duration="4351000" />
-      <workItem from="1530530199138" duration="2331000" />
+      <workItem from="1530530199138" duration="3573000" />
     </task>
     <task id="LOCAL-00001" summary="added User registration and update on gitignore">
       <created>1530445487476</created>
@@ -523,11 +519,18 @@
       <option name="project" value="LOCAL" />
       <updated>1530514229120</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="fixed bug with the registration.">
+      <created>1530534300420</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1530534300420</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47325000" />
+    <option name="totallyTimeSpent" value="48567000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -609,7 +612,8 @@
     <MESSAGE value="fixed register bug." />
     <MESSAGE value="fixed bug with one entity relations." />
     <MESSAGE value="added last relationship OneToOne in Speaker - Session." />
-    <option name="LAST_COMMIT_MESSAGE" value="added last relationship OneToOne in Speaker - Session." />
+    <MESSAGE value="fixed bug with the registration." />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed bug with the registration." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
