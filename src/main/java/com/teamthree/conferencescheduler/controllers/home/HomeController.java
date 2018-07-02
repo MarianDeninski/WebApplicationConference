@@ -13,7 +13,7 @@ import static com.teamthree.conferencescheduler.constants.views.ViewConstants.VI
 @RequestMapping("/home")
 public class HomeController {
 
-    @GetMapping("/Index")
+    @GetMapping("/")
     public String index(Model model) {
         model.addAttribute(VIEW, HOME_INDEX);
         return BASE_LAYOUT;

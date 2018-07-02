@@ -31,6 +31,13 @@ public class ConferenceController {
     //Get createConference view
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String getCreateConference(Model model){
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        if ((auth instanceof AnonymousAuthenticationToken)) {
+            String currentUserName = auth.getName();
+            return "redirect:/user/login";
+        }
         model.addAttribute("view",CREATE_CONFERENCE);
         return BASE_LAYOUT ;
     }
@@ -46,7 +53,8 @@ public class ConferenceController {
 
 
         }
-        return "redirect:/login";
+        return "redirect:/users/login";
+
 
 
     }

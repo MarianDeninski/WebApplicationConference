@@ -13,24 +13,30 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li sec:authorize="isAuthenticated()">
-                        <a th:href="@{/profile}">
+                        <a th:href="@{/user/profile}">
                             My Profile
                         </a>
                     </li>
                     <li sec:authorize="isAuthenticated()">
-                        <a th:href="@{/logout}">
+                        <a th:href="@{/user/logout}">
                             Logout
                         </a>
                     </li>
+                    <li sec:authorize="isAuthenticated()">
+                        <a th:href="@{/conference/create}">
+                            Create Conference
+                        </a>
+                    </li>
+
 
                     <li sec:authorize="isAnonymous()">
-                        <a th:href="@{/register}">
-                            REGISTER
+                        <a th:href="@{/user/register}">
+                            Register
                         </a>
                     </li>
                     <li sec:authorize="isAnonymous()">
-                        <a th:href="@{/login}">
-                            LOGIN
+                        <a th:href="@{/user/login}">
+                            Login
                         </a>
                     </li>
                 </ul>
