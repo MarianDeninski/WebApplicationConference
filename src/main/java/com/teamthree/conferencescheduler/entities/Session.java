@@ -22,7 +22,7 @@ public class Session {
     @Column(name = "end_date")
     private Date endDate;
 
-    @Transient
+    @OneToOne(mappedBy = "session", targetEntity = Speaker.class)
     private Speaker speaker;
 
     @ManyToOne()

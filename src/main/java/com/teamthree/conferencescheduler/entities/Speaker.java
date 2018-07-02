@@ -18,7 +18,7 @@ public class Speaker {
     @Column(name = "photo")
     private String photo;
 
-    @Transient
+    @OneToOne
     private Session session;
 
     public Speaker() {

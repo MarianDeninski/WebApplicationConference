@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="27610da9-1891-4f74-9e40-3b23ffd2355a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/entities/Conference.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/entities/Conference.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/entities/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/entities/Session.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/entities/Session.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/entities/Speaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/entities/Speaker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/teamthree/conferencescheduler/entities/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/teamthree/conferencescheduler/entities/User.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -21,45 +22,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Session.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Session.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/entities/Session.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+            <state relative-caret-position="170">
+              <caret line="21" column="30" lean-forward="true" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/entities/User.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="29" column="45" lean-forward="true" selection-start-line="29" selection-start-column="45" selection-end-line="29" selection-end-column="45" />
-              <folding>
-                <element signature="e#704#705#0" expanded="true" />
-                <element signature="e#760#761#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Conference.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/entities/Conference.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
-              <folding>
-                <element signature="e#1651#1652#0" expanded="true" />
-                <element signature="e#1684#1685#0" expanded="true" />
-                <element signature="e#1725#1726#0" expanded="true" />
-                <element signature="e#1759#1760#0" expanded="true" />
-                <element signature="e#1789#1790#0" expanded="true" />
-                <element signature="e#1822#1823#0" expanded="true" />
-                <element signature="e#1862#1863#0" expanded="true" />
-                <element signature="e#1896#1897#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -68,8 +37,17 @@
       <file leaf-file-name="Speaker.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/entities/Speaker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="423">
-              <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
+            <state relative-caret-position="221">
+              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConferenceSchedulerApplication.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/ConferenceSchedulerApplication.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
             </state>
           </provider>
         </entry>
@@ -130,10 +108,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/entities/Role.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/entities/Venue.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/entities/Hall.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/entities/Session.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/entities/Speaker.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/entities/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/entities/Conference.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/entities/Speaker.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/entities/Session.java" />
       </list>
     </option>
   </component>
@@ -162,8 +140,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -261,6 +237,8 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -303,9 +281,9 @@
         </RuleState>
       </list>
     </option>
-    <option name="contentProportion" value="0.116963595" />
+    <option name="contentProportion" value="0.09837335" />
   </component>
-  <component name="RunManager" selected="Spring Boot.ConferenceSchedulerApplication">
+  <component name="RunManager" selected="Spring Boot.ConferenceSchedulerApplication (1)">
     <configuration name="Test2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.teamthree.Test2" />
       <module name="Codexio" />
@@ -335,6 +313,16 @@
         <value defaultName="singleModule" />
       </option>
       <patterns />
+    </configuration>
+    <configuration name="ConferenceSchedulerApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="conference-scheduler" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.teamthree.conferencescheduler.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.teamthree.conferencescheduler.ConferenceSchedulerApplication" />
     </configuration>
     <configuration name="ConferenceSchedulerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="Codexio" />
@@ -382,9 +370,11 @@
     <list>
       <item itemvalue="Application.Test2" />
       <item itemvalue="Spring Boot.ConferenceSchedulerApplication" />
+      <item itemvalue="Spring Boot.ConferenceSchedulerApplication (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.ConferenceSchedulerApplication (1)" />
         <item itemvalue="Spring Boot.ConferenceSchedulerApplication" />
         <item itemvalue="Spring Boot.ConferenceSchedulerApplication" />
         <item itemvalue="Application.Test2" />
@@ -408,7 +398,8 @@
       <workItem from="1530454147212" duration="3888000" />
       <workItem from="1530469513037" duration="2666000" />
       <workItem from="1530473292512" duration="7249000" />
-      <workItem from="1530486257421" duration="639000" />
+      <workItem from="1530486257421" duration="1397000" />
+      <workItem from="1530512641082" duration="1204000" />
     </task>
     <task id="LOCAL-00001" summary="added User registration and update on gitignore">
       <created>1530445487476</created>
@@ -438,11 +429,18 @@
       <option name="project" value="LOCAL" />
       <updated>1530447847513</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fixed bug with one entity relations.">
+      <created>1530487048414</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1530487048414</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38150000" />
+    <option name="totallyTimeSpent" value="40112000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -465,12 +463,12 @@
       <window_info id="Image Layers" order="0" />
       <window_info anchor="bottom" id="Java Enterprise" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="2" />
-      <window_info anchor="bottom" id="Run Dashboard" weight="0.50082374" />
+      <window_info active="true" anchor="bottom" id="Run Dashboard" order="8" visible="true" weight="0.38385502" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.21416804" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3937397" />
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info content_ui="combo" id="Project" order="6" visible="true" weight="0.35627836" />
+      <window_info content_ui="combo" id="Project" order="6" visible="true" weight="0.36157337" />
       <window_info anchor="right" id="Bean Validation" order="3" />
       <window_info id="Web" order="2" side_tool="true" />
       <window_info anchor="right" id="Theme Preview" order="5" />
@@ -523,7 +521,8 @@
     <MESSAGE value="Added new functionality to add new user role. Changed the project structure a little." />
     <MESSAGE value="added new front end functionality - login page." />
     <MESSAGE value="fixed register bug." />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed register bug." />
+    <MESSAGE value="fixed bug with one entity relations." />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed bug with one entity relations." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -539,20 +538,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="56" lean-forward="true" selection-start-line="13" selection-start-column="56" selection-end-line="13" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/footer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/scripts-bundle.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -748,20 +733,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/entities/Venue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/entities/Hall.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="23" column="35" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/SoftUni/JavaDB_Adv_Exam/Skeleton/src/main/java/org/softuni/mostwanted/controllers/CarsController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-204" />
@@ -805,6 +776,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/entities/Conference.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+          <folding>
+            <element signature="e#1725#1726#0" expanded="true" />
+            <element signature="e#1758#1759#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/entities/Role.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -812,10 +801,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/entities/Hall.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="187">
+          <caret line="23" column="35" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/entities/Venue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/entities/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="29" column="45" selection-start-line="29" selection-start-column="45" selection-end-line="29" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -828,45 +831,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/entities/Speaker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
+        <state relative-caret-position="221">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/SoftUni/JavaDB_Advanced/Exam_Prep_05_01_2018/DB-Frameworks-Oct-2017-Retake/src/main/java/app/retake/domain/models/Animal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="23" column="13" lean-forward="true" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/SoftUni/JavaDB_Advanced/Exam_Prep_05_01_2018/DB-Frameworks-Oct-2017-Retake/src/main/java/app/retake/domain/models/Passport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/entities/Session.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+        <state relative-caret-position="170">
+          <caret line="21" column="30" lean-forward="true" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/entities/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="29" column="45" lean-forward="true" selection-start-line="29" selection-start-column="45" selection-end-line="29" selection-end-column="45" />
-          <folding>
-            <element signature="e#704#705#0" expanded="true" />
-            <element signature="e#760#761#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/teamthree/conferencescheduler/entities/Conference.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="e#1651#1652#0" expanded="true" />
-            <element signature="e#1684#1685#0" expanded="true" />
-            <element signature="e#1725#1726#0" expanded="true" />
-            <element signature="e#1759#1760#0" expanded="true" />
-            <element signature="e#1789#1790#0" expanded="true" />
-            <element signature="e#1822#1823#0" expanded="true" />
-            <element signature="e#1862#1863#0" expanded="true" />
-            <element signature="e#1896#1897#0" expanded="true" />
           </folding>
         </state>
       </provider>
