@@ -30,7 +30,7 @@ import static com.teamthree.conferencescheduler.constants.views.ViewConstants.BA
 import static com.teamthree.conferencescheduler.constants.views.ViewConstants.VIEW;
 
 @Controller
-@RequestMapping("/users")
+@RequestMapping("/user")
 public class UserController {
 
     private UserService userService;
@@ -46,8 +46,6 @@ public class UserController {
 
     @GetMapping("/login")
     public String login(Model model) {
-
-
         model.addAttribute(VIEW, USER_LOGIN);
         return BASE_LAYOUT;
     }
@@ -73,7 +71,7 @@ public class UserController {
         user.addRole(role);
         this.userService.createNewUser(user);
 
-        return "redirect:/login";
+        return "redirect:/user/login";
     }
 
     @RequestMapping(value="/logout",method = RequestMethod.GET)
@@ -82,9 +80,14 @@ public class UserController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null) {
             new SecurityContextLogoutHandler().logout(request, response, auth);
+
         }
         return "redirect:/login?logout";
     }
+
+
+//    @RequestMapping(value = "/login", method = RequestMethod.POST)
+//    public String login
 
     @GetMapping("/profile")
     @PreAuthorize("isAuthenticated()")
