@@ -3,11 +3,14 @@ package com.teamthree.conferencescheduler.controllers.user;
 import com.teamthree.conferencescheduler.dto.user.UserRegisterDto;
 import com.teamthree.conferencescheduler.entities.Role;
 import com.teamthree.conferencescheduler.entities.User;
+import com.teamthree.conferencescheduler.repositories.UserRepository;
 import com.teamthree.conferencescheduler.service.api.RoleService;
 import com.teamthree.conferencescheduler.service.api.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
@@ -27,15 +30,18 @@ import static com.teamthree.conferencescheduler.constants.views.ViewConstants.BA
 import static com.teamthree.conferencescheduler.constants.views.ViewConstants.VIEW;
 
 @Controller
+@RequestMapping("/users")
 public class UserController {
 
     private UserService userService;
     private RoleService roleService;
+    private UserRepository userRepository;
 
     @Autowired
-    public UserController(UserService userService, RoleService roleService) {
+    public UserController(UserService userService, RoleService roleService, UserRepository userRepository) {
         this.userService = userService;
         this.roleService = roleService;
+        this.userRepository = userRepository;
     }
 
     @GetMapping("/login")
@@ -78,5 +84,21 @@ public class UserController {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
         return "redirect:/login?logout";
+    }
+
+    @GetMapping("/profile")
+    @PreAuthorize("isAuthenticated()")
+    public  String profilePage(Model model){
+        UserDetails principal = (UserDetails) SecurityContextHolder
+                                                    .getContext()
+                                                    .getAuthentication()
+                                                    .getPrincipal();
+
+        User user = this.userRepository.findByUsername(principal.getUsername());
+        model.addAttribute("user",user);
+        model.addAttribute("view","user/profile");
+        return BASE_LAYOUT;
+
+
     }
 }
