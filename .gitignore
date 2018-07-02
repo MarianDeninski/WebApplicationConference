@@ -63,3 +63,5 @@ fabric.properties
 *.xml
 *.xml
 .idea/libraries/Maven__antlr_antlr_2_7_7.xml
+
+*.DS_Store
