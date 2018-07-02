@@ -1,0 +1,30 @@
+<main>
+    <div class="container body-content span=8 offset=2">
+        <div class="well">
+            <form class="form-horizontal" th:action="@{/register}" method="post">
+                <fieldset>
+                    <legend>Conference Creation</legend>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="user_fullname">Conference Owner</label>
+                        <div class="col-sm-4 ">
+                            <input class="form-control" type="text" id="user_fullname" placeholder="Full Name" name="fullName" required="required"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="conference_description">Descrition</label>
+                        <div class="col-sm-4">
+                            <input type="desciption" class="form-control" id="conference_description" placeholder="Description" name="conference" required="required"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-4">
+                            <a class="btn btn-default" th:href="@{/}"</a>
+                            <button type="button">Cancel</button>
+                            <input value="Submit" type="submit" class="btn btn-primary"/>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</main>
