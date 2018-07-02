@@ -22,16 +22,17 @@ public class ConferenceController {
         this.userService = userService;
         this.userRepository = userRepository;
     }
-    //Get add view
+    //Get createConference view
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String getAddConference(){
+    public String getCreateConference(){
         String path = "";
         return path ;
     }
 
     //Post data to db
     @PostMapping(path = "/add")
-    public String addConference(){
+    public String createConference(){
+        
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
         if (!(auth instanceof AnonymousAuthenticationToken)) {
