@@ -90,7 +90,12 @@ public class User {
         this.fullName = fullName;
     }
 
+    public Long getId() {
+        return this.id;
+    }
+
     public void addRole(Role role) {
         this.roles.add(role);
     }
+
 }
