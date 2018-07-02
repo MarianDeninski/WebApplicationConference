@@ -1,10 +1,7 @@
 package com.teamthree.conferencescheduler.controllers.home;
 
-import com.teamthree.conferencescheduler.entities.User;
 import com.teamthree.conferencescheduler.service.api.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,12 +24,6 @@ public class HomeController {
 //    @PreAuthorize("isAuthenticated()")
     public String index(Model model) {
 
-        UserDetails principal = (UserDetails) SecurityContextHolder.getContext()
-                .getAuthentication().getPrincipal();
-
-        User user = this.userService.findByUsername(principal.getUsername());
-
-        model.addAttribute("user", user);
         model.addAttribute(VIEW, HOME_INDEX);
         return BASE_LAYOUT;
     }

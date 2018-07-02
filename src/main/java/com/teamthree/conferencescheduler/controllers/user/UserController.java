@@ -3,11 +3,9 @@ package com.teamthree.conferencescheduler.controllers.user;
 import com.teamthree.conferencescheduler.dto.user.UserRegisterDto;
 import com.teamthree.conferencescheduler.entities.Role;
 import com.teamthree.conferencescheduler.entities.User;
-import com.teamthree.conferencescheduler.repositories.UserRepository;
 import com.teamthree.conferencescheduler.service.api.RoleService;
 import com.teamthree.conferencescheduler.service.api.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -35,13 +33,11 @@ public class UserController {
 
     private UserService userService;
     private RoleService roleService;
-    private UserRepository userRepository;
 
     @Autowired
-    public UserController(UserService userService, RoleService roleService, UserRepository userRepository) {
+    public UserController(UserService userService, RoleService roleService) {
         this.userService = userService;
         this.roleService = roleService;
-        this.userRepository = userRepository;
     }
 
     @GetMapping("/login")
@@ -74,7 +70,7 @@ public class UserController {
         return "redirect:/user/login";
     }
 
-    @RequestMapping(value="/logout",method = RequestMethod.GET)
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -86,22 +82,17 @@ public class UserController {
     }
 
 
-//    @RequestMapping(value = "/login", method = RequestMethod.POST)
-//    public String login
-
     @GetMapping("/profile")
-    @PreAuthorize("isAuthenticated()")
-    public  String profilePage(Model model){
+//    @PreAuthorize("isAuthenticated()")
+    public String profilePage(Model model) {
         UserDetails principal = (UserDetails) SecurityContextHolder
-                                                    .getContext()
-                                                    .getAuthentication()
-                                                    .getPrincipal();
+                .getContext()
+                .getAuthentication()
+                .getPrincipal();
 
-        User user = this.userRepository.findByUsername(principal.getUsername());
-        model.addAttribute("user",user);
-        model.addAttribute("view","user/profile");
+        User user = this.userService.findByUsername(principal.getUsername());
+        model.addAttribute("user", user);
+        model.addAttribute("view", "user/profile");
         return BASE_LAYOUT;
-
-
     }
 }
