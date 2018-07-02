@@ -59,7 +59,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout().logoutSuccessUrl("/user/login?logout")
                 .and()
-                .exceptionHandling().accessDeniedPage("/user/error/403")
+                .exceptionHandling().accessDeniedPage("/error/403")
                 .and()
                 .csrf();
     }
