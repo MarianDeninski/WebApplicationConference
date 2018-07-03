@@ -6,6 +6,8 @@ import com.teamthree.conferencescheduler.service.api.ConferenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ConferenceServiceImpl implements ConferenceService {
 
@@ -18,6 +20,11 @@ public class ConferenceServiceImpl implements ConferenceService {
 
     public void createNewConference(Conference conference){
         this.conferenceRepository.saveAndFlush(conference);
+    }
+
+    @Override
+    public List<Conference> getAllConferences() {
+        return this.conferenceRepository.findAll();
     }
 
 }

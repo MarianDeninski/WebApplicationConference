@@ -38,7 +38,6 @@ public class ConferenceController {
 
     private UserService userService;
     private UserRepository userRepository;
-    private ConferenceRepository conferenceRepository;
     private VenueRepository venueRepository;
     private ConferenceService conferenceService;
 
@@ -46,7 +45,6 @@ public class ConferenceController {
     public ConferenceController(UserService userService, UserRepository userRepository,ConferenceRepository conferenceRepository,VenueRepository venueRepository,ConferenceService conferenceService){
         this.userService = userService;
         this.userRepository = userRepository;
-        this.conferenceRepository = conferenceRepository;
         this.venueRepository = venueRepository;
         this.conferenceService = conferenceService;
 
@@ -56,7 +54,7 @@ public class ConferenceController {
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public String getAllConferences(Model model){
 
-        ArrayList<Conference> conferences= (ArrayList<Conference>) conferenceRepository.findAll();
+        ArrayList<Conference >conferences= (ArrayList<Conference>) conferenceService.getAllConferences();
 
         model.addAttribute("conferences",conferences);
         model.addAttribute(VIEW,ALL_CONFERENCES);
@@ -103,8 +101,8 @@ public class ConferenceController {
             String currentUserName = auth.getName();
 
             User owner = userRepository.findByUsername(currentUserName);
-            //Add button on view to create Venue if venue doesn't exist
 
+            //Add button on view to create Venue if venue doesn't exist
             Venue venue = venueRepository.findByAddress(dto.getVenueAddress());
 
            // if(venue.getAddress()==null){
