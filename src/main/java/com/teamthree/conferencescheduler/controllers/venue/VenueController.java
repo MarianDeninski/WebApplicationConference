@@ -42,7 +42,6 @@ public class VenueController {
     public String processVenue(Model model, AddVenueDto dto) {
 
 
-
         Venue venue = new Venue(dto.getAddress(), dto.getName());
         try {
             this.venueService.addVenue(venue);
