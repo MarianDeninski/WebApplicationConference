@@ -1,7 +1,9 @@
 package com.teamthree.conferencescheduler.controllers.venue;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import com.teamthree.conferencescheduler.dto.venue.AddVenueDto;
 import com.teamthree.conferencescheduler.entities.Venue;
+import com.teamthree.conferencescheduler.exceptions.ApplicationRuntimeException;
 import com.teamthree.conferencescheduler.repositories.VenueRepository;
 import com.teamthree.conferencescheduler.service.api.VenueService;
 import com.teamthree.conferencescheduler.service.impl.VenueServiceImpl;
@@ -13,9 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.ADD_VENUE;
-import static com.teamthree.conferencescheduler.constants.views.ViewConstants.BASE_LAYOUT;
-import static com.teamthree.conferencescheduler.constants.views.ViewConstants.REDIRECT_TO_MY_PROFILE;
-import static com.teamthree.conferencescheduler.constants.views.ViewConstants.VIEW;
+import static com.teamthree.conferencescheduler.constants.views.ViewConstants.*;
 
 @Controller
 @RequestMapping("/venue")
@@ -39,10 +39,17 @@ public class VenueController {
 
     @PostMapping("/add")
     //TODO: IT SHOULD NOT BE POSSIBLE TO ACCESS THIS PAGE WITHOUT LOGIN!
-    public String processVenue(AddVenueDto dto) {
+    public String processVenue(Model model, AddVenueDto dto) {
 
         Venue venue = new Venue(dto.getAddress(), dto.getName());
-        this.venueService.addVenue(venue);
+        try {
+            this.venueService.addVenue(venue);
+        } catch (ApplicationRuntimeException ex) {
+            model.addAttribute(VIEW_MESSAGE, ex.getMessage());
+            model.addAttribute(VIEW, ADD_VENUE);
+            return BASE_LAYOUT;
+        }
+
         return REDIRECT_TO_MY_PROFILE;
     }
 }
