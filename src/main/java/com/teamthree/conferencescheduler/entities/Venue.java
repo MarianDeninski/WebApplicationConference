@@ -18,6 +18,9 @@ public class Venue {
     @Column(name = "name")
     private String name;
 
+    @ManyToOne()
+    private User owner;
+
     @OneToMany(mappedBy = "venue")
     private List<Hall> halls;
 
@@ -75,5 +78,14 @@ public class Venue {
 
     public void setConferences(List<Conference> conferences) {
         this.conferences = conferences;
+    }
+
+
+    public User getOwner() {
+        return this.owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
     }
 }

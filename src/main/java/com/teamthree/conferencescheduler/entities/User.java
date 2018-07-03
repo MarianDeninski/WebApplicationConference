@@ -16,6 +16,9 @@ public class User {
     @Column(name = "name")
     private String username;
 
+    @OneToMany(mappedBy = "owner")
+    private List<Venue> venues;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles")
     private Set<Role> roles;
