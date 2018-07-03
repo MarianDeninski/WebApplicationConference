@@ -2,7 +2,7 @@
     <div class="navbar navbar-default navbar-static-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
-                <a th:href="@{/}" class="navbar-brand">SOFTUNI BLOG</a>
+                <a th:href="@{/}" class="navbar-brand">CONFERENCE SCHEDULER</a>
 
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
@@ -13,24 +13,30 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li sec:authorize="isAuthenticated()">
-                        <a th:href="@{/profile}">
+                        <a th:href="@{/user/profile}">
                             My Profile
                         </a>
                     </li>
                     <li sec:authorize="isAuthenticated()">
-                        <a th:href="@{/logout}">
+                        <a th:href="@{/user/logout}">
                             Logout
                         </a>
                     </li>
+                    <li sec:authorize="isAuthenticated()">
+                        <a th:href="@{/conference/create}">
+                            Create Conference
+                        </a>
+                    </li>
+
 
                     <li sec:authorize="isAnonymous()">
-                        <a th:href="@{/register}">
-                            REGISTER
+                        <a th:href="@{/user/register}">
+                            Register
                         </a>
                     </li>
                     <li sec:authorize="isAnonymous()">
-                        <a th:href="@{/login}">
-                            LOGIN
+                        <a th:href="@{/user/login}">
+                            Login
                         </a>
                     </li>
                 </ul>

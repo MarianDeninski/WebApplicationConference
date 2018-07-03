@@ -1,0 +1,64 @@
+<div class="container">
+    <h1>Conferences</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="carousel slide multi-item-carousel" id="theCarousel">
+                <div class="carousel-inner" id="colums">
+                    <div class="item active">
+                        <div class="col-xs-4"><a href="#1"><img class="img-responsive" th:src="@{/images/carousel/bg3.jpg}" alt="Conference"/></a></div>
+                    </div>
+                    <div class="item ">
+                        <div class="col-xs-4"><a href="#1"><img class="img-responsive" th:src="@{/images/carousel/bg3.jpg}" alt="Conference"/></a></div>
+                    </div>
+                    <div class="item ">
+                        <div class="col-xs-4"><a href="#1"><img class="img-responsive" th:src="@{/images/carousel/bg3.jpg}" alt="Conference"/></a></div>
+                    </div>
+                    <div class="item">
+                        <div class="col-xs-4"><a href="#1"><img class="img-responsive" th:src="@{/images/carousel/bg3.jpg}" alt="Conference"/></a></div>
+                    </div>
+                    <div class="item ">
+                        <div class="col-xs-4"><a href="#1"><img class="img-responsive" th:src="@{/images/carousel/bg3.jpg}" alt="Conference"/></a></div>
+                    </div>
+                    <div class="item ">
+                        <div class="col-xs-4"><a href="#1"><img class="img-responsive" th:src="@{/images/carousel/bg3.jpg}" alt="Conference"/></a></div>
+                    </div>
+                    <div class="item ">
+                        <div class="col-xs-4"><a href="#1"><img class="img-responsive" th:src="@{/images/carousel/bg3.jpg}" alt="Conference"/></a></div>
+                    </div>
+                    <div class="item">
+                        <div class="col-xs-4"><a href="#1"><img class="img-responsive" th:src="@{/images/carousel/bg3.jpg}" alt="Conference"/></a></div>
+                    </div>
+
+                    <!--  Example item end -->
+                </div>
+                <a class="left carousel-control" href="#theCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+                <a class="right carousel-control" href="#theCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+            </div>
+        </div>
+
+        <script th:inline="javascript">
+
+            $('.multi-item-carousel').carousel({
+                interval: false
+            });
+            $('.multi-item-carousel .item').each(function(){
+                var next = $(this).next();
+                if (!next.length) {
+                    next = $(this).siblings(':first');
+                }
+                next.children(':first-child').clone().appendTo($(this));
+
+                if (next.next().length>0) {
+                    next.next().children(':first-child').clone().appendTo($(this));
+                } else {
+                    $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
+                }
+            });
+
+
+        </script>
+
+
+    </div>
+
+</div>

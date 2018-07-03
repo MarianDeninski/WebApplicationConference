@@ -54,12 +54,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .anyRequest().permitAll()
                 .and()
-                .formLogin().loginPage("/login")
+                .formLogin().loginPage("/user/login")
                 .usernameParameter("username").passwordParameter("password")
                 .and()
-                .logout().logoutSuccessUrl("/login?logout")
+                .logout().logoutSuccessUrl("/user/login?logout")
                 .and()
-                .exceptionHandling().accessDeniedPage("/error/403")
+                .exceptionHandling().accessDeniedPage("/err/403")
                 .and()
                 .csrf();
     }

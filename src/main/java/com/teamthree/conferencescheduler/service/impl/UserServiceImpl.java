@@ -19,4 +19,15 @@ public class UserServiceImpl implements UserService {
     public void createNewUser(User user) {
         this.userRepository.saveAndFlush(user);
     }
+
+    @Override
+    public User findByUsername(String username) {
+        return this.userRepository.findByUsername(username);
+    }
+
+    @Override
+    public boolean checkIfUserExists(String username) {
+        return this.findByUsername(username) != null;
+    }
+
 }
