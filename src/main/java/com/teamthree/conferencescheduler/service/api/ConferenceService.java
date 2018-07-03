@@ -9,4 +9,6 @@ public interface ConferenceService {
     void createNewConference(Conference conference);
 
     List<Conference> getAllConferences();
+
+    Conference findConference(Long id);
 }

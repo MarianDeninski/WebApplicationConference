@@ -14,17 +14,22 @@ public class ConferenceServiceImpl implements ConferenceService {
     private ConferenceRepository conferenceRepository;
 
     @Autowired
-    public ConferenceServiceImpl(ConferenceRepository conferenceRepository){
+    public ConferenceServiceImpl(ConferenceRepository conferenceRepository) {
         this.conferenceRepository = conferenceRepository;
     }
 
-    public void createNewConference(Conference conference){
+    public void createNewConference(Conference conference) {
         this.conferenceRepository.saveAndFlush(conference);
     }
 
     @Override
     public List<Conference> getAllConferences() {
         return this.conferenceRepository.findAll();
+    }
+
+    @Override
+    public Conference findConference(Long id) {
+        return this.conferenceRepository.findById(id);
     }
 
 }

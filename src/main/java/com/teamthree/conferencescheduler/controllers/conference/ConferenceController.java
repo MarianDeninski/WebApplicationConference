@@ -42,7 +42,10 @@ public class ConferenceController {
     private ConferenceService conferenceService;
 
     @Autowired
-    public ConferenceController(UserService userService, UserRepository userRepository,ConferenceRepository conferenceRepository,VenueRepository venueRepository,ConferenceService conferenceService){
+    public ConferenceController(UserService userService, UserRepository userRepository,
+                                ConferenceRepository conferenceRepository, VenueRepository venueRepository,
+                                ConferenceService conferenceService) {
+
         this.userService = userService;
         this.userRepository = userRepository;
         this.venueRepository = venueRepository;
@@ -52,33 +55,33 @@ public class ConferenceController {
 
     //Get all conferences
     @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public String getAllConferences(Model model){
+    public String getAllConferences(Model model) {
 
-        ArrayList<Conference >conferences= (ArrayList<Conference>) conferenceService.getAllConferences();
+        ArrayList<Conference> conferences = (ArrayList<Conference>) conferenceService.getAllConferences();
 
-        model.addAttribute("conferences",conferences);
-        model.addAttribute(VIEW,ALL_CONFERENCES);
+        model.addAttribute("conferences", conferences);
+        model.addAttribute(VIEW, ALL_CONFERENCES);
 
         return BASE_LAYOUT;
 
     }
 
-    @RequestMapping(value = " /remove/{id}", method=RequestMethod.POST)
-    public String removeConference(@PathVariable long id){
+    @RequestMapping(value = " /remove/{id}", method = RequestMethod.POST)
+    public String removeConference(@PathVariable long id) {
         //TODO Implement method
         return null;
     }
 
     //GET edit view html
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-    public String getEditConference(@PathVariable long id){
+    public String getEditConference(@PathVariable long id) {
         //TODO Implement method
         return null;
     }
 
     //POST edit conference
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-    public  String editConference(@PathVariable long id){
+    public String editConference(@PathVariable long id) {
         //TODO Implement method
         return null;
     }
@@ -86,42 +89,42 @@ public class ConferenceController {
     //Get createConference view
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public String getCreateConference(Model model){
-        model.addAttribute("view",CREATE_CONFERENCE);
-        return BASE_LAYOUT ;
+    public String getCreateConference(Model model) {
+        model.addAttribute("view", CREATE_CONFERENCE);
+        return BASE_LAYOUT;
     }
 
     //Post data to db
     @PostMapping(path = "/create")
     @PreAuthorize("isAuthenticated()")
-    public String createConference(Model model, CreateConferenceDto dto){
-        
+    public String createConference(Model model, CreateConferenceDto dto) {
+
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
-            String currentUserName = auth.getName();
+        String currentUserName = auth.getName();
 
-            User owner = userRepository.findByUsername(currentUserName);
+        User owner = userRepository.findByUsername(currentUserName);
 
-            //Add button on view to create Venue if venue doesn't exist
-            Venue venue = venueRepository.findByAddress(dto.getVenueAddress());
+        //Add button on view to create Venue if venue doesn't exist
+        Venue venue = venueRepository.findByAddress(dto.getVenueAddress());
 
-           // if(venue.getAddress()==null){
-           // }
+        // if(venue.getAddress()==null){
+        // }
 
-            Conference conference = new Conference(dto.getName(),dto.getDescription(),venue,dto.getStartDate(),dto.getEndDate(),owner, new ArrayList<Session>());
-            this.conferenceService.createNewConference(conference);
+        Conference conference = new Conference(dto.getName(), dto.getDescription(), venue, dto.getStartDate(), dto.getEndDate(), owner, new ArrayList<Session>());
+        this.conferenceService.createNewConference(conference);
 
-            model.addAttribute("conference",conference);
-            model.addAttribute(VIEW,CONFERENCE_DETAILS);
-            return BASE_LAYOUT;
+        model.addAttribute("conference", conference);
+        model.addAttribute(VIEW, CONFERENCE_DETAILS);
+        return BASE_LAYOUT;
 
     }
 
-    @RequestMapping(value = "/details/{id}", method=RequestMethod.GET)
-    public String details(@PathVariable long id,Model model){
-        Conference conference = conferenceRepository.findOne(id);
-        model.addAttribute(VIEW,CONFERENCE_DETAILS);
-        model.addAttribute("conference",conference);
+    @RequestMapping(value = "/details/{id}", method = RequestMethod.GET)
+    public String details(@PathVariable long id, Model model) {
+        Conference conference = conferenceService.findConference(id);
+        model.addAttribute(VIEW, CONFERENCE_DETAILS);
+        model.addAttribute("conference", conference);
         return BASE_LAYOUT;
     }
 
