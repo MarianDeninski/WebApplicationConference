@@ -7,6 +7,9 @@ public final class ErrorHandlingConstants {
     public static final String PASSWORD_FIELD_IS_EMPTY = "Password field, must not be empty!";
     public static final String CONFIRM_PASS_NOT_MATCHING = "Confirm password is not matching the password!";
 
+    public static final String VENUE_CANNOT_BE_NULL = "venue cannot be null";
+    public static final String VENUE_ALREADY_EXISTS = "venue with that name already exists";
+
     private ErrorHandlingConstants() {
         super();
     }
