@@ -23,6 +23,9 @@ import com.teamthree.conferencescheduler.constants.views.ViewConstants;
 
 import javax.jws.WebParam;
 
+import java.util.ArrayList;
+
+import static com.teamthree.conferencescheduler.constants.views.ViewConstants.ALL_CONFERENCES;
 import static com.teamthree.conferencescheduler.constants.views.ViewConstants.BASE_LAYOUT;
 import static com.teamthree.conferencescheduler.constants.views.ViewConstants.CREATE_CONFERENCE;
 
@@ -34,6 +37,7 @@ public class ConferenceController {
     private UserRepository userRepository;
     private ConferenceRepository conferenceRepository;
     private VenueRepository venueRepository;
+
     @Autowired
     public ConferenceController(UserService userService, UserRepository userRepository,ConferenceRepository conferenceRepository,VenueRepository venueRepository){
         this.userService = userService;
@@ -45,10 +49,35 @@ public class ConferenceController {
     //Get all conferences
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public String getAllConferences(Model model){
+        ArrayList<Conference> conferences= (ArrayList<Conference>) conferenceRepository.findAll();
+
+        // I have no idea if this will work
+        model.addAttribute(conferences);
+        model.addAttribute("view",ALL_CONFERENCES);
+
+        return BASE_LAYOUT;
+
+    }
+
+    @RequestMapping(value = " /remove/{id}", method=RequestMethod.POST)
+    public String removeConference(@PathVariable long id){
+        //TODO Implement method
         return null;
     }
 
+    //GET edit view html
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+    public String getEditConference(@PathVariable long id){
+        //TODO Implement method
+        return null;
+    }
 
+    //POST edit conference
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
+    public  String editConference(@PathVariable long id){
+        //TODO Implement method
+        return null;
+    }
 
     //Get createConference view
     @RequestMapping(value = "/create", method = RequestMethod.GET)
@@ -70,11 +99,11 @@ public class ConferenceController {
         
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
-        if (!(auth instanceof AnonymousAuthenticationToken)) {
+        if ((auth instanceof AnonymousAuthenticationToken)) {
             String currentUserName = auth.getName();
 
             //Add button on view to create Venue if venue doesn't exist
-            Venue venue = venueRepository.findByName(dto.getVenueName());
+            Venue venue = venueRepository.findByAddress(dto.getVenueAddress());
             Conference conference = new Conference(dto.getName(),dto.getDescription(),venue,dto.getStartDate(),dto.getEndDate());
             conferenceRepository.saveAndFlush(conference);
             return "redirect:/conference/details{id}";
@@ -85,9 +114,11 @@ public class ConferenceController {
 
     }
 
-    @RequestMapping(value = " /conference/{id}", method=RequestMethod.GET)
+    @RequestMapping(value = " /detail/{id}", method=RequestMethod.GET)
     public String details(@PathVariable long id){
         //TODO implement Conference detail
+        Conference conference = conferenceRepository.findOne(id);
+
         return null;
     }
 
