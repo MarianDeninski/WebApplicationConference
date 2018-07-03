@@ -10,6 +10,7 @@ import com.teamthree.conferencescheduler.repositories.VenueRepository;
 import com.teamthree.conferencescheduler.service.api.RoleService;
 import com.teamthree.conferencescheduler.service.api.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -26,9 +27,7 @@ import javax.jws.WebParam;
 
 import java.util.ArrayList;
 
-import static com.teamthree.conferencescheduler.constants.views.ViewConstants.ALL_CONFERENCES;
-import static com.teamthree.conferencescheduler.constants.views.ViewConstants.BASE_LAYOUT;
-import static com.teamthree.conferencescheduler.constants.views.ViewConstants.CREATE_CONFERENCE;
+import static com.teamthree.conferencescheduler.constants.views.ViewConstants.*;
 
 @Controller
 @RequestMapping("/conference")
@@ -50,11 +49,11 @@ public class ConferenceController {
     //Get all conferences
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public String getAllConferences(Model model){
+
         ArrayList<Conference> conferences= (ArrayList<Conference>) conferenceRepository.findAll();
 
-        // I have no idea if this will work
-        model.addAttribute(conferences);
-        model.addAttribute("view",ALL_CONFERENCES);
+        model.addAttribute("conferences",conferences);
+        model.addAttribute(VIEW,ALL_CONFERENCES);
 
         return BASE_LAYOUT;
 
@@ -96,29 +95,28 @@ public class ConferenceController {
 
     //Post data to db
     @PostMapping(path = "/create")
+    @PreAuthorize("isAuthenticated()")
     public String createConference(Model model, CreateConferenceDto dto){
         
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
-        if ((auth instanceof AnonymousAuthenticationToken)) {
             String currentUserName = auth.getName();
 
             //Add button on view to create Venue if venue doesn't exist
             Venue venue = venueRepository.findByAddress(dto.getVenueAddress());
             Conference conference = new Conference(dto.getName(),dto.getDescription(),venue,dto.getStartDate(),dto.getEndDate());
             conferenceRepository.saveAndFlush(conference);
-            return "redirect:/conference/details{id}";
-        }
-        return "redirect:/users/login";
-
-
+            model.addAttribute(VIEW,CONFERENCE_DETAILS);
+            return BASE_LAYOUT;
 
     }
 
-    @RequestMapping(value = " /detail/{id}", method=RequestMethod.GET)
-    public String details(@PathVariable long id){
-        //TODO implement Conference detail
+    @RequestMapping(value = "/details/{id}", method=RequestMethod.GET)
+    public String details(@PathVariable long id,Model model){
         Conference conference = conferenceRepository.findOne(id);
+        model.addAttribute(VIEW,CONFERENCE_DETAILS);
+
+        model.addAttribute("conference",conference);
 
         return null;
     }
