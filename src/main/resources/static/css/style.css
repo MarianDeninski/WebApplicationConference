@@ -32,6 +32,9 @@ body {
   margin: auto;
 }
 
+.separator {
+  margin-top: 15px;
+}
 
 .text{
   text-align: center;

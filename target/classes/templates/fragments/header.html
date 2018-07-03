@@ -1,4 +1,4 @@
-<header  th:fragment="header">
+<header th:fragment="header">
     <div class="navbar navbar-default navbar-static-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -13,18 +13,32 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li sec:authorize="isAuthenticated()">
+                        <a th:href="@{/conference/create}">
+                            Create Conference
+                        </a>
+                    </li>
+
+                    <li sec:authorize="isAuthenticated()" style="margin-top: 15px;"> | </li>
+
+                    <li sec:authorize="isAuthenticated()">
+                        <a th:href="@{/conference/create}">
+                            Add Venue
+                        </a>
+                    </li>
+
+                    <li sec:authorize="isAuthenticated()" style="margin-top: 15px;"> | </li>
+
+                    <li sec:authorize="isAuthenticated()">
                         <a th:href="@{/user/profile}">
                             My Profile
                         </a>
                     </li>
+
+                    <li sec:authorize="isAuthenticated()" style="margin-top: 15px;"> | </li>
+
                     <li sec:authorize="isAuthenticated()">
                         <a th:href="@{/user/logout}">
                             Logout
-                        </a>
-                    </li>
-                    <li sec:authorize="isAuthenticated()">
-                        <a th:href="@{/conference/create}">
-                            Create Conference
                         </a>
                     </li>
 
@@ -34,6 +48,9 @@
                             Register
                         </a>
                     </li>
+
+                    <li sec:authorize="isAnonymous()" style="margin-top: 15px;"> | </li>
+
                     <li sec:authorize="isAnonymous()">
                         <a th:href="@{/user/login}">
                             Login
