@@ -1,27 +1,28 @@
 <main>
     <div class="container body-content span=8 offset=2">
         <div class="well">
-            <form class="form-horizontal" th:action="@{/venue/add_venue}" method="post">
+            <form class="form-horizontal" th:action="@{/venue/add}" method="post">
                 <fieldset>
                     <legend>New Venue</legend>
-                    <h1 class="form-group">
-                        <label class="col-sm-offset-5 center-fit" for="venue_name" >Name</label>
-                        <h2 class="col-sm-offset-4 ">
-                            <input class="form-control" type="text" id="venue_name" placeholder="Name"
-                                   name="name" required="required" autofocus="autofocus"/>
-                        </h2>
-                    </h1>
-                    <h1 class="form-group">
-                        <label class="col-sm-offset-5 center-fit" for="venue_address" >Address</label>
-                        <h2 class="col-sm-offset-4 ">
-                            <input class="form-control" type="text" id="venue_address" placeholder="Address"
-                                   name="address" required="required" />
-                        </h2>
-                    </h1>
                     <div class="form-group">
-                        <div class="col-sm-5 col-sm-offset-5">
-                            <input value="Cancel" type="button" class="btn btn-primary btn-lg" style="border-style: none"/>
-                            <input value="Submit" type="submit" class="btn btn-primary btn-lg" style="border-style: none"/>
+                        <label class="col-sm-4 control-label" for="venue_name">Name</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="venue_name" placeholder="Enter a name for your venue" name="name" autofocus="autofocus" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="venue_address">Address</label>
+                        <div class="col-sm-4">
+                            <input type="password" class="form-control" id="venue_address" placeholder="Enter venue address ..." name="address"/>
+                        </div>
+                    </div>
+
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-4">
+                            <a class="btn btn-default" th:href="@{/}">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </div>
                 </fieldset>
