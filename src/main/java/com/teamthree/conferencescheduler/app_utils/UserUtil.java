@@ -1,10 +1,12 @@
 package com.teamthree.conferencescheduler.app_utils;
 
-import org.springframework.security.core.Authentication;
+import com.teamthree.conferencescheduler.entities.User;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 public class UserUtil {
-    public static Authentication getLoggedUser() {
-        return SecurityContextHolder.getContext().getAuthentication();
+    public static User getLoggedUser() {
+        //FIXME:
+        return null;
     }
+
 }

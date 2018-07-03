@@ -7,6 +7,7 @@ import com.teamthree.conferencescheduler.entities.User;
 import com.teamthree.conferencescheduler.entities.Venue;
 import com.teamthree.conferencescheduler.exceptions.ApplicationRuntimeException;
 import com.teamthree.conferencescheduler.repositories.VenueRepository;
+import com.teamthree.conferencescheduler.service.api.UserService;
 import com.teamthree.conferencescheduler.service.api.VenueService;
 import com.teamthree.conferencescheduler.service.impl.VenueServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.security.Principal;
 
@@ -27,10 +29,12 @@ import static com.teamthree.conferencescheduler.constants.views.ViewConstants.*;
 public class VenueController {
 
     private VenueService venueService;
+    private UserService userService;
 
     @Autowired
-    public VenueController(VenueService venueService) {
+    public VenueController(VenueService venueService, UserService userService) {
         this.venueService = venueService;
+        this.userService = userService;
     }
 
 
@@ -42,18 +46,15 @@ public class VenueController {
         return BASE_LAYOUT;
     }
 
-    @PostMapping("/add")
+
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     //TODO: IT SHOULD NOT BE POSSIBLE TO ACCESS THIS PAGE WITHOUT LOGIN!
-    public String processVenue(Model model, AddVenueDto dto) {
+    public String processVenue(Model model, AddVenueDto dto, Principal principal) {
 
+        // USER WILL NEVER BE NULL IF HE IS CURRENTLY LOGGED IN, NO NEED TO CHECK!
+        User user = this.userService.findByUsername(principal.getName());
+        Venue venue = new Venue(dto.getAddress(), dto.getName(), user);
 
-        Principal principal = UserUtil.getLoggedUser();
-        String name = principal.getName();
-        Object details = ((Authentication) principal).getDetails();
-        Object principal1 = ((Authentication) principal).getPrincipal();
-
-
-        Venue venue = new Venue(dto.getAddress(), dto.getName(), new User());
         try {
             this.venueService.addVenue(venue);
         } catch (ApplicationRuntimeException ex) {
