@@ -28,7 +28,7 @@ public class Conference {
     @Column(name = "end_date")
     private Date endDate;
 
-    public Conference() {
+    public Conference(String name, String description, Venue venue, java.util.Date startDate, java.util.Date endDate) {
 
     }
 
@@ -39,6 +39,7 @@ public class Conference {
         this.startDate = startDate;
         this.endDate = endDate;
     }
+
 
     public long getId() {
         return this.id;
