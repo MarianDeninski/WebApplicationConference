@@ -6,4 +6,6 @@ public interface UserService {
     void createNewUser(User user);
 
     User findByUsername(String username);
+
+    boolean checkIfUserExists(String username);
 }

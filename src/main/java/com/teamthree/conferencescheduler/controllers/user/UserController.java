@@ -21,11 +21,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import static com.teamthree.conferencescheduler.constants.errors.ErrorHandlingConstants.*;
 import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.USER_LOGIN;
 import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.USER_REGISTER;
 import static com.teamthree.conferencescheduler.constants.user_roles.UserRoles.ROLE_USER;
 import static com.teamthree.conferencescheduler.constants.views.ViewConstants.BASE_LAYOUT;
 import static com.teamthree.conferencescheduler.constants.views.ViewConstants.VIEW;
+import static com.teamthree.conferencescheduler.constants.views.ViewConstants.VIEW_MESSAGE;
 
 @Controller
 @RequestMapping("/user")
@@ -56,7 +58,44 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String processRegister(UserRegisterDto dto) {
+    public String processRegister(Model model, UserRegisterDto dto) {
+
+        if (this.userService.checkIfUserExists(dto.getUsername())) {
+            model.addAttribute(VIEW_MESSAGE, EMAIL_EXISTS);
+            model.addAttribute(VIEW, USER_REGISTER);
+
+            return BASE_LAYOUT;
+        }
+
+        if (dto.getUsername().isEmpty()) {
+            model.addAttribute(VIEW_MESSAGE, EMAIL_FIELD_IS_EMPTY);
+            model.addAttribute(VIEW, USER_REGISTER);
+
+            return BASE_LAYOUT;
+        }
+
+        if (dto.getFullName().isEmpty()) {
+            model.addAttribute(VIEW_MESSAGE, NAME_FIELD_IS_EMPTY);
+            model.addAttribute(VIEW, USER_REGISTER);
+
+            return BASE_LAYOUT;
+        }
+
+        if (dto.getPassword().isEmpty() || dto.getConfirmPassword().isEmpty()) {
+            model.addAttribute(VIEW_MESSAGE, PASSWORD_FIELD_IS_EMPTY);
+            model.addAttribute(VIEW, USER_REGISTER);
+
+            return BASE_LAYOUT;
+        }
+
+
+        if (!dto.getPassword().equals(dto.getConfirmPassword())) {
+            model.addAttribute(VIEW_MESSAGE, CONFIRM_PASS_NOT_MATCHING);
+            model.addAttribute(VIEW, USER_REGISTER);
+
+            return BASE_LAYOUT;
+        }
+
 
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         User user = new User(dto.getUsername(),

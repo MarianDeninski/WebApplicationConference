@@ -24,4 +24,10 @@ public class UserServiceImpl implements UserService {
     public User findByUsername(String username) {
         return this.userRepository.findByUsername(username);
     }
+
+    @Override
+    public boolean checkIfUserExists(String username) {
+        return this.findByUsername(username) != null;
+    }
+
 }
