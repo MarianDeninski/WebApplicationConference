@@ -36,19 +36,11 @@ import static com.teamthree.conferencescheduler.constants.views.ViewConstants.*;
 @RequestMapping("/conference")
 public class ConferenceController {
 
-    private UserService userService;
-    private UserRepository userRepository;
-    private VenueRepository venueRepository;
     private ConferenceService conferenceService;
 
     @Autowired
-    public ConferenceController(UserService userService, UserRepository userRepository,
-                                ConferenceRepository conferenceRepository, VenueRepository venueRepository,
-                                ConferenceService conferenceService) {
+    public ConferenceController(ConferenceService conferenceService) {
 
-        this.userService = userService;
-        this.userRepository = userRepository;
-        this.venueRepository = venueRepository;
         this.conferenceService = conferenceService;
 
     }
@@ -95,27 +87,18 @@ public class ConferenceController {
     }
 
     //Post data to db
+
+
     @PostMapping(path = "/create")
     @PreAuthorize("isAuthenticated()")
     public String createConference(Model model, CreateConferenceDto dto) {
+        String owner = SecurityContextHolder.getContext().getAuthentication().getName();
 
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-
-        String currentUserName = auth.getName();
-
-        User owner = userRepository.findByUsername(currentUserName);
-
-        //Add button on view to create Venue if venue doesn't exist
-        Venue venue = venueRepository.findByAddress(dto.getVenueAddress());
-
-        // if(venue.getAddress()==null){
-        // }
-
-        Conference conference = new Conference(dto.getName(), dto.getDescription(), venue, dto.getStartDate(), dto.getEndDate(), owner, new ArrayList<Session>());
-        this.conferenceService.createNewConference(conference);
+        Conference conference = this.conferenceService.createNewConference(dto, owner);
 
         model.addAttribute("conference", conference);
         model.addAttribute(VIEW, CONFERENCE_DETAILS);
+
         return BASE_LAYOUT;
 
     }
@@ -127,5 +110,4 @@ public class ConferenceController {
         model.addAttribute("conference", conference);
         return BASE_LAYOUT;
     }
-
 }
