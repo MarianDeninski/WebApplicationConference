@@ -46,6 +46,7 @@ public class ConferenceController {
     }
 
     //Get all conferences
+    @PreAuthorize("isAnonymous()")
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public String getAllConferences(Model model) {
 
@@ -58,6 +59,7 @@ public class ConferenceController {
 
     }
 
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = " /remove/{id}", method = RequestMethod.POST)
     public String removeConference(@PathVariable long id) {
         //TODO Implement method
@@ -65,17 +67,21 @@ public class ConferenceController {
     }
 
     //GET edit view html
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-    public String getEditConference(@PathVariable long id) {
-        //TODO Implement method
-        return null;
+    public String getEditConference(@PathVariable long id,Model model) {
+        model.addAttribute(VIEW,CONFERENCE_EDIT);
+        return BASE_LAYOUT;
     }
 
     //POST edit conference
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-    public String editConference(@PathVariable long id) {
-        //TODO Implement method
-        return null;
+    public String editConference(@PathVariable long id,CreateConferenceDto dto) {
+        Conference conference = conferenceService.findConference(id);
+        //model.addAttribute(VIEW, CONFERENCE_DETAILS);
+        //model.addAttribute("conference", conference);
+        return BASE_LAYOUT;
     }
 
     //Get createConference view
@@ -87,8 +93,6 @@ public class ConferenceController {
     }
 
     //Post data to db
-
-
     @PostMapping(path = "/create")
     @PreAuthorize("isAuthenticated()")
     public String createConference(Model model, CreateConferenceDto dto) {
@@ -109,5 +113,12 @@ public class ConferenceController {
         model.addAttribute(VIEW, CONFERENCE_DETAILS);
         model.addAttribute("conference", conference);
         return BASE_LAYOUT;
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping(value = "/delete/{id}")
+    public String delete(@PathVariable long id,Model model){
+        conferenceService.deleteConferenceById(id);
+        return "redirect:/conferences/all";
     }
 }
