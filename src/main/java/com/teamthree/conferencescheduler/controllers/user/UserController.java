@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.USER_HOP;
 import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.USER_LOGIN;
 import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.USER_REGISTER;
 import static com.teamthree.conferencescheduler.constants.user_roles.UserRoles.ROLE_USER;
@@ -52,6 +53,12 @@ public class UserController {
         return BASE_LAYOUT;
     }
 
+    @GetMapping("/addspeaker")
+    public String hop(Model model) {
+
+        model.addAttribute(VIEW, USER_HOP);
+        return BASE_LAYOUT;
+    }
 
     @GetMapping("/register")
     public String register(Model model) {
@@ -98,7 +105,6 @@ public class UserController {
         model.addAttribute("user",user);
         model.addAttribute("view","user/profile");
         return BASE_LAYOUT;
-
 
     }
 }
