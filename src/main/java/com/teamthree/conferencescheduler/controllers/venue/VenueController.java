@@ -3,6 +3,7 @@ package com.teamthree.conferencescheduler.controllers.venue;
 import com.teamthree.conferencescheduler.repositories.VenueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -17,8 +18,9 @@ public class VenueController {
     }
     //TODO Implement controller
 
+    //GET venue view page
     @RequestMapping("/add")
     public String addVenue(){
-        return null;
+    return null;
     }
 }

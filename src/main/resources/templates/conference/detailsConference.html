@@ -1,0 +1,28 @@
+<main class="mt-3 mb-5">
+    <h3 class="text-center"th:text="${conference.name}"></h3>
+    <hr class="hr-2 bg-dark"/>
+
+    <div >
+        <h3 class="text-center" th:text=$"conference.startDate"></h3>
+        <h3 class="text-center" th:text=$"conference.endDate"></h3>
+    </div>
+    <hr class="hr-2 bg-dark"/>
+    <h3 class="text-center">Description</h3>
+    <div >
+        <p class="text-center mt-4" th:text=$"conference.description"></p>
+    </div>
+    <hr class="hr-2 bg-dark"/>
+    <div class="product-action-holder mt-4 d-flex justify-content-around">
+        <a class="btn-success" href="/session/join">Join our Seminar</a>
+    </div>
+    <hr class="hr-2 bg-dark"/>
+    <div class="task-column-body">
+        <th:block th:each="halls : ${conference.halls}">
+            <div class="task" >
+                <h3 th:text="${hall.name}"></h3>
+                <h4 th:text="${hall.seatCapacity}"></h4>
+            </div>
+        </th:block>
+    </div>
+
+</main>
