@@ -12,4 +12,8 @@ public interface ConferenceService {
     List<Conference> getAllConferences();
 
     Conference findConference(Long id);
+
+    void editConference(long id, CreateConferenceDto dto);
+
+    void deleteConferenceById(long id);
 }

@@ -33,6 +33,9 @@ public class ConferenceServiceImpl implements ConferenceService {
     public Conference createNewConference(CreateConferenceDto dto, String owner) {
         User ownerClass = this.userRepository.findByUsername(owner);
         Venue venue = venueRepository.findByAddress(dto.getVenueAddress());
+        if(venue==null) {
+           // venue = new Venue(dto.getVenueAddress());
+        }
         Conference conference = new Conference(dto.getName(),dto.getDescription(),venue,dto.getStartDate(),dto.getEndDate(),ownerClass,new ArrayList<Session>());
         return conference;
     }
@@ -45,6 +48,26 @@ public class ConferenceServiceImpl implements ConferenceService {
     @Override
     public Conference findConference(Long id) {
         return this.conferenceRepository.findById(id);
+    }
+
+    @Override
+    public void editConference(long id, CreateConferenceDto dto) {
+        Conference conference = this.findConference(id);
+        conference.setName(dto.getName());
+        conference.setDescription(dto.getDescription());
+        conference.setEndDate(dto.getEndDate());
+        Venue newVenue = venueRepository.findByAddress(dto.getVenueAddress());
+        if(newVenue==null){
+            //TODO add  venue name to the CreateConference dto so new venue can be inicializes
+        }
+        conference.setVenue(newVenue);
+        //TODO add new session
+
+    }
+
+    @Override
+    public void deleteConferenceById(long id) {
+        this.userRepository.delete(id);
     }
 
 }

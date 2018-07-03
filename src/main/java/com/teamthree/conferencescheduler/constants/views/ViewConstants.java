@@ -11,6 +11,7 @@ public class ViewConstants {
     public static final String CREATE_CONFERENCE = "conference/createConference";
     public static final String ALL_CONFERENCES = "conference/allConferences";
     public static final String CONFERENCE_DETAILS = "conference/detailsConference";
+    public static final String CONFERENCE_EDIT = "conference/editConference";
 
     //hall views
     public static final String ADD_HALL = "hall/addHall";
