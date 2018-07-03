@@ -15,6 +15,9 @@ public class Venue {
     @Column(name = "address")
     private String address;
 
+    @Column(name = "name")
+    private String name;
+
     @OneToMany(mappedBy = "venue")
     private List<Hall> halls;
 
@@ -48,5 +51,22 @@ public class Venue {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Conference> getConferences() {
+        return this.conferences;
+    }
+
+    public void setConferences(List<Conference> conferences) {
+        this.conferences = conferences;
     }
 }
