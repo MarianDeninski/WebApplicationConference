@@ -52,7 +52,6 @@ public class UserController {
     @GetMapping("/register")
     public String register(Model model) {
 
-
         model.addAttribute(VIEW, USER_REGISTER);
         return BASE_LAYOUT;
     }
