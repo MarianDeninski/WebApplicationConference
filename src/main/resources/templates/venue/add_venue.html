@@ -1,0 +1,31 @@
+<main>
+    <div class="container body-content span=8 offset=2">
+        <div class="well">
+            <form class="form-horizontal" th:action="@{/venue/add_venue}" method="post">
+                <fieldset>
+                    <legend>New Venue</legend>
+                    <h1 class="form-group">
+                        <label class="col-sm-offset-5 center-fit" for="venue_name" >Name</label>
+                        <h2 class="col-sm-offset-4 ">
+                            <input class="form-control" type="text" id="venue_name" placeholder="Name"
+                                   name="name" required="required" autofocus="autofocus"/>
+                        </h2>
+                    </h1>
+                    <h1 class="form-group">
+                        <label class="col-sm-offset-5 center-fit" for="venue_address" >Address</label>
+                        <h2 class="col-sm-offset-4 ">
+                            <input class="form-control" type="text" id="venue_address" placeholder="Address"
+                                   name="address" required="required" />
+                        </h2>
+                    </h1>
+                    <div class="form-group">
+                        <div class="col-sm-5 col-sm-offset-5">
+                            <input value="Cancel" type="button" class="btn btn-primary btn-lg" style="border-style: none"/>
+                            <input value="Submit" type="submit" class="btn btn-primary btn-lg" style="border-style: none"/>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</main>
