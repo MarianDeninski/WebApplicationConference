@@ -38,14 +38,14 @@ public class Conference {
 
     }
     //TODO REFACTOR VENue TO BE STRIng
-    public Conference(String name, String description, Venue venue, Date startDate, Date endDate,User owner) {
+    public Conference(String name, String description, Venue venue, Date startDate, Date endDate,User owner,List<Session> sessions) {
         this.name = name;
         this.description = description;
         this.venue = venue;
         this.startDate = startDate;
         this.endDate = endDate;
         this.owner=owner;
-        this.sessions=new ArrayList<Session>();
+        this.sessions=sessions;
     }
 
     public List<Session> getSessions() {

@@ -3,11 +3,13 @@ package com.teamthree.conferencescheduler.controllers.conference;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import com.teamthree.conferencescheduler.dto.conference.CreateConferenceDto;
 import com.teamthree.conferencescheduler.entities.Conference;
+import com.teamthree.conferencescheduler.entities.Session;
 import com.teamthree.conferencescheduler.entities.User;
 import com.teamthree.conferencescheduler.entities.Venue;
 import com.teamthree.conferencescheduler.repositories.ConferenceRepository;
 import com.teamthree.conferencescheduler.repositories.UserRepository;
 import com.teamthree.conferencescheduler.repositories.VenueRepository;
+import com.teamthree.conferencescheduler.service.api.ConferenceService;
 import com.teamthree.conferencescheduler.service.api.RoleService;
 import com.teamthree.conferencescheduler.service.api.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,13 +40,16 @@ public class ConferenceController {
     private UserRepository userRepository;
     private ConferenceRepository conferenceRepository;
     private VenueRepository venueRepository;
+    private ConferenceService conferenceService;
 
     @Autowired
-    public ConferenceController(UserService userService, UserRepository userRepository,ConferenceRepository conferenceRepository,VenueRepository venueRepository){
+    public ConferenceController(UserService userService, UserRepository userRepository,ConferenceRepository conferenceRepository,VenueRepository venueRepository,ConferenceService conferenceService){
         this.userService = userService;
         this.userRepository = userRepository;
         this.conferenceRepository = conferenceRepository;
         this.venueRepository = venueRepository;
+        this.conferenceService = conferenceService;
+
     }
 
     //Get all conferences
@@ -99,11 +104,15 @@ public class ConferenceController {
 
             User owner = userRepository.findByUsername(currentUserName);
             //Add button on view to create Venue if venue doesn't exist
+
             Venue venue = venueRepository.findByAddress(dto.getVenueAddress());
-            if(venue.getAddress()==null){
-            }
-            Conference conference = new Conference(dto.getName(),dto.getDescription(),venue,dto.getStartDate(),dto.getEndDate(),owner);
-            conferenceRepository.saveAndFlush(conference);
+
+           // if(venue.getAddress()==null){
+           // }
+
+            Conference conference = new Conference(dto.getName(),dto.getDescription(),venue,dto.getStartDate(),dto.getEndDate(),owner, new ArrayList<Session>());
+            this.conferenceService.createNewConference(conference);
+
             model.addAttribute("conference",conference);
             model.addAttribute(VIEW,CONFERENCE_DETAILS);
             return BASE_LAYOUT;

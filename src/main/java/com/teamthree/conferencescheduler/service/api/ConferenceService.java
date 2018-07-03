@@ -1,7 +1,9 @@
 package com.teamthree.conferencescheduler.service.api;
 
+import com.teamthree.conferencescheduler.entities.Conference;
+
 public interface ConferenceService {
 
-    //TODO move methods from controller to the services
+    void createNewConference(Conference conference);
 
 }
