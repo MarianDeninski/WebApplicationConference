@@ -4,6 +4,7 @@ import com.teamthree.conferencescheduler.dto.hall.AddHallDto;
 import com.teamthree.conferencescheduler.entities.Hall;
 import com.teamthree.conferencescheduler.entities.Session;
 import com.teamthree.conferencescheduler.entities.Venue;
+import com.teamthree.conferencescheduler.repositories.HallRepository;
 import com.teamthree.conferencescheduler.repositories.VenueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -21,6 +22,7 @@ import static com.teamthree.conferencescheduler.constants.views.ViewConstants.*;
 public class HallController {
 
     VenueRepository venueRepository;
+    HallRepository hallRepository;
     @Autowired
     public HallController(VenueRepository venueRepository){
         this.venueRepository=venueRepository;

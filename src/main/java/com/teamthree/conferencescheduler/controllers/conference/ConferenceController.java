@@ -100,6 +100,8 @@ public class ConferenceController {
             User owner = userRepository.findByUsername(currentUserName);
             //Add button on view to create Venue if venue doesn't exist
             Venue venue = venueRepository.findByAddress(dto.getVenueAddress());
+            if(venue.getAddress()==null){
+            }
             Conference conference = new Conference(dto.getName(),dto.getDescription(),venue,dto.getStartDate(),dto.getEndDate(),owner);
             conferenceRepository.saveAndFlush(conference);
             model.addAttribute("conference",conference);

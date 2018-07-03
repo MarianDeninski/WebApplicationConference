@@ -1,7 +1,9 @@
 package com.teamthree.conferencescheduler.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -29,10 +31,13 @@ public class Conference {
     @Column(name = "end_date")
     private Date endDate;
 
-    public Conference(String name, String description, Venue venue, Date startDate, Date endDate) {
+    @OneToMany(mappedBy = "conference")
+    private List<Session> sessions;
+
+    public Conference(){
 
     }
-
+    //TODO REFACTOR VENue TO BE STRIng
     public Conference(String name, String description, Venue venue, Date startDate, Date endDate,User owner) {
         this.name = name;
         this.description = description;
@@ -40,8 +45,12 @@ public class Conference {
         this.startDate = startDate;
         this.endDate = endDate;
         this.owner=owner;
+        this.sessions=new ArrayList<Session>();
     }
 
+    public List<Session> getSessions() {
+        return sessions;
+    }
 
     public long getId() {
         return this.id;
