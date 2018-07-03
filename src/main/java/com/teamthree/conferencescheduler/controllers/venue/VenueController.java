@@ -41,7 +41,7 @@ public class VenueController {
     //TODO: IT SHOULD NOT BE POSSIBLE TO ACCESS THIS PAGE WITHOUT LOGIN!
     public String processVenue(AddVenueDto dto) {
 
-        Venue venue = new Venue(dto.getName(), dto.getAddress());
+        Venue venue = new Venue(dto.getAddress(), dto.getName());
         this.venueService.addVenue(venue);
         return REDIRECT_TO_MY_PROFILE;
     }
