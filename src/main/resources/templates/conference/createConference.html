@@ -1,40 +1,27 @@
 <main>
     <div class="container body-content span=8 offset=2">
         <div class="well">
-            <form class="form-horizontal" th:action="@{/register}" method="post">
+            <form class="form-horizontal" th:action="@{/conference/create}" method="post">
                 <fieldset>
                     <legend>Conference Creation</legend>
                     <h1 class="form-group">
-                        <label class="col-sm-offset-5 center-fit" for="conference_name">Name</label>
+                        <label class="col-sm-offset-5 center-fit" for="conference_name" >Name</label>
                         <h2 class="col-sm-offset-4 ">
                             <input class="form-control" type="text" id="conference_name" placeholder="Name"
-                                   name="conferenceName" required="required" autofocus="autofocus"/>
+                                   name="name" required="required" autofocus="autofocus"/>
                         </h2>
                     </h1>
                     <div class="form-group">
-<<<<<<< HEAD
-                        <label class="col-sm-2 control-label" for="user_fullname">Name</label>
-                        <div class="col-sm-4 ">
-                            <input class="form-control" type="text" id="user_fullname" placeholder="Full Name"
-                                   name="fullName" required="required" autofocus="autofocus" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">Description</label>
-                        <div class="col-sm-8">
-                            <textarea rows="15" cols="100" name="comment" placeholder="  Enter text here..." form=""></textarea>
-=======
                         <h1 class="col-sm-3 control-label">Description</h1>
                         <div class="col-sm - 4">
-                            <textarea rows="15" cols="100"  name="conferenceDescription" placeholder="  Enter text here..."
+                            <textarea rows="15" cols="100"  name="conferenceDescription" placeholder="    Enter text here...    "
                                       form=""></textarea>
->>>>>>> 0e4ff3be54c57678cb3e74c9acd980919ee4613a
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-4 col-sm-offset-4">
-                            <input value="Cancel" type="button" class="btn btn-primary" style="border-style: none"/>
-                            <input value="Submit" type="submit" class="btn btn-primary" style="border-style: none"/>
+                        <div class="col-sm-5 col-sm-offset-5">
+                            <input value="Cancel" type="button" class="btn btn-primary btn-lg" style="border-style: none"/>
+                            <input value="Submit" type="submit" class="btn btn-primary btn-lg" style="border-style: none"/>
                         </div>
                     </div>
                 </fieldset>

@@ -28,6 +28,10 @@ public class Session {
     @ManyToOne()
     private Hall hall;
 
+    @ManyToOne()
+    private Conference conference;
+
+
     public Session() {
     }
 
@@ -53,6 +57,10 @@ public class Session {
 
     public String getDescription() {
         return this.description;
+    }
+
+    public Conference getConference() {
+        return conference;
     }
 
     public void setDescription(String description) {
@@ -81,5 +89,9 @@ public class Session {
 
     public void setSpeaker(Speaker speaker) {
         this.speaker = speaker;
+    }
+
+    public Hall getHall() {
+        return hall;
     }
 }

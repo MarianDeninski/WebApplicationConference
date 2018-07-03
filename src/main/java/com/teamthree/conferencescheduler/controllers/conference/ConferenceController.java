@@ -3,6 +3,7 @@ package com.teamthree.conferencescheduler.controllers.conference;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import com.teamthree.conferencescheduler.dto.conference.CreateConferenceDto;
 import com.teamthree.conferencescheduler.entities.Conference;
+import com.teamthree.conferencescheduler.entities.User;
 import com.teamthree.conferencescheduler.entities.Venue;
 import com.teamthree.conferencescheduler.repositories.ConferenceRepository;
 import com.teamthree.conferencescheduler.repositories.UserRepository;
@@ -80,15 +81,9 @@ public class ConferenceController {
     }
 
     //Get createConference view
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String getCreateConference(Model model){
-
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-
-        if ((auth instanceof AnonymousAuthenticationToken)) {
-            String currentUserName = auth.getName();
-            return "redirect:/user/login";
-        }
         model.addAttribute("view",CREATE_CONFERENCE);
         return BASE_LAYOUT ;
     }
@@ -102,10 +97,14 @@ public class ConferenceController {
 
             String currentUserName = auth.getName();
 
+            User owner = userRepository.findByUsername(currentUserName);
             //Add button on view to create Venue if venue doesn't exist
             Venue venue = venueRepository.findByAddress(dto.getVenueAddress());
-            Conference conference = new Conference(dto.getName(),dto.getDescription(),venue,dto.getStartDate(),dto.getEndDate());
+            if(venue.getAddress()==null){
+            }
+            Conference conference = new Conference(dto.getName(),dto.getDescription(),venue,dto.getStartDate(),dto.getEndDate(),owner);
             conferenceRepository.saveAndFlush(conference);
+            model.addAttribute("conference",conference);
             model.addAttribute(VIEW,CONFERENCE_DETAILS);
             return BASE_LAYOUT;
 
@@ -115,10 +114,8 @@ public class ConferenceController {
     public String details(@PathVariable long id,Model model){
         Conference conference = conferenceRepository.findOne(id);
         model.addAttribute(VIEW,CONFERENCE_DETAILS);
-
         model.addAttribute("conference",conference);
-
-        return null;
+        return BASE_LAYOUT;
     }
 
 }
