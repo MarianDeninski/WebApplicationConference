@@ -33,6 +33,13 @@ public class Venue {
         this.halls = halls;
     }
 
+    public Venue(String address, String name) {
+        this.address = address;
+        this.name = name;
+        this.conferences = new ArrayList<>();
+        this.halls = new ArrayList<>();
+    }
+
     public List<Hall> getHalls() {
         return halls;
     }

@@ -6,6 +6,7 @@ public final class RoadMapping {
     public static final String USER_LOGIN = "user/login";
     public static final String ADD_VENUE = "venue/add_venue";
 
+
     private RoadMapping() {
     }
 }
