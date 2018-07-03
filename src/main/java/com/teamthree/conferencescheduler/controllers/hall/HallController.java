@@ -7,5 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/hall")
 public class HallController {
 
-    //TODO Implement controller
+    public String getAddHall(){
+        return null;
+    }
+
 }
