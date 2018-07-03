@@ -21,11 +21,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-<<<<<<< HEAD
-import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.USER_HOP;
-=======
 import static com.teamthree.conferencescheduler.constants.errors.ErrorHandlingConstants.*;
->>>>>>> e1692743891b1518624263e58678d57a20abd59d
+import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.USER_HOP;
 import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.USER_LOGIN;
 import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.USER_REGISTER;
 import static com.teamthree.conferencescheduler.constants.user_roles.UserRoles.ROLE_USER;
@@ -142,9 +139,5 @@ public class UserController {
         model.addAttribute("user", user);
         model.addAttribute("view", "user/profile");
         return BASE_LAYOUT;
-<<<<<<< HEAD
-
-=======
->>>>>>> e1692743891b1518624263e58678d57a20abd59d
     }
 }
