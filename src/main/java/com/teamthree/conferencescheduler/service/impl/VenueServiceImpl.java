@@ -7,6 +7,8 @@ import com.teamthree.conferencescheduler.service.api.VenueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 import static com.teamthree.conferencescheduler.constants.errors.ErrorHandlingConstants.VENUE_ALREADY_EXISTS;
 import static com.teamthree.conferencescheduler.constants.errors.ErrorHandlingConstants.VENUE_CANNOT_BE_NULL;
 
@@ -37,6 +39,16 @@ public class VenueServiceImpl implements VenueService {
     @Override
     public Venue getVenueById(long id) {
         return this.venueRepository.findById(id);
+    }
+
+    @Override
+    public List<Venue> getAllVenues() {
+        return this.venueRepository.findAll();
+    }
+
+    @Override
+    public Venue getVenueByName(String name) {
+        return this.venueRepository.findByName(name);
     }
 
     private boolean checkIfExists(String venueName) {

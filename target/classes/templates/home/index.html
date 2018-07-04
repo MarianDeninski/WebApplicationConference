@@ -5,17 +5,29 @@
             <div class="carousel slide multi-item-carousel" id="theCarousel">
                 <div class="carousel-inner" id="colums">
                     <!--<th:block th:each="project : ${project}">-->
+                    <div class="item active">
+                        <a th:href="@{http://www.thymeleaf/documentation.html}">
+                            <div class="col-xs-4">
+
+                                <a href="https://softuni.bg/">
+                                    <img class="img-responsive" th:src="@{images/carousel/picHome.jpg}" alt="Conference"/>
+                                    <div class="centered col-xs-4"></div>
+                                    <div class="bottom-left col-xs-4"></div>
+                                </a>
+                            </div>
+                        </a>
+                    </div>
                     <th:block th:each="conference: ${conferences}">
-                        <div class="item active">
+                        <div class="item">
                             <a th:href="@{http://www.thymeleaf/documentation.html}">
                                 <div class="col-xs-4">
                                     <a href="https://softuni.bg/">
                                         <img class="img-responsive" th:src="@{images/carousel/picHome.jpg}"
                                              alt="Conference"/>
-                                        Conference Name
+
                                         <div th:text="${conference.name}" class="centered col-xs-4"></div>
-                                        Start Dates
-                                        <div th:text="${conference.startDate}" class="bottom-left col-xs-4">
+
+                                        <div th:text="${conference.start}" class="bottom-left col-xs-4">
                                         </div>
                                     </a>
                                 </div>
@@ -38,14 +50,18 @@
                 interval: false
             });
             $('.multi-item-carousel .item').each(function () {
+
                 var next = $(this).next();
+
+
+
                 if (!next.length) {
                     next = $(this).siblings(':first');
                 }
                 $(next.children(0)[1]).clone().appendTo($(this));
 
                 if (next.next().length > 0) {
-                    $(next.children(0)[1]).clone().appendTo($(this));
+                    $(next.next().children(0)[1]).clone().appendTo($(this));
                 } else {
                     $($(this).siblings(':first').children(0)[1]).clone().appendTo($(this));
                 }
