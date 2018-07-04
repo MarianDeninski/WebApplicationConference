@@ -26,10 +26,12 @@ public class Conference {
     private Venue venue;
     @ManyToOne
     private User owner;
+
     @Column(name = "start_date")
-    private Date startDate;
+    private String startDate;
+
     @Column(name = "end_date")
-    private Date endDate;
+    private String endDate;
     @OneToMany(mappedBy = "conference")
     private List<Session> sessions;
 
@@ -38,7 +40,7 @@ public class Conference {
     }
 
     //TODO REFACTOR VENue TO BE STRIng
-    public Conference(String name, String description, Venue venue, Date startDate, Date endDate, User owner, List<Session> sessions) {
+    public Conference(String name, String description, Venue venue, String startDate, String endDate, User owner, List<Session> sessions) {
         this.name = name;
         this.description = description;
         this.venue = venue;
@@ -81,19 +83,19 @@ public class Conference {
         this.description = description;
     }
 
-    public Date getStartDate() {
+    public String getStartDate() {
         return this.startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public String getEndDate() {
         return this.endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 
