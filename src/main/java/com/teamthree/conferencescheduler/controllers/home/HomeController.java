@@ -30,20 +30,12 @@ public class HomeController {
     public String index(Model model) {
 
         List<Conference> conferences = new ArrayList<>();
-        conferences.add(new Conference("Marketing", "Conf descript", "24-XI-2017", "28-XII-2017"));
-        conferences.add(new Conference("Dev hacks", "Conf descript", "24-XI-2017", "28-XII-2017"));
-        conferences.add(new Conference("QA", "Conf descript", "24-XI-2017", "28-XII-2017"));
-        conferences.add(new Conference("WORLD PRICE", "Conf descript", "24-XI-2017", "28-XII-2017"));
 
 
-        model.addAttribute("conferences",conferences);
-
-
+        model.addAttribute("conferences", conferences);
         model.addAttribute(VIEW, HOME_INDEX);
         return HOME_BASE_LAYOUT;
     }
-
-
 
 
 }

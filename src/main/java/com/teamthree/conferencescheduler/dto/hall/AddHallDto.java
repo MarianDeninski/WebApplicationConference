@@ -1,16 +1,14 @@
 package com.teamthree.conferencescheduler.dto.hall;
 
-import com.teamthree.conferencescheduler.entities.Venue;
-
 import javax.validation.constraints.NotNull;
 
 public class AddHallDto {
 
     @NotNull
-    private Venue venue;
+    private String venueName;
 
     @NotNull
-    private String name;
+    private String hallName;
 
     @NotNull
     private long seatCapacity;
@@ -19,34 +17,34 @@ public class AddHallDto {
 
     }
 
-    public AddHallDto(Venue venue, String name, long seatCapacity) {
-        this.venue = venue;
-        this.name = name;
+    public AddHallDto(String venueName, String hallName, long seatCapacity) {
+        this.venueName = venueName;
+        this.hallName = hallName;
         this.seatCapacity = seatCapacity;
     }
 
 
-    public String getName() {
-        return name;
+    public String getVenueName() {
+        return this.venueName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setVenueName(String venueName) {
+        this.venueName = venueName;
+    }
+
+    public String getHallName() {
+        return this.hallName;
+    }
+
+    public void setHallName(String hallName) {
+        this.hallName = hallName;
     }
 
     public long getSeatCapacity() {
-        return seatCapacity;
+        return this.seatCapacity;
     }
 
     public void setSeatCapacity(long seatCapacity) {
         this.seatCapacity = seatCapacity;
-    }
-
-    public Venue getVenue() {
-        return this.venue;
-    }
-
-    public void setVenue(Venue venue) {
-        this.venue = venue;
     }
 }

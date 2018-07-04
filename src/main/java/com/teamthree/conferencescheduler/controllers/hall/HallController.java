@@ -44,10 +44,13 @@ public class HallController {
         return BASE_LAYOUT;
     }
 
+
     @PostMapping("/add")
     public String addHall(Model model, AddHallDto dto) {
-        Venue venue = this.venueService.getVenueByName(dto.getName());
-        
+        Venue venue = this.venueService.getVenueByName(dto.getVenueName());
+
+
+
         return null;
     }
 }

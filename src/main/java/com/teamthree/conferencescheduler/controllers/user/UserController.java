@@ -150,16 +150,7 @@ public class UserController {
 
         User user = this.userService.findByUsername(principal.getUsername());
 
-        // TODO: FOR TESTING PURPOSES ONLY REMOVE WHEN THE LOGIC IS IMPLEMENTED FOR CONFERENCES
-
-
         List<Conference> conferences = new ArrayList<>();
-        conferences.add(new Conference("Conf name", "Conf descript", "24-XI-2017", "28-XII-2017"));
-        conferences.add(new Conference("Conf name", "Conf descript", "24-XI-2017", "28-XII-2017"));
-        conferences.add(new Conference("Conf name", "Conf descript", "24-XI-2017", "28-XII-2017"));
-        conferences.add(new Conference("Conf name", "Conf descript", "24-XI-2017", "28-XII-2017"));
-        user.setConferencesList(conferences);
-        // TODO: FOR TESTING PURPOSES ONLY REMOVE WHEN THE LOGIC IS IMPLEMENTED FOR CONFERENCES
 
         model.addAttribute("conferences", conferences);
         model.addAttribute("venues", user.getVenues());
