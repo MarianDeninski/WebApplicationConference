@@ -22,9 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import static com.teamthree.conferencescheduler.constants.errors.ErrorHandlingConstants.*;
-import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.USER_HOP;
-import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.USER_LOGIN;
-import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.USER_REGISTER;
+import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.*;
 import static com.teamthree.conferencescheduler.constants.user_roles.UserRoles.ROLE_USER;
 import static com.teamthree.conferencescheduler.constants.views.ViewConstants.BASE_LAYOUT;
 import static com.teamthree.conferencescheduler.constants.views.ViewConstants.VIEW;
@@ -49,10 +47,10 @@ public class UserController {
         return BASE_LAYOUT;
     }
 
-    @GetMapping("/addspeaker")
-    public String hop(Model model) {
+    @GetMapping("/add_speaker")
+    public String addSpeaker(Model model) {
 
-        model.addAttribute(VIEW, USER_HOP);
+        model.addAttribute(VIEW, USER_ADD_SPEAKER);
         return BASE_LAYOUT;
     }
 
@@ -140,4 +138,6 @@ public class UserController {
         model.addAttribute("view", "user/profile");
         return BASE_LAYOUT;
     }
+
+
 }
