@@ -30,28 +30,25 @@
                             <input type="password" class="form-control" id="user_password_first" placeholder="Password" name="password" required="required"/>
                         </div>
                     </div>
+
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="user_password_first">Conference</label>
                         <div class="col-sm-4 ">
-                            <div class="dropdown">
-                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Choose Conference
-                                    <span class="caret"></span></button>
 
-                                <div class="form-group blu-margin">
-                                   <!-- <select class="form-control" th:field="${conference.opId}"  id="opId">
-                                        <th:block th:each="conference : ${conferences}">
-                                            <option th:text="${conference.name}">
-                                            </option>
-                                        </th:block>
-                                    </select> -->
-                                </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label text-center" ></label>
+                                <select class="col-sm-6"  name="conference">
+                                    <option th:each="conf : ${conferences}"  th:text="${cong}"></option>
+                                </select>
                             </div>
+
                         </div>
                     </div>
+
                     <div class="form-group">
                         <div class="col-sm-4 col-sm-offset-4">
                             <a class="btn btn-default" th:href="@{/}"
-                            >Cancel</a>w
+                            >Cancel</a>
                             <input value="Submit" type="submit" class="btn btn-primary"/>
                         </div>
                     </div>
