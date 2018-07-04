@@ -1,7 +1,16 @@
 <head th:fragment="head">
+
+
+
+
     <title th:if="${pageTitle}" th:text="${pageTitle}"></title>
+    <span th:include="fragments/scripts-bundle"></span>
+
+
     <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+
+
     <link rel="stylesheet" href = "style.css"/>
-    <span th:include="fragments/scripts-bundle"></span>
+
 </head>

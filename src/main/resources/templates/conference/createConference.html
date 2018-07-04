@@ -1,7 +1,7 @@
-<main>
+<main xmlns:th="http://www.w3.org/1999/xhtml">
     <div class="container body-content span=8 offset=2">
         <div class="well">
-            <form class="form-horizontal" th:action="@{/conference/create}" method="post">
+            <form class="form-horizontal" th:action="@{/conference/create}"  method="post">
                 <fieldset>
                     <legend class="text-center">Conference Creation</legend>
                     <div class="form-group">
@@ -22,17 +22,24 @@
                     </div>
                     <div class="form-group">
                         <label class="col-sm-4 control-label text-center" >Select Venue</label>
-                        <select class="col-sm-6">
-                            <option th:each="venue : ${venues}"  th:text="${venue.name}" name="venueName"></option>
+                        <select class="col-sm-6"  name="venue">
+                            <option th:each="venue : ${venues}"  th:text="${venue.name}"></option>
                         </select>
                     </div>
+
+
                     <div class="form-group">
                     <div class="col-sm-6">
-                        <label class="col-sm-4 control-label" for="conference_startDate">Start Date</label>
+
+
+
+                      <label class="col-sm-4 control-label" for="conference_startDate">Start Date</label>
                         <input class="form-control" type="text" id="conference_startDate" placeholder="dd/MM/yyyy"
                                name="startDate" required="required" autofocus="autofocus"/>
+
                     </div>
                     </div>
+
                     <div class="form-group">
                     <div class="col-sm-6">
                         <label class="col-sm-4 control-label">End Date</label>
@@ -40,6 +47,9 @@
                                name="endDate" required="required" autofocus="autofocus"/>
                     </div>
                     </div>
+
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
                     <div class="form-group">
                         <div class="col-sm-5 col-sm-offset-6">
                             <input value="Cancel" type="button" class="btn btn-primary btn-lg"
@@ -48,6 +58,7 @@
                                    style="border-style: none"/>
                         </div>
                     </div>
+
                 </fieldset>
             </form>
         </div>

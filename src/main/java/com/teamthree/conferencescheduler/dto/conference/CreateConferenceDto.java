@@ -1,5 +1,7 @@
 package com.teamthree.conferencescheduler.dto.conference;
 
+import com.teamthree.conferencescheduler.entities.Venue;
+
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
@@ -19,14 +21,20 @@ public class CreateConferenceDto implements Serializable {
     @NotNull
     private String endDate;
 
-    @NotNull
-    private String venueName;
-
     public CreateConferenceDto(){
 
     }
 
+    public CreateConferenceDto(String name, String description, String startDate, String endDate, Venue venue) {
+        this.name = name;
+        this.description = description;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.venue = venue;
+    }
+
     public String getName() {
+
         return name;
     }
 
@@ -58,20 +66,18 @@ public class CreateConferenceDto implements Serializable {
         this.endDate = endDate;
     }
 
-    public String getVenueName() {
-        return venueName;
+    public Venue getVenue() {
+        return venue;
     }
 
-    public void setVenueName(String venueName) {
-        this.venueName = venueName;
+    public void setVenue(Venue venue) {
+        this.venue = venue;
     }
 
-    public CreateConferenceDto(String name, String description, String startDate, String endDate, String venueName) {
+    @NotNull
+    private Venue venue;
 
-        this.name = name;
-        this.description = description;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.venueName = venueName;
-    }
+
+
+
 }
