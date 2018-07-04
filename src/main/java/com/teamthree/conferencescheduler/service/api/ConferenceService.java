@@ -2,7 +2,9 @@ package com.teamthree.conferencescheduler.service.api;
 
 import com.teamthree.conferencescheduler.dto.conference.CreateConferenceDto;
 import com.teamthree.conferencescheduler.entities.Conference;
+import com.teamthree.conferencescheduler.entities.Venue;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface ConferenceService {
@@ -17,4 +19,5 @@ public interface ConferenceService {
 
     void deleteConferenceById(long id);
 
+    List<Venue> getAllVenues();
 }

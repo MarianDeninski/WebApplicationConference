@@ -88,6 +88,8 @@ public class ConferenceController {
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String getCreateConference(Model model) {
+        ArrayList<Venue> venues = (ArrayList<Venue>) this.conferenceService.getAllVenues();
+        model.addAttribute("venues",venues);
         model.addAttribute("view", CREATE_CONFERENCE);
         return BASE_LAYOUT;
     }
