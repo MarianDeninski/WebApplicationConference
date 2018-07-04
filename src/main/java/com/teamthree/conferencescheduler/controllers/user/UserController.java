@@ -63,9 +63,16 @@ public class UserController {
     public String addSpeaker(Model model) {
 
         String[] conferences = new String[]{"conference_1", "conference_2", "conference_3",};
+        String[] halls = new String[]{"hall_1", "hall_2", "hall_3",};
+        String[] venues = new String[]{"venues 1", "venues 2", "venues 3",};
+        String[] sessions = new String[]{"sessions 1", "sessions 2", "sessions 3",};
+
 
         model.addAttribute(VIEW, USER_ADD_SPEAKER);
         model.addAttribute("conferences", conferences);
+        model.addAttribute("venues",venues);
+        model.addAttribute("halls",halls);
+        model.addAttribute("sessions",sessions);
         return BASE_LAYOUT;
     }
 
