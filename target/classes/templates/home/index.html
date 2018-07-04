@@ -5,31 +5,29 @@
             <div class="carousel slide multi-item-carousel" id="theCarousel">
                 <div class="carousel-inner" id="colums">
                     <div class="item active">
-                        <div class="col-xs-4"><a href="#1"><img class="img-responsive" th:src="@{/images/carousel/bg3.jpg}" alt="Conference"/></a></div>
+                        <a th:href="@{http://www.thymeleaf/documentation.html}">
+                            <div class="col-xs-4"><a href="#1"><img class="img-responsive" th:src="@{/images/carousel/bg3.jpg}" alt="Conference"/></a></div>
+                        </a>
                     </div>
                     <div class="item ">
-                        <div class="col-xs-4"><a href="#1"><img class="img-responsive" th:src="@{/images/carousel/bg3.jpg}" alt="Conference"/></a></div>
+                        <a th:href="@{http://www.thymeleaf/documentation.html}">
+                            <div class="col-xs-4"><a href="#1"><img class="img-responsive" th:src="@{/images/carousel/bg3.jpg}" alt="Conference"/></a></div>
+                        </a>
                     </div>
                     <div class="item ">
-                        <div class="col-xs-4"><a href="#1"><img class="img-responsive" th:src="@{/images/carousel/bg3.jpg}" alt="Conference"/></a></div>
-                    </div>
-                    <div class="item">
-
-                        <div class="col-xs-4"><a href="#1"><img class="img-responsive" th:src="@{/images/carousel/bg3.jpg}" alt="Conference"/></a></div>
-
-
+                        <a th:href="@{http://www.thymeleaf/documentation.html}">
+                            <div class="col-xs-4"><a href="#1"><img class="img-responsive" th:src="@{/images/carousel/bg3.jpg}" alt="Conference"/></a></div>
+                        </a>
                     </div>
                     <div class="item ">
-                        <div class="col-xs-4"><a href="#1"><img class="img-responsive" th:src="@{/images/carousel/bg3.jpg}" alt="Conference"/></a></div>
+                        <a th:href="@{http://www.thymeleaf/documentation.html}">
+                            <div class="col-xs-4"><a href="#1"><img class="img-responsive" th:src="@{/images/carousel/bg3.jpg}" alt="Conference"/></a></div>
+                        </a>
                     </div>
                     <div class="item ">
-                        <div class="col-xs-4"><a href="#1"><img class="img-responsive" th:src="@{/images/carousel/bg3.jpg}" alt="Conference"/></a></div>
-                    </div>
-                    <div class="item ">
-                        <div class="col-xs-4"><a href="#1"><img class="img-responsive" th:src="@{/images/carousel/bg3.jpg}" alt="Conference"/></a></div>
-                    </div>
-                    <div class="item">
-                        <div class="col-xs-4"><a href="#1"><img class="img-responsive" th:src="@{/images/carousel/bg3.jpg}" alt="Conference"/></a></div>
+                        <a th:href="@{http://www.thymeleaf/documentation.html}">
+                            <div class="col-xs-4"><a href="#1"><img class="img-responsive" th:src="@{/images/carousel/bg3.jpg}" alt="Conference"/></a></div>
+                        </a>
                     </div>
 
                     <!--  Example item end -->
@@ -49,16 +47,14 @@
                 if (!next.length) {
                     next = $(this).siblings(':first');
                 }
-                next.children(':first-child').clone().appendTo($(this));
+                $(next.children(0)[1]).clone().appendTo($(this));
 
                 if (next.next().length>0) {
-                    next.next().children(':first-child').clone().appendTo($(this));
+                    $(next.children(0)[1]).clone().appendTo($(this));
                 } else {
-                    $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
+                    $($(this).siblings(':first').children(0)[1]).clone().appendTo($(this));
                 }
             });
-
-
         </script>
 
 
