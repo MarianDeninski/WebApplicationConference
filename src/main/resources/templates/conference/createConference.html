@@ -21,51 +21,37 @@
                         </div>
                     </div>
                     <div class="form-group">
-<<<<<<< HEAD
                         <label class="col-sm-4 control-label text-center" >Select Venue</label>
                         <select class="col-sm-6"  name="venue">
                             <option th:each="venue : ${venues}"  th:text="${venue.name}"></option>
-=======
->>>>>>> 2c905590c2c873f06c780b700e143abcf07d43db
                         </select>
-                        </div>
                     </div>
 
 
                     <div class="form-group">
-<<<<<<< HEAD
                     <div class="col-sm-6">
-
-
 
                       <label class="col-sm-4 control-label" for="conference_startDate">Start Date</label>
                         <input class="form-control" type="text" id="conference_startDate" placeholder="dd/MM/yyyy"
                                name="startDate" required="required" autofocus="autofocus"/>
 
-                    </div>
-=======
-                            <label class="col-sm-4 control-label" for="conference_startDate">Start Date</label>
-                        <div class="col-sm-6">
-                            <input class="form-control" type="text" id="conference_startDate" placeholder="dd/MM/yyyy"
-                                   name="startDate" required="required"/>
-                        </div>
->>>>>>> 2c905590c2c873f06c780b700e143abcf07d43db
-                    </div>
-
                     <div class="form-group">
-<<<<<<< HEAD
                     <div class="col-sm-6">
                         <label class="col-sm-4 control-label">End Date</label>
-                        <input class="form-control" type="text" id="conference_endDate" placeholder="dd-MM-yyyy"
+                        <input class="form-control" type="text" placeholder="dd-MM-yyyy"
                                name="endDate" required="required" autofocus="autofocus"/>
                     </div>
-=======
->>>>>>> 2c905590c2c873f06c780b700e143abcf07d43db
+                            <label class="col-sm-4 control-label">End Date</label>
+                        <div class="col-sm-6">
+                            <input class="form-control" type="text" id="conference_endDate" placeholder="dd/MM/yyyy"
+                                   name="endDate" required="required"/>
+                        </div>
                     </div>
 
                     <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
 
                     <div class="form-group">
+                        <div class="col-sm-5 col-sm-offset-5">
                             <input value="Cancel" type="button" class="btn btn-primary btn-lg"
                                    style="border-style: none"/>
                             <input value="Submit" type="submit" class="btn btn-primary btn-lg"
