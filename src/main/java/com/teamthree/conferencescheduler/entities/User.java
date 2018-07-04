@@ -16,6 +16,9 @@ public class User {
     @Column(name = "name")
     private String username;
 
+    @OneToMany(mappedBy = "owner")
+    private List<Venue> venues;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles")
     private Set<Role> roles;
@@ -98,4 +101,15 @@ public class User {
         this.roles.add(role);
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<Venue> getVenues() {
+        return this.venues;
+    }
+
+    public void setVenues(List<Venue> venues) {
+        this.venues = venues;
+    }
 }

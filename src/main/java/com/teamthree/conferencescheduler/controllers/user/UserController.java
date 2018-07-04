@@ -1,10 +1,17 @@
 package com.teamthree.conferencescheduler.controllers.user;
 
+import com.teamthree.conferencescheduler.dto.conference.CreateConferenceDto;
 import com.teamthree.conferencescheduler.dto.user.UserRegisterDto;
+import com.teamthree.conferencescheduler.dto.venue.AddVenueDto;
+import com.teamthree.conferencescheduler.entities.Conference;
 import com.teamthree.conferencescheduler.entities.Role;
 import com.teamthree.conferencescheduler.entities.User;
+import com.teamthree.conferencescheduler.entities.Venue;
+import com.teamthree.conferencescheduler.exceptions.ApplicationRuntimeException;
+import com.teamthree.conferencescheduler.service.api.ConferenceService;
 import com.teamthree.conferencescheduler.service.api.RoleService;
 import com.teamthree.conferencescheduler.service.api.UserService;
+import com.teamthree.conferencescheduler.service.api.VenueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -13,20 +20,18 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.web.bind.annotation.*;
+import com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.teamthree.conferencescheduler.constants.errors.ErrorHandlingConstants.*;
 import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.*;
 import static com.teamthree.conferencescheduler.constants.user_roles.UserRoles.ROLE_USER;
-import static com.teamthree.conferencescheduler.constants.views.ViewConstants.BASE_LAYOUT;
-import static com.teamthree.conferencescheduler.constants.views.ViewConstants.VIEW;
-import static com.teamthree.conferencescheduler.constants.views.ViewConstants.VIEW_MESSAGE;
+import static com.teamthree.conferencescheduler.constants.views.ViewConstants.*;
 
 @Controller
 @RequestMapping("/user")
@@ -34,11 +39,17 @@ public class UserController {
 
     private UserService userService;
     private RoleService roleService;
+    private ConferenceService conferenceService;
+    private VenueService venueService;
 
     @Autowired
-    public UserController(UserService userService, RoleService roleService) {
+    public UserController(UserService userService, RoleService roleService,
+                          ConferenceService conferenceService, VenueService venueService) {
+
         this.userService = userService;
         this.roleService = roleService;
+        this.conferenceService = conferenceService;
+        this.venueService = venueService;
     }
 
     @GetMapping("/login")
@@ -134,10 +145,74 @@ public class UserController {
                 .getPrincipal();
 
         User user = this.userService.findByUsername(principal.getUsername());
-        model.addAttribute("user", user);
+
+        // TODO: FOR TESTING PURPOSES ONLY REMOVE WHEN THE LOGIC IS IMPLEMENTED FOR CONFERENCES
+
+
+        List<Conference> conferences = new ArrayList<>();
+        conferences.add(new Conference("Conf name", "Conf descript", "24-XI-2017", "28-XII-2017"));
+        conferences.add(new Conference("Conf name", "Conf descript", "24-XI-2017", "28-XII-2017"));
+        conferences.add(new Conference("Conf name", "Conf descript", "24-XI-2017", "28-XII-2017"));
+        conferences.add(new Conference("Conf name", "Conf descript", "24-XI-2017", "28-XII-2017"));
+        user.setConferencesList(conferences);
+        // TODO: FOR TESTING PURPOSES ONLY REMOVE WHEN THE LOGIC IS IMPLEMENTED FOR CONFERENCES
+
+        model.addAttribute("conferences", conferences);
+        model.addAttribute("venues", user.getVenues());
         model.addAttribute("view", "user/profile");
+        return "my-profile-base-layout";
+    }
+
+    @GetMapping("/conefrence/{id}")
+    public String userConference(Model model, @PathVariable long id) {
+        Conference conference = this.conferenceService.findConference(id);
+
+        model.addAttribute("conference", conference);
+        model.addAttribute(VIEW, USER_LOGIN);
         return BASE_LAYOUT;
     }
 
+    @PostMapping("/conefrence/{id}")
+    //TODO: MAKE VIEW FOR THIS METHOD AND ADD MORE ATTRIBUTES TO THE DTO
+    public String processUserEditConference(CreateConferenceDto dto, @PathVariable long id) {
+        Conference conference = this.conferenceService.findConference(id);
 
+        conference.setName(dto.getName());
+        conference.setDescription(dto.getDescription());
+//          TODO: CREATE METHOD TO SAVE TO THE DB NEW CONFEREENCE
+//        this.conferenceService
+
+        return REDIRECT_TO_MY_PROFILE;
+    }
+
+    @GetMapping("/venue/{id}")
+    public String userEditVenue(Model model, @PathVariable long id) {
+        Venue found = this.venueService.getVenueById(id);
+
+        model.addAttribute("venue", found);
+        model.addAttribute(VIEW, "venue/show_venue");
+        return BASE_LAYOUT;
+    }
+
+    @PostMapping("/venue/{id}")
+    public String processUserEditVenue(AddVenueDto dto, @PathVariable long id, Model model) {
+        Venue venue = this.venueService.getVenueById(id);
+
+        venue.setName(dto.getName());
+        venue.setAddress(dto.getAddress());
+        try {
+            this.venueService.addVenue(venue);
+        } catch (ApplicationRuntimeException are) {
+
+            //FIXME: REMOVE MAGICAL TEXT AND NUMBERS
+            // FIXME: THIS MIGHT NOT BE THE ONLY REASON THAT EXCEPTION OCCURRED! CHECK FOR MORE CASES
+            model.addAttribute(VIEW_MESSAGE, "Please make some changes, or click the cancel button.");
+            model.addAttribute("venue", venue);
+            model.addAttribute(VIEW, "venue/show_venue");
+
+            return BASE_LAYOUT;
+        }
+
+        return REDIRECT_TO_MY_PROFILE;
+    }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <link rel="stylesheet" href = "style.css"></link>
     <meta charset="UTF-8"></meta>
@@ -38,9 +38,9 @@
                                     <span class="caret"></span></button>
 
                                 <div class="form-group blu-margin">
-                                    <select class="form-control" th:field="${operator.opeId}"  id="dropOperator">
+                                    <select class="form-control" th:field="${conference.opId}"  id="opId">
                                         <th:block th:each="conference : ${conferences}">
-                                            <option th:text="${conference.Name}">
+                                            <option th:text="${conference.name}">
                                             </option>
                                         </th:block>
                                     </select>
