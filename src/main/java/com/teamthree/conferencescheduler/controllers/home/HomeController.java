@@ -34,18 +34,8 @@ public class HomeController {
     @GetMapping("/")
 //    @PreAuthorize("isAuthenticated()")
     public String index(Model model) {
-
-<<<<<<< HEAD
-        List<Conference> conferences = new ArrayList<>();
-
-        //conferences.add(new Conference("WORLD PRICE", "Conf descript", "24-XI-2017", "28-XII-2017"));
-       // conferences.add(new Conference("HELLO ASSHOLE", "Conf descript", "24-XI-2017", "28-XII-2017"));
-
-        
-
-=======
         List<Conference> conferences = this.homeService.getAllConference();
->>>>>>> bfa8f0c78dc02565b81dd2fa82d000d719251621
+
         model.addAttribute("conferences",conferences);
         model.addAttribute(VIEW, HOME_INDEX);
         return HOME_BASE_LAYOUT;
