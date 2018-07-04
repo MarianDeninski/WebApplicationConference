@@ -23,6 +23,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -46,7 +47,7 @@ public class UserController {
     @Autowired
     public UserController(UserService userService, RoleService roleService,
                           ConferenceService conferenceService, VenueService venueService) {
-        
+
         this.userService = userService;
         this.roleService = roleService;
         this.conferenceService = conferenceService;
@@ -70,9 +71,9 @@ public class UserController {
 
         model.addAttribute(VIEW, USER_ADD_SPEAKER);
         model.addAttribute("conferences", conferences);
-        model.addAttribute("venues",venues);
-        model.addAttribute("halls",halls);
-        model.addAttribute("sessions",sessions);
+        model.addAttribute("venues", venues);
+        model.addAttribute("halls", halls);
+        model.addAttribute("sessions", sessions);
         return BASE_LAYOUT;
     }
 
@@ -157,15 +158,12 @@ public class UserController {
 
         User user = this.userService.findByUsername(principal.getUsername());
 
-<<<<<<< HEAD
-        List<Conference> conferences = new ArrayList<>();
-=======
+
         ArrayList<Conference> conferences = userService.getUserConferences(user);
         List<Venue> venues = user.getVenues();
-        if(conferences.isEmpty()){
+        if (conferences.isEmpty()) {
 
         }
->>>>>>> 69c72f6246552232246eef48f28499e400f1ac78
 
         model.addAttribute("conferences", conferences);
         model.addAttribute("venues", venues);
@@ -176,7 +174,7 @@ public class UserController {
     @GetMapping("/conference/{id}")
     public String userConference(Model model, @PathVariable long id) {
         Conference conference = this.conferenceService.findConference(id);
-        return "redirect:/conference/details/"+id;
+        return "redirect:/conference/details/" + id;
     }
 
 //
