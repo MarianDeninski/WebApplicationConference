@@ -25,7 +25,7 @@ public class CreateConferenceDto implements Serializable {
 
     }
 
-    public CreateConferenceDto(String name, String description, String startDate, String endDate, Venue venue) {
+    public CreateConferenceDto(String name, String description, String startDate, String endDate, String venue) {
         this.name = name;
         this.description = description;
         this.startDate = startDate;
@@ -66,16 +66,16 @@ public class CreateConferenceDto implements Serializable {
         this.endDate = endDate;
     }
 
-    public Venue getVenue() {
+    public String getVenue() {
         return venue;
     }
 
-    public void setVenue(Venue venue) {
+    public void setVenue(String venue) {
         this.venue = venue;
     }
 
     @NotNull
-    private Venue venue;
+    private String venue;
 
 
 
