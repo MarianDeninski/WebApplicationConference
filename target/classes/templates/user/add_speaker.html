@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href = "style.css"></link>
+    <meta charset="UTF-8"></meta>
+    <title>Title</title>
+</head>
+<body>
+<main>
+    <div class="container body-content span=8 offset=2">
+        <div class="well">
+            <form class="form-horizontal" th:action="@{/addspeaker}" method="post">
+                <fieldset>
+                    <legend>Speaker</legend>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="user_name">Name</label>
+                        <div class="col-sm-4 ">
+                            <input class="form-control" type="name" id="user_name" placeholder="Name" name="user_name" required="required"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="user_description">Description</label>
+                        <div class="col-sm-4 ">
+                            <input class="form-control" type="text" id="user_description" placeholder="Description" name="description" required="required"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="user_password_first">Password</label>
+                        <div class="col-sm-4">
+                            <input type="password" class="form-control" id="user_password_first" placeholder="Password" name="password" required="required"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" for="user_password_first">Conference</label>
+                        <div class="col-sm-4 ">
+                            <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Choose Conference
+                                    <span class="caret"></span></button>
+
+                                <div class="form-group blu-margin">
+                                   <!-- <select class="form-control" th:field="${conference.opId}"  id="opId">
+                                        <th:block th:each="conference : ${conferences}">
+                                            <option th:text="${conference.name}">
+                                            </option>
+                                        </th:block>
+                                    </select> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-4">
+                            <a class="btn btn-default" th:href="@{/}"
+                            >Cancel</a>w
+                            <input value="Submit" type="submit" class="btn btn-primary"/>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</main>
+</body>
+</html>
