@@ -115,4 +115,5 @@ public class Conference {
     public long getId() {
         return this.id;
     }
+
 }

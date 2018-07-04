@@ -158,10 +158,6 @@ public class UserController {
 
         User user = this.userService.findByUsername(principal.getUsername());
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 543698cabc6093d516e586cff00ea82f0173a1c8
         ArrayList<Conference> conferences = userService.getUserConferences(user);
         List<Venue> venues = user.getVenues();
         if (conferences.isEmpty()) {
