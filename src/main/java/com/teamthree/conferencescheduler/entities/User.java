@@ -101,4 +101,15 @@ public class User {
         this.roles.add(role);
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<Venue> getVenues() {
+        return this.venues;
+    }
+
+    public void setVenues(List<Venue> venues) {
+        this.venues = venues;
+    }
 }

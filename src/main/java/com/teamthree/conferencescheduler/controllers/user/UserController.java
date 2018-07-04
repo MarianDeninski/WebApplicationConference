@@ -1,6 +1,7 @@
 package com.teamthree.conferencescheduler.controllers.user;
 
 import com.teamthree.conferencescheduler.dto.user.UserRegisterDto;
+import com.teamthree.conferencescheduler.entities.Conference;
 import com.teamthree.conferencescheduler.entities.Role;
 import com.teamthree.conferencescheduler.entities.User;
 import com.teamthree.conferencescheduler.service.api.RoleService;
@@ -20,6 +21,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import static com.teamthree.conferencescheduler.constants.errors.ErrorHandlingConstants.*;
 import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.USER_LOGIN;
@@ -129,8 +134,21 @@ public class UserController {
                 .getPrincipal();
 
         User user = this.userService.findByUsername(principal.getUsername());
-        model.addAttribute("user", user);
+
+        // TODO: FOR TESTING PURPOSES ONLY REMOVE WHEN THE LOGIC IS IMPLEMENTED FOR CONFERENCES
+
+
+        List<Conference> conferences = new ArrayList<>();
+        conferences.add(new Conference("Conf name", "Conf descript", "24-XI-2017", "28-XII-2017"));
+        conferences.add(new Conference("Conf name", "Conf descript", "24-XI-2017", "28-XII-2017"));
+        conferences.add(new Conference("Conf name", "Conf descript", "24-XI-2017", "28-XII-2017"));
+        conferences.add(new Conference("Conf name", "Conf descript", "24-XI-2017", "28-XII-2017"));
+        user.setConferencesList(conferences);
+        // TODO: FOR TESTING PURPOSES ONLY REMOVE WHEN THE LOGIC IS IMPLEMENTED FOR CONFERENCES
+
+        model.addAttribute("conferences", conferences);
+        model.addAttribute("venues", user.getVenues());
         model.addAttribute("view", "user/profile");
-        return BASE_LAYOUT;
+        return "my-profile-base-layout";
     }
 }

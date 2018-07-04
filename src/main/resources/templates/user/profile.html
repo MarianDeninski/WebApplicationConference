@@ -1,13 +1,48 @@
-<main>
-    <div class="container body-container">
+<div class="container body-container">
+    <section id="tasks">
         <div class="row">
-            <div id="main" class="col-sm-9">
-                <div>
-                    <span th:text="${user.username}"></span>
-                    <br/>
-                    <span th:text="${user.fullName}"></span>
+            <div class="col-md-6">
+                <div class="task-column">
+                    <div class="task-column-header">
+                        <h3>My Conferences</h3>
+                    </div>
+                    <div class="task-column-body">
+                        <th:block th:each="conference : ${conferences}">
+                            <div class="conference">
+                                <a class="btn btn-default btn-xs"
+                                   th:href="@{/user/conference/{id}(id=${conference.id})}">
+                                    <h3 th:text="${conference.name}"></h3>
+                                    <h4 th:text="${conference.description}"></h4>
+
+                                    <h5 class="dates">Start date: </h5>
+                                    <h5 class="datesStart" th:text="${conference.start}"></h5>
+
+                                    <h5 class="dates">End date: </h5>
+                                    <h5 class="datesEnd" th:text="${conference.end}"></h5>
+                                </a>
+                            </div>
+                        </th:block>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="task-column">
+                    <div class="task-column-header">
+                        <h3>My Venues</h3>
+                    </div>
+                    <div class="task-column-body">
+                        <th:block th:each="venue : ${venues}">
+                            <div class="venue">
+                                <a class="btn btn-default btn-xs"
+                                   th:href="@{/user/venue/{id}(id=${venue.id})}">
+                                    <h3 th:text="${venue.name}"></h3>
+                                    <h4 th:text="${venue.address}"></h4>
+                                </a>
+                            </div>
+                        </th:block>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</main>
+    </section>
+</div>
