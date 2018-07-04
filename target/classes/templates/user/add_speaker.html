@@ -25,20 +25,60 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" for="user_password_first">Password</label>
-                        <div class="col-sm-4">
-                            <input type="password" class="form-control" id="user_password_first" placeholder="Password" name="password" required="required"/>
+                        <label class="col-sm-4 control-label" for="user_description">Photo</label>
+                        <div class="col-sm-4 ">
+                            <input class="form-control" type="text" id="user_photo" placeholder="Photo_URL" name="description" required="required"/>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" for="user_password_first">Conference</label>
+                        <label class="col-sm-4 control-label">Venue</label>
+                        <div class="col-sm-4 ">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label text-center" ></label>
+                                <select class="col-sm-6"  name="venues">
+                                    <option class="text" th:each="venue : ${venues}"  th:text="${venue}"></option>
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Conference</label>
                         <div class="col-sm-4 ">
 
                             <div class="form-group">
                                 <label class="col-sm-4 control-label text-center" ></label>
-                                <select class="col-sm-6"  name="conference">
-                                    <option th:each="conf : ${conferences}"  th:text="${cong}"></option>
+                                <select class="col-sm-6"  name="conferences">
+                                    <option class="text" th:each="conf : ${conferences}"  th:text="${conf}"></option>
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Hall</label>
+                        <div class="col-sm-4 ">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label text-center" ></label>
+                                <select class="col-sm-6"  name="halls">
+                                    <option class="text" th:each="hall : ${halls}"  th:text="${hall}"></option>
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Session</label>
+                        <div class="col-sm-4 ">
+
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label text-center" ></label>
+                                <select class="col-sm-6"  name="sessions">
+                                    <option class="text" th:each="session : ${sessions}"  th:text="${session}"></option>
                                 </select>
                             </div>
 

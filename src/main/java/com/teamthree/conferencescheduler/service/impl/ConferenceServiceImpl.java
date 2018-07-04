@@ -53,7 +53,7 @@ public class ConferenceServiceImpl implements ConferenceService {
     }
 
     @Override
-    public void editConference(long id, CreateConferenceDto dto) {
+    public Conference editConference(long id, CreateConferenceDto dto) {
         Conference conference = this.findConference(id);
         conference.setName(dto.getName());
         conference.setDescription(dto.getDescription());
@@ -64,6 +64,7 @@ public class ConferenceServiceImpl implements ConferenceService {
         }
        // conference.setVenue(newVenue);
         //TODO add new session
+        return conference;
 
     }
 
