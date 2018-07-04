@@ -5,35 +5,46 @@ import javax.validation.constraints.NotNull;
 public class AddHallDto {
 
     @NotNull
-    private  String venueAddress;
+    private String venueName;
 
     @NotNull
-    private  String name;
+    private String hallName;
 
     @NotNull
     private long seatCapacity;
-
-    public AddHallDto(String venueAddress, String name, long seatCapacity) {
-        this.venueAddress = venueAddress;
-        this.name = name;
-        this.seatCapacity = seatCapacity;
-    }
 
     public AddHallDto() {
 
     }
 
-    public String getName() {
-        return name;
+    public AddHallDto(String venueName, String hallName, long seatCapacity) {
+        this.venueName = venueName;
+        this.hallName = hallName;
+        this.seatCapacity = seatCapacity;
+    }
+
+
+    public String getVenueName() {
+        return this.venueName;
+    }
+
+    public void setVenueName(String venueName) {
+        this.venueName = venueName;
+    }
+
+    public String getHallName() {
+        return this.hallName;
+    }
+
+    public void setHallName(String hallName) {
+        this.hallName = hallName;
     }
 
     public long getSeatCapacity() {
-        return seatCapacity;
+        return this.seatCapacity;
     }
 
-    public String getVenueAddress() {
-        return venueAddress;
+    public void setSeatCapacity(long seatCapacity) {
+        this.seatCapacity = seatCapacity;
     }
-
-
 }

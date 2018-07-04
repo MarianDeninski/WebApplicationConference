@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.jws.WebParam;
 import java.util.ArrayList;
 
 import static com.teamthree.conferencescheduler.constants.views.ViewConstants.*;
@@ -31,11 +32,20 @@ public class ConferenceController {
 
     }
 
+    //Get createConference view
+    @PreAuthorize("isAuthenticated()")
+    @RequestMapping(value = "/create", method = RequestMethod.GET)
+    public String getCreateConference(Model model) {
+        ArrayList<Venue> venues = (ArrayList<Venue>) this.conferenceService.getAllVenues();
+        model.addAttribute("venues", venues);
+        model.addAttribute("view", CREATE_CONFERENCE);
+        return BASE_LAYOUT;
+    }
 
     //Post data to db
-  //  @PostMapping(path = "/create")
+    @PostMapping(path = "/create")
     @PreAuthorize("isAuthenticated()")
-    @RequestMapping(path = "/create" ,method = RequestMethod.POST)
+    //@RequestMapping(path = "/create" ,method = RequestMethod.POST)
     public String createConference(CreateConferenceDto dto,Model model) {
 
         String owner = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -45,7 +55,7 @@ public class ConferenceController {
         model.addAttribute("conference", conference);
         model.addAttribute(VIEW, CONFERENCE_DETAILS);
 
-        return REDIRECT_TO_MY_PROFILE;
+        return BASE_LAYOUT;
     }
 
     //Get all conferences
@@ -62,40 +72,26 @@ public class ConferenceController {
 
     }
 
-    @PreAuthorize("isAuthenticated()")
-    @RequestMapping(value = " /remove/{id}", method = RequestMethod.POST)
-    public String removeConference(@PathVariable long id) {
-        //TODO Implement method
-        return null;
-    }
 
     //GET edit view html
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public String getEditConference(@PathVariable long id, Model model) {
-        model.addAttribute(VIEW, CONFERENCE_EDIT);
+            model.addAttribute(VIEW, CONFERENCE_EDIT);
         return BASE_LAYOUT;
     }
 
     //POST edit conference
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-    public String editConference(@PathVariable long id, CreateConferenceDto dto) {
-        Conference conference = conferenceService.findConference(id);
-        //model.addAttribute(VIEW, CONFERENCE_DETAILS);
-        //model.addAttribute("conference", conference);
+    public String editConference(@PathVariable long id, CreateConferenceDto dto,Model model) {
+        Conference conference = conferenceService.editConference(id, dto);
+        model.addAttribute(VIEW, CONFERENCE_DETAILS);
+        model.addAttribute("conference", conference);
         return BASE_LAYOUT;
     }
 
-    //Get createConference view
-    @PreAuthorize("isAuthenticated()")
-    @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public String getCreateConference(Model model) {
-        ArrayList<Venue> venues = (ArrayList<Venue>) this.conferenceService.getAllVenues();
-        model.addAttribute("venues", venues);
-        model.addAttribute("view", CREATE_CONFERENCE);
-        return BASE_LAYOUT;
-    }
+
 
 
     @RequestMapping(value = "/details/{id}", method = RequestMethod.GET)

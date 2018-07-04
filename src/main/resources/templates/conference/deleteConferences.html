@@ -1,10 +1,9 @@
-<main xmlns:th="http://www.w3.org/1999/xhtml">
-
+<main>
     <div class="container body-content span=8 offset=2">
         <div class="well">
-            <form class="form-horizontal" th:action="@{/conference/create}" method="post">
+            <form class="form-horizontal" th:action="@{/conference/delete/{id}(id=${conference.id})}" method="POST">
                 <fieldset>
-                    <legend class="text-center">Conference Creation</legend>
+                    <legend class="text-center">Delete Conference</legend>
 
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="conference_name">Name</label>
@@ -55,7 +54,9 @@
                         <div class="col-sm-5 col-sm-offset-5">
                             <input value="Cancel" type="button" class="btn btn-primary btn-lg"
                                    style="border-style: none"/>
-                            <input value="Submit" type="submit" class="btn btn-primary btn-lg"
+                            <input value="Delete" type="button" class="btn btn-primary btn-lg"
+                                   style="border-style: none"/>
+                            <input value="Confirm to delete" type="submit" class="btn btn-primary btn-lg"
                                    style="border-style: none"/>
                         </div>
                     </div>
