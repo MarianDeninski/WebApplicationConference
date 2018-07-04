@@ -10,4 +10,6 @@ public interface VenueService {
     Venue getVenueById(long id);
 
     List<Venue> getAllVenues();
+
+    Venue getVenueByName(String name);
 }

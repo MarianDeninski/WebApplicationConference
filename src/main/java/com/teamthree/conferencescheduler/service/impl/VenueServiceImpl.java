@@ -46,6 +46,11 @@ public class VenueServiceImpl implements VenueService {
         return this.venueRepository.findAll();
     }
 
+    @Override
+    public Venue getVenueByName(String name) {
+        return this.venueRepository.findByName(name);
+    }
+
     private boolean checkIfExists(String venueName) {
         return this.venueRepository.findByName(venueName) != null;
     }

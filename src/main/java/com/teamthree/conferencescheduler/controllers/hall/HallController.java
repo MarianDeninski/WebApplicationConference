@@ -44,19 +44,10 @@ public class HallController {
         return BASE_LAYOUT;
     }
 
-//    @PostMapping("/add")
-//    public String addHall(Model model, AddHallDto dto) {
-//
-//        Venue venue = venueRepository.findByAddress(dto.getVenueAddress());
-//        if (venue == null) {
-//            venue = new Venue(dto.getVenueAddress(), new ArrayList<Hall>());
-//            venueRepository.saveAndFlush(venue);
-//        }
-//        Hall hall = new Hall(dto.getName(), dto.getSeatCapacity(), venue, new ArrayList<Session>());
-//        venue.getHalls().add(hall);
-//        //TODO za mirkata
-//        //TODO -> NEXT -> add session to hall
-//        return null;
-//
-//    }
+    @PostMapping("/add")
+    public String addHall(Model model, AddHallDto dto) {
+        Venue venue = this.venueService.getVenueByName(dto.getName());
+        
+        return null;
+    }
 }
