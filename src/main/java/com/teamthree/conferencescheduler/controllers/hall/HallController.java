@@ -1,11 +1,8 @@
 package com.teamthree.conferencescheduler.controllers.hall;
 
 import com.teamthree.conferencescheduler.dto.hall.AddHallDto;
-import com.teamthree.conferencescheduler.entities.Hall;
-import com.teamthree.conferencescheduler.entities.Session;
 import com.teamthree.conferencescheduler.entities.Venue;
 import com.teamthree.conferencescheduler.repositories.HallRepository;
-import com.teamthree.conferencescheduler.repositories.VenueRepository;
 import com.teamthree.conferencescheduler.service.api.VenueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -33,21 +30,22 @@ public class HallController {
         this.hallRepository = hallRepository;
     }
 
-
     @GetMapping("/add")
-//    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("isAuthenticated()")
     public String getAddHall(Model model) {
-
         List<Venue> venues = this.venueService.getAllVenues();
         model.addAttribute("venues", venues);
         model.addAttribute(VIEW, ADD_HALL);
         return BASE_LAYOUT;
     }
 
+
     @PostMapping("/add")
     public String addHall(Model model, AddHallDto dto) {
-        Venue venue = this.venueService.getVenueByName(dto.getName());
-        
+        Venue venue = this.venueService.getVenueByName(dto.getVenueName());
+
+
+
         return null;
     }
 }

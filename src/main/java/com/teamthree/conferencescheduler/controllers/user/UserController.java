@@ -23,6 +23,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -46,7 +47,7 @@ public class UserController {
     @Autowired
     public UserController(UserService userService, RoleService roleService,
                           ConferenceService conferenceService, VenueService venueService) {
-        
+
         this.userService = userService;
         this.roleService = roleService;
         this.conferenceService = conferenceService;
@@ -70,9 +71,9 @@ public class UserController {
 
         model.addAttribute(VIEW, USER_ADD_SPEAKER);
         model.addAttribute("conferences", conferences);
-        model.addAttribute("venues",venues);
-        model.addAttribute("halls",halls);
-        model.addAttribute("sessions",sessions);
+        model.addAttribute("venues", venues);
+        model.addAttribute("halls", halls);
+        model.addAttribute("sessions", sessions);
         return BASE_LAYOUT;
     }
 
@@ -157,44 +158,37 @@ public class UserController {
 
         User user = this.userService.findByUsername(principal.getUsername());
 
-        // TODO: FOR TESTING PURPOSES ONLY REMOVE WHEN THE LOGIC IS IMPLEMENTED FOR CONFERENCES
+        ArrayList<Conference> conferences = userService.getUserConferences(user);
+        List<Venue> venues = user.getVenues();
+        if (conferences.isEmpty()) {
 
-
-        List<Conference> conferences = new ArrayList<>();
-        conferences.add(new Conference("Conf name", "Conf descript", "24-XI-2017", "28-XII-2017"));
-        conferences.add(new Conference("Conf name", "Conf descript", "24-XI-2017", "28-XII-2017"));
-        conferences.add(new Conference("Conf name", "Conf descript", "24-XI-2017", "28-XII-2017"));
-        conferences.add(new Conference("Conf name", "Conf descript", "24-XI-2017", "28-XII-2017"));
-        user.setConferencesList(conferences);
-        // TODO: FOR TESTING PURPOSES ONLY REMOVE WHEN THE LOGIC IS IMPLEMENTED FOR CONFERENCES
+        }
 
         model.addAttribute("conferences", conferences);
-        model.addAttribute("venues", user.getVenues());
+        model.addAttribute("venues", venues);
         model.addAttribute("view", "user/profile");
         return "my-profile-base-layout";
     }
 
-    @GetMapping("/conefrence/{id}")
+    @GetMapping("/conference/{id}")
     public String userConference(Model model, @PathVariable long id) {
         Conference conference = this.conferenceService.findConference(id);
-
-        model.addAttribute("conference", conference);
-        model.addAttribute(VIEW, USER_LOGIN);
-        return BASE_LAYOUT;
+        return "redirect:/conference/details/" + id;
     }
 
-    @PostMapping("/conefrence/{id}")
-    //TODO: MAKE VIEW FOR THIS METHOD AND ADD MORE ATTRIBUTES TO THE DTO
-    public String processUserEditConference(CreateConferenceDto dto, @PathVariable long id) {
-        Conference conference = this.conferenceService.findConference(id);
-
-        conference.setName(dto.getName());
-        conference.setDescription(dto.getDescription());
-//          TODO: CREATE METHOD TO SAVE TO THE DB NEW CONFEREENCE
-//        this.conferenceService
-
-        return REDIRECT_TO_MY_PROFILE;
-    }
+//
+//    @PostMapping("/conference/{id}")
+//    //TODO: MAKE VIEW FOR THIS METHOD AND ADD MORE ATTRIBUTES TO THE DTO
+//    public String processUserEditConference(CreateConferenceDto dto, @PathVariable long id) {
+//        Conference conference = this.conferenceService.findConference(id);
+//
+//        conference.setName(dto.getName());
+//        conference.setDescription(dto.getDescription());
+////          TODO: CREATE METHOD TO SAVE TO THE DB NEW CONFEREENCE
+////        this.conferenceService
+//
+//        return REDIRECT_TO_MY_PROFILE;
+//    }
 
     @GetMapping("/venue/{id}")
     public String userEditVenue(Model model, @PathVariable long id) {

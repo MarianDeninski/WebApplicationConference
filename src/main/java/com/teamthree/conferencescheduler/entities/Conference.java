@@ -9,22 +9,21 @@ import java.util.List;
 @Entity
 @Table(name = "conferences")
 public class Conference {
-    @Transient
-    private String start;
-
-    @Transient
-    private String end;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     @Column(name = "name")
     private String name;
+
     @Column(name = "description")
     private String description;
+
     @ManyToOne()
     private Venue venue;
-    @ManyToOne
+
+    @ManyToOne()
     private User owner;
 
     @Column(name = "start_date")
@@ -32,6 +31,7 @@ public class Conference {
 
     @Column(name = "end_date")
     private String endDate;
+
     @OneToMany(mappedBy = "conference")
     private List<Session> sessions;
 
@@ -51,21 +51,10 @@ public class Conference {
     }
 
     // FOR TESTING ONLY REMOVE LATER
-    public Conference(String name, String description, String start, String end) {
+    public Conference(String name, String description) {
         this.name = name;
         this.description = description;
-        this.start = start;
-        this.end = end;
     }
-
-    public List<Session> getSessions() {
-        return sessions;
-    }
-
-    public long getId() {
-        return this.id;
-    }
-
 
     public String getName() {
         return this.name;
@@ -81,22 +70,6 @@ public class Conference {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getStartDate() {
-        return this.startDate;
-    }
-
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
-    }
-
-    public String getEndDate() {
-        return this.endDate;
-    }
-
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
     }
 
     public Venue getVenue() {
@@ -115,27 +88,32 @@ public class Conference {
         this.owner = owner;
     }
 
-    public String getStart() {
-        return this.start;
+    public String getStartDate() {
+        return this.startDate;
     }
 
-    public void setStart(String start) {
-        this.start = start;
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
     }
 
-    public String getEnd() {
-        return this.end;
+    public String getEndDate() {
+        return this.endDate;
     }
 
-    public void setEnd(String end) {
-        this.end = end;
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public List<Session> getSessions() {
+        return this.sessions;
     }
 
     public void setSessions(List<Session> sessions) {
         this.sessions = sessions;
     }
+
+    public long getId() {
+        return this.id;
+    }
+
 }
