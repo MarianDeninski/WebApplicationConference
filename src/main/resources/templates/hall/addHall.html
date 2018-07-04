@@ -14,7 +14,7 @@
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="hall_seats_capacity">Choose seats capacity</label>
                         <div class="col-sm-4">
-                            <select id="hall_seats_capacity">
+                            <select class ="dropdown-menu-custom-left" id="hall_seats_capacity">
                                 <option value="10">10</option>
                                 <option value="20">20</option>
                                 <option value="30">30</option>
@@ -27,7 +27,7 @@
 
                     <div class="form-group">
                         <label class="col-sm-4 control-label text-center" >Select Venue</label>
-                        <select class="drop-menu-custom"  name="venues">
+                        <select class="dropdown-menu-custom-middle"  name="venues">
                             <option class="drop-menu-option-custom" th:each="venue : ${venues}"  th:text="${venue.name}"></option>
                         </select>
                     </div>

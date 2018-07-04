@@ -27,7 +27,7 @@
                     <div class="form-group">
                         <label class="col-sm-4 control-label">Select Venue</label>
                         <div class="col-sm-6">
-                            <select class="form-control" name="venue">
+                            <select class="dropdown-menu-custom-left" name="venue">
                                 <option class="col-sm-6" th:each="venue : ${venues}"
                                         th:text="${venue.name}"></option>
                             </select>
