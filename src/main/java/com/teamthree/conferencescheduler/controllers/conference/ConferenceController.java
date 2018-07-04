@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.jws.WebParam;
 import java.util.ArrayList;
 
 import static com.teamthree.conferencescheduler.constants.views.ViewConstants.*;
@@ -76,17 +77,17 @@ public class ConferenceController {
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public String getEditConference(@PathVariable long id, Model model) {
-        model.addAttribute(VIEW, CONFERENCE_EDIT);
+            model.addAttribute(VIEW, CONFERENCE_EDIT);
         return BASE_LAYOUT;
     }
 
     //POST edit conference
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-    public String editConference(@PathVariable long id, CreateConferenceDto dto) {
-        Conference conference = conferenceService.findConference(id);
-        //model.addAttribute(VIEW, CONFERENCE_DETAILS);
-        //model.addAttribute("conference", conference);
+    public String editConference(@PathVariable long id, CreateConferenceDto dto,Model model) {
+        Conference conference = conferenceService.editConference(id, dto);
+        model.addAttribute(VIEW, CONFERENCE_DETAILS);
+        model.addAttribute("conference", conference);
         return BASE_LAYOUT;
     }
 

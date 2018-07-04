@@ -63,9 +63,16 @@ public class UserController {
     public String addSpeaker(Model model) {
 
         String[] conferences = new String[]{"conference_1", "conference_2", "conference_3",};
+        String[] halls = new String[]{"hall_1", "hall_2", "hall_3",};
+        String[] venues = new String[]{"venues 1", "venues 2", "venues 3",};
+        String[] sessions = new String[]{"sessions 1", "sessions 2", "sessions 3",};
+
 
         model.addAttribute(VIEW, USER_ADD_SPEAKER);
         model.addAttribute("conferences", conferences);
+        model.addAttribute("venues",venues);
+        model.addAttribute("halls",halls);
+        model.addAttribute("sessions",sessions);
         return BASE_LAYOUT;
     }
 
@@ -150,35 +157,41 @@ public class UserController {
 
         User user = this.userService.findByUsername(principal.getUsername());
 
+<<<<<<< HEAD
         List<Conference> conferences = new ArrayList<>();
+=======
+        ArrayList<Conference> conferences = userService.getUserConferences(user);
+        List<Venue> venues = user.getVenues();
+        if(conferences.isEmpty()){
+
+        }
+>>>>>>> 69c72f6246552232246eef48f28499e400f1ac78
 
         model.addAttribute("conferences", conferences);
-        model.addAttribute("venues", user.getVenues());
+        model.addAttribute("venues", venues);
         model.addAttribute("view", "user/profile");
         return "my-profile-base-layout";
     }
 
-    @GetMapping("/conefrence/{id}")
+    @GetMapping("/conference/{id}")
     public String userConference(Model model, @PathVariable long id) {
         Conference conference = this.conferenceService.findConference(id);
-
-        model.addAttribute("conference", conference);
-        model.addAttribute(VIEW, USER_LOGIN);
-        return BASE_LAYOUT;
+        return "redirect:/conference/details/"+id;
     }
 
-    @PostMapping("/conefrence/{id}")
-    //TODO: MAKE VIEW FOR THIS METHOD AND ADD MORE ATTRIBUTES TO THE DTO
-    public String processUserEditConference(CreateConferenceDto dto, @PathVariable long id) {
-        Conference conference = this.conferenceService.findConference(id);
-
-        conference.setName(dto.getName());
-        conference.setDescription(dto.getDescription());
-//          TODO: CREATE METHOD TO SAVE TO THE DB NEW CONFEREENCE
-//        this.conferenceService
-
-        return REDIRECT_TO_MY_PROFILE;
-    }
+//
+//    @PostMapping("/conference/{id}")
+//    //TODO: MAKE VIEW FOR THIS METHOD AND ADD MORE ATTRIBUTES TO THE DTO
+//    public String processUserEditConference(CreateConferenceDto dto, @PathVariable long id) {
+//        Conference conference = this.conferenceService.findConference(id);
+//
+//        conference.setName(dto.getName());
+//        conference.setDescription(dto.getDescription());
+////          TODO: CREATE METHOD TO SAVE TO THE DB NEW CONFEREENCE
+////        this.conferenceService
+//
+//        return REDIRECT_TO_MY_PROFILE;
+//    }
 
     @GetMapping("/venue/{id}")
     public String userEditVenue(Model model, @PathVariable long id) {
