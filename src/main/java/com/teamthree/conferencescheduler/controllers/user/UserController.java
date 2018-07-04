@@ -152,5 +152,9 @@ public class UserController {
         return "my-profile-base-layout";
     }
 
-
+    @GetMapping("/conefrence/{id}")
+    public String userConference(Model model) {
+        model.addAttribute(VIEW, USER_LOGIN);
+        return BASE_LAYOUT;
+    }
 }
