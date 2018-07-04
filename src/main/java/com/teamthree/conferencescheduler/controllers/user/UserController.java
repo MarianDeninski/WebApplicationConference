@@ -46,7 +46,7 @@ public class UserController {
     @Autowired
     public UserController(UserService userService, RoleService roleService,
                           ConferenceService conferenceService, VenueService venueService) {
-
+        
         this.userService = userService;
         this.roleService = roleService;
         this.conferenceService = conferenceService;

@@ -1,39 +1,34 @@
 <div class="container">
-    <h1>Conferences</h1>
+    <h1 class="text-center text-white-color">Conferences</h1>
     <div class="row">
         <div class="col-md-12">
             <div class="carousel slide multi-item-carousel" id="theCarousel">
                 <div class="carousel-inner" id="colums">
-                    <div class="item active">
-                        <a th:href="@{http://www.thymeleaf/documentation.html}">
-                            <div class="col-xs-4"><a href="#1"><img class="img-responsive" th:src="@{/images/carousel/bg3.jpg}" alt="Conference"/></a></div>
-                        </a>
-                    </div>
-                    <div class="item ">
-                        <a th:href="@{http://www.thymeleaf/documentation.html}">
-                            <div class="col-xs-4"><a href="#1"><img class="img-responsive" th:src="@{/images/carousel/bg3.jpg}" alt="Conference"/></a></div>
-                        </a>
-                    </div>
-                    <div class="item ">
-                        <a th:href="@{http://www.thymeleaf/documentation.html}">
-                            <div class="col-xs-4"><a href="#1"><img class="img-responsive" th:src="@{/images/carousel/bg3.jpg}" alt="Conference"/></a></div>
-                        </a>
-                    </div>
-                    <div class="item ">
-                        <a th:href="@{http://www.thymeleaf/documentation.html}">
-                            <div class="col-xs-4"><a href="#1"><img class="img-responsive" th:src="@{/images/carousel/bg3.jpg}" alt="Conference"/></a></div>
-                        </a>
-                    </div>
-                    <div class="item ">
-                        <a th:href="@{http://www.thymeleaf/documentation.html}">
-                            <div class="col-xs-4"><a href="#1"><img class="img-responsive" th:src="@{/images/carousel/bg3.jpg}" alt="Conference"/></a></div>
-                        </a>
-                    </div>
+                    <!--<th:block th:each="project : ${project}">-->
+                    <th:block th:each="conference: ${conferences}">
+                        <div class="item active">
+                            <a th:href="@{http://www.thymeleaf/documentation.html}">
+                                <div class="col-xs-4">
+                                    <a href="https://softuni.bg/">
+                                        <img class="img-responsive" th:src="@{images/carousel/picHome.jpg}"
+                                             alt="Conference"/>
+                                        Conference Name
+                                        <div th:text="${conference.name}" class="centered col-xs-4"></div>
+                                        Start Dates
+                                        <div th:text="${conference.startDate}" class="bottom-left col-xs-4">
+                                        </div>
+                                    </a>
+                                </div>
+                            </a>
+                        </div>
+                    </th:block>
 
-                    <!--  Example item end -->
+
                 </div>
-                <a class="left carousel-control" href="#theCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
-                <a class="right carousel-control" href="#theCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+                <a class="left carousel-control" href="#theCarousel" data-slide="prev"><i
+                        class="glyphicon glyphicon-chevron-left"></i></a>
+                <a class="right carousel-control" href="#theCarousel" data-slide="next"><i
+                        class="glyphicon glyphicon-chevron-right"></i></a>
             </div>
         </div>
 
@@ -42,14 +37,14 @@
             $('.multi-item-carousel').carousel({
                 interval: false
             });
-            $('.multi-item-carousel .item').each(function(){
+            $('.multi-item-carousel .item').each(function () {
                 var next = $(this).next();
                 if (!next.length) {
                     next = $(this).siblings(':first');
                 }
                 $(next.children(0)[1]).clone().appendTo($(this));
 
-                if (next.next().length>0) {
+                if (next.next().length > 0) {
                     $(next.children(0)[1]).clone().appendTo($(this));
                 } else {
                     $($(this).siblings(':first').children(0)[1]).clone().appendTo($(this));

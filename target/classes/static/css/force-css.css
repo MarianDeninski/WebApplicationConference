@@ -1,0 +1,54 @@
+.centered {
+
+    color: white !important;
+    font-size: 220% !important;
+    font-weight: bold !important;
+    font-family: Arial Black !important;
+    position: absolute !important;
+    top: 30%!important;
+    left: 34% !important;
+    transform: translate(-50%, -50%) !important;
+
+
+    border: #217dbb;
+
+}
+
+.bottom-left {
+    position: absolute !important;
+    color: white !important;
+    font-family: Apple Chancery!important;
+    bottom: 40px !important;
+    left: 70px !important;
+}
+
+body{
+    background: URL("/images/carousel/home-color.jpg");
+
+}
+
+.text-white-color{
+    color: white;
+}
+
+
+
+.top-left {
+    position: absolute !important;
+    top: 8px !important;
+    left: 16px !important;
+}
+
+.top-right {
+    position: absolute !important;
+    top: 8px !important;
+    right: 16px !important;
+}
+
+.bottom-right {
+    position: absolute !important;
+    bottom: 8px !important;
+    right: 16px !important;
+}
+
+
