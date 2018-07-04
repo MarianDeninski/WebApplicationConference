@@ -8,6 +8,7 @@ import com.teamthree.conferencescheduler.entities.Role;
 import com.teamthree.conferencescheduler.entities.User;
 import com.teamthree.conferencescheduler.entities.Venue;
 import com.teamthree.conferencescheduler.exceptions.ApplicationRuntimeException;
+import com.teamthree.conferencescheduler.repositories.ConferenceRepository;
 import com.teamthree.conferencescheduler.service.api.ConferenceService;
 import com.teamthree.conferencescheduler.service.api.RoleService;
 import com.teamthree.conferencescheduler.service.api.UserService;
@@ -21,7 +22,7 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
+import com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -29,8 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.teamthree.conferencescheduler.constants.errors.ErrorHandlingConstants.*;
-import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.USER_LOGIN;
-import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.USER_REGISTER;
+import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.*;
 import static com.teamthree.conferencescheduler.constants.user_roles.UserRoles.ROLE_USER;
 import static com.teamthree.conferencescheduler.constants.views.ViewConstants.*;
 
@@ -46,7 +46,7 @@ public class UserController {
     @Autowired
     public UserController(UserService userService, RoleService roleService,
                           ConferenceService conferenceService, VenueService venueService) {
-
+        
         this.userService = userService;
         this.roleService = roleService;
         this.conferenceService = conferenceService;
@@ -59,6 +59,15 @@ public class UserController {
         return BASE_LAYOUT;
     }
 
+    @GetMapping("/add_speaker")
+    public String addSpeaker(Model model) {
+
+        String[] conferences = new String[]{"conference_1", "conference_2", "conference_3",};
+
+        model.addAttribute(VIEW, USER_ADD_SPEAKER);
+        model.addAttribute("conferences", conferences);
+        return BASE_LAYOUT;
+    }
 
     @GetMapping("/register")
     public String register(Model model) {

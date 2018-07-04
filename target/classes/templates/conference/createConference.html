@@ -3,25 +3,75 @@
         <div class="well">
             <form class="form-horizontal" th:action="@{/conference/create}" method="post">
                 <fieldset>
-                    <legend>Conference Creation</legend>
-                    <h1 class="form-group">
-                        <label class="col-sm-offset-5 center-fit" for="conference_name" >Name</label>
-                        <h2 class="col-sm-offset-4 ">
-                            <input class="form-control" type="text" id="conference_name" placeholder="Name"
-                                   name="name" required="required" autofocus="autofocus"/>
-                        </h2>
-                    </h1>
+                    <legend>Register</legend>
                     <div class="form-group">
-                        <h1 class="col-sm-3 control-label">Description</h1>
-                        <div class="col-sm - 4">
-                            <textarea rows="15" cols="100"  name="conferenceDescription" placeholder="    Enter text here...    "
-                                      form=""></textarea>
+                        <label class="col-sm-4 control-label" for="name">Name</label>
+                        <div class="col-sm-4 ">
+                            <input class="form-control" type="text" id="name" placeholder="Name"
+                                   name="name" required="required" autofocus="autofocus"/>
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-sm-5 col-sm-offset-5">
-                            <input value="Cancel" type="button" class="btn btn-primary btn-lg" style="border-style: none"/>
-                            <input value="Submit" type="submit" class="btn btn-primary btn-lg" style="border-style: none"/>
+                        <label class="col-sm-4 control-label">Description</label>
+                        <div class="col-sm-4">
+                            <textarea rows="10" cols="100" name="description"
+                                      placeholder="    Enter text here...    " >
+                            </textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label text-center" >Select Venue</label>
+
+                            <select class="col-sm-6" name="venue" >
+                                <option th:each="venue : ${venues}"  th:text="${venue.name}" ></option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+<<<<<<< HEAD
+                    <div class="col-sm-6">
+                        <label class="col-sm-4 control-label" for="conference_startDate">Start Date</label>
+                        <input class="form-control" type="text" id="conference_startDate" placeholder="dd/MM/yyyy"
+                               name="startDate" required="required" autofocus="autofocus"/>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                    <div class="col-sm-6">
+                        <label class="col-sm-4 control-label">End Date</label>
+                        <input class="form-control" type="text" id="conference_endDate" placeholder="dd/MM/yyyy"
+                               name="endDate" required="required" autofocus="autofocus"/>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-5 col-sm-offset-6">
+                            <input value="Cancel" type="button" class="btn btn-primary btn-lg"
+                                   style="border-style: none"/>
+                            <input value="Submit" type="submit" class="btn btn-primary btn-lg"
+                                   style="border-style: none"/>
+=======
+                        <div class="col-sm-6">
+                            <label class="col-sm-4 control-label" for="conference_startDate">Start Date</label>
+                            <input class="form-control" type="text" id="conference_startDate" placeholder="dd/MM/yyyy"
+                                   name="startDate" required="required" autofocus="autofocus"/>
+>>>>>>> d4094fb520ca660421d1a8808735203d6d64a5e9
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-6">
+                            <label class="col-sm-4 control-label">End Date</label>
+                            <input class="form-control" type="text" placeholder="dd-MM-yyyy"
+                                   name="endDate" required="required" autofocus="autofocus"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-4">
+                            <a class="btn btn-default" th:href="@{/}"
+                            >Cancel</a>
+                            <input value="Submit" type="submit" class="btn btn-primary"/>
                         </div>
                     </div>
                 </fieldset>

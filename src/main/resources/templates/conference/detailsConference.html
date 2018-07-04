@@ -1,28 +1,39 @@
-<main class="mt-3 mb-5">
-    <h3 class="text-center"th:text="${conference.name}"></h3>
-    <hr class="hr-2 bg-dark"/>
+<div class="panel panel-info">
+        <h1 class="panel-title text-center" th:text="${conference.name}"></h1>
+    <div class="panel-body">
+        <div class="row">
+            <!--<img src="https://projectcontroltraining.com/wp-content/uploads/2016/02/project-controls-Conferences.jpg" style="width5%;"></img>-->
+            <div class="col-lg-6 col-lg-offset-3 text-center">
+                <table class="table table-user-information">
+                    <tbody>
+                    <tr>
+                        <td>Organizer</td>
+                        <td th:text="${conference.owner.username}"></td>
+                    </tr>
+                    <tr>
+                        <td>Starting Date</td>
+                        <td th:text="${conference.startDate}"></td>
+                    </tr>
 
-    <div >
-        <h3 class="text-center" th:text=$"conference.startDate"></h3>
-        <h3 class="text-center" th:text=$"conference.endDate"></h3>
-    </div>
-    <hr class="hr-2 bg-dark"/>
-    <h3 class="text-center">Description</h3>
-    <div >
-        <p class="text-center mt-4" th:text=$"conference.description"></p>
-    </div>
-    <hr class="hr-2 bg-dark"/>
-    <div class="product-action-holder mt-4 d-flex justify-content-around">
-        <a class="btn-success" href="/session/join">Join our Seminar</a>
-    </div>
-    <hr class="hr-2 bg-dark"/>
-    <div class="task-column-body">
-        <th:block th:each="halls : ${conference.halls}">
-            <div class="task" >
-                <h3 th:text="${hall.name}"></h3>
-                <h4 th:text="${hall.seatCapacity}"></h4>
+                       <tr>
+                          <td>Ending Date</td>
+                          <td th:text="${conference.endDate}"></td>
+                      </tr>
+                      <tr>
+                          <td>Venue Name</td>
+                          <td th:text="${conference.venue.name}"></td>
+                      </tr>
+                      <tr>
+                          <td>Venue Address</td>
+                          <td th:text="${conference.venue.address}"></td>
+                      </tr>
+                      </tbody>
+                  </table>
+
+                <!--<a   link to mark user as going to be implemented class="btn btn-success">Join us</a>-->
             </div>
-        </th:block>
+        </div>
     </div>
 
-</main>
+
+</div>
