@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ConferenceService {
 
-    Conference createNewConference(CreateConferenceDto dto,String owner);
+    Conference createNewConference(CreateConferenceDto dto, String owner);
 
     List<Conference> getAllConferences();
 
@@ -16,4 +16,5 @@ public interface ConferenceService {
     void editConference(long id, CreateConferenceDto dto);
 
     void deleteConferenceById(long id);
+
 }

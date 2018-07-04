@@ -1,5 +1,6 @@
 package com.teamthree.conferencescheduler.controllers.user;
 
+import com.teamthree.conferencescheduler.dto.conference.CreateConferenceDto;
 import com.teamthree.conferencescheduler.dto.user.UserRegisterDto;
 import com.teamthree.conferencescheduler.dto.venue.AddVenueDto;
 import com.teamthree.conferencescheduler.entities.Conference;
@@ -163,6 +164,19 @@ public class UserController {
         model.addAttribute("conference", conference);
         model.addAttribute(VIEW, USER_LOGIN);
         return BASE_LAYOUT;
+    }
+
+    @PostMapping("/conefrence/{id}")
+    //TODO: MAKE VIEW FOR THIS METHOD AND ADD MORE ATTRIBUTES TO THE DTO
+    public String processUserEditConference(CreateConferenceDto dto, @PathVariable long id) {
+        Conference conference = this.conferenceService.findConference(id);
+
+        conference.setName(dto.getName());
+        conference.setDescription(dto.getDescription());
+//          TODO: CREATE METHOD TO SAVE TO THE DB NEW CONFEREENCE
+//        this.conferenceService
+
+        return REDIRECT_TO_MY_PROFILE;
     }
 
     @GetMapping("/venue/{id}")
