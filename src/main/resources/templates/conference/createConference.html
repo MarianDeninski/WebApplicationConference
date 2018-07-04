@@ -1,4 +1,5 @@
 <main xmlns:th="http://www.w3.org/1999/xhtml">
+
     <div class="container body-content span=8 offset=2">
         <div class="well">
             <form class="form-horizontal" th:action="@{/conference/create}"  method="post">
@@ -15,8 +16,7 @@
                         <label class="col-sm-4 control-label">Description</label>
                         <div class="col-sm-4">
                             <textarea rows="10" cols="100" name="description"
-                                      placeholder="    Enter text here...    "
-                                      style="margin: 0px; width: 314px; height: 186px;">
+                                      placeholder="    Enter text here...    " >
                             </textarea>
                         </div>
                     </div>
@@ -29,35 +29,35 @@
 
 
                     <div class="form-group">
-                    <div class="col-sm-6">
-
-                      <label class="col-sm-4 control-label" for="conference_startDate">Start Date</label>
-                        <input class="form-control" type="text" id="conference_startDate" placeholder="dd/MM/yyyy"
-                               name="startDate" required="required" autofocus="autofocus"/>
-
-                    <div class="form-group">
-                    <div class="col-sm-6">
-                        <label class="col-sm-4 control-label">End Date</label>
-                        <input class="form-control" type="text" placeholder="dd-MM-yyyy"
-                               name="endDate" required="required" autofocus="autofocus"/>
-                    </div>
-                            <label class="col-sm-4 control-label">End Date</label>
                         <div class="col-sm-6">
-                            <input class="form-control" type="text" id="conference_endDate" placeholder="dd/MM/yyyy"
-                                   name="endDate" required="required"/>
+                            <label class="col-sm-4 control-label" for="conference_startDate">Start Date</label>
+                            <input class="form-control" type="text" id="conference_startDate" placeholder="dd/MM/yyyy"
+                                   name="startDate" required="required" autofocus="autofocus"/>
                         </div>
                     </div>
+                     <div class="form-group">
+                             <div class="col-sm-6">
+                                    <label class="col-sm-4 control-label">End Date</label>
+                                    <input class="form-control" type="text" placeholder="dd-MM-yyyy"
+                                           name="endDate" required="required" autofocus="autofocus"/>
+                             </div>
+                                <label class="col-sm-4 control-label">End Date</label>
+                            <div class="col-sm-6">
+                                    <input class="form-control" type="text" id="conference_endDate" placeholder="dd/MM/yyyy"
+                                           name="endDate" required="required"/>
+                            </div>
+                     </div>
 
-                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
 
-                    <div class="form-group">
-                        <div class="col-sm-5 col-sm-offset-5">
-                            <input value="Cancel" type="button" class="btn btn-primary btn-lg"
-                                   style="border-style: none"/>
-                            <input value="Submit" type="submit" class="btn btn-primary btn-lg"
-                                   style="border-style: none"/>
-                        </div>
-                    </div>
+                            <div class="form-group">
+                                <div class="col-sm-5 col-sm-offset-5">
+                                    <input value="Cancel" type="button" class="btn btn-primary btn-lg"
+                                           style="border-style: none"/>
+                                    <input value="Submit" type="submit" class="btn btn-primary btn-lg"
+                                           style="border-style: none"/>
+                                </div>
+                            </div>
 
                 </fieldset>
             </form>
