@@ -200,6 +200,7 @@ public class UserController {
         } catch (ApplicationRuntimeException are) {
 
             //FIXME: REMOVE MAGICAL TEXT AND NUMBERS
+            // FIXME: THIS MIGHT NOT BE THE ONLY REASON THAT EXCEPTION OCCURRED! CHECK FOR MORE CASES
             model.addAttribute(VIEW_MESSAGE, "Please make some changes, or click the cancel button.");
             model.addAttribute("venue", venue);
             model.addAttribute(VIEW, "venue/show_venue");
