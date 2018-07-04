@@ -3,7 +3,7 @@
         <div class="well">
             <form class="form-horizontal" th:action="@{/conference/create}" method="post">
                 <fieldset>
-                    <legend>Conference Creation</legend>
+                    <legend class="text-center">Conference Creation</legend>
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="conference_name">Name</label>
                         <div class="col-sm-6">
@@ -20,13 +20,24 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" th:action="@{/venues}" for="venue_name">Add
-                            Venue</label>
+                        <label class="col-sm-4 control-label text-center" >Select Venue</label>
                         <select class="col-sm-6">
-                            <option class="form-control" value="venues" type="text" id="venue_name" placeholder="Venue"
-                                   name="venues" required="required">
-                            </option>
+                            <option th:each="venue : ${venues}" th:value="${venue.address}" th:text="${venue.name}" name="venueAddress"></option>
                         </select>
+                    </div>
+                    <div class="form-group">
+                    <div class="col-sm-4">
+                        <label class="col-sm-4 control-label" for="conference_startDate">Start Date</label>
+                        <input class="form-control" type="text" id="conference_startDate" placeholder="dd/MM/yyyy"
+                               name="startDate" required="required" autofocus="autofocus"/>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                    <div class="col-sm-4">
+                        <label class="col-sm-4 control-label">End Date</label>
+                        <input class="form-control" type="text" id="conference_endDate" placeholder="dd/MM/yyyy"
+                               name="endDate" required="required" autofocus="autofocus"/>
+                    </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-5 col-sm-offset-6">

@@ -70,4 +70,9 @@ public class ConferenceServiceImpl implements ConferenceService {
         this.userRepository.delete(id);
     }
 
+    @Override
+    public List<Venue> getAllVenues() {
+        return venueRepository.findAll();
+    }
+
 }
