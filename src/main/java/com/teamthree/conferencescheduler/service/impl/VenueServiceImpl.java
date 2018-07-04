@@ -34,6 +34,11 @@ public class VenueServiceImpl implements VenueService {
         this.venueRepository.saveAndFlush(venue);
     }
 
+    @Override
+    public Venue getVenueById(long id) {
+        return this.venueRepository.findById(id);
+    }
+
     private boolean checkIfExists(String venueName) {
         return this.venueRepository.findByName(venueName) != null;
     }

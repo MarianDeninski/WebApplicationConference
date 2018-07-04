@@ -1,11 +1,15 @@
 package com.teamthree.conferencescheduler.controllers.user;
 
 import com.teamthree.conferencescheduler.dto.user.UserRegisterDto;
+import com.teamthree.conferencescheduler.dto.venue.AddVenueDto;
 import com.teamthree.conferencescheduler.entities.Conference;
 import com.teamthree.conferencescheduler.entities.Role;
 import com.teamthree.conferencescheduler.entities.User;
+import com.teamthree.conferencescheduler.entities.Venue;
+import com.teamthree.conferencescheduler.service.api.ConferenceService;
 import com.teamthree.conferencescheduler.service.api.RoleService;
 import com.teamthree.conferencescheduler.service.api.UserService;
+import com.teamthree.conferencescheduler.service.api.VenueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,25 +18,19 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import static com.teamthree.conferencescheduler.constants.errors.ErrorHandlingConstants.*;
 import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.USER_LOGIN;
 import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.USER_REGISTER;
 import static com.teamthree.conferencescheduler.constants.user_roles.UserRoles.ROLE_USER;
-import static com.teamthree.conferencescheduler.constants.views.ViewConstants.BASE_LAYOUT;
-import static com.teamthree.conferencescheduler.constants.views.ViewConstants.VIEW;
-import static com.teamthree.conferencescheduler.constants.views.ViewConstants.VIEW_MESSAGE;
+import static com.teamthree.conferencescheduler.constants.views.ViewConstants.*;
 
 @Controller
 @RequestMapping("/user")
@@ -40,11 +38,17 @@ public class UserController {
 
     private UserService userService;
     private RoleService roleService;
+    private ConferenceService conferenceService;
+    private VenueService venueService;
 
     @Autowired
-    public UserController(UserService userService, RoleService roleService) {
+    public UserController(UserService userService, RoleService roleService,
+                          ConferenceService conferenceService, VenueService venueService) {
+
         this.userService = userService;
         this.roleService = roleService;
+        this.conferenceService = conferenceService;
+        this.venueService = venueService;
     }
 
     @GetMapping("/login")
@@ -153,8 +157,31 @@ public class UserController {
     }
 
     @GetMapping("/conefrence/{id}")
-    public String userConference(Model model) {
+    public String userConference(Model model, @PathVariable long id) {
+        Conference conference = this.conferenceService.findConference(id);
+
+        model.addAttribute("conference", conference);
         model.addAttribute(VIEW, USER_LOGIN);
         return BASE_LAYOUT;
+    }
+
+    @GetMapping("/venue/{id}")
+    public String userEditVenue(Model model, @PathVariable long id) {
+        Venue found = this.venueService.getVenueById(id);
+
+        model.addAttribute("venue", found);
+        model.addAttribute(VIEW, "venue/show_venue");
+        return BASE_LAYOUT;
+    }
+
+    @PostMapping("/venue/{id}")
+    public String processUserEditVenue(AddVenueDto dto, @PathVariable long id) {
+        Venue venue = this.venueService.getVenueById(id);
+
+        venue.setName(dto.getName());
+        venue.setAddress(dto.getAddress());
+        this.venueService.addVenue(venue);
+
+        return REDIRECT_TO_MY_PROFILE;
     }
 }
