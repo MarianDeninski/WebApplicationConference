@@ -157,11 +157,15 @@ public class UserController {
 
         User user = this.userService.findByUsername(principal.getUsername());
 
+<<<<<<< HEAD
+        List<Conference> conferences = new ArrayList<>();
+=======
         ArrayList<Conference> conferences = userService.getUserConferences(user);
         List<Venue> venues = user.getVenues();
         if(conferences.isEmpty()){
 
         }
+>>>>>>> 69c72f6246552232246eef48f28499e400f1ac78
 
         model.addAttribute("conferences", conferences);
         model.addAttribute("venues", venues);
