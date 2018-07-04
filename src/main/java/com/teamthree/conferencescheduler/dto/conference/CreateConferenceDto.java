@@ -20,7 +20,7 @@ public class CreateConferenceDto implements Serializable {
     private String endDate;
 
     @NotNull
-    private String venueAddress;
+    private String venueName;
 
     public CreateConferenceDto(){
 
@@ -30,13 +30,13 @@ public class CreateConferenceDto implements Serializable {
 
         this.name=name;
         this.description=description;
-        this.venueAddress=venueAddress;
+        this.venueName=venueName;
         this.startDate=startDate;
         this.endDate=endDate;
     }
 
-    public String getVenueAddress() {
-        return venueAddress;
+    public String getVenueName() {
+        return venueName;
     }
 
     public String getName() {
