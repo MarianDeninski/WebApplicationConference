@@ -7,6 +7,7 @@ import com.teamthree.conferencescheduler.entities.Conference;
 import com.teamthree.conferencescheduler.entities.Role;
 import com.teamthree.conferencescheduler.entities.User;
 import com.teamthree.conferencescheduler.entities.Venue;
+import com.teamthree.conferencescheduler.exceptions.ApplicationRuntimeException;
 import com.teamthree.conferencescheduler.service.api.ConferenceService;
 import com.teamthree.conferencescheduler.service.api.RoleService;
 import com.teamthree.conferencescheduler.service.api.UserService;
@@ -189,12 +190,22 @@ public class UserController {
     }
 
     @PostMapping("/venue/{id}")
-    public String processUserEditVenue(AddVenueDto dto, @PathVariable long id) {
+    public String processUserEditVenue(AddVenueDto dto, @PathVariable long id, Model model) {
         Venue venue = this.venueService.getVenueById(id);
 
         venue.setName(dto.getName());
         venue.setAddress(dto.getAddress());
-        this.venueService.addVenue(venue);
+        try {
+            this.venueService.addVenue(venue);
+        } catch (ApplicationRuntimeException are) {
+
+            //FIXME: REMOVE MAGICAL TEXT AND NUMBERS
+            model.addAttribute(VIEW_MESSAGE, "Please make some changes, or click the cancel button.");
+            model.addAttribute("venue", venue);
+            model.addAttribute(VIEW, "venue/show_venue");
+
+            return BASE_LAYOUT;
+        }
 
         return REDIRECT_TO_MY_PROFILE;
     }
