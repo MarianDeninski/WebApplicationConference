@@ -8,6 +8,7 @@ import com.teamthree.conferencescheduler.entities.Role;
 import com.teamthree.conferencescheduler.entities.User;
 import com.teamthree.conferencescheduler.entities.Venue;
 import com.teamthree.conferencescheduler.exceptions.ApplicationRuntimeException;
+import com.teamthree.conferencescheduler.repositories.ConferenceRepository;
 import com.teamthree.conferencescheduler.service.api.ConferenceService;
 import com.teamthree.conferencescheduler.service.api.RoleService;
 import com.teamthree.conferencescheduler.service.api.UserService;
@@ -61,7 +62,10 @@ public class UserController {
     @GetMapping("/add_speaker")
     public String addSpeaker(Model model) {
 
+        String[] conferences = new String[]{"conference_1", "conference_2", "conference_3",};
+
         model.addAttribute(VIEW, USER_ADD_SPEAKER);
+        model.addAttribute("conferences", conferences);
         return BASE_LAYOUT;
     }
 
