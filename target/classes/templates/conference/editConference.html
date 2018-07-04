@@ -1,7 +1,7 @@
 <main xmlns:th="http://www.w3.org/1999/xhtml">
     <div class="container body-content span=8 offset=2">
         <div class="well">
-            <form class="form-horizontal" th:action="@{/conference/edit/{id}(id=${conference.id})}" method="POST">
+            <form class="form-horizontal" th:action="@{/conference/edit/(id=${conference.id})}" method="POST">
                 <fieldset>
                     <legend>Edit Conference</legend>
 
@@ -24,11 +24,13 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-4 control-label text-center" for="conference_venue" >Select Venue</label>
-                        <select class="col-sm-6"  name="venue">
-                            <option class="form-control" id="conference_venue"
-                                    th:each="venue : ${venues}"  th:text="${venue.name}"></option>
+                    <label class="col-sm-4 control-label">Select Venue</label>
+                    <div class="col-sm-6">
+                        <select class="form-control" name="venue">
+                            <option class="col-sm-6" th:each="venue : ${venues}"
+                                    th:text="${venue.name}"></option>
                         </select>
+                    </div>
                     </div>
 
                     <div class="form-group">

@@ -15,7 +15,7 @@ public interface ConferenceService {
 
     Conference findConference(Long id);
 
-    void editConference(long id, CreateConferenceDto dto);
+    Conference editConference(long id, CreateConferenceDto dto);
 
     void deleteConferenceById(long id);
 
