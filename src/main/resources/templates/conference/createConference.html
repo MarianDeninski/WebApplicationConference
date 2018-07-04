@@ -14,15 +14,16 @@
                     <div class="form-group">
                         <label class="col-sm-4 control-label">Description</label>
                         <div class="col-sm-4">
-                            <textarea rows="10" cols="100" name="conferenceDescription"
-                                      placeholder="    Enter text here...    " form=""
-                                      style="margin: 0px; width: 314px; height: 186px;"></textarea>
+                            <textarea rows="10" cols="100" name="description"
+                                      placeholder="    Enter text here...    "
+                                      style="margin: 0px; width: 314px; height: 186px;">
+                            </textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-4 control-label text-center" >Select Venue</label>
                         <select class="col-sm-6">
-                            <option th:each="venue : ${venues}" th:value="${venue.address}" th:text="${venue.name}" name="venueAddress"></option>
+                            <option th:each="venue : ${venues}"  th:text="${venue.name}" name="venueName"></option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -35,7 +36,7 @@
                     <div class="form-group">
                     <div class="col-sm-6">
                         <label class="col-sm-4 control-label">End Date</label>
-                        <input class="form-control" type="text" id="conference_endDate" placeholder="dd/MM/yyyy"
+                        <input class="form-control" type="text" id="conference_endDate" placeholder="dd-MM-yyyy"
                                name="endDate" required="required" autofocus="autofocus"/>
                     </div>
                     </div>
