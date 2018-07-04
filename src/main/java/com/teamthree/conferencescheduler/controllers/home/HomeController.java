@@ -31,6 +31,18 @@ public class HomeController {
 
         List<Conference> conferences = new ArrayList<>();
 
+        //conferences.add(new Conference("WORLD PRICE", "Conf descript", "24-XI-2017", "28-XII-2017"));
+       // conferences.add(new Conference("HELLO ASSHOLE", "Conf descript", "24-XI-2017", "28-XII-2017"));
+
+
+
+        model.addAttribute("conferences",conferences);
+
+
+
+
+
+
 
         model.addAttribute("conferences", conferences);
         model.addAttribute(VIEW, HOME_INDEX);
