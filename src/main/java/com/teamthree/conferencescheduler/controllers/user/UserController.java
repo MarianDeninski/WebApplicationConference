@@ -151,4 +151,6 @@ public class UserController {
         model.addAttribute("view", "user/profile");
         return "my-profile-base-layout";
     }
+
+
 }

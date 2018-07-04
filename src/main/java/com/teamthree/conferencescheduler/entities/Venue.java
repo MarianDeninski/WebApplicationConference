@@ -28,6 +28,7 @@ public class Venue {
     private List<Conference> conferences;
 
     public Venue() {
+        this.conferences = new ArrayList<>();
         this.halls = new ArrayList<>();
     }
 
@@ -35,6 +36,14 @@ public class Venue {
         this.address = address;
         this.halls = halls;
     }
+
+    public Venue(String address, String name) {
+        this.address = address;
+        this.name = name;
+        this.conferences = new ArrayList<>();
+        this.halls = new ArrayList<>();
+    }
+
 
     public Venue(String address, String name, User owner) {
         this.address = address;
