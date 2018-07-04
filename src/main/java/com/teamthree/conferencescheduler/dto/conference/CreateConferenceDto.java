@@ -14,40 +14,40 @@ public class CreateConferenceDto implements Serializable {
     private String description;
 
     @NotNull
-    private Date startDate;
+    private String startDate;
 
     @NotNull
-    private Date endDate;
+    private String endDate;
 
     @NotNull
-    private String venueAddress;
+    private String venueName;
 
     public CreateConferenceDto(){
 
     }
 
-    public CreateConferenceDto(String name,String description,String venueName,Date startDate,Date endDate){
+    public CreateConferenceDto(String name,String description,String venueName,String startDate,String endDate){
 
         this.name=name;
         this.description=description;
-        this.venueAddress=venueAddress;
+        this.venueName=venueName;
         this.startDate=startDate;
         this.endDate=endDate;
     }
 
-    public String getVenueAddress() {
-        return venueAddress;
+    public String getVenueName() {
+        return venueName;
     }
 
     public String getName() {
         return name;
     }
 
-    public Date getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public Date getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 

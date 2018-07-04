@@ -17,10 +17,10 @@ public class Session {
     private String description;
 
     @Column(name = "start_date")
-    private Date startDate;
+    private String startDate;
 
     @Column(name = "end_date")
-    private Date endDate;
+    private String endDate;
 
     @OneToOne(mappedBy = "session", targetEntity = Speaker.class)
     private Speaker speaker;
@@ -35,7 +35,7 @@ public class Session {
     public Session() {
     }
 
-    public Session(String name, String description, Date startDate, Date endDate, Speaker speaker) {
+    public Session(String name, String description, String startDate, String endDate, Speaker speaker) {
         this.name = name;
         this.description = description;
         this.startDate = startDate;
@@ -67,19 +67,19 @@ public class Session {
         this.description = description;
     }
 
-    public Date getStartDate() {
+    public String getStartDate() {
         return this.startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public String getEndDate() {
         return this.endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 

@@ -32,7 +32,7 @@ public class ConferenceServiceImpl implements ConferenceService {
     @Override
     public Conference createNewConference(CreateConferenceDto dto, String owner) {
         User ownerClass = this.userRepository.findByUsername(owner);
-        Venue venue = venueRepository.findByAddress(dto.getVenueAddress());
+        Venue venue = venueRepository.findByName(dto.getVenueName());
         if(venue==null) {
            // venue = new Venue(dto.getVenueAddress());
         }
@@ -56,7 +56,7 @@ public class ConferenceServiceImpl implements ConferenceService {
         conference.setName(dto.getName());
         conference.setDescription(dto.getDescription());
         conference.setEndDate(dto.getEndDate());
-        Venue newVenue = venueRepository.findByAddress(dto.getVenueAddress());
+        Venue newVenue = venueRepository.findByName(dto.getVenueName());
         if(newVenue==null){
             //TODO add  venue name to the CreateConference dto so new venue can be inicializes
         }
