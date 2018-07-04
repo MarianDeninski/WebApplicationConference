@@ -36,9 +36,10 @@ public class Venue {
         this.halls = halls;
     }
 
-    public Venue(String address, String name) {
+    public Venue(String address, String name, User owner) {
         this.address = address;
         this.name = name;
+        this.owner = owner;
         this.conferences = new ArrayList<>();
         this.halls = new ArrayList<>();
     }
