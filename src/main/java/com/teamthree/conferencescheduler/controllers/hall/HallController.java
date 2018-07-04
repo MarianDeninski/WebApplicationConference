@@ -32,9 +32,7 @@ public class HallController {
     public String getAddHall(Model model){
         model.addAttribute(VIEW,ADD_HALL);
         return BASE_LAYOUT;
-
     }
-
     @PostMapping("/add")
     public String addHall(Model model, AddHallDto dto){
 
