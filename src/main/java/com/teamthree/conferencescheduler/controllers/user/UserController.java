@@ -1,5 +1,6 @@
 package com.teamthree.conferencescheduler.controllers.user;
 
+import com.teamthree.conferencescheduler.dto.user.FileUploadDto;
 import com.teamthree.conferencescheduler.dto.user.UserRegisterDto;
 import com.teamthree.conferencescheduler.dto.venue.AddVenueDto;
 import com.teamthree.conferencescheduler.entities.Conference;
@@ -171,19 +172,6 @@ public class UserController {
         return "redirect:/conference/details/" + id;
     }
 
-//
-//    @PostMapping("/conference/{id}")
-//    //TODO: MAKE VIEW FOR THIS METHOD AND ADD MORE ATTRIBUTES TO THE DTO
-//    public String processUserEditConference(CreateConferenceDto dto, @PathVariable long id) {
-//        Conference conference = this.conferenceService.findConference(id);
-//
-//        conference.setName(dto.getName());
-//        conference.setDescription(dto.getDescription());
-////          TODO: CREATE METHOD TO SAVE TO THE DB NEW CONFEREENCE
-////        this.conferenceService
-//
-//        return REDIRECT_TO_MY_PROFILE;
-//    }
 
     @GetMapping("/venue/{id}")
     public String userEditVenue(Model model, @PathVariable long id) {
@@ -214,5 +202,11 @@ public class UserController {
         }
 
         return REDIRECT_TO_MY_PROFILE;
+    }
+
+    @PostMapping("/image/upload")
+    public String imageProcess(FileUploadDto dto) {
+
+        return null;
     }
 }
