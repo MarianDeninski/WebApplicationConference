@@ -22,4 +22,6 @@ public class HomeServiceImpl implements HomeService {
     public List<Conference> getAllConference() {
         return this.conferenceRepository.findAll();
     }
+
+
 }

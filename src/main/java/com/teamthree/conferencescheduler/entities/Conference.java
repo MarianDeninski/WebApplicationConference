@@ -2,7 +2,6 @@ package com.teamthree.conferencescheduler.entities;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
@@ -17,8 +16,10 @@ public class Conference {
     @Column(name = "name")
     private String name;
 
+
     @Column(name = "description")
     private String description;
+
 
     @ManyToOne()
     private Venue venue;
@@ -36,7 +37,7 @@ public class Conference {
     private List<Session> sessions;
 
     public Conference() {
-
+        this.sessions = new ArrayList<>();
     }
 
     //TODO REFACTOR VENue TO BE STRIng

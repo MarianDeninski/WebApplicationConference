@@ -8,11 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.HOME_INDEX;
-import static com.teamthree.conferencescheduler.constants.views.ViewConstants.BASE_LAYOUT;
 import static com.teamthree.conferencescheduler.constants.views.ViewConstants.HOME_BASE_LAYOUT;
 import static com.teamthree.conferencescheduler.constants.views.ViewConstants.VIEW;
 
@@ -22,14 +20,14 @@ public class HomeController {
     private UserService userService;
     private HomeService homeService;
 
-    public  HomeController(){
+    public HomeController() {
 
     }
 
     @Autowired
     public HomeController(UserService userService, HomeService homeService) {
         this.userService = userService;
-        this.homeService=homeService;
+        this.homeService = homeService;
     }
 
     @GetMapping("/")
@@ -37,7 +35,16 @@ public class HomeController {
     public String index(Model model) {
         List<Conference> conferences = this.homeService.getAllConference();
 
-        model.addAttribute("conferences",conferences);
+        conferences.forEach(conference -> {
+            if (conference.getName().length() > 12) {
+                conference.setName(conference.getName().substring(0, 10) + "...");
+            } else {
+                conference.setName(conference.getName());
+            }
+        });
+
+
+        model.addAttribute("conferences", conferences);
         model.addAttribute(VIEW, HOME_INDEX);
         return HOME_BASE_LAYOUT;
     }
