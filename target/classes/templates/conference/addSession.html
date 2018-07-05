@@ -4,12 +4,12 @@
         <div class="well">
             <form class="form-horizontal" th:action="@{/conference/create}" method="post">
                 <fieldset>
-                    <legend class="text-center">Conference Creation</legend>
+                    <legend class="text-center">Add Session</legend>
 
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" for="conference_name">Name</label>
+                        <label class="col-sm-4 control-label" for="session_name">Name</label>
                         <div class="col-sm-6">
-                            <input class="form-control" type="text" id="conference_name" placeholder="Name"
+                            <input class="form-control" type="text" id="session_name" placeholder="Name"
                                    name="name" required="required" autofocus="autofocus"/>
                         </div>
                     </div>
@@ -17,24 +17,15 @@
                     <div class="form-group">
                         <label class="col-sm-4 control-label">Description</label>
                         <div class="col-sm-4">
-                            <textarea name="description" placeholder="Enter text here..." style="margin: 0px; width: 314px; height: 186px;"></textarea>
+                            <textarea name="description" placeholder="Enter text here..."
+                                      style="margin: 0px; width: 314px; height: 186px;"></textarea>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-4 control-label">Select Venue</label>
+                        <label class="col-sm-4 control-label" for="session_startDate">Start Date</label>
                         <div class="col-sm-6">
-                            <select class="dropdown-menu-custom-left" name="venue">
-                                <option class="col-sm-6" th:each="venue : ${venues}"
-                                        th:text="${venue.name}"></option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label" for="conference_startDate">Start Date</label>
-                        <div class="col-sm-6">
-                            <input class="form-control" type="date" id="conference_startDate" placeholder="dd/MM/yyyy"
+                            <input class="form-control" type="date" id="session_startDate" placeholder="dd/MM/yyyy"
                                    name="startDate" required="required"/>
                         </div>
                     </div>
