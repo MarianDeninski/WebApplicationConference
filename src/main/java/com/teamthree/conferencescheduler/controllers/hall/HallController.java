@@ -42,8 +42,8 @@ public class HallController {
 
     @PostMapping("/add")
     public String addHall(Model model, AddHallDto dto) {
-        Venue venue = this.venueService.getVenueByName(dto.getVenueName());
 
+        Venue venue = this.venueService.getVenueByName(dto.getVenueName());
         Hall hall = new Hall(dto.getHallName(), dto.getSeatCapacity(), venue);
         this.hallService.createHall(hall);
 
