@@ -60,8 +60,7 @@ public class ConferenceController {
             DateUtil.checkIfPeriodIsValid(dto.getStartDate(), dto.getEndDate());
         } catch (ApplicationRuntimeException are) {
             model.addAttribute(VIEW_MESSAGE, are.getMessage());
-            model.addAttribute(VIEW, CREATE_CONFERENCE);
-
+            this.getCreateConference(model);
             return BASE_LAYOUT;
         }
 
