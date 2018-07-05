@@ -38,8 +38,8 @@ public class SessionServiceImpl  implements SessionService {
         }
         Speaker  speaker = new Speaker(dto.getSpeakerName(),dto.getSpeakerDescription(),dto.getSpeakerPhoto());
         this.speakerRepository.saveAndFlush(speaker);
-        Session session = new Session(dto.getName(),dto.getDescription(),dto.getStartHour(),dto.getEndHour(),speaker,conference);
-
+        Session session = new Session(dto.getName(),dto.getDescription(),dto.getStartHour(),dto.getEndHour(),speaker,conference,dto.getDay());
+        int debug = 0;
         this.sessionRepository.saveAndFlush(session);
 
         return  session;

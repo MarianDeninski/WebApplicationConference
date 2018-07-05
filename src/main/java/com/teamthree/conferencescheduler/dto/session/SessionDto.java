@@ -29,9 +29,10 @@ public class SessionDto implements Serializable {
     @NotNull
     private String conferenceName;
 
+    @NotNull
+    private String day;
 
-    public SessionDto(String name, String description, String startHour, String endHour, String speakerName, String speakerDescription, String speakerPhoto,String conferenceName) {
-
+    public SessionDto(String name, String description, String startHour, String endHour, String speakerName, String speakerDescription, String speakerPhoto, String conferenceName, String day) {
         this.name = name;
         this.description = description;
         this.startHour = startHour;
@@ -40,6 +41,7 @@ public class SessionDto implements Serializable {
         this.speakerDescription = speakerDescription;
         this.speakerPhoto = speakerPhoto;
         this.conferenceName = conferenceName;
+        this.day = day;
     }
 
     public String getConferenceName() {
@@ -108,6 +110,15 @@ public class SessionDto implements Serializable {
 
     public void setSpeakerPhoto(String speakerPhoto) {
         this.speakerPhoto = speakerPhoto;
+    }
+
+
+    public String getDay() {
+        return day;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
     }
 
 }
