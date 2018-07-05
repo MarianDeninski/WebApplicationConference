@@ -1,5 +1,6 @@
 package com.teamthree.conferencescheduler.service.api;
 
+import com.teamthree.conferencescheduler.entities.User;
 import com.teamthree.conferencescheduler.entities.Venue;
 
 import java.util.List;
@@ -12,4 +13,6 @@ public interface VenueService {
     List<Venue> getAllVenues();
 
     Venue getVenueByName(String name);
+
+    List<Venue> getVenuesByOwner(User user);
 }

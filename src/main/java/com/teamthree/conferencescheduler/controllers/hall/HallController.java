@@ -2,17 +2,20 @@ package com.teamthree.conferencescheduler.controllers.hall;
 
 import com.teamthree.conferencescheduler.dto.hall.AddHallDto;
 import com.teamthree.conferencescheduler.entities.Hall;
+import com.teamthree.conferencescheduler.entities.User;
 import com.teamthree.conferencescheduler.entities.Venue;
 import com.teamthree.conferencescheduler.service.api.HallService;
+import com.teamthree.conferencescheduler.service.api.UserService;
 import com.teamthree.conferencescheduler.service.api.VenueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.security.Principal;
 import java.util.List;
 
 import static com.teamthree.conferencescheduler.constants.views.ViewConstants.*;
@@ -21,19 +24,24 @@ import static com.teamthree.conferencescheduler.constants.views.ViewConstants.*;
 @RequestMapping("/hall")
 public class HallController {
 
+    private UserService userService;
     private VenueService venueService;
     private HallService hallService;
 
+
     @Autowired
-    public HallController(VenueService venueService, HallService hallService) {
+    public HallController(UserService userService, VenueService venueService, HallService hallService) {
+        this.userService = userService;
         this.venueService = venueService;
         this.hallService = hallService;
     }
 
-    @GetMapping("/add")
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
     @PreAuthorize("isAuthenticated()")
-    public String getAddHall(Model model) {
-        List<Venue> venues = this.venueService.getAllVenues();
+    public String getAddHall(Model model, Principal principal) {
+        User user = this.userService.findByUsername(principal.getName());
+        List<Venue> venues = this.venueService.getVenuesByOwner(user);
+
         model.addAttribute("venues", venues);
         model.addAttribute(VIEW, ADD_HALL);
         return BASE_LAYOUT;
