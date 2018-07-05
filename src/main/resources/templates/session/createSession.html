@@ -23,19 +23,19 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" for="session_startDate">Start Date</label>
+                        <label class="col-sm-4 control-label" for="session_startDate">Start Hour</label>
                         <div class="col-sm-6">
-                            <input class="form-control" type="datetime-local" id="session_startDate"
-                                   placeholder="dd/MM/yyyy"
-                                   name="startDate" required="required"/>
+                            <input class="form-control" type="time"  id="session_startDate"
+                                   placeholder="hh:MM"
+                                   name="startHour" required="required"/>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-4 control-label">End Date</label>
+                        <label class="col-sm-4 control-label">End Hour</label>
                         <div class="col-sm-6">
-                            <input class="form-control" type="datetime-local" placeholder="dd-MM-yyyy"
-                                   name="endDate" required="required"/>
+                            <input class="form-control" type="time"  placeholder="hh:MM"
+                                   name="endHour" required="required"/>
                         </div>
                     </div>
 
@@ -43,31 +43,28 @@
                         <label class="col-sm-4 control-label" for="speaker_name">Speaker Name</label>
                         <div class="col-sm-6">
                             <input class="form-control" type="text" id="speaker_name" placeholder="Speaker Name"
-                                   name="name" required="required" autofocus="autofocus"/>
+                                   name="speakerName" required="required" autofocus="autofocus"/>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-4 control-label">Speaker Description</label>
                         <div class="col-sm-4">
-                            <textarea name="description" placeholder="Enter text here..."
+                            <textarea name="speakerDescription" placeholder="Enter text here..."
                                       style="margin: 0px; width: 314px; height: 93px;"></textarea>
                         </div>
                     </div>
-
                     <div class="form-group">
-                        <label class="col-sm-4 control-label">Add Photo</label>
+                        <label class="col-sm-4 control-label">Add Photo Url</label>
                         <div class="col-sm-4">
-                            <input class="form-control" type="url" name="url" id="url"
-                                   placeholder="https://example.com"
-                                   pattern="https://.*" size="20" required/>
+                        <input class="form-control" type="text" name="speakerPhoto" id="url" placeholder="Photo link"/>
                         </div>
                     </div>
 
                         <div class="form-group">
                             <label class="col-sm-4 control-label">Select Conference</label>
                             <div class="col-sm-6">
-                                <select class="dropdown-menu-custom-left" name="venue">
+                                <select class="dropdown-menu-custom-left" name="conferenceName">
                                     <option class="col-sm-6" th:each="conference : ${conferences}"
                                             th:text="${conference.name}"></option>
                                 </select>
