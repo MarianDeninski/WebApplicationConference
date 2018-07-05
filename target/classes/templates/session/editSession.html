@@ -10,7 +10,7 @@
                         <label class="col-sm-4 control-label" for="session_name">Name</label>
                         <div class="col-sm-6">
                             <input class="form-control" type="text" id="session_name" name="name"
-                                   th:value="${session.name}"/>
+                                   th:value="${seminar.name}"/>
                         </div>
                     </div>
 
@@ -18,7 +18,7 @@
                         <label class="col-sm-4 control-label">Description</label>
                         <div class="col-sm-4">
                             <textarea name="description" style="margin: 0px; width: 314px; height: 186px;"
-                                      th:field="${session.description}">
+                                      th:field="${seminar.description}">
 
                             </textarea>
                         </div>
@@ -28,7 +28,7 @@
                         <label class="col-sm-4 control-label">Day of Session</label>
                         <div class="col-sm-6">
                             <input class="form-control" type="date" name="day"
-                                   th:value="${session.day}"/>
+                                   th:value="${seminar.day}"/>
                         </div>
                     </div>
 
@@ -36,7 +36,7 @@
                         <label class="col-sm-4 control-label" for="session_startHour">Start Hour</label>
                         <div class="col-sm-6">
                             <input class="form-control" type="time" id="session_startHour" name="startHour"
-                                   th:value="${session.startHour}"/>
+                                   th:value="${seminar.startHour}"/>
                         </div>
                     </div>
 
@@ -44,22 +44,22 @@
                         <label class="col-sm-4 control-label" for="session_endHour">End Hour</label>
                         <div class="col-sm-6">
                             <input class="form-control" type="time" name="endHour" id="session_endHour"
-                                   th:value="${session.endHour}"/>
+                                   th:value="${seminar.endHour}"/>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="speaker_name">Speaker Name</label>
                         <div class="col-sm-6">
-                            <input class="form-control" type="text" id="speaker_name" name="speakerName"
-                                   th:value="${speaker.name}"/>
+                            <input class="form-control" type="text" id="speaker_name" name="seminar.speaker.speakerName"
+                                   th:value="${seminar.speaker.name}"/>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-4 control-label">Speaker Description</label>
                         <div class="col-sm-4">
-                            <textarea name="speakerDescription" th:field="${speaker.description}"
+                            <textarea name="speakerDescription" th:field="${seminar.speaker.description}"
                                       style="margin: 0px; width: 314px; height: 93px;"></textarea>
                         </div>
                     </div>
@@ -67,7 +67,7 @@
                     <div class="form-group">
                         <label class="col-sm-4 control-label">Add Photo Url</label>
                         <div class="col-sm-4">
-                            <input class="form-control" type="text" name="speakerPhoto" id="url"/>
+                            <input class="form-control" type="text" name="seminar.speaker.speakerPhoto" id="url"/>
                         </div>
                     </div>
 

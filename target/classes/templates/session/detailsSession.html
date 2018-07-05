@@ -8,45 +8,49 @@
                 <table class="table table-user-information">
                     <tbody>
                     <tr>
-                        <td>Description</td>
+                        <th>Description</th>
                         <td th:text="${seminar.description}"></td>
                     </tr>
                     <tr>
-                        <td>Day of session</td>
+                        <th>Day of session</th>
                         <td th:text="${seminar.day}"></td>
                     </tr>
                     <tr>
-                        <td>Start Hour</td>
+                        <th>Start Hour</th>
                         <td th:text="${seminar.startHour}"></td>
                     </tr>
                     <tr>
-                        <td>End Hour</td>
+                        <th>End Hour</th>
                         <td th:text="${seminar.endHour}"></td>
                     </tr>
 
 
                     <tr>
-                        <td>Hall</td>
+                        <th>Hall</th>
                         <td th:text="${seminar.hall.name}"></td>
                     </tr>
                     <tr>
-                        <td>Venue Address</td>
+                        <th>Venue Address</th>
                         <td th:text="${seminar.hall.venue.address}"></td>
                     </tr>
                     <tr>
-                        <td>Speaker Name</td>
+                        <th>Speaker Name</th>
                         <td th:text="${seminar.speaker.name}"></td>
                     </tr>
                     <br/>
                     <img th:src="@{seminar.speaker.photo}"/>
                     <tr>
-                        <td>Speaker Name</td>
+                        <th>Speaker Description</th>
                         <td th:text="${seminar.speaker.description}"></td>
+                    </tr>
+                    <tr>
+                        <th>Seat Capacity</th>
+                        <td th:text="seminar.hall.seatCapacity"></td>
                     </tr>
                     </tbody>
                 </table>
-
-                <!--<a   link to mark user as going to be implemented class="btn btn-success">Join us</a>-->
+    <!-- link to mark user as going to be implemented -->
+                <a  class="btn btn-success">Join us</a>
             </div>
         </div>
     </div>
