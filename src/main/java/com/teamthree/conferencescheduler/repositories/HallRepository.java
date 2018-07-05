@@ -11,4 +11,6 @@ public interface HallRepository extends JpaRepository<Hall,Long> {
     Hall findById(long id);
 
     List<Hall> findByVenueIsLike(String venueName);
+
+    Hall findByName(String name);
 }

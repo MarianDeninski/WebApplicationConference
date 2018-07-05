@@ -18,5 +18,8 @@ public class ViewConstants {
 
     //venue views
 
+    //session view
+    public static final String CREATE_SESSION="session/createSession";
+    public static final String SESSION_DETAILS="session/detailsSession";
 
 }

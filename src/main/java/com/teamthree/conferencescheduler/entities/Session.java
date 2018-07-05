@@ -16,11 +16,11 @@ public class Session {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "start_date")
-    private String startDate;
+    @Column(name = "start_Date")
+    private String startHour;
 
-    @Column(name = "end_date")
-    private String endDate;
+    @Column(name = "end_hour")
+    private String endHour;
 
     @OneToOne(mappedBy = "session", targetEntity = Speaker.class)
     private Speaker speaker;
@@ -35,13 +35,15 @@ public class Session {
     public Session() {
     }
 
-    public Session(String name, String description, String startDate, String endDate, Speaker speaker) {
+    public Session( String name, String description, String startHour, String endHour, Speaker speaker, Conference conference) {
         this.name = name;
         this.description = description;
-        this.startDate = startDate;
-        this.endDate = endDate;
+        this.startHour = startHour;
+        this.endHour = endHour;
         this.speaker = speaker;
+        this.conference = conference;
     }
+
 
     public long getId() {
         return this.id;
@@ -67,20 +69,20 @@ public class Session {
         this.description = description;
     }
 
-    public String getStartDate() {
-        return this.startDate;
+    public String getStartHour() {
+        return startHour;
     }
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
+    public void setStartHour(String startHour) {
+        this.startHour = startHour;
     }
 
-    public String getEndDate() {
-        return this.endDate;
+    public String getEndHour() {
+        return endHour;
     }
 
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
+    public void setEndHour(String endHour) {
+        this.endHour = endHour;
     }
 
     public Speaker getSpeaker() {
