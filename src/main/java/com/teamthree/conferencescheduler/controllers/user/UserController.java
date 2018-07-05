@@ -189,6 +189,7 @@ public class UserController {
         venue.setName(dto.getName());
         venue.setAddress(dto.getAddress());
         try {
+            this.venueService.delete(id);
             this.venueService.addVenue(venue);
         } catch (ApplicationRuntimeException are) {
 
