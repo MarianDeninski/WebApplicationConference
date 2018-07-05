@@ -9,7 +9,7 @@ import java.util.Date;
 public class Session {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(name = "name")
     private String name;
@@ -32,19 +32,14 @@ public class Session {
     @ManyToOne()
     private Conference conference;
 
-    @NotNull
     private String day;
     public Session() {
     }
 
-    public Session( String name, String description, String startHour, String endHour, Speaker speaker, Conference conference,String day) {
+    public Session( String name, String description, Conference conference) {
         this.name = name;
         this.description = description;
-        this.startHour = startHour;
-        this.endHour = endHour;
-        this.speaker = speaker;
         this.conference = conference;
-        this.day= day;
     }
 
     public String getDay() {
@@ -55,7 +50,7 @@ public class Session {
         this.day = day;
     }
 
-    public long getId() {
+    public Long getId() {
         return this.id;
     }
 
@@ -105,5 +100,9 @@ public class Session {
 
     public Hall getHall() {
         return hall;
+    }
+
+    public void setHall(Hall hall){
+        this.hall=hall;
     }
 }

@@ -29,10 +29,12 @@ public class SessionController {
 
     private SessionService sessionService;
     private UserService userService;
+    //couldn't think of a smarter way atm... :/
+   // private static long conferenceId;
+    private static long sessionId;
 
     @Autowired
     public SessionController(SessionService sessionService, UserService userService){
-
         this.sessionService=sessionService;
         this.userService =userService;
 
@@ -63,10 +65,33 @@ public class SessionController {
     @PreAuthorize("isAuthenticated()")
     public String createSession(SessionDto dto, Model model){
         Session session =this.sessionService.createSession(dto);
-        model.addAttribute("session", session);
-        model.addAttribute(VIEW, SESSION_DETAILS);
+
+        Conference conference = session.getConference();
+        this.sessionId = session.getId();
+        model.addAttribute("conference", conference);
+        model.addAttribute(VIEW, SESSION_ADD_HALL);
         return BASE_LAYOUT;
     }
+
+    @PostMapping("/addhall")
+    @PreAuthorize("isAuthenticated()")
+    public String addHall(SessionDto dto,Model model){
+        Session sessionWorkingOn = sessionService.getById(this.sessionId);
+        Session session=this.sessionService.addSessionToHall(dto,sessionWorkingOn);
+
+        model.addAttribute("sessione",session);
+        model.addAttribute(VIEW,SESSION_DETAILS);
+        return BASE_LAYOUT;
+    }
+
+//    @RequestMapping("addhall")
+//    @PreAuthorize("isAuthenticated()")
+//    public String getAddHall(Model model){
+//        Conference conference = this.sessionService.getConferenceById(this.conferenceId);
+//        model.addAttribute("conference",conference);
+//        model.addAttribute(VIEW,SESSION_ADD_HALL);
+//        return BASE_LAYOUT;
+//    }
 
     @RequestMapping(value = "/edit/id",method = RequestMethod.GET)
     @PreAuthorize("isAuthenticated()")

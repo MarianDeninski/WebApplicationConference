@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Speaker {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(name = "name")
     private String name;
@@ -30,7 +30,7 @@ public class Speaker {
         this.photo = photo;
     }
 
-    public long getId() {
+    public Long getId() {
         return this.id;
     }
 
@@ -40,6 +40,14 @@ public class Speaker {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Session getSession() {
+        return session;
+    }
+
+    public void setSession(Session session) {
+        this.session = session;
     }
 
     public String getDescription() {
