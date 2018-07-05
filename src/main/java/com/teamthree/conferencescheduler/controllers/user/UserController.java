@@ -163,7 +163,6 @@ public class UserController {
         if (conferences.isEmpty()) {
 
         }
-
         model.addAttribute("conferences", conferences);
         model.addAttribute("venues", venues);
         model.addAttribute("view", "user/profile");
