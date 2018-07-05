@@ -1,6 +1,7 @@
 package com.teamthree.conferencescheduler.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
@@ -31,19 +32,28 @@ public class Session {
     @ManyToOne()
     private Conference conference;
 
-
+    @NotNull
+    private String day;
     public Session() {
     }
 
-    public Session( String name, String description, String startHour, String endHour, Speaker speaker, Conference conference) {
+    public Session( String name, String description, String startHour, String endHour, Speaker speaker, Conference conference,String day) {
         this.name = name;
         this.description = description;
         this.startHour = startHour;
         this.endHour = endHour;
         this.speaker = speaker;
         this.conference = conference;
+        this.day= day;
     }
 
+    public String getDay() {
+        return day;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
+    }
 
     public long getId() {
         return this.id;
