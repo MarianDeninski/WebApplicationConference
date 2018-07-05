@@ -3,6 +3,7 @@ package com.teamthree.conferencescheduler.controllers.conference;
 import com.teamthree.conferencescheduler.app_utils.DateUtil;
 import com.teamthree.conferencescheduler.dto.conference.CreateConferenceDto;
 import com.teamthree.conferencescheduler.entities.Conference;
+import com.teamthree.conferencescheduler.entities.Session;
 import com.teamthree.conferencescheduler.entities.Venue;
 import com.teamthree.conferencescheduler.exceptions.ApplicationRuntimeException;
 import com.teamthree.conferencescheduler.service.api.ConferenceService;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.List;
 
 import static com.teamthree.conferencescheduler.constants.views.ViewConstants.*;
 
@@ -112,6 +114,8 @@ public class ConferenceController {
     @RequestMapping(value = "/details/{id}", method = RequestMethod.GET)
     public String details(@PathVariable long id, Model model) {
         Conference conference = conferenceService.findConference(id);
+        List<Session> sessions = conference.getSessions();
+        model.addAttribute("sessions",sessions);
         model.addAttribute(VIEW, CONFERENCE_DETAILS);
         model.addAttribute("conference", conference);
         return BASE_LAYOUT;
