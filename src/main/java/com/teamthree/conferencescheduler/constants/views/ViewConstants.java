@@ -22,5 +22,6 @@ public class ViewConstants {
     public static final String CREATE_SESSION="session/createSession";
     public static final String SESSION_DETAILS="session/detailsSession";
     public static final String SESSION_EDIT = "session/editSession";
+    public static final String SESSION_ADD_HALL="session/addHall";
 
 }
