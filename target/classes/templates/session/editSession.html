@@ -2,70 +2,72 @@
 
     <div class="container body-content span=8 offset=2">
         <div class="well">
-            <form class="form-horizontal" th:action="@{/session/create}" method="post">
+            <form class="form-horizontal" th:action="@{/edit/id}" method="post">
                 <fieldset>
                     <legend>Add Session</legend>
 
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="session_name">Name</label>
                         <div class="col-sm-6">
-                            <input class="form-control" type="text" id="session_name" placeholder="Name"
-                                   name="name" required="required" autofocus="autofocus"/>
+                            <input class="form-control" type="text" id="session_name" name="name"
+                                   th:value="${session.name}"/>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-4 control-label">Description</label>
                         <div class="col-sm-4">
-                            <textarea name="description" placeholder="Enter text here..."
-                                      style="margin: 0px; width: 314px; height: 186px;"></textarea>
+                            <textarea name="description" style="margin: 0px; width: 314px; height: 186px;"
+                                      th:field="${session.description}">
+
+                            </textarea>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-4 control-label">Day of Session</label>
                         <div class="col-sm-6">
-                            <input class="form-control" type="date"  placeholder=""
-                                   name="day" required="required"/>
+                            <input class="form-control" type="date" name="day"
+                                   th:value="${session.day}"/>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" for="session_startDate">Start Hour</label>
+                        <label class="col-sm-4 control-label" for="session_startHour">Start Hour</label>
                         <div class="col-sm-6">
-                            <input class="form-control" type="time"  id="session_startDate"
-                                   placeholder="hh:MM"
-                                   name="startHour" required="required"/>
+                            <input class="form-control" type="time" id="session_startHour" name="startHour"
+                                   th:value="${session.startHour}"/>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-4 control-label">End Hour</label>
+                        <label class="col-sm-4 control-label" for="session_endHour">End Hour</label>
                         <div class="col-sm-6">
-                            <input class="form-control" type="time"  placeholder="hh:MM"
-                                   name="endHour" required="required"/>
+                            <input class="form-control" type="time" name="endHour" id="session_endHour"
+                                   th:value="${session.endHour}"/>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="speaker_name">Speaker Name</label>
                         <div class="col-sm-6">
-                            <input class="form-control" type="text" id="speaker_name" placeholder="Speaker Name"
-                                   name="speakerName" required="required" autofocus="autofocus"/>
+                            <input class="form-control" type="text" id="speaker_name" name="speakerName"
+                                   th:value="${speaker.name}"/>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-4 control-label">Speaker Description</label>
                         <div class="col-sm-4">
-                            <textarea name="speakerDescription" placeholder="Enter text here..."
+                            <textarea name="speakerDescription" th:field="${speaker.description}"
                                       style="margin: 0px; width: 314px; height: 93px;"></textarea>
                         </div>
                     </div>
+
                     <div class="form-group">
                         <label class="col-sm-4 control-label">Add Photo Url</label>
                         <div class="col-sm-4">
-                            <input class="form-control" type="text" name="speakerPhoto" id="url" placeholder="Photo link"/>
+                            <input class="form-control" type="text" name="speakerPhoto" id="url"/>
                         </div>
                     </div>
 
@@ -82,7 +84,8 @@
                     <div class="form-group">
                         <div class="col-sm-4 col-sm-offset-4">
                             <a class="btn btn-default" th:href="@{/}">Cancel</a>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <input value="Edit" type="submit" class="btn btn-success">
+
                         </div>
                     </div>
 
