@@ -21,5 +21,17 @@ public class DateUtil {
         return true;
     }
 
+    public static String getTimeLapseOfSession(String startHour, String endHour) {
+        //da predpolojim che podava startHour vuv format hh:MM
+        String[] startHourTokens = startHour.split(":");
+        String[] endHourTokens = endHour.split(":");
 
+        TimeDiffUtil start = new TimeDiffUtil(Integer.parseInt(startHourTokens[0]), Integer.parseInt(startHourTokens[1]), 00);
+        TimeDiffUtil end = new TimeDiffUtil(Integer.parseInt(endHourTokens[0]), Integer.parseInt(endHourTokens[1]), 00);
+
+        TimeDiffUtil diff = TimeDiffUtil.difference(start, end);
+
+        return diff.getHours() + ":" + diff.getMinutes();
+
+    }
 }
