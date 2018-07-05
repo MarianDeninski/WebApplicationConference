@@ -38,7 +38,7 @@ public class SessionController {
 
     }
 
-    @RequestMapping("/add")
+    @RequestMapping("/create")
     @PreAuthorize("isAuthenticated()")
     public String getCreateSession(Model model){
         UserDetails principal = (UserDetails) SecurityContextHolder
@@ -59,7 +59,7 @@ public class SessionController {
 
     }
 
-    @PostMapping("/add")
+    @PostMapping("/create")
     @PreAuthorize("isAuthenticated()")
     public String createSession(SessionDto dto, Model model){
         Session session =this.sessionService.createSession(dto);
