@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.sql.Time;
 import java.util.ArrayList;
 
 import static com.teamthree.conferencescheduler.constants.views.ViewConstants.*;
@@ -53,6 +54,7 @@ public class ConferenceController {
         if (checkIfThereIsOtherConferenceInVenue) {
             //Should not be able to add another conference
         }
+
         String owner = SecurityContextHolder.getContext().getAuthentication().getName();
 
 
