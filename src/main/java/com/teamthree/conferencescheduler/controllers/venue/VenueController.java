@@ -7,6 +7,7 @@ import com.teamthree.conferencescheduler.exceptions.ApplicationRuntimeException;
 import com.teamthree.conferencescheduler.service.api.UserService;
 import com.teamthree.conferencescheduler.service.api.VenueService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,7 +34,7 @@ public class VenueController {
 
 
     @GetMapping("/add")
-    //TODO: IT SHOULD NOT BE POSSIBLE TO ACCESS THIS PAGE WITHOUT LOGIN!
+    @PreAuthorize("isAuthenticated()")
     public String addVenue(Model model) {
 
         model.addAttribute(VIEW, ADD_VENUE);
@@ -42,7 +43,7 @@ public class VenueController {
 
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    //TODO: IT SHOULD NOT BE POSSIBLE TO ACCESS THIS PAGE WITHOUT LOGIN!
+    @PreAuthorize("isAuthenticated()")
     public String processVenue(Model model, AddVenueDto dto, Principal principal) {
 
         // USER WILL NEVER BE NULL IF HE IS CURRENTLY LOGGED IN, NO NEED TO CHECK!
