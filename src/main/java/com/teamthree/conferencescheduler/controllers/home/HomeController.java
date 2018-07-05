@@ -25,6 +25,7 @@ public class HomeController {
     public  HomeController(){
 
     }
+
     @Autowired
     public HomeController(UserService userService, HomeService homeService) {
         this.userService = userService;
@@ -34,8 +35,8 @@ public class HomeController {
     @GetMapping("/")
 //    @PreAuthorize("isAuthenticated()")
     public String index(Model model) {
-
         List<Conference> conferences = this.homeService.getAllConference();
+
         model.addAttribute("conferences",conferences);
         model.addAttribute(VIEW, HOME_INDEX);
         return HOME_BASE_LAYOUT;

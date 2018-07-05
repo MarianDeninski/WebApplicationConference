@@ -34,6 +34,13 @@ public class Hall {
         this.sessions = sessions;
     }
 
+    public Hall(String name, long seatCapacity, Venue venue) {
+        this.name = name;
+        this.seatCapacity = seatCapacity;
+        this.venue = venue;
+        this.sessions = new ArrayList<>();
+    }
+
     public String getName() {
         return this.name;
     }

@@ -11,7 +11,7 @@
         <div class="well">
             <form class="form-horizontal" th:action="@{/addspeaker}" method="post">
                 <fieldset>
-                    <legend>Speaker</legend>
+                    <legend>Add Speaker</legend>
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="user_name">Name</label>
                         <div class="col-sm-4 ">
@@ -27,7 +27,7 @@
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="user_description">Photo</label>
                         <div class="col-sm-4 ">
-                            <input class="form-control" type="text" id="user_photo" placeholder="Photo_URL" name="description" required="required"/>
+                            <input class="form-control" type="text" id="user_photo" placeholder="Photo URL" name="description" required="required"/>
                         </div>
                     </div>
 
@@ -36,7 +36,7 @@
                         <div class="col-sm-4 ">
                             <div class="form-group">
                                 <label class="col-sm-4 control-label text-center" ></label>
-                                <select class="col-sm-6"  name="venues">
+                                <select class="dropdown-menu-custom"  name="venues">
                                     <option class="text" th:each="venue : ${venues}"  th:text="${venue}"></option>
                                 </select>
                             </div>
@@ -50,7 +50,7 @@
 
                             <div class="form-group">
                                 <label class="col-sm-4 control-label text-center" ></label>
-                                <select class="col-sm-6"  name="conferences">
+                                <select class="dropdown-menu-custom"  name="conferences">
                                     <option class="text" th:each="conf : ${conferences}"  th:text="${conf}"></option>
                                 </select>
                             </div>
@@ -63,7 +63,7 @@
                         <div class="col-sm-4 ">
                             <div class="form-group">
                                 <label class="col-sm-4 control-label text-center" ></label>
-                                <select class="col-sm-6"  name="halls">
+                                <select class="dropdown-menu-custom"  name="halls">
                                     <option class="text" th:each="hall : ${halls}"  th:text="${hall}"></option>
                                 </select>
                             </div>
@@ -77,7 +77,7 @@
 
                             <div class="form-group">
                                 <label class="col-sm-4 control-label text-center" ></label>
-                                <select class="col-sm-6"  name="sessions">
+                                <select class="dropdown-menu-custom"  name="sessions">
                                     <option class="text" th:each="session : ${sessions}"  th:text="${session}"></option>
                                 </select>
                             </div>

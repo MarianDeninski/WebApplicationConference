@@ -12,6 +12,7 @@ import java.util.List;
 public class HomeServiceImpl implements HomeService {
 
     ConferenceRepository conferenceRepository;
+
     @Autowired
     public HomeServiceImpl(ConferenceRepository conferenceRepository){
         this.conferenceRepository=conferenceRepository;

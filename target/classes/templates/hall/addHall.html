@@ -8,26 +8,19 @@
                         <label class="col-sm-4 control-label" for="hall_name">Name</label>
                         <div class="col-sm-4">
                             <input type="text" class="form-control" id="hall_name"
-                                   placeholder="Enter hall name ..." name="name" autofocus="autofocus"/>
+                                   placeholder="Enter hall name ..." name="hallName" autofocus="autofocus"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="hall_seats_capacity">Choose seats capacity</label>
                         <div class="col-sm-4">
-                            <select id="hall_seats_capacity">
-                                <option value="10">10</option>
-                                <option value="20">20</option>
-                                <option value="30">30</option>
-                                <option value="40">40</option>
-                                <option value="50">50</option>
-                                <option value="100">100</option>
-                            </select>
+                            <input type="number" placeholder="seats amount" id="hall_seats_capacity" name="seatCapacity"/>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-4 control-label text-center" >Select Venue</label>
-                        <select class="drop-menu-custom"  name="venues">
+                        <select class="drop-menu-custom"  name="venueName">
                             <option class="drop-menu-option-custom" th:each="venue : ${venues}"  th:text="${venue.name}"></option>
                         </select>
                     </div>
