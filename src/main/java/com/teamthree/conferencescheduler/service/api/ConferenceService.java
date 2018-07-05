@@ -20,4 +20,6 @@ public interface ConferenceService {
     void deleteConferenceById(long id);
 
     List<Venue> getAllVenues();
+
+    boolean checkIfThereIsOtherConferenceInVenueAtThatTime(CreateConferenceDto dto);
 }

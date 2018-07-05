@@ -45,9 +45,13 @@ public class ConferenceController {
     //Post data to db
     @PostMapping(path = "/create")
     @PreAuthorize("isAuthenticated()")
-    //@RequestMapping(path = "/create" ,method = RequestMethod.POST)
     public String createConference(CreateConferenceDto dto,Model model) {
 
+        //Check if there is other conference in these days
+        boolean checkIfThereIsOtherConferenceInVenue= this.conferenceService.checkIfThereIsOtherConferenceInVenueAtThatTime(dto);
+        if(checkIfThereIsOtherConferenceInVenue){
+            //Should not be able to add another conference
+        }
         String owner = SecurityContextHolder.getContext().getAuthentication().getName();
 
         Conference conference = this.conferenceService.createNewConference(dto, owner);
@@ -77,6 +81,7 @@ public class ConferenceController {
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public String getEditConference(@PathVariable long id, Model model) {
+        //TODO check if user own this conference
             model.addAttribute(VIEW, CONFERENCE_EDIT);
         return BASE_LAYOUT;
     }
