@@ -78,4 +78,10 @@ public class ConferenceServiceImpl implements ConferenceService {
         return venueRepository.findAll();
     }
 
+    @Override
+    public boolean checkIfThereIsOtherConferenceInVenueAtThatTime(CreateConferenceDto dto) {
+        //TODO
+        return false;
+    }
+
 }
