@@ -1,5 +1,6 @@
 package com.teamthree.conferencescheduler.service.impl;
 
+import com.teamthree.conferencescheduler.entities.User;
 import com.teamthree.conferencescheduler.entities.Venue;
 import com.teamthree.conferencescheduler.exceptions.ApplicationRuntimeException;
 import com.teamthree.conferencescheduler.repositories.VenueRepository;
@@ -50,6 +51,12 @@ public class VenueServiceImpl implements VenueService {
     public Venue getVenueByName(String name) {
         return this.venueRepository.findByName(name);
     }
+
+    @Override
+    public List<Venue> getVenuesByOwner(User owner) {
+        return this.venueRepository.findByOwner(owner);
+    }
+
 
     private boolean checkIfExists(String venueName) {
         return this.venueRepository.findByName(venueName) != null;
