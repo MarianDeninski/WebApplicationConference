@@ -34,7 +34,7 @@ public class SessionController {
     private UserService userService;
     private static Session staticSession;
     //couldn't think of a smarter way atm... :/
-    private static long sessionId;
+   // private static long sessionId;
 
     @Autowired
     public SessionController(SessionService sessionService, UserService userService){
@@ -70,7 +70,7 @@ public class SessionController {
         this.staticSession =this.sessionService.createSession(dto);
 
         Conference conference = this.staticSession.getConference();
-        this.sessionId =this.staticSession.getId();
+      //  this.sessionId =this.staticSession.getId();
         model.addAttribute("conference", conference);
         model.addAttribute(VIEW, SESSION_ADD_HALL);
         return BASE_LAYOUT;
@@ -80,13 +80,12 @@ public class SessionController {
     @PreAuthorize("isAuthenticated()")
     public String addHall(SessionDto dto,Model model){
 
-        // THIS SHIT HAVE TO BE FIXED  , if i have time
+        //TODO THIS SHIT HAVE TO BE FIXED
         //Session seminar=this.sessionService.addSessionToHall(dto,sessionWorkingOn);
         Session seminar = this.sessionService.addSessionToHall(dto ,this.staticSession);
 
-        model.addAttribute("seminar",seminar);
-        model.addAttribute(VIEW,SESSION_DETAILS);
-        return BASE_LAYOUT;
+        //model.addAttribute("seminar",seminar);
+        return "redirect:/home/index";
     }
 
 //    @RequestMapping("addhall")
