@@ -35,7 +35,7 @@ public class TimeDiffUtil {
     }
 
     public static Comparator<Integer> comparatorByTimeSpan(int time1, int time2) {
-
+        return null;
     }
 
     public int getMinutes() {
