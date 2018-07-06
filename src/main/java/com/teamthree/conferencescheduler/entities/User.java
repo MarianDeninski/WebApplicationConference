@@ -32,6 +32,24 @@ public class User {
     @OneToMany(mappedBy = "owner")
     private List<Conference> conferencesList;
 
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "user_session",
+            joinColumns = { @JoinColumn(name = "user_id",nullable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "session_id") }
+    )
+    private List<Session> userSessions;
+
+
+    public List<Session> getUserSessions() {
+        return userSessions;
+    }
+
+    public void setUserSessions(List<Session> userSessions) {
+        this.userSessions = userSessions;
+    }
+
     public User() {
         this.conferencesList = new ArrayList<>();
     }
@@ -42,6 +60,7 @@ public class User {
         this.password = password;
         this.conferencesList = new ArrayList<>();
         this.roles = new HashSet<>();
+        this.userSessions = new ArrayList<>();
     }
 
     public User(String username, Set<Role> roles, String password, List<Conference> conferencesList) {
@@ -101,9 +120,6 @@ public class User {
         this.roles.add(role);
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public List<Venue> getVenues() {
         return this.venues;

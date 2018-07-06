@@ -2,6 +2,7 @@ package com.teamthree.conferencescheduler.app_utils;
 
 import com.teamthree.conferencescheduler.exceptions.ApplicationRuntimeException;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -15,6 +16,16 @@ public class DateUtil {
         int[] startPeriod = Arrays.stream(startDate.split("-")).mapToInt(Integer::parseInt).toArray();
         int[] endPeriod = Arrays.stream(endDate.split("-")).mapToInt(Integer::parseInt).toArray();
 
+        // CHECK IF THE DATE IS BEFORE THE CURRENT DATE
+        int[] todaySplit = Arrays.stream(getCurrentDateAsString().split("-"))
+                .mapToInt(Integer::parseInt)
+                .toArray();
+
+        if (todaySplit[0] > startPeriod[0] || todaySplit[1] > startPeriod[1] || todaySplit[2] > startPeriod[2]) {
+            throw new ApplicationRuntimeException("You cannot choose start date earlier than today!");
+        }
+
+        // CHECK IF THE END DATE IS BEFORE THE START DATE
         if (startPeriod[0] > endPeriod[0] || startPeriod[1] > endPeriod[1] || startPeriod[2] > endPeriod[2]) {
             throw new ApplicationRuntimeException("Start date must be before End date!");
         }
@@ -37,7 +48,7 @@ public class DateUtil {
     }
 
 
-    public static Comparator<String> comparatorByDate(String dateOne, String dateTwo) {
+    public static int comparatorByStringDates(String dateOne, String dateTwo) {
         Comparator<String> comparator = (x, y) -> {
             int[] xColect = Arrays.stream(x.split("-"))
                     .mapToInt(Integer::parseInt)
@@ -71,8 +82,10 @@ public class DateUtil {
             return 0;
         };
 
-        return comparator;
+        return comparator.compare(dateOne, dateTwo);
     }
 
-
+    public static String getCurrentDateAsString() {
+        return LocalDate.now().toString();
+    }
 }

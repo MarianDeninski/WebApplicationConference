@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
+import java.util.Map;
 
 import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.HOME_INDEX;
 import static com.teamthree.conferencescheduler.constants.views.ViewConstants.HOME_BASE_LAYOUT;
@@ -43,8 +44,13 @@ public class HomeController {
             }
         });
 
+//        // TODO: Check for errors
+//        Map<String, List<Conference>> splitedByDate = this.homeService.splitByPastUpcomingActive(conferences);
 
-        model.addAttribute("conferences", conferences);
+//        model.addAttribute("pastConferences",splitedByDate.get("past"));
+//        model.addAttribute("activeConferences",splitedByDate.get("active"));
+//        model.addAttribute("upcomingConferences",splitedByDate.get("upcoming"));
+
         model.addAttribute(VIEW, HOME_INDEX);
         return HOME_BASE_LAYOUT;
     }

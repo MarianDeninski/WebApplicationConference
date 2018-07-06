@@ -98,6 +98,8 @@ public class ConferenceController {
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public String getEditConference(@PathVariable long id, Model model) {
         Conference conference = conferenceService.getById(id);
+        List<Venue> venues = conference.getOwner().getVenues();
+        model.addAttribute("venues",venues);
         model.addAttribute("conference",conference);
         model.addAttribute(VIEW, CONFERENCE_EDIT);
         return BASE_LAYOUT;
@@ -150,4 +152,5 @@ public class ConferenceController {
         conferenceService.deleteConferenceById(id);
         return "redirect:/conferences/all";
     }
+
 }

@@ -1,10 +1,10 @@
 <main xmlns:th="http://www.w3.org/1999/xhtml">
 
     <div class="container body-content span=8 offset=2">
-        <div class="well background-home custom-letters">
+        <div class="well background-home">
             <form class="form-horizontal" th:action="@{/session/addhall}" method="post">
                 <fieldset>
-                    <legend class="text-center">Add hall and starting time of session</legend>
+                    <legend class="text-center custom-letters">Add hall and starting time of session</legend>
 
                     <div class="form-group">
                         <label class="col-sm-4 control-label">Select Hall</label>
@@ -19,7 +19,7 @@
                     <div class="form-group">
                         <label class="col-sm-4 control-label">Day of Session</label>
                         <div class="col-sm-6">
-                            <input class="form-control" type="date" placeholder=""
+                            <input class="form-control custom-input-field" type="date" placeholder=""
                                    name="day" required="required"/>
                         </div>
                     </div>
@@ -27,7 +27,7 @@
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="session_startDate">Start Hour</label>
                         <div class="col-sm-6">
-                            <input class="form-control" type="time" id="session_startDate"
+                            <input class="form-control custom-input-field" type="time" id="session_startDate"
                                    placeholder="hh:MM"
                                    name="startHour" required="required"/>
                         </div>
@@ -36,7 +36,7 @@
                     <div class="form-group">
                         <label class="col-sm-4 control-label">End Hour</label>
                         <div class="col-sm-6">
-                            <input class="form-control" type="time" placeholder="hh:MM"
+                            <input class="form-control custom-input-field" type="time" placeholder="hh:MM"
                                    name="endHour" required="required"/>
                         </div>
                     </div>
