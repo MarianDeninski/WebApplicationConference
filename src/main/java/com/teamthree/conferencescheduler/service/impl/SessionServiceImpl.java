@@ -1,5 +1,7 @@
 package com.teamthree.conferencescheduler.service.impl;
 
+import com.teamthree.conferencescheduler.app_utils.DateUtil;
+import com.teamthree.conferencescheduler.app_utils.TimeDiffUtil;
 import com.teamthree.conferencescheduler.dto.session.SessionDto;
 import com.teamthree.conferencescheduler.entities.*;
 import com.teamthree.conferencescheduler.repositories.*;
@@ -95,11 +97,53 @@ public class SessionServiceImpl  implements SessionService {
     @Override
     public Session addSessionToHall(SessionDto dto,Session session) {
         Hall hall = this.hallRepository.findByName(dto.getHall());
+        if(this.checkIfHallIsTakenAtThatMoment(hall,dto)){
+            //Throw error on view to choose another day or another hour
+        }
+
         session.setHall(hall);
         session.setDay(dto.getDay());
         session.setStartHour(dto.getStartHour());
         session.setEndHour(dto.getEndHour());
         sessionRepository.saveAndFlush(session);
         return session;
+    }
+
+    private boolean checkIfHallIsTakenAtThatMoment(Hall hall,SessionDto dto) {
+
+        String targetSessionDay = dto.getDay();
+        String targetSessionStartHour = dto.getStartHour();
+        //String targetSessionEndHour = dto.getEndHour();
+
+        //String targetSessionDuration = DateUtil.getTimeLapseOfSession(dto.getStartHour(),dto.getEndHour());
+
+        String sessionInDbStartHour = "";
+        String sessionInDbEndHour="";
+        //String sessionInDbDuration = "";
+
+        //May be stupid , but it works
+        for (Session session : hall.getSessions() ) {
+            if(session.getDay().equals(targetSessionDay)){
+
+                sessionInDbStartHour=session.getStartHour();
+                sessionInDbEndHour = session.getEndHour();
+
+                if(targetSessionStartHour.equals(sessionInDbStartHour)){
+                    return true;
+                }
+
+                int sessionInDbStartHourInt = Integer.parseInt(sessionInDbStartHour.split(":")[0]);
+                int sessionInDbEndHourInt = Integer.parseInt(sessionInDbEndHour.split(":")[0]);
+
+                int targetSessionStartHourInt = Integer.parseInt(targetSessionStartHour.split(":")[0]);
+
+                for (int i = sessionInDbStartHourInt; i <= sessionInDbEndHourInt ; i++) {
+                    if(i==targetSessionStartHourInt){
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 }
