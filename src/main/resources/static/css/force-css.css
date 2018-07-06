@@ -83,9 +83,12 @@ body{
 }
 
 .text-white-color{
-    color: white;
+    color: blue;
+    font-size: 30px;
+    text-align: center;
     font-weight: bold !important;
     font-family: Phosphate!important;
+    sdpghjapo;
 }
 
 .top-right {
