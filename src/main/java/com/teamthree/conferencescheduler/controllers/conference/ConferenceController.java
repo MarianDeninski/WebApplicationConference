@@ -150,4 +150,5 @@ public class ConferenceController {
         conferenceService.deleteConferenceById(id);
         return "redirect:/conferences/all";
     }
+
 }

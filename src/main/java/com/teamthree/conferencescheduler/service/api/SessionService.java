@@ -24,4 +24,9 @@ public interface SessionService {
     Conference getConferenceById(long conferenceId);
 
     Session addSessionToHall(SessionDto dto, Session session);
+
+    void addUserToSession(User user, Long sessionId);
+
+    Conference getConferenceBySessionId(Long sessionId);
+
 }
