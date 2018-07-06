@@ -6,9 +6,8 @@
             </div>
             <div class="task-column-body">
                 <th:block th:each="venue : ${venues}">
-                    <div class="venue">
-                        <a class="custom-field-add-venue"
-                           th:href="@{/user/venue/{id}(id=${venue.id})}">
+                    <div class="venue custom-field-add-venue">
+                        <a th:href="@{/user/venue/{id}(id=${venue.id})}">
                             <div class = "custom-letters" th:text="${venue.name}"></div>
                             <div class = "custom-letters" th:text="${venue.address}"></div>
                         </a>
