@@ -31,18 +31,17 @@ public class SessionServiceImpl implements SessionService {
 
     @Override
     public Session createSession(SessionDto dto) {
-        //TODO TO BE TESTED WHEN HTML VIEW IS READY
-        Conference conference = conferenceRepository.findByName(dto.getConferenceName());
+        Conference conference =conferenceRepository.findByName(dto.getConferenceName());
 
-        Speaker speaker = new Speaker(dto.getSpeakerName(), dto.getSpeakerDescription(), dto.getSpeakerPhoto());
-        Session session = new Session(dto.getName(), dto.getDescription(), conference);
+        Speaker  speaker = new Speaker(dto.getSpeakerName(),dto.getSpeakerDescription(),dto.getSpeakerPhoto());
+        Session session = new Session(dto.getName(),dto.getDescription(),conference);
+        //TODO find a way that save doesnt flush the data to the db
+
         this.sessionRepository.save(session);
         this.speakerRepository.save(speaker);
         speaker.setSession(session);
         session.setSpeaker(speaker);
-        this.speakerRepository.saveAndFlush(speaker);
-        this.sessionRepository.saveAndFlush(session);
-        return session;
+        return  session;
     }
 
     @Override
@@ -108,6 +107,19 @@ public class SessionServiceImpl implements SessionService {
         session.setEndHour(dto.getEndHour());
         sessionRepository.saveAndFlush(session);
         return session;
+    }
+
+    @Override
+    public void addUserToSession(User user, Long sessionId) {
+        Session session=this.sessionRepository.getOne(sessionId);
+        session.getUsersGoing().add(user);
+        sessionRepository.saveAndFlush(session);
+    }
+
+    @Override
+    public Conference getConferenceBySessionId(Long sessionId) {
+        Session session =  this.sessionRepository.findOne(sessionId);
+        return session.getConference();
     }
 
     private boolean checkIfHallIsTakenAtThatMoment(Hall hall, SessionDto dto) {

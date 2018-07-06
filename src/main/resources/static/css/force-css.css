@@ -158,6 +158,15 @@ body{
     border-radius: 4px;
 }
 
+.textarea.custom-input-field{ /*todo doesnt work for description*/
+    color:black; !important;
+
+    background-color: blue!important;
+    opacity: 0.7;
+    border-color: #242020 !important;
+    border-radius: 4px;
+}
+
 
 /*dropdown menus*/
 .dropdown-menu-custom{
