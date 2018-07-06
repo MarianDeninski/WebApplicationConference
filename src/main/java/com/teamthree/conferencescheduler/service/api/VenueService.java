@@ -14,5 +14,7 @@ public interface VenueService {
 
     Venue getVenueByName(String name);
 
+    void delete(long id);
+
     List<Venue> getVenuesByOwner(User user);
 }

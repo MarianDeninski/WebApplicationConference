@@ -7,32 +7,49 @@
                 <table class="table table-user-information">
                     <tbody>
                     <tr>
-                        <td>Organizer</td>
+                        <th>Organizer</th>
                         <td th:text="${conference.owner.username}"></td>
                     </tr>
                     <tr>
-                        <td>Description</td>
+                        <th>Description</th>
                         <td th:text="${conference.description}"></td>
                     </tr>
                     <tr>
-                        <td>Starting Date</td>
+                        <th>Starting Date</th>
                         <td th:text="${conference.startDate}"></td>
                     </tr>
 
                        <tr>
-                          <td>Ending Date</td>
+                          <th>Ending Date</th>
                           <td th:text="${conference.endDate}"></td>
                       </tr>
                       <tr>
-                          <td>Venue Name</td>
+                          <th>Venue Name</th>
                           <td th:text="${conference.venue.name}"></td>
                       </tr>
                       <tr>
-                          <td>Venue Address</td>
+                          <th>Venue Address</th>
                           <td th:text="${conference.venue.address}"></td>
                       </tr>
                       </tbody>
                   </table>
+
+                <h3>Sessions</h3>
+                <table class="table table-stripped">
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Speaker Name</th>
+                        <th>Link</th>
+                    </tr>
+      <!--              <tr th:each="session : ${conference.sessions}">
+                        <td th:text="${session.name}"></td>
+                        <td th:text="${session.description}"></td>
+                        <td th:text="${session.speaker.name}"></td>
+                        <td> <a href="/session/details/${session.id}"></a>  </td>
+                    </tr>
+                    -->
+                </table>
 
                 <!--<a   link to mark user as going to be implemented class="btn btn-success">Join us</a>-->
             </div>
