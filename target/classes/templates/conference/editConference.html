@@ -3,13 +3,14 @@
         <div class="well background-home custom-letters">
             <form class="form-horizontal" th:action="@{/conference/edit/(id=${conference.id})}" method="POST">
                 <fieldset>
-                    <legend class = "custom-letters">Edit Conference</legend>
+                    <legend class="custom-letters">Edit Conference</legend>
 
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="conference_name">Name</label>
                         <div class="col-sm-6 ">
                             <input type="text" class="form-control" id="conference_name"
-                                   placeholder="Name" name="name" th:value="${conference.name}" required="required" autofocus="autofocus"/>
+                                   placeholder="Name" name="name" th:value="${conference.name}" required="required"
+                                   autofocus="autofocus"/>
                         </div>
                     </div>
 
@@ -17,42 +18,43 @@
                         <label class="col-sm-4 control-label" for="conference_description">Description</label>
                         <div class="col-sm-6">
                             <textarea class="form-control" rows="10" cols="100" id="conference_description"
-                                      placeholder="Enter text here...    " name="description" th:field="${conference.description}">
+                                      placeholder="Enter text here...    " name="description"
+                                      th:field="${conference.description}">
 
                             </textarea>
                         </div>
                     </div>
 
                     <div class="form-group">
-                    <label class="col-sm-4 control-label">Select Venue</label>
-                    <div class="col-sm-6">
-                        <select class="form-control" name="venue">
-                            <option class="col-sm-6" th:each="venue : ${venues}"
-                                    th:text="${venue.name}"></option>
-                        </select>
-                    </div>
+                        <label class="col-sm-4 control-label">Select Venue</label>
+                        <div class="col-sm-6">
+                            <select class="dropdown-menu-custom-left" name="venue">
+                                <option class="col-sm-6" th:each="venue : ${venues}"
+                                        th:text="${venue.name}"></option>
+                            </select>
+                        </div>
                     </div>
 
                     <div class="form-group">
+                        <label class="col-sm-4 control-label" for="conference_startDate">Start Date</label>
                         <div class="col-sm-6">
-                            <label class="col-sm-4 control-label" for="conference_startDate">Start Date</label>
-                            <input class="form-control" type="text" id="conference_startDate" placeholder="dd/MM/yyyy"
+                            <input class="form-control" type="date" id="conference_startDate" placeholder="dd/MM/yyyy"
                                    name="startDate" required="required"/>
                         </div>
                     </div>
 
                     <div class="form-group">
+                        <label class="col-sm-4 control-label" for="conference_endDate">End Date</label>
                         <div class="col-sm-6">
-                            <label class="col-sm-4 control-label" for="conference_endDate">End Date</label>
-                            <input class="form-control" type="text" id="conference_endDate" placeholder="dd-MM-yyyy"
-                                   name="endDate" required="required" />
+                            <input class="form-control" type="date" id="conference_endDate" placeholder="dd-MM-yyyy"
+                                   name="endDate" required="required"/>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-sm-4 col-sm-offset-4">
-                            <a class="btn btn-default" th:href="@{/conference/{id}(id = ${conference.id})}">
-                                <input type="button" class="btn btn-success" value="Cancel"/></a>
+                            <a th:href="@{/conference/details/{id}(id = ${conference.id})}">
+                                <input type="button" class="btn btn-default" value="Cancel"/></a>
                             <input type="submit" class="btn btn-success" value="Edit"/>
                         </div>
                     </div>
