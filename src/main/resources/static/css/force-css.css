@@ -57,6 +57,7 @@
     background-color: rgba(44, 22, 22, 0.42) !important;
     border-color: #e7e7e7 !important;
 }
+
 .bottom-left {
     position: absolute !important;
     color: white !important;
@@ -83,7 +84,9 @@ body{
 }
 
 .text-white-color{
-    color: white;
+    color:  white;
+    font-size: 10px;
+    text-align: right;
     font-weight: bold !important;
     font-family: Phosphate!important;
 }

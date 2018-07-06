@@ -25,4 +25,6 @@ public interface ConferenceService {
     boolean checkIfThereIsOtherConferenceInVenueAtThatTime(CreateConferenceDto dto);
 
     boolean checkIfLoggedInUserIsOwner(UserDetails principal,Conference conference);
+
+    Conference getById(long id);
 }

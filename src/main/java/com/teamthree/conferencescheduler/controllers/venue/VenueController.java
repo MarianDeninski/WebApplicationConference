@@ -56,7 +56,6 @@ public class VenueController {
     @PreAuthorize("isAuthenticated()")
     public String processVenue(Model model, AddVenueDto dto, Principal principal) {
 
-        // USER WILL NEVER BE NULL IF HE IS CURRENTLY LOGGED IN, NO NEED TO CHECK!
         User user = this.userService.findByUsername(principal.getName());
         Venue venue = new Venue(dto.getAddress(), dto.getName(), user);
 

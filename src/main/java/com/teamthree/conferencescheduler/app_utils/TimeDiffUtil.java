@@ -49,4 +49,5 @@ public class TimeDiffUtil {
     public int getSeconds() {
         return seconds;
     }
+
 }

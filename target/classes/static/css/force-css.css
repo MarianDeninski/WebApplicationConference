@@ -13,6 +13,11 @@
     border: #217dbb;
 
 }
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> bf1df68e98985228cb79699de662d87b2fc9521e
 .btn-default:hover {
     color: #847777 !important;
     background-color: #8c6b42; !important;
@@ -48,6 +53,12 @@
 
 }
 
+<<<<<<< HEAD
+
+
+
+=======
+>>>>>>> bf1df68e98985228cb79699de662d87b2fc9521e
 .background-home{
 
     background-color: rgba(44, 22, 22, 0.42) !important;
@@ -57,6 +68,15 @@
     background-color: rgba(44, 22, 22, 0.42) !important;
     border-color: #e7e7e7 !important;
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> bf1df68e98985228cb79699de662d87b2fc9521e
+=======
+
+>>>>>>> f49a7237b0b542f9263419fb1fbdf1bb87e4f5e1
 .bottom-left {
     position: absolute !important;
     color: white !important;
@@ -83,7 +103,9 @@ body{
 }
 
 .text-white-color{
-    color: white;
+    color:  white;
+    font-size: 10px;
+    text-align: right;
     font-weight: bold !important;
     font-family: Phosphate!important;
 }
