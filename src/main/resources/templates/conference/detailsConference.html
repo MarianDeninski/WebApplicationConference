@@ -35,7 +35,8 @@
                   </table>
 
                 <div th:if="${ownerButton}">
-                    <a href="/edit/session/th:text${conference.id}}" class="btn btn-primary">Edit</a>
+                    <a th:href="@{/edit/conference/conference.id}" class="btn btn-primary">Edit</a>
+
                 </div>
 
                 <h3>Sessions</h3>

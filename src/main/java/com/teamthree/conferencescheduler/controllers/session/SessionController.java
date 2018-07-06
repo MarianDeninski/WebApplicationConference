@@ -131,17 +131,29 @@ public class SessionController {
         if(seminar==null){
             return "redirect:/home/index";
         }
-        UserDetails principal = (UserDetails) SecurityContextHolder
+        boolean ownerButton = false;
+
+        if(SecurityContextHolder
                 .getContext()
                 .getAuthentication()
-                .getPrincipal();
-
-        User user = this.userService.findByUsername(principal.getUsername());
-
-        boolean ownerButton = false;
-        if(user.getId() == seminar.getConference().getOwner().getId()) {
-            ownerButton=true;
+                .getPrincipal().equals("anonymousUser")){
+            ownerButton=false;
         }
+        else
+            {
+                UserDetails principal = (UserDetails) SecurityContextHolder
+                        .getContext()
+                        .getAuthentication()
+                        .getPrincipal();
+
+                User user = this.userService.findByUsername(principal.getUsername());
+
+                if(user.getId() == seminar.getConference().getOwner().getId()) {
+                    ownerButton=true;
+                }
+        }
+
+
         model.addAttribute("ownerButton",ownerButton);
         model.addAttribute("seminar", seminar);
         model.addAttribute(VIEW,SESSION_DETAILS);

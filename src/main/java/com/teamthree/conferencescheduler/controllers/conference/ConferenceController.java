@@ -117,14 +117,24 @@ public class ConferenceController {
     public String details(@PathVariable long id, Model model) {
         Conference conference = conferenceService.findConference(id);
         List<Session> sessions = conference.getSessions();
-        UserDetails principal = (UserDetails) SecurityContextHolder
+        boolean ownerButton = false;
+        if(SecurityContextHolder
                 .getContext()
                 .getAuthentication()
-                .getPrincipal();
+                .getPrincipal().equals("anonymousUser")){
+            ownerButton=false;
+        }
+        else {
 
-        boolean ownerButton = false;
-        if(this.conferenceService.checkIfLoggedInUserIsOwner(principal,conference)) {
-            ownerButton=true;
+            UserDetails principal = (UserDetails) SecurityContextHolder
+                    .getContext()
+                    .getAuthentication()
+                    .getPrincipal();
+
+
+            if(this.conferenceService.checkIfLoggedInUserIsOwner(principal,conference)) {
+                ownerButton=true;
+            }
         }
         model.addAttribute("ownerButton",ownerButton);
         model.addAttribute("sessions",sessions);
