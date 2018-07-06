@@ -13,6 +13,7 @@ import com.teamthree.conferencescheduler.service.api.RoleService;
 import com.teamthree.conferencescheduler.service.api.UserService;
 import com.teamthree.conferencescheduler.service.api.VenueService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -174,6 +175,7 @@ public class UserController {
 
 
     @GetMapping("/venue/{id}")
+    @PreAuthorize("isAuthenticated()")
     public String userEditVenue(Model model, @PathVariable long id) {
         Venue found = this.venueService.getVenueById(id);
 
