@@ -42,13 +42,15 @@
                         <th>Speaker Name</th>
                         <th>Link</th>
                     </tr>
-                    <tr th:each="session : ${conference.sessions}">
+      <!--              <tr th:each="session : ${conference.sessions}">
                         <td th:text="${session.name}"></td>
                         <td th:text="${session.description}"></td>
                         <td th:text="${session.speaker.name}"></td>
                         <td> <a href="/session/details/${session.id}"></a>  </td>
                     </tr>
+                    -->
                 </table>
+
                 <!--<a   link to mark user as going to be implemented class="btn btn-success">Join us</a>-->
             </div>
         </div>
