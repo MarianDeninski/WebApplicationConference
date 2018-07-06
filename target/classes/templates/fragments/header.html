@@ -37,6 +37,14 @@
                     <li sec:authorize="isAuthenticated()" style="margin-top: 15px;"> | </li>
 
                     <li sec:authorize="isAuthenticated()">
+                        <a th:href="@{/session/create}">
+                            Add Session
+                        </a>
+                    </li>
+
+                    <li sec:authorize="isAuthenticated()" style="margin-top: 15px;"> | </li>
+
+                    <li sec:authorize="isAuthenticated()">
                         <a th:href="@{/user/profile}">
                             My Profile
                         </a>
