@@ -85,7 +85,7 @@ body{
 
 .text-white-color{
     color:  white;
-    font-size: 10px;
+    font-size: 350%;
     text-align: right;
     font-weight: bold !important;
     font-family: Phosphate!important;
@@ -239,7 +239,7 @@ body{
     color: white;
 }
 .text-white-color-custom{
-    color: #00000073;
+    color: #130303cf;
     font-size: large;
     font-weight: bold !important;
     font-family: Phosphate!important;
