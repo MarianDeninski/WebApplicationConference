@@ -229,3 +229,9 @@ body{
 #id{
     color: white;
 }
+.text-white-color-custom{
+    color: #00000073;
+    font-size: large;
+    font-weight: bold !important;
+    font-family: Phosphate!important;
+}
