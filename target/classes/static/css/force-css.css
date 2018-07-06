@@ -14,6 +14,46 @@
 
 }
 
+.btn-default:hover {
+    color: #847777 !important;
+    background-color: rgba(44, 22, 22, 0.42) !important;
+    border-color: #242020 !important;
+}
+
+
+.btn-default {
+    color: #141212 !important;
+    background-color: rgba(44, 22, 22, 0.42) !important;
+    border-color: #242020 !important;
+}
+
+
+
+.btn-primary:hover  {
+    color: #847777 !important;
+    background-color: rgba(44, 22, 22, 0.42) !important;
+    border-color: #242020 !important;
+}
+
+
+.btn-primary {
+
+    color: #141212 !important;
+
+    background-color: rgba(44, 22, 22, 0.42)!important;
+
+    border-color: #242020 !important;
+
+}
+.color-letter{
+
+    color: #242020 !important;
+
+
+}
+
+
+
 .bottom-left {
     position: absolute !important;
     color: white !important;
