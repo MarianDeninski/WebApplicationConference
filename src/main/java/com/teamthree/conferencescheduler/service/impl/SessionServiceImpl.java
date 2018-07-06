@@ -40,8 +40,11 @@ public class SessionServiceImpl implements SessionService {
 
         this.sessionRepository.save(session);
         this.speakerRepository.save(speaker);
-        session.setSpeaker(speaker);
+
         speaker.setSession(session);
+        session.setSpeaker(speaker);
+        this.sessionRepository.saveAndFlush(session);
+        this.speakerRepository.saveAndFlush(speaker);
         return  session;
     }
 
