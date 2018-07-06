@@ -3,6 +3,7 @@ package com.teamthree.conferencescheduler.app_utils;
 import com.teamthree.conferencescheduler.exceptions.ApplicationRuntimeException;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class DateUtil {
 
@@ -33,6 +34,44 @@ public class DateUtil {
 
         return diff.getHours() + ":" + diff.getMinutes();
 
+    }
+
+
+    public static Comparator<String> comparatorByDate(String dateOne, String dateTwo) {
+        Comparator<String> comparator = (x, y) -> {
+            int[] xColect = Arrays.stream(x.split("-"))
+                    .mapToInt(Integer::parseInt)
+                    .toArray();
+
+            int[] yCollect = Arrays.stream(y.split("-"))
+                    .mapToInt(Integer::parseInt)
+                    .toArray();
+
+            int year1 = xColect[0];
+            int month1 = xColect[1];
+            int day1 = xColect[2];
+
+            int year2 = yCollect[0];
+            int month2 = yCollect[1];
+            int day2 = yCollect[2];
+
+
+            if (year1 - year2 != 0) {
+                return year1 - year2;
+            }
+
+            if (month1 - month2 != 0) {
+                return month1 - month2;
+            }
+
+            if (day1 - day2 != 0) {
+                return day1 - day2;
+            }
+
+            return 0;
+        };
+
+        return comparator;
     }
 
 
