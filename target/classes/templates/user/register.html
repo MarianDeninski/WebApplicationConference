@@ -1,34 +1,34 @@
 <main>
     <div class="container body-content span=8 offset=2">
-        <div class="well">
+        <div class="well background-home custom-letters">
             <form class="form-horizontal" th:action="@{/user/register}" method="post">
                 <fieldset>
-                    <legend>Register</legend>
+                    <legend class = "custom-letters">Register</legend>
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="user_email">Username</label>
                         <div class="col-sm-4 ">
-                            <input class="form-control" type="text" id="user_email" placeholder="Username"
+                            <input class="form-control custom-input-field" type="text" id="user_email" placeholder="Username"
                                    name="username" required="required" autofocus="autofocus"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="user_fullname">Full Name</label>
                         <div class="col-sm-4 ">
-                            <input class="form-control" type="text" id="user_fullname" placeholder="Full Name"
+                            <input class="form-control custom-input-field" type="text" id="user_fullname" placeholder="Full Name"
                                    name="fullName" required="required"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="user_password_first">Password</label>
                         <div class="col-sm-4">
-                            <input type="password" class="form-control" id="user_password_first" placeholder="Password"
+                            <input type="password" class="form-control custom-input-field" id="user_password_first" placeholder="Password"
                                    name="password" required="required"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="user_password_second">Confirm Password</label>
                         <div class="col-sm-4">
-                            <input type="password" class="form-control" id="user_password_second"
+                            <input type="password" class="form-control custom-input-field" id="user_password_second"
                                    placeholder="Confirm Password" name="confirmPassword" required="required"/>
                         </div>
                     </div>

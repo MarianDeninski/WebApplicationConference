@@ -1,15 +1,15 @@
 <main xmlns:th="http://www.w3.org/1999/xhtml">
 
     <div class="container body-content span=8 offset=2">
-        <div class="well">
+        <div class="well background-home custom-letters">
             <form class="form-horizontal" th:action="@{/conference/create}" method="post">
                 <fieldset>
-                    <legend>Conference Creation</legend>
+                    <legend class = "custom-letters">Conference Creation</legend>
 
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="conference_name">Name</label>
                         <div class="col-sm-6">
-                            <input class="form-control" type="text" id="conference_name" placeholder="Name"
+                            <input class="form-control custom-input-field" type="text" id="conference_name" placeholder="Name"
                                    name="name" required="required" autofocus="autofocus"/>
                         </div>
                     </div>
@@ -17,7 +17,7 @@
                     <div class="form-group">
                         <label class="col-sm-4 control-label">Description</label>
                         <div class="col-sm-4">
-                            <textarea name="description" placeholder="Enter text here..."
+                            <textarea class="custom-input-field" name="description" placeholder="Enter text here..."
                                       style="margin: 0px; width: 314px; height: 186px;"></textarea>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="conference_startDate">Start Date</label>
                         <div class="col-sm-6">
-                            <input class="form-control" type="date" value="today" id="conference_startDate" placeholder="dd/MM/yyyy"
+                            <input class="form-control custom-input-field" type="date" value="today" id="conference_startDate" placeholder="dd/MM/yyyy"
                                    name="startDate" required="required"/>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                     <div class="form-group">
                         <label class="col-sm-4 control-label">End Date</label>
                         <div class="col-sm-6">
-                            <input class="form-control" type="date" placeholder="dd-MM-yyyy"
+                            <input class="form-control custom-input-field" type="date" placeholder="dd-MM-yyyy"
                                    name="endDate" required="required"/>
                         </div>
                     </div>

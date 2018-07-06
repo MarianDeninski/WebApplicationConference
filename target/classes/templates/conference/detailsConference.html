@@ -1,5 +1,5 @@
-<div class="panel panel-info">
-        <h1 class="panel-title text-center" th:text="${conference.name}"></h1>
+<div class="panel panel-info background-home custom-letters ">
+        <h1 class="panel-title text-center font-weight-bold" th:text="${conference.name}"></h1>
     <div class="panel-body">
         <div class="row">
             <!--<img src="https://projectcontroltraining.com/wp-content/uploads/2016/02/project-controls-Conferences.jpg" style="width5%;"></img>-->
@@ -34,6 +34,15 @@
                       </tbody>
                   </table>
 
+                <div th:if="${ownerButton}">
+<<<<<<< HEAD
+                    <a href="/edit/session/th:text${conference.id}}" class="btn btn-primary">Edit</a>
+=======
+                    <a th:href="@{/edit/conference/conference.id}" class="btn btn-primary">Edit</a>
+
+>>>>>>> b4044b2c4f26f014549591885e39c159edb81652
+                </div>
+
                 <h3>Sessions</h3>
                 <table class="table table-stripped">
                     <tr>
@@ -42,13 +51,15 @@
                         <th>Speaker Name</th>
                         <th>Link</th>
                     </tr>
-                    <tr th:each="session : ${conference.sessions}">
+      <!--              <tr th:each="session : ${conference.sessions}">
                         <td th:text="${session.name}"></td>
                         <td th:text="${session.description}"></td>
                         <td th:text="${session.speaker.name}"></td>
                         <td> <a href="/session/details/${session.id}"></a>  </td>
                     </tr>
+                    -->
                 </table>
+
                 <!--<a   link to mark user as going to be implemented class="btn btn-success">Join us</a>-->
             </div>
         </div>

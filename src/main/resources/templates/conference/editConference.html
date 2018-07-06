@@ -1,9 +1,9 @@
 <main xmlns:th="http://www.w3.org/1999/xhtml">
     <div class="container body-content span=8 offset=2">
-        <div class="well">
+        <div class="well background-home custom-letters">
             <form class="form-horizontal" th:action="@{/conference/edit/(id=${conference.id})}" method="POST">
                 <fieldset>
-                    <legend>Edit Conference</legend>
+                    <legend class = "custom-letters">Edit Conference</legend>
 
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="conference_name">Name</label>
@@ -16,7 +16,7 @@
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="conference_description">Description</label>
                         <div class="col-sm-6">
-                            <textarea class="form-control" rows="10" cols="100"  id="conference_description"
+                            <textarea class="form-control" rows="10" cols="100" id="conference_description"
                                       placeholder="Enter text here...    " name="description" th:field="${conference.description}">
 
                             </textarea>

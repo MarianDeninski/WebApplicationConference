@@ -1,6 +1,6 @@
 
 <div class="panel panel-info">
-    <h1 class="panel-title text-center" th:text="${seminar.name}"></h1>
+    <h1 class="panel-title text-center font-weight-bold" th:text="${seminar.name}"></h1>
     <div class="panel-body">
         <div class="row">
             <!--<img src="https://projectcontroltraining.com/wp-content/uploads/2016/02/project-controls-Conferences.jpg" style="width5%;"></img>-->
@@ -50,7 +50,16 @@
                     </tbody>
                 </table>
     <!-- link to mark user as going to be implemented -->
-                <a  class="btn btn-success">Join us</a>
+
+                <!--
+                i am not sure if this is the right way to get the link for edit
+                -->
+
+             <!--   <a  class="btn btn-success">Join us</a> -->
+                <div th:if="${ownerButton}">
+                    <a th:href="@{/edit/seminar/seminar.id}" class="btn btn-primary">Edit</a>
+
+                </div>
             </div>
         </div>
     </div>

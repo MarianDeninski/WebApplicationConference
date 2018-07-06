@@ -13,6 +13,7 @@ import com.teamthree.conferencescheduler.service.api.RoleService;
 import com.teamthree.conferencescheduler.service.api.UserService;
 import com.teamthree.conferencescheduler.service.api.VenueService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -54,23 +55,6 @@ public class UserController {
     @GetMapping("/login")
     public String login(Model model) {
         model.addAttribute(VIEW, USER_LOGIN);
-        return BASE_LAYOUT;
-    }
-
-    @GetMapping("/add_speaker")
-    public String addSpeaker(Model model) {
-
-        String[] conferences = new String[]{"conference_1", "conference_2", "conference_3",};
-        String[] halls = new String[]{"hall_1", "hall_2", "hall_3",};
-        String[] venues = new String[]{"venues 1", "venues 2", "venues 3",};
-        String[] sessions = new String[]{"sessions 1", "sessions 2", "sessions 3",};
-
-
-        model.addAttribute(VIEW, USER_ADD_SPEAKER);
-        model.addAttribute("conferences", conferences);
-        model.addAttribute("venues", venues);
-        model.addAttribute("halls", halls);
-        model.addAttribute("sessions", sessions);
         return BASE_LAYOUT;
     }
 
@@ -174,6 +158,7 @@ public class UserController {
 
 
     @GetMapping("/venue/{id}")
+    @PreAuthorize("isAuthenticated()")
     public String userEditVenue(Model model, @PathVariable long id) {
         Venue found = this.venueService.getVenueById(id);
 
@@ -210,4 +195,12 @@ public class UserController {
 
         return null;
     }
+
+    @PostMapping("/programmeMaximum")
+    @PreAuthorize("isAuthenticated()")
+    public String programeMaximum(@PathVariable Long id){
+      return null;
+    }
+
+    //public String
 }

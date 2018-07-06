@@ -13,18 +13,23 @@
     border: #217dbb;
 
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> bf1df68e98985228cb79699de662d87b2fc9521e
 .btn-default:hover {
     color: #847777 !important;
-    background-color: rgba(44, 22, 22, 0.42) !important;
+    background-color: #8c6b42; !important;
+    opacity: 0.7;
     border-color: #242020 !important;
 }
 
 
 .btn-default {
     color: #141212 !important;
-    background-color: rgba(44, 22, 22, 0.42) !important;
+    background-color: #8c6b42 !important;
+    opacity: 0.7;
     border-color: #242020 !important;
 }
 
@@ -32,7 +37,8 @@
 
 .btn-primary:hover  {
     color: #847777 !important;
-    background-color: rgba(44, 22, 22, 0.42) !important;
+    background-color: #342314 !important;
+    opacity: 0.7;
     border-color: #242020 !important;
 }
 
@@ -41,22 +47,18 @@
 
     color: #141212 !important;
 
-    background-color: rgba(44, 22, 22, 0.42)!important;
-
+    background-color: #342314!important;
+    opacity: 0.7;
     border-color: #242020 !important;
 
 }
-.color-letter{
 
-    color: #242020 !important;
-
-
-}
+<<<<<<< HEAD
 
 
 
-
-
+=======
+>>>>>>> bf1df68e98985228cb79699de662d87b2fc9521e
 .background-home{
 
     background-color: rgba(44, 22, 22, 0.42) !important;
@@ -66,8 +68,11 @@
     background-color: rgba(44, 22, 22, 0.42) !important;
     border-color: #e7e7e7 !important;
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> bf1df68e98985228cb79699de662d87b2fc9521e
 .bottom-left {
     position: absolute !important;
     color: white !important;
@@ -99,10 +104,6 @@ body{
     font-family: Phosphate!important;
 }
 
-
-
-
-
 .top-right {
     position: absolute !important;
     top: 8px !important;
@@ -115,4 +116,129 @@ body{
     right: 16px !important;
 }
 
+.custom-letters{
+    color: white; !important;
+    text-align: center;
+}
 
+.custom-button{
+    background-color: rgba(44, 22, 22, 0.42);
+    border-width: 2px;
+    border-style: solid;
+    border-color: #242020;
+    border-radius: 20px;
+}
+
+.custom-field-add-venue{
+    font-size: 19px;
+    line-height: 1.5;
+    background-color: rgba(44, 22, 22, 0.42);
+    border-width: 2px;
+    border-style: solid;
+    border-color: #242020;
+    width: 50%;
+    -webkit-padding-after: 20px;
+    -webkit-padding-before: 20px;
+    border-radius: 14px;
+    margin: 2% 25% 1% 25%;
+}
+
+.custom-reg-field{
+    display: block;
+    width: 100% ;
+    height: 34px;
+    padding: 0px 12px;
+    background-color: #f5d9bb;
+    opacity: 0.8;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #242020;
+    color: black;
+    position: relative;
+    top: auto;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: inherit;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+
+.custom-input-field{
+    color:black; !important;
+
+    background-color: white!important;
+    opacity: 0.7;
+    border-color: #242020 !important;
+    border-radius: 4px;
+}
+
+
+/*dropdown menus*/
+.dropdown-menu-custom{
+    display: block;
+    width: 100% ;
+    height: 34px;
+    padding: 0px 12px;
+    position: relative;
+    left: 4%;
+    top: auto;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: white!important;
+    opacity: 0.7;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #242020;
+    color: black;
+    font-family: inherit;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+
+.dropdown-menu-custom-left{
+    display: block;
+    width: 100% ;
+    height: 34px;
+    padding: 0px 12px;
+    position: relative;
+    left: 0%;
+    top: auto;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: white!important;
+    opacity: 0.7;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #242020;
+    color: black;
+    font-family: inherit;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+
+.dropdown-menu-custom-middle{
+    display: block;
+    width: 100% ;
+    height: 34px;
+    padding: 0px 12px;
+    background-color: white !important;
+    opacity: 0.7;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #242020;
+    color: black;
+    position: relative;
+    left: 2%;
+    top: auto;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: inherit;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+
+.font-weight-bold{
+    font-size: 40px;
+    color: inherit;
+    font-weight: bolder;
+}
+
+#id{
+    color: white;
+}

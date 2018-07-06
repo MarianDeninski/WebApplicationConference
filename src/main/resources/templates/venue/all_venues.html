@@ -1,0 +1,19 @@
+<div class="container body-container">
+    <div class="center-fit">
+        <div class="task-column">
+            <div class="task-column-header">
+                <h3 class = "custom-letters">All Venues</h3>
+            </div>
+            <div class="task-column-body">
+                <th:block th:each="venue : ${venues}">
+                    <div class="venue custom-field-add-venue">
+                        <a th:href="@{/user/venue/{id}(id=${venue.id})}">
+                            <div class = "custom-letters" th:text="${venue.name}"></div>
+                            <div class = "custom-letters" th:text="${venue.address}"></div>
+                        </a>
+                    </div>
+                </th:block>
+            </div>
+        </div>
+    </div>
+</div>

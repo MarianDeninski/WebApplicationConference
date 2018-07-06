@@ -4,12 +4,14 @@ import com.teamthree.conferencescheduler.app_utils.DateUtil;
 import com.teamthree.conferencescheduler.dto.conference.CreateConferenceDto;
 import com.teamthree.conferencescheduler.entities.Conference;
 import com.teamthree.conferencescheduler.entities.Session;
+import com.teamthree.conferencescheduler.entities.User;
 import com.teamthree.conferencescheduler.entities.Venue;
 import com.teamthree.conferencescheduler.exceptions.ApplicationRuntimeException;
 import com.teamthree.conferencescheduler.service.api.ConferenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -115,6 +117,26 @@ public class ConferenceController {
     public String details(@PathVariable long id, Model model) {
         Conference conference = conferenceService.findConference(id);
         List<Session> sessions = conference.getSessions();
+        boolean ownerButton = false;
+        if(SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getPrincipal().equals("anonymousUser")){
+            ownerButton=false;
+        }
+        else {
+
+            UserDetails principal = (UserDetails) SecurityContextHolder
+                    .getContext()
+                    .getAuthentication()
+                    .getPrincipal();
+
+
+            if(this.conferenceService.checkIfLoggedInUserIsOwner(principal,conference)) {
+                ownerButton=true;
+            }
+        }
+        model.addAttribute("ownerButton",ownerButton);
         model.addAttribute("sessions",sessions);
         model.addAttribute(VIEW, CONFERENCE_DETAILS);
         model.addAttribute("conference", conference);
