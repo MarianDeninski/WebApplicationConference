@@ -27,12 +27,16 @@ import static com.teamthree.conferencescheduler.constants.views.ViewConstants.*;
 @RequestMapping("/session")
 public class SessionController {
 
+    // I use seminar for variable name cause session is reserved name for model.addAttribute()
+
+
     private SessionService sessionService;
     private UserService userService;
+    //couldn't think of a smarter way atm... :/
+    private static long sessionId;
 
     @Autowired
     public SessionController(SessionService sessionService, UserService userService){
-
         this.sessionService=sessionService;
         this.userService =userService;
 
@@ -63,10 +67,33 @@ public class SessionController {
     @PreAuthorize("isAuthenticated()")
     public String createSession(SessionDto dto, Model model){
         Session session =this.sessionService.createSession(dto);
-        model.addAttribute("session", session);
-        model.addAttribute(VIEW, SESSION_DETAILS);
+
+        Conference conference = session.getConference();
+        this.sessionId = session.getId();
+        model.addAttribute("conference", conference);
+        model.addAttribute(VIEW, SESSION_ADD_HALL);
         return BASE_LAYOUT;
     }
+
+    @PostMapping("/addhall")
+    @PreAuthorize("isAuthenticated()")
+    public String addHall(SessionDto dto,Model model){
+        Session sessionWorkingOn = sessionService.getById(this.sessionId);
+        Session seminar=this.sessionService.addSessionToHall(dto,sessionWorkingOn);
+
+        model.addAttribute("seminar",seminar);
+        model.addAttribute(VIEW,SESSION_DETAILS);
+        return BASE_LAYOUT;
+    }
+
+//    @RequestMapping("addhall")
+//    @PreAuthorize("isAuthenticated()")
+//    public String getAddHall(Model model){
+//        Conference conference = this.sessionService.getConferenceById(this.conferenceId);
+//        model.addAttribute("conference",conference);
+//        model.addAttribute(VIEW,SESSION_ADD_HALL);
+//        return BASE_LAYOUT;
+//    }
 
     @RequestMapping(value = "/edit/id",method = RequestMethod.GET)
     @PreAuthorize("isAuthenticated()")
@@ -90,9 +117,9 @@ public class SessionController {
     @PreAuthorize("isAuthenticated()")
     public String editPage(@PathVariable Long id, SessionDto dto, Model model){
 
-        Session session=this.sessionService.editSession(id,dto);
+        Session seminar=this.sessionService.editSession(id,dto);
 
-        model.addAttribute("session",session);
+        model.addAttribute("seminar",seminar);
         model.addAttribute(VIEW,SESSION_DETAILS);
         return BASE_LAYOUT ;
     }
@@ -100,11 +127,11 @@ public class SessionController {
     @RequestMapping("/details/{id}")
     @PreAuthorize("isAuthenticated()")
     public String getDetails(@PathVariable Long id, Model model){
-        Session session = this.sessionService.getById(id);
-        if(session==null){
+        Session seminar = this.sessionService.getById(id);
+        if(seminar==null){
             return "redirect:/home/index";
         }
-        model.addAttribute("session", session);
+        model.addAttribute("seminar", seminar);
         model.addAttribute(VIEW,SESSION_DETAILS);
         return BASE_LAYOUT;
     }

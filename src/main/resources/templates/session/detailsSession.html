@@ -1,0 +1,59 @@
+
+<div class="panel panel-info">
+    <h1 class="panel-title text-center font-weight-bold" th:text="${seminar.name}"></h1>
+    <div class="panel-body">
+        <div class="row">
+            <!--<img src="https://projectcontroltraining.com/wp-content/uploads/2016/02/project-controls-Conferences.jpg" style="width5%;"></img>-->
+            <div class="col-lg-6 col-lg-offset-3 text-center">
+                <table class="table table-user-information">
+                    <tbody>
+                    <tr>
+                        <th>Description</th>
+                        <td th:text="${seminar.description}"></td>
+                    </tr>
+                    <tr>
+                        <th>Day of session</th>
+                        <td th:text="${seminar.day}"></td>
+                    </tr>
+                    <tr>
+                        <th>Start Hour</th>
+                        <td th:text="${seminar.startHour}"></td>
+                    </tr>
+                    <tr>
+                        <th>End Hour</th>
+                        <td th:text="${seminar.endHour}"></td>
+                    </tr>
+
+
+                    <tr>
+                        <th>Hall</th>
+                        <td th:text="${seminar.hall.name}"></td>
+                    </tr>
+                    <tr>
+                        <th>Venue Address</th>
+                        <td th:text="${seminar.hall.venue.address}"></td>
+                    </tr>
+                    <tr>
+                        <th>Speaker Name</th>
+                        <td th:text="${seminar.speaker.name}"></td>
+                    </tr>
+                    <br/>
+                    <img th:src="@{seminar.speaker.photo}"/>
+                    <tr>
+                        <th>Speaker Description</th>
+                        <td th:text="${seminar.speaker.description}"></td>
+                    </tr>
+                    <tr>
+                        <th>Seat Capacity</th>
+                        <td th:text="seminar.hall.seatCapacity"></td>
+                    </tr>
+                    </tbody>
+                </table>
+    <!-- link to mark user as going to be implemented -->
+                <a  class="btn btn-success">Join us</a>
+            </div>
+        </div>
+    </div>
+
+
+</div>

@@ -20,4 +20,8 @@ public interface SessionService {
     Session getById(Long id);
 
     void deleteById(Long id);
+
+    Conference getConferenceById(long conferenceId);
+
+    Session addSessionToHall(SessionDto dto, Session session);
 }

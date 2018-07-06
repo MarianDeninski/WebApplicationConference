@@ -9,13 +9,14 @@
                         <div class="item">
                             <a th:href="@{http://www.thymeleaf/documentation.html}">
                                 <div class="col-xs-4">
-                                    <a href="https://softuni.bg/">
+                                    <a th:href="@{/user/conference/{id}(id=${conference.id})}">
                                         <img class="img-responsive" th:src="@{images/carousel/picHome.jpg}"
                                              alt="Conference"/>
 
+                                        <div th:text="Date " class="date-homepage"></div>
                                         <div th:text="${conference.name}" class="centered col-xs-4"></div>
 
-                       +                 <div th:text="${conference.startDate}" class="bottom-left col-xs-4">
+                                        <div th:text="${conference.startDate}" class="bottom-left col-xs-4">
                                         </div>
                                     </a>
                                 </div>
@@ -38,10 +39,10 @@
                 interval: false
             });
 
-             counter = 0;
+            counter = 0;
             $('.multi-item-carousel .item').each(function () {
 
-                if(counter===0){
+                if (counter === 0) {
                     $(this).addClass('active');
                 }
                 counter++;
@@ -59,8 +60,5 @@
                 }
             });
         </script>
-
-
     </div>
-
 </div>

@@ -48,6 +48,14 @@ public class HomeController {
         model.addAttribute(VIEW, HOME_INDEX);
         return HOME_BASE_LAYOUT;
     }
+//    @GetMapping("/details")
+//
+//    public String details(Model model){
+//
+//
+//
+//
+//    }
 
 
 }

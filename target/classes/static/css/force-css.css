@@ -3,7 +3,7 @@
     color: white !important;
     font-size: 220% !important;
     font-weight: bold !important;
-    font-family: Arial Black !important;
+    font-family: Phosphate!important;
     position: absolute !important;
     top: 30%!important;
     left: 34% !important;
@@ -14,12 +14,77 @@
 
 }
 
+<<<<<<< HEAD
+.btn-default:hover {
+    color: #847777 !important;
+    background-color: rgba(44, 22, 22, 0.42) !important;
+    border-color: #242020 !important;
+}
+
+
+.btn-default {
+    color: #141212 !important;
+    background-color: rgba(44, 22, 22, 0.42) !important;
+    border-color: #242020 !important;
+}
+
+
+
+.btn-primary:hover  {
+    color: #847777 !important;
+    background-color: rgba(44, 22, 22, 0.42) !important;
+    border-color: #242020 !important;
+}
+
+
+.btn-primary {
+
+    color: #141212 !important;
+
+    background-color: rgba(44, 22, 22, 0.42)!important;
+
+    border-color: #242020 !important;
+
+}
+.color-letter{
+
+    color: #242020 !important;
+
+
+}
+
+
+
+=======
+.background-home{
+
+    background-color: rgba(44, 22, 22, 0.42) !important;
+    border-color: #e7e7e7 !important;
+}
+.border-home-carousel{
+    background-color: rgba(44, 22, 22, 0.42) !important;
+    border-color: #e7e7e7 !important;
+}
+
+>>>>>>> 1f8f275060250f4c919c490f29e6140d37f11260
 .bottom-left {
     position: absolute !important;
     color: white !important;
     font-family: Apple Chancery!important;
-    bottom: 40px !important;
-    left: 70px !important;
+    bottom: 20px !important;
+    left: 250px !important;
+}
+.date-homepage {
+
+    font-size: 150% !important;
+
+    font-weight: bold !important;
+    font-family: Apple Chancery!important;
+    color: white !important;
+
+    position: absolute !important;
+    top: 120px !important;
+    left: 262px !important;
 }
 
 body{
@@ -29,15 +94,13 @@ body{
 
 .text-white-color{
     color: white;
+    font-weight: bold !important;
+    font-family: Phosphate!important;
 }
 
 
 
-.top-left {
-    position: absolute !important;
-    top: 8px !important;
-    left: 16px !important;
-}
+
 
 .top-right {
     position: absolute !important;
