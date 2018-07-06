@@ -69,10 +69,14 @@
     border-color: #e7e7e7 !important;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 =======
 >>>>>>> bf1df68e98985228cb79699de662d87b2fc9521e
+=======
+
+>>>>>>> f49a7237b0b542f9263419fb1fbdf1bb87e4f5e1
 .bottom-left {
     position: absolute !important;
     color: white !important;
@@ -99,7 +103,9 @@ body{
 }
 
 .text-white-color{
-    color: white;
+    color:  white;
+    font-size: 10px;
+    text-align: right;
     font-weight: bold !important;
     font-family: Phosphate!important;
 }
