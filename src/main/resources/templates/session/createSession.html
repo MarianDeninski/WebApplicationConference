@@ -4,97 +4,92 @@
         <div class="well background-home custom-letters">
             <form class="form-horizontal" th:action="@{/session/create}" method="post">
                 <fieldset>
-                    <legend class = "custom-letters">Add Session</legend>
+                    <legend class="custom-letters">Add Session</legend>
 
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="session_name">Name</label>
                         <div class="col-sm-6">
-                            <input class="form-control custom-input-field" type="text" id="session_name" placeholder="Name"
+                            <input class="form-control custom-input-field" type="text" id="session_name"
+                                   placeholder="Name"
                                    name="name" required="required" autofocus="autofocus"/>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-4 control-label">Description</label>
-<<<<<<< HEAD
                         <div class="col-sm-3">
-                            <textarea name="description" placeholder="Enter text here..."
-=======
-                        <div class="col-sm-4">
+
                             <textarea class="custom-input-field" name="description" placeholder="Enter text here..."
->>>>>>> 46e33c3b7c41cf5347b0861ccf2a8f3d048c04ab
                                       style="margin: 0px; width: 314px; height: 186px;"></textarea>
                         </div>
                     </div>
-<!--
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label">Day of Session</label>
-                        <div class="col-sm-6">
-                            <input class="form-control" type="date"  placeholder=""
-                                   name="day" required="required"/>
-                        </div>
-                    </div>
+                    <!--
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">Day of Session</label>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" type="date"  placeholder=""
+                                                       name="day" required="required"/>
+                                            </div>
+                                        </div>
 
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label" for="session_startDate">Start Hour</label>
-                        <div class="col-sm-6">
-                            <input class="form-control" type="time"  id="session_startDate"
-                                   placeholder="hh:MM"
-                                   name="startHour" required="required"/>
-                        </div>
-                    </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label" for="session_startDate">Start Hour</label>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" type="time"  id="session_startDate"
+                                                       placeholder="hh:MM"
+                                                       name="startHour" required="required"/>
+                                            </div>
+                                        </div>
 
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label">End Hour</label>
-                        <div class="col-sm-6">
-                            <input class="form-control" type="time"  placeholder="hh:MM"
-                                   name="endHour" required="required"/>
-                        </div>
-                    </div>
--->
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">End Hour</label>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" type="time"  placeholder="hh:MM"
+                                                       name="endHour" required="required"/>
+                                            </div>
+                                        </div>
+                    -->
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="speaker_name">Speaker Name</label>
                         <div class="col-sm-6">
-                            <input class="form-control custom-input-field" type="text" id="speaker_name" placeholder="Speaker Name"
+                            <input class="form-control custom-input-field" type="text" id="speaker_name"
+                                   placeholder="Speaker Name"
                                    name="speakerName" required="required" autofocus="autofocus"/>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-4 control-label">Speaker Description</label>
-<<<<<<< HEAD
                         <div class="col-sm-3">
-                            <textarea name="speakerDescription" placeholder="Enter text here..."
-=======
-                        <div class="col-sm-4">
-                            <textarea class = "custom-input-field" name="speakerDescription" placeholder="Enter text here..."
->>>>>>> 46e33c3b7c41cf5347b0861ccf2a8f3d048c04ab
+                            <textarea class="custom-input-field" name="speakerDescription"
+                                      placeholder="Enter text here..."
                                       style="margin: 0px; width: 314px; height: 93px;"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-4 control-label">Add Photo Url</label>
                         <div class="col-sm-4">
-                        <input class="form-control custom-input-field" type="text" name="speakerPhoto" id="url" placeholder="Photo link"/>
+                            <input class="form-control custom-input-field" type="text" name="speakerPhoto" id="url"
+                                   placeholder="Photo link"/>
                         </div>
                     </div>
 
-                        <div class="form-group">
-                            <label class="col-sm-4 control-label">Select Conference</label>
-                            <div class="col-sm-6">
-                                <select class="dropdown-menu-custom-left" name="conferenceName">
-                                    <option class="col-sm-6" th:each="conference : ${conferences}"
-                                            th:text="${conference.name}"></option>
-                                </select>
-                            </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Select Conference</label>
+                        <div class="col-sm-6">
+                            <select class="dropdown-menu-custom-left" name="conferenceName">
+                                <option class="col-sm-6" th:each="conference : ${conferences}"
+                                        th:text="${conference.name}"></option>
+                            </select>
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            <div class="col-sm-4 col-sm-offset-4">
-                                <a class="btn btn-default" th:href="@{/}">Cancel</a>
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                            </div>
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-4">
+                            <a class="btn btn-default" th:href="@{/}">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
+                    </div>
 
                 </fieldset>
             </form>
