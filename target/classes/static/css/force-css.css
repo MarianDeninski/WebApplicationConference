@@ -13,10 +13,45 @@
     border: #217dbb;
 
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> 2bf37e685d104dd3213b3e5d7d77fc995482955e
+
+.carousel123{
+
+    color: white !important;
+    font-size: 100% !important;
+    font-weight: bold !important;
+    font-family: Phosphate!important;
+    position: absolute !important;
+    top: 45%!important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+
+
+    border: #217dbb;
+
+}
+
+.carouse-three{
+
+    color: white !important;
+    font-size: 100% !important;
+    font-weight: bold !important;
+    font-family: Phosphate!important;
+    position: absolute !important;
+    top: 45%!important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+
+
+    border: #217dbb;
+
+}
+
+
+.comeOn{
+    color: green !important;
+}
+
 .btn-default:hover {
     color: #847777 !important;
     background-color: #8c6b42; !important;
