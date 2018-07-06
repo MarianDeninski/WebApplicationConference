@@ -57,9 +57,11 @@
 
              <!--   <a  class="btn btn-success">Join us</a> -->
                 <div th:if="${ownerButton}">
-                    <a th:href="@{/edit/seminar/seminar.id}" class="btn btn-primary">Edit</a>
-
+                    <a th:href="@{/seminar/edit/__${seminar.id}__}" class="btn btn-primary">Edit</a>
                 </div>
+
+
+
             </div>
         </div>
     </div>

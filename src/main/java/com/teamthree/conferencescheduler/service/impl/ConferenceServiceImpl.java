@@ -95,4 +95,9 @@ public class ConferenceServiceImpl implements ConferenceService {
         return false;
     }
 
+    @Override
+    public Conference getById(long id) {
+        return this.conferenceRepository.getOne(id);
+    }
+
 }

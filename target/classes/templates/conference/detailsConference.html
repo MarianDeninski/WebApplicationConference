@@ -34,10 +34,19 @@
                       </tbody>
                   </table>
 
+<<<<<<< HEAD
                 <div th:if="${ownerButton}">
                     <a th:href="@{/edit/conference/conference.id}" class="btn btn-primary">Edit</a>
 
                 </div>
+=======
+                  <!--  <a th:href="@{/conference/edit(id=conference.id)}" class="btn btn-primary">Edit</a> -->
+                <!--    <a th:href="@{'/conference/edit/'${conference.id}}" th:object="${conference}" class="btn btn-primary">Edit</a> -->
+
+            <div th:if="${ownerButton}">
+                <a th:href="@{/conference/edit/__${conference.id}__}" class="btn btn-primary">Edit</a>
+            </div>
+>>>>>>> c17dd03282782bff62c5e929958370c65487b842
 
                 <h3>Sessions</h3>
                 <table class="table table-stripped">
