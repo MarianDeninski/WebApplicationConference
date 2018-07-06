@@ -13,6 +13,7 @@
     border: #217dbb;
 
 }
+
 .btn-default:hover {
     color: #f9f0f0 !important;
     background-color: #342314!important;
@@ -265,3 +266,10 @@ body{
     font-size: 30px; !important;
 }
 */
+ .nav-br {
+    color: #f9f0f0 !important;
+}
+ .nav-br:hover {
+    color: #76614b !important;
+    background-color: transparent;
+}

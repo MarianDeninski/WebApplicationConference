@@ -32,8 +32,9 @@ public class SessionController {
 
     private SessionService sessionService;
     private UserService userService;
+    private static Session staticSession;
     //couldn't think of a smarter way atm... :/
-    private static long sessionId;
+   // private static long sessionId;
 
     @Autowired
     public SessionController(SessionService sessionService, UserService userService){
@@ -66,10 +67,10 @@ public class SessionController {
     @PostMapping("/create")
     @PreAuthorize("isAuthenticated()")
     public String createSession(SessionDto dto, Model model){
-        Session session =this.sessionService.createSession(dto);
+        this.staticSession =this.sessionService.createSession(dto);
 
-        Conference conference = session.getConference();
-        this.sessionId = session.getId();
+        Conference conference = this.staticSession.getConference();
+      //  this.sessionId =this.staticSession.getId();
         model.addAttribute("conference", conference);
         model.addAttribute(VIEW, SESSION_ADD_HALL);
         return BASE_LAYOUT;
@@ -78,12 +79,13 @@ public class SessionController {
     @PostMapping("/addhall")
     @PreAuthorize("isAuthenticated()")
     public String addHall(SessionDto dto,Model model){
-        Session sessionWorkingOn = sessionService.getById(this.sessionId);
-        Session seminar=this.sessionService.addSessionToHall(dto,sessionWorkingOn);
 
-        model.addAttribute("seminar",seminar);
-        model.addAttribute(VIEW,SESSION_DETAILS);
-        return BASE_LAYOUT;
+        //TODO THIS SHIT HAVE TO BE FIXED
+        //Session seminar=this.sessionService.addSessionToHall(dto,sessionWorkingOn);
+        Session seminar = this.sessionService.addSessionToHall(dto ,this.staticSession);
+
+        //model.addAttribute("seminar",seminar);
+        return "redirect:/";
     }
 
 //    @RequestMapping("addhall")
@@ -113,6 +115,21 @@ public class SessionController {
         return BASE_LAYOUT;
     }
 
+    @RequestMapping(value = "/joinsession",method = RequestMethod.POST)
+    @PreAuthorize("isAuthenticated()")
+    public String assertAttendance(@PathVariable Long sessionId,Model model){
+        UserDetails principal = (UserDetails) SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getPrincipal();
+
+        User user = this.userService.findByUsername(principal.getUsername());
+        this.sessionService.addUserToSession(user,sessionId);
+        Conference conference = this.sessionService.getConferenceBySessionId(sessionId);
+
+        return "redirect:/conference/details/"+conference.getId();
+    }
+
     @PostMapping("/edit/{id}")
     @PreAuthorize("isAuthenticated()")
     public String editPage(@PathVariable Long id, SessionDto dto, Model model){
@@ -129,7 +146,7 @@ public class SessionController {
     public String getDetails(@PathVariable Long id, Model model){
         Session seminar = this.sessionService.getById(id);
         if(seminar==null){
-            return "redirect:/home/index";
+            return "redirect:/";
         }
         boolean ownerButton = false;
 

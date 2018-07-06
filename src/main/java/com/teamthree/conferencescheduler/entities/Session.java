@@ -2,7 +2,9 @@ package com.teamthree.conferencescheduler.entities;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "sessions")
@@ -32,6 +34,8 @@ public class Session {
     @ManyToOne()
     private Conference conference;
 
+    @ManyToMany(mappedBy = "userSessions")
+    private List<User> usersGoing;
     private String day;
     public Session() {
     }
@@ -40,6 +44,12 @@ public class Session {
         this.name = name;
         this.description = description;
         this.conference = conference;
+        this.usersGoing = new ArrayList<User>() ;
+
+    }
+
+    public List<User> getUsersGoing() {
+        return usersGoing;
     }
 
     public String getDay() {
