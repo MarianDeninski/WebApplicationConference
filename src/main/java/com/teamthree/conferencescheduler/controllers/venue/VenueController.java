@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.security.Principal;
+import java.util.List;
 
 import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.ADD_VENUE;
+import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.ALL_VENUES;
 import static com.teamthree.conferencescheduler.constants.views.ViewConstants.*;
 
 @Controller
@@ -41,6 +43,14 @@ public class VenueController {
         return BASE_LAYOUT;
     }
 
+    @GetMapping("/all")
+    public String allVenue(Model model) {
+
+        List<Venue> venues = this.venueService.getAllVenues();
+        model.addAttribute("venues", venues);
+        model.addAttribute(VIEW, ALL_VENUES);
+        return BASE_LAYOUT;
+    }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @PreAuthorize("isAuthenticated()")

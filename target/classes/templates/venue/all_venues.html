@@ -1,0 +1,20 @@
+<div class="container body-container">
+    <div class="center-fit">
+        <div class="task-column">
+            <div class="task-column-header">
+                <h3 class="center-fit">All Venues</h3>
+            </div>
+            <div class="task-column-body">
+                <th:block th:each="venue : ${venues}">
+                    <div class="venue">
+                        <a class="btn btn-default btn-xs"
+                           th:href="@{/user/venue/{id}(id=${venue.id})}">
+                            <div th:text="${venue.name}"></div>
+                            <div th:text="${venue.address}"></div>
+                        </a>
+                    </div>
+                </th:block>
+            </div>
+        </div>
+    </div>
+</div>
