@@ -2,7 +2,7 @@
     <div class="navbar navbar-default navbar-static-top background-home" role="navigation">
         <div class="container">
             <div class="navbar-header nav-br nav-br:hover">
-                <a th:href="@{/}" class="navbar-brand nav-br nav-br:hover">CONFERENCE SCHEDULER</a>
+                <a th:href="@{/}" class="navbar-brand nav-br nav-br:ho">CONFERENCE SCHEDULER</a>
 
                 <button type="button" class="navbar-toggle " data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
@@ -13,11 +13,15 @@
                 </button>
             </div>
             <div class="navbar-collapse collapse ">
-                <ul class="nav navbar-nav navbar-right ">
-
+                <ul class="nav navbar-nav navbar-right comeOn ">
 
                     <li sec:authorize="isAuthenticated()">
+<<<<<<< HEAD
                         <a class="nav-br nav-br:hover"  th:href="@{/venue/all}">
+=======
+                        <a th:href="@{/venue/all}" class="nav-br nav-br:hover" >
+
+>>>>>>> 09bac441cec49dbde7756895d056f70bd60d5b3a
                             Show All Venues
                         </a>
                     </li>
@@ -49,7 +53,7 @@
                     <li sec:authorize="isAuthenticated()" style="margin-top: 15px;"> |</li>
 
                     <li sec:authorize="isAuthenticated()">
-                        <a th:href="@{/session/create}">
+                        <a th:href="@{/session/create}" class="nav-br nav-br:hover">
                             Add Session
                         </a>
                     </li>

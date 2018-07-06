@@ -14,6 +14,47 @@
 
 }
 
+<<<<<<< HEAD
+
+.carousel123{
+
+    color: white !important;
+    font-size: 100% !important;
+    font-weight: bold !important;
+    font-family: Phosphate!important;
+    position: absolute !important;
+    top: 45%!important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+
+
+    border: #217dbb;
+
+}
+
+.carouse-three{
+
+    color: white !important;
+    font-size: 100% !important;
+    font-weight: bold !important;
+    font-family: Phosphate!important;
+    position: absolute !important;
+    top: 45%!important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+
+
+    border: #217dbb;
+
+}
+
+
+.comeOn{
+    color: green !important;
+}
+
+=======
+>>>>>>> d21018edf91052811422a41dd35fd7cd9c39e9dd
 .btn-default:hover {
     color: #f9f0f0 !important;
     background-color: #342314!important;
