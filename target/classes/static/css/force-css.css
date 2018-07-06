@@ -13,8 +13,6 @@
     border: #217dbb;
 
 }
-
-<<<<<<< HEAD
 .btn-default:hover {
     color: #847777 !important;
     background-color: rgba(44, 22, 22, 0.42) !important;
@@ -52,10 +50,6 @@
 
 
 }
-
-
-
-=======
 .background-home{
 
     background-color: rgba(44, 22, 22, 0.42) !important;
@@ -65,8 +59,6 @@
     background-color: rgba(44, 22, 22, 0.42) !important;
     border-color: #e7e7e7 !important;
 }
-
->>>>>>> 1f8f275060250f4c919c490f29e6140d37f11260
 .bottom-left {
     position: absolute !important;
     color: white !important;
@@ -98,10 +90,6 @@ body{
     font-family: Phosphate!important;
 }
 
-
-
-
-
 .top-right {
     position: absolute !important;
     top: 8px !important;
@@ -114,4 +102,6 @@ body{
     right: 16px !important;
 }
 
-
+.custom-letters{
+    color: white;
+}
