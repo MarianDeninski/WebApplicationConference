@@ -8,7 +8,7 @@
 <header th:include="fragments/header"></header>
 
 <div th:if="${message != null}">
-    <h1 class="message" th:text="${message}"></h1>
+    <h1 class="message" th:text="${message}" style="color:red"></h1>
 </div>
 
 <main th:include="${view}"></main>
