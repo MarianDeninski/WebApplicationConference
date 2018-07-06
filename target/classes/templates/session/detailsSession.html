@@ -50,7 +50,16 @@
                     </tbody>
                 </table>
     <!-- link to mark user as going to be implemented -->
-                <a  class="btn btn-success">Join us</a>
+
+                <!--
+                i am not sure if this is the right way to get the link for edit
+                -->
+
+             <!--   <a  class="btn btn-success">Join us</a> -->
+                <div th:if="${ownerButton}">
+                       <!-- <a href="/edit/session/th:text="${seminar.id}"""" class="btn btn-primary">Edit</a> -->
+                      <!--  <a th:href="@{/edit/session/}"+ th:text="${seminar.id}}" class="btn btn-primary">Edit></a> -->
+                </div>
             </div>
         </div>
     </div>
