@@ -57,9 +57,14 @@
 
              <!--   <a  class="btn btn-success">Join us</a> -->
                 <div th:if="${ownerButton}">
-                       <!-- <a href="/edit/session/th:text="${seminar.id}"""" class="btn btn-primary">Edit</a> -->
-                      <!--  <a th:href="@{/edit/session/}"+ th:text="${seminar.id}}" class="btn btn-primary">Edit></a> -->
+                    <a th:href="@{/seminar/edit/__${seminar.id}__}" class="btn btn-primary">Edit</a>
+                    <form method="post" th:action="@{/sessions/delete/__${seminar.id}__}">
+                        <a th:href="@{/seminar/edit/__${seminar.id}__}" class="btn btn-danger">Delete</a>
+                    </form>
                 </div>
+
+
+
             </div>
         </div>
     </div>

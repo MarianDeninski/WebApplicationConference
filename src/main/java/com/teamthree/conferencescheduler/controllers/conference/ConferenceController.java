@@ -97,7 +97,8 @@ public class ConferenceController {
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public String getEditConference(@PathVariable long id, Model model) {
-        //TODO check if user own this conference
+        Conference conference = conferenceService.getById(id);
+        model.addAttribute("conference",conference);
         model.addAttribute(VIEW, CONFERENCE_EDIT);
         return BASE_LAYOUT;
     }
