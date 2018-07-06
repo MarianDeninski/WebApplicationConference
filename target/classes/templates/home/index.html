@@ -5,7 +5,7 @@
             <div class="carousel slide multi-item-carousel" id="theCarousel">
                 <div class="carousel-inner" id="colums">
                     <!--<th:block th:each="project : ${project}">-->
-                    <th:block th:each="conference: ${conferences}">
+                    <th:block th:each="conference: ${upcomingConferences}">
                         <div class="item">
                             <a th:href="@{http://www.thymeleaf/documentation.html}">
                                 <div class="col-xs-4">
@@ -72,7 +72,7 @@
             <div class="carousel slide multi-item-carousel" id="theCarousel1">
                 <div class="carousel-inner" id="colums1">
                     <!--<th:block th:each="project : ${project}">-->
-                    <th:block th:each="conference: ${conferences}">
+                    <th:block th:each="conference: ${activeConferences}">
                         <div class="item">
                             <a th:href="@{http://www.thymeleaf/documentation.html}">
                                 <div class="col-xs-4">
@@ -139,7 +139,7 @@
             <div class="carousel slide multi-item-carousel" id="theCarousel2">
                 <div class="carousel-inner" id="colums2">
                     <!--<th:block th:each="project : ${project}">-->
-                    <th:block th:each="conference: ${conferences}">
+                    <th:block th:each="conference: ${pastConferences}">
                         <div class="item">
                             <a th:href="@{http://www.thymeleaf/documentation.html}">
                                 <div class="col-xs-4">
