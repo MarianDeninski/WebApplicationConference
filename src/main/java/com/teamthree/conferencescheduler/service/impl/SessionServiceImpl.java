@@ -1,10 +1,11 @@
 package com.teamthree.conferencescheduler.service.impl;
 
-import com.teamthree.conferencescheduler.app_utils.DateUtil;
-import com.teamthree.conferencescheduler.app_utils.TimeDiffUtil;
 import com.teamthree.conferencescheduler.dto.session.SessionDto;
 import com.teamthree.conferencescheduler.entities.*;
-import com.teamthree.conferencescheduler.repositories.*;
+import com.teamthree.conferencescheduler.repositories.ConferenceRepository;
+import com.teamthree.conferencescheduler.repositories.HallRepository;
+import com.teamthree.conferencescheduler.repositories.SessionRepository;
+import com.teamthree.conferencescheduler.repositories.SpeakerRepository;
 import com.teamthree.conferencescheduler.service.api.SessionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,43 +14,43 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class SessionServiceImpl  implements SessionService {
+public class SessionServiceImpl implements SessionService {
     private SessionRepository sessionRepository;
     private SpeakerRepository speakerRepository;
     private ConferenceRepository conferenceRepository;
     private HallRepository hallRepository;
 
     @Autowired
-    public SessionServiceImpl(SessionRepository sessionRepository,SpeakerRepository speakerRepository,ConferenceRepository conferenceRepository,
-            HallRepository hallRepository) {
+    public SessionServiceImpl(SessionRepository sessionRepository, SpeakerRepository speakerRepository, ConferenceRepository conferenceRepository,
+                              HallRepository hallRepository) {
         this.sessionRepository = sessionRepository;
         this.speakerRepository = speakerRepository;
-        this.conferenceRepository=conferenceRepository;
-        this.hallRepository=hallRepository;
+        this.conferenceRepository = conferenceRepository;
+        this.hallRepository = hallRepository;
     }
 
     @Override
     public Session createSession(SessionDto dto) {
         //TODO TO BE TESTED WHEN HTML VIEW IS READY
-        Conference conference =conferenceRepository.findByName(dto.getConferenceName());
+        Conference conference = conferenceRepository.findByName(dto.getConferenceName());
 
-        Speaker  speaker = new Speaker(dto.getSpeakerName(),dto.getSpeakerDescription(),dto.getSpeakerPhoto());
-        Session session = new Session(dto.getName(),dto.getDescription(),conference);
+        Speaker speaker = new Speaker(dto.getSpeakerName(), dto.getSpeakerDescription(), dto.getSpeakerPhoto());
+        Session session = new Session(dto.getName(), dto.getDescription(), conference);
         this.sessionRepository.save(session);
         this.speakerRepository.save(speaker);
         speaker.setSession(session);
         session.setSpeaker(speaker);
         this.speakerRepository.saveAndFlush(speaker);
         this.sessionRepository.saveAndFlush(session);
-        return  session;
+        return session;
     }
 
     @Override
     public List<Conference> getAllConferencesOwnByUser(User user) {
-        List<Conference> allConferences=this.conferenceRepository.findAll();
+        List<Conference> allConferences = this.conferenceRepository.findAll();
         List<Conference> userConferences = new ArrayList<Conference>();
         for (Conference conference : allConferences) {
-            if(conference.getOwner().getId() == user.getId()){
+            if (conference.getOwner().getId() == user.getId()) {
                 userConferences.add(conference);
             }
         }
@@ -58,8 +59,8 @@ public class SessionServiceImpl  implements SessionService {
 
     @Override
     public boolean checkIfUserIsOwnerOfConference(Long id, User user) {
-        Conference conference =this.conferenceRepository.getOne(id);
-        if(conference.getOwner().getId() == user.getId()){
+        Conference conference = this.conferenceRepository.getOne(id);
+        if (conference.getOwner().getId() == user.getId()) {
             return true;
         }
         return false;
@@ -72,7 +73,7 @@ public class SessionServiceImpl  implements SessionService {
         session.setStartHour(dto.getStartHour());
         session.setName(dto.getName());
         session.setEndHour(dto.getEndHour());
-        Speaker speaker = new Speaker(dto.getName(),dto.getSpeakerDescription(),dto.getSpeakerPhoto());
+        Speaker speaker = new Speaker(dto.getName(), dto.getSpeakerDescription(), dto.getSpeakerPhoto());
         session.setSpeaker(speaker);
         this.sessionRepository.saveAndFlush(session);
         return session;
@@ -95,9 +96,9 @@ public class SessionServiceImpl  implements SessionService {
     }
 
     @Override
-    public Session addSessionToHall(SessionDto dto,Session session) {
+    public Session addSessionToHall(SessionDto dto, Session session) {
         Hall hall = this.hallRepository.findByName(dto.getHall());
-        if(this.checkIfHallIsTakenAtThatMoment(hall,dto)){
+        if (this.checkIfHallIsTakenAtThatMoment(hall, dto)) {
             //Throw error on view to choose another day or another hour
         }
 
@@ -109,7 +110,7 @@ public class SessionServiceImpl  implements SessionService {
         return session;
     }
 
-    private boolean checkIfHallIsTakenAtThatMoment(Hall hall,SessionDto dto) {
+    private boolean checkIfHallIsTakenAtThatMoment(Hall hall, SessionDto dto) {
 
         String targetSessionDay = dto.getDay();
         String targetSessionStartHour = dto.getStartHour();
@@ -118,17 +119,17 @@ public class SessionServiceImpl  implements SessionService {
         //String targetSessionDuration = DateUtil.getTimeLapseOfSession(dto.getStartHour(),dto.getEndHour());
 
         String sessionInDbStartHour = "";
-        String sessionInDbEndHour="";
+        String sessionInDbEndHour = "";
         //String sessionInDbDuration = "";
 
         //May be stupid , but it works
-        for (Session session : hall.getSessions() ) {
-            if(session.getDay().equals(targetSessionDay)){
+        for (Session session : hall.getSessions()) {
+            if (session.getDay().equals(targetSessionDay)) {
 
-                sessionInDbStartHour=session.getStartHour();
+                sessionInDbStartHour = session.getStartHour();
                 sessionInDbEndHour = session.getEndHour();
 
-                if(targetSessionStartHour.equals(sessionInDbStartHour)){
+                if (targetSessionStartHour.equals(sessionInDbStartHour)) {
                     return true;
                 }
 
@@ -137,8 +138,8 @@ public class SessionServiceImpl  implements SessionService {
 
                 int targetSessionStartHourInt = Integer.parseInt(targetSessionStartHour.split(":")[0]);
 
-                for (int i = sessionInDbStartHourInt; i <= sessionInDbEndHourInt ; i++) {
-                    if(i==targetSessionStartHourInt){
+                for (int i = sessionInDbStartHourInt; i <= sessionInDbEndHourInt; i++) {
+                    if (i == targetSessionStartHourInt) {
                         return true;
                     }
                 }
