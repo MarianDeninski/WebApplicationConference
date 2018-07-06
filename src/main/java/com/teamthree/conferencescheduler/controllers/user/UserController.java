@@ -191,13 +191,10 @@ public class UserController {
         venue.setName(dto.getName());
         venue.setAddress(dto.getAddress());
         try {
-            this.venueService.delete(id);
             this.venueService.addVenue(venue);
         } catch (ApplicationRuntimeException are) {
 
-            //FIXME: REMOVE MAGICAL TEXT AND NUMBERS
-            // FIXME: THIS MIGHT NOT BE THE ONLY REASON THAT EXCEPTION OCCURRED! CHECK FOR MORE CASES
-            model.addAttribute(VIEW_MESSAGE, "Please make some changes, or click the cancel button.");
+            model.addAttribute(VIEW_MESSAGE, are.getMessage());
             model.addAttribute("venue", venue);
             model.addAttribute(VIEW, "venue/show_venue");
 
@@ -215,8 +212,8 @@ public class UserController {
 
     @PostMapping("/programmeMaximum")
     @PreAuthorize("isAuthenticated()")
-    public String programeMaximum(@PathVariable Long id){
-      return null;
+    public String programeMaximum(@PathVariable Long id) {
+        return null;
     }
 
     //public String
