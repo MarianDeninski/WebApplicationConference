@@ -35,12 +35,13 @@ public class SessionServiceImpl implements SessionService {
 
         Speaker  speaker = new Speaker(dto.getSpeakerName(),dto.getSpeakerDescription(),dto.getSpeakerPhoto());
         Session session = new Session(dto.getName(),dto.getDescription(),conference);
-        //TODO find a way that save doesnt flush the data to the db
+
+        //TODO find a way that save doesn't flush the data to the db, or just use AJAX and 1 page for creating session
 
         this.sessionRepository.save(session);
         this.speakerRepository.save(speaker);
-        speaker.setSession(session);
         session.setSpeaker(speaker);
+        speaker.setSession(session);
         return  session;
     }
 
