@@ -85,7 +85,7 @@ public class SessionController {
         Session seminar = this.sessionService.addSessionToHall(dto ,this.staticSession);
 
         //model.addAttribute("seminar",seminar);
-        return "redirect:/home/index";
+        return "redirect:/";
     }
 
 //    @RequestMapping("addhall")
@@ -146,7 +146,7 @@ public class SessionController {
     public String getDetails(@PathVariable Long id, Model model){
         Session seminar = this.sessionService.getById(id);
         if(seminar==null){
-            return "redirect:/home/index";
+            return "redirect:/";
         }
         boolean ownerButton = false;
 
