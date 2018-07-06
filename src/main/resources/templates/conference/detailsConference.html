@@ -34,6 +34,10 @@
                       </tbody>
                   </table>
 
+                <div th:if="${ownerButton}">
+                    <a href="/edit/session/th:text${conference.id}}" class="btn btn-primary">Edit</a>
+                </div>
+
                 <h3>Sessions</h3>
                 <table class="table table-stripped">
                     <tr>

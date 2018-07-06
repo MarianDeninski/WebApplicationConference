@@ -10,8 +10,10 @@ import com.teamthree.conferencescheduler.repositories.UserRepository;
 import com.teamthree.conferencescheduler.repositories.VenueRepository;
 import com.teamthree.conferencescheduler.service.api.ConferenceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -81,6 +83,15 @@ public class ConferenceServiceImpl implements ConferenceService {
     @Override
     public boolean checkIfThereIsOtherConferenceInVenueAtThatTime(CreateConferenceDto dto) {
         //TODO
+        return false;
+    }
+
+    @Override
+    public boolean checkIfLoggedInUserIsOwner(UserDetails principal,Conference conference) {
+        User user = this.userRepository.findByUsername(principal.getUsername());
+        if(user.getId() == conference.getOwner().getId()){
+            return true;
+        }
         return false;
     }
 

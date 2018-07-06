@@ -3,6 +3,7 @@ package com.teamthree.conferencescheduler.service.api;
 import com.teamthree.conferencescheduler.dto.conference.CreateConferenceDto;
 import com.teamthree.conferencescheduler.entities.Conference;
 import com.teamthree.conferencescheduler.entities.Venue;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,4 +23,6 @@ public interface ConferenceService {
     List<Venue> getAllVenues();
 
     boolean checkIfThereIsOtherConferenceInVenueAtThatTime(CreateConferenceDto dto);
+
+    boolean checkIfLoggedInUserIsOwner(UserDetails principal,Conference conference);
 }
