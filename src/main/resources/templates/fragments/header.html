@@ -16,8 +16,13 @@
                 <ul class="nav navbar-nav navbar-right comeOn ">
 
 
+<<<<<<< HEAD
                     <li sec:authorize="isAuthenticated()" class="comeOn">
                         <a th:href="@{/venue/all}" class="comeOn" >
+=======
+                    <li sec:authorize="isAuthenticated()">
+                        <a th:href="@{/venue/all}" class="nav-br nav-br:hover" >
+>>>>>>> d21018edf91052811422a41dd35fd7cd9c39e9dd
                             Show All Venues
                         </a>
                     </li>
@@ -25,7 +30,7 @@
                     <li sec:authorize="isAuthenticated()" style="margin-top: 15px;"> |</li>
 
                     <li sec:authorize="isAuthenticated()">
-                        <a th:href="@{/conference/create}">
+                        <a th:href="@{/conference/create}" class="nav-br nav-br:hover">
                             Create Conference
                         </a>
                     </li>
@@ -33,7 +38,7 @@
                     <li sec:authorize="isAuthenticated()" style="margin-top: 15px;"> |</li>
 
                     <li sec:authorize="isAuthenticated()">
-                        <a th:href="@{/venue/add}">
+                        <a th:href="@{/venue/add}" class="nav-br nav-br:hover">
                             Add Venue
                         </a>
                     </li>
@@ -41,7 +46,7 @@
                     <li sec:authorize="isAuthenticated()" style="margin-top: 15px;"> |</li>
 
                     <li sec:authorize="isAuthenticated()">
-                        <a th:href="@{/hall/add}">
+                        <a th:href="@{/hall/add}" class="nav-br nav-br:hover">
                             Add Hall
                         </a>
                     </li>
@@ -49,7 +54,7 @@
                     <li sec:authorize="isAuthenticated()" style="margin-top: 15px;"> |</li>
 
                     <li sec:authorize="isAuthenticated()">
-                        <a th:href="@{/session/create}">
+                        <a th:href="@{/session/create}" class="nav-br nav-br:hover">
                             Add Session
                         </a>
                     </li>
@@ -57,7 +62,7 @@
                     <li sec:authorize="isAuthenticated()" style="margin-top: 15px;"> | </li>
 
                     <li sec:authorize="isAuthenticated()">
-                        <a th:href="@{/user/profile}">
+                        <a th:href="@{/user/profile}" class="nav-br nav-br:hover">
                             My Profile
                         </a>
                     </li>
@@ -66,7 +71,7 @@
 
 
                     <li sec:authorize="isAuthenticated()">
-                        <a th:href="@{/user/logout}">
+                        <a th:href="@{/user/logout}" class="nav-br nav-br:hover">
                             Logout
                         </a>
                     </li>
@@ -74,7 +79,7 @@
 
 
                     <li sec:authorize="isAnonymous()">
-                        <a th:href="@{/venue/all}">
+                        <a th:href="@{/venue/all}" class="nav-br nav-br:hover">
                             Show All Venues
                         </a>
                     </li>
@@ -82,7 +87,7 @@
                     <li sec:authorize="isAnonymous()" style="margin-top: 15px;"> |</li>
 
                     <li sec:authorize="isAnonymous()">
-                        <a th:href="@{/user/register}">
+                        <a th:href="@{/user/register}" class="nav-br nav-br:hover">
                             Register
                         </a>
                     </li>
@@ -90,7 +95,7 @@
                     <li sec:authorize="isAnonymous()" style="margin-top: 15px;"> |</li>
 
                     <li sec:authorize="isAnonymous()">
-                        <a th:href="@{/user/login}">
+                        <a th:href="@{/user/login}" class="nav-br nav-br:hover">
                             Login
                         </a>
                     </li>
