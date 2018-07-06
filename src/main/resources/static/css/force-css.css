@@ -13,6 +13,7 @@
     border: #217dbb;
 
 }
+
 .btn-default:hover {
     color: #847777 !important;
     background-color: #8c6b42; !important;
@@ -234,4 +235,12 @@ body{
     font-size: large;
     font-weight: bold !important;
     font-family: Phosphate!important;
+}
+
+ .nav-br {
+    color: #f9f0f0 !important;
+}
+ .nav-br:hover {
+    color: #76614b !important;
+    background-color: transparent;
 }
