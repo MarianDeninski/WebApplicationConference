@@ -69,7 +69,7 @@ public class ProgramMaximumUtil {
                 (e1, e2) -> e2, LinkedHashMap::new));
 
 
-        String[] start = timeNow.split(":");
+        String[] start = "06:00".split(":");
 
         int hour = 0;
         int minute = 0;
