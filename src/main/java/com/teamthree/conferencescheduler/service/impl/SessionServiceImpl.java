@@ -1,6 +1,7 @@
 package com.teamthree.conferencescheduler.service.impl;
 
 import com.teamthree.conferencescheduler.dto.session.SessionDto;
+import com.teamthree.conferencescheduler.dto.session.SessionDto2;
 import com.teamthree.conferencescheduler.entities.*;
 import com.teamthree.conferencescheduler.exceptions.ApplicationRuntimeException;
 import com.teamthree.conferencescheduler.repositories.ConferenceRepository;
@@ -20,6 +21,7 @@ public class SessionServiceImpl implements SessionService {
     private SpeakerRepository speakerRepository;
     private ConferenceRepository conferenceRepository;
     private HallRepository hallRepository;
+    private static SessionDto2 sessionDto2;
 
     @Autowired
     public SessionServiceImpl(SessionRepository sessionRepository, SpeakerRepository speakerRepository, ConferenceRepository conferenceRepository,
@@ -31,25 +33,53 @@ public class SessionServiceImpl implements SessionService {
     }
 
     @Override
-    public Session createSession(SessionDto dto) {
+    public SessionDto2 createSession(SessionDto dto) {
         Conference conference = conferenceRepository.findByName(dto.getConferenceName());
 
         Speaker speaker = new Speaker(dto.getSpeakerName(), dto.getSpeakerDescription(), dto.getSpeakerPhoto());
-        Session session = new Session(dto.getName(), dto.getDescription(), conference);
-
+        //Session session = new Session(dto.getName(), dto.getDescription(), conference);
+        sessionDto2 = new SessionDto2();
+        sessionDto2.setName(dto.getName());
+        sessionDto2.setDescription(dto.getDescription());
+        sessionDto2.setConference(conference);
+        sessionDto2.setSpeaker(speaker);
         //TODO find a way that save doesn't flush the data to the db, or just use AJAX and use 1 page for creating session
 
+        //this.sessionRepository.save(session);
+        //this.speakerRepository.save(speaker);
+
+        //speaker.setSession(session);
+        //session.setSpeaker(speaker);
+        //TODO detach/merge/evict
+        //EntityManager em =
+        //this.sessionRepository.saveAndFlush(session);
+        //this.speakerRepository.saveAndFlush(speaker);
+        return sessionDto2;
+    }
+
+    @Override
+    public Session addSessionToHall(SessionDto dto) {
+        Hall hall = this.hallRepository.findByName(dto.getHall());
+        Session session = new Session(sessionDto2.getName(),sessionDto2.getDescription(),dto.getStartHour(),dto.getEndHour(),hall,sessionDto2.getConference(),dto.getDay());
+        if (this.checkIfHallIsTakenAtThatMoment(hall, dto)) {
+            //Throw error on view to choose another day or another hour
+        }
+        Speaker speaker = sessionDto2.getSpeaker();
         this.sessionRepository.save(session);
         this.speakerRepository.save(speaker);
 
-        speaker.setSession(session);
         session.setSpeaker(speaker);
-        //TODO detach/merge/evict
-        //EntityManager em =
-        this.sessionRepository.saveAndFlush(session);
-        this.speakerRepository.saveAndFlush(speaker);
+        speaker.setSession(session);
+
+       // session.setHall(hall);
+        //session.setDay(dto.getDay());
+        //session.setStartHour(dto.getStartHour());
+        //session.setEndHour(dto.getEndHour());
+        speakerRepository.saveAndFlush(speaker);
+        sessionRepository.saveAndFlush(session);
         return session;
     }
+
 
     @Override
     public List<Conference> getAllConferencesOwnByUser(User user) {
@@ -99,21 +129,6 @@ public class SessionServiceImpl implements SessionService {
     @Override
     public Conference getConferenceById(long conferenceId) {
         return this.conferenceRepository.getOne(conferenceId);
-    }
-
-    @Override
-    public Session addSessionToHall(SessionDto dto, Session session) {
-        Hall hall = this.hallRepository.findByName(dto.getHall());
-        if (this.checkIfHallIsTakenAtThatMoment(hall, dto)) {
-            //Throw error on view to choose another day or another hour
-        }
-
-        session.setHall(hall);
-        session.setDay(dto.getDay());
-        session.setStartHour(dto.getStartHour());
-        session.setEndHour(dto.getEndHour());
-        sessionRepository.saveAndFlush(session);
-        return session;
     }
 
     @Override

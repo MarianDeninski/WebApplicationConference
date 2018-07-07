@@ -2,6 +2,7 @@ package com.teamthree.conferencescheduler.controllers.session;
 
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import com.teamthree.conferencescheduler.dto.session.SessionDto;
+import com.teamthree.conferencescheduler.dto.session.SessionDto2;
 import com.teamthree.conferencescheduler.entities.Conference;
 import com.teamthree.conferencescheduler.entities.Session;
 import com.teamthree.conferencescheduler.entities.User;
@@ -32,7 +33,8 @@ public class SessionController {
 
     private SessionService sessionService;
     private UserService userService;
-    private static Session staticSession;
+   // private static Session staticSession;
+    private static SessionDto2 addSessionToHallDto;
     //couldn't think of a smarter way atm... :/
    // private static long sessionId;
 
@@ -67,9 +69,9 @@ public class SessionController {
     @PostMapping("/create")
     @PreAuthorize("isAuthenticated()")
     public String createSession(SessionDto dto, Model model){
-        this.staticSession =this.sessionService.createSession(dto);
+        addSessionToHallDto =this.sessionService.createSession(dto);
 
-        Conference conference = this.staticSession.getConference();
+        Conference conference = this.addSessionToHallDto.getConference();
       //  this.sessionId =this.staticSession.getId();
         model.addAttribute("conference", conference);
         model.addAttribute(VIEW, SESSION_ADD_HALL);
@@ -82,9 +84,9 @@ public class SessionController {
 
         //TODO THIS SHIT HAVE TO BE FIXED
         //Session seminar=this.sessionService.addSessionToHall(dto,sessionWorkingOn);
-        Session seminar = this.sessionService.addSessionToHall(dto ,this.staticSession);
+        Session seminar = this.sessionService.addSessionToHall(dto);
 
-        //model.addAttribute("seminar",seminar);
+        model.addAttribute("seminar",seminar);
         return "redirect:/";
     }
 
@@ -97,7 +99,7 @@ public class SessionController {
 //        return BASE_LAYOUT;
 //    }
 
-    @RequestMapping(value = "/edit/id",method = RequestMethod.GET)
+    @RequestMapping(value = "/edit/id",method = RequestMethod.POST)
     @PreAuthorize("isAuthenticated()")
     public String getEditPage(@PathVariable Long id,Model model){
         UserDetails principal = (UserDetails) SecurityContextHolder

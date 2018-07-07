@@ -1,6 +1,7 @@
 package com.teamthree.conferencescheduler.service.api;
 
 import com.teamthree.conferencescheduler.dto.session.SessionDto;
+import com.teamthree.conferencescheduler.dto.session.SessionDto2;
 import com.teamthree.conferencescheduler.entities.Conference;
 import com.teamthree.conferencescheduler.entities.Session;
 import com.teamthree.conferencescheduler.entities.User;
@@ -9,7 +10,7 @@ import java.util.List;
 
 public interface SessionService {
 
-    Session createSession(SessionDto dto);
+    SessionDto2 createSession(SessionDto dto);
 
     List<Conference> getAllConferencesOwnByUser(User user);
 
@@ -23,7 +24,7 @@ public interface SessionService {
 
     Conference getConferenceById(long conferenceId);
 
-    Session addSessionToHall(SessionDto dto, Session session);
+    Session addSessionToHall(SessionDto dto);
 
     void addUserToSession(User user, Long sessionId);
 
