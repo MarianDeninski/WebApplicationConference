@@ -359,13 +359,13 @@ margin: 2% 0% 1% 0%;
      text-decoration: none !important;
  }
 
-
  .show-all-venues-title {
      text-align: center;
      font-size: 24px;
      font-weight: bolder;
      color: white;
 
+<<<<<<< HEAD
  }
 
 
@@ -376,3 +376,6 @@ margin: 2% 0% 1% 0%;
      border-radius: 4px !important;
  }
 
+=======
+ }
+>>>>>>> bf71d28042dab5752b7587e58e99a7daf2b3a363
