@@ -1,9 +1,7 @@
 package com.teamthree.conferencescheduler.entities;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -13,7 +11,7 @@ public class Session {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
 
     @Column(name = "description")
@@ -27,8 +25,14 @@ public class Session {
 
     @OneToOne(mappedBy = "session", targetEntity = Speaker.class)
     private Speaker speaker;
-
-    public Session(String name, String description, String startHour, String endHour, Hall hall, Conference conference,  String day) {
+    @ManyToOne()
+    private Hall hall;
+    @ManyToOne()
+    private Conference conference;
+    @ManyToMany(mappedBy = "userSessions")
+    private List<User> usersGoing;
+    private String day;
+    public Session(String name, String description, String startHour, String endHour, Hall hall, Conference conference, String day) {
         this.name = name;
         this.description = description;
         this.startHour = startHour;
@@ -39,23 +43,14 @@ public class Session {
         this.day = day;
     }
 
-    @ManyToOne()
-    private Hall hall;
-
-    @ManyToOne()
-    private Conference conference;
-
-    @ManyToMany(mappedBy = "userSessions")
-    private List<User> usersGoing;
-    private String day;
     public Session() {
     }
 
-    public Session( String name, String description, Conference conference) {
+    public Session(String name, String description, Conference conference) {
         this.name = name;
         this.description = description;
         this.conference = conference;
-        this.usersGoing = new ArrayList<User>() ;
+        this.usersGoing = new ArrayList<User>();
 
     }
 
@@ -87,12 +82,12 @@ public class Session {
         return this.description;
     }
 
-    public Conference getConference() {
-        return conference;
-    }
-
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Conference getConference() {
+        return conference;
     }
 
     public String getStartHour() {
@@ -123,7 +118,7 @@ public class Session {
         return hall;
     }
 
-    public void setHall(Hall hall){
-        this.hall=hall;
+    public void setHall(Hall hall) {
+        this.hall = hall;
     }
 }

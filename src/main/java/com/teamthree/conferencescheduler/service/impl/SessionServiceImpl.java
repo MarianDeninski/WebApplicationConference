@@ -36,7 +36,9 @@ public class SessionServiceImpl implements SessionService {
     @Override
     public SessionDto2 createSession(SessionDto dto) {
         Conference conference = conferenceRepository.findByName(dto.getConferenceName());
-
+        if (this.sessionRepository.findByName(dto.getName()).size() > 0) {
+            throw new ApplicationRuntimeException("This session name already exists!");
+        }
         Speaker speaker = new Speaker(dto.getSpeakerName(), dto.getSpeakerDescription(), dto.getSpeakerPhoto());
         //Session session = new Session(dto.getName(), dto.getDescription(), conference);
         sessionDto2 = new SessionDto2();
@@ -156,6 +158,11 @@ public class SessionServiceImpl implements SessionService {
     @Override
     public List<Session> findByConferenceAndDate(Conference conference, String date) {
         return this.sessionRepository.findByConferenceAndDay(conference, date);
+    }
+
+    @Override
+    public List<Session> findByName(String name) {
+        return this.sessionRepository.findByName(name);
     }
 
     private boolean checkIfHallIsTakenAtThatMoment(Hall hall, SessionDto dto) {
