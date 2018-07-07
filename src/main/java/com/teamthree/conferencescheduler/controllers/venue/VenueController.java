@@ -54,7 +54,7 @@ public class VenueController {
 
         int size = venues.size();
         for (int i=0; i<size;i++) {
-            if(i<size/2) {
+            if(i<(size + 1)/2) {
                 leftVenues.add(venues.get(i));
             }else {
                 rightVenue.add(venues.get(i));

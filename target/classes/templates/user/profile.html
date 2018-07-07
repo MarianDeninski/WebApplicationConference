@@ -44,11 +44,11 @@
                     </div>
                     <div class="task-column-body custom-letters">
                         <th:block th:each="venue : ${venues}">
-                            <div class="custom-profile-container">
+                            <div class="custom-profile-container profile-venue-padding">
                                 <a class="remove-underlying" th:href="@{/user/venue/{id}(id=${venue.id})}">
                                     <h3 class = "custom-letters custom-letters-title" th:text="${venue.name}"></h3>
                                     <h4 class = "custom-letters" th:text="${venue.address}"></h4>
-                                    <h5 class="custom-letters" th:text="'Halls: engaged ' + ${venue.halls.size()} + ' / 10 total'"></h5>
+                                    <h5 class="custom-letters" th:text="'Halls: ' + ${venue.halls.size()}"></h5>
                                 </a>
                             </div>
                         </th:block>
