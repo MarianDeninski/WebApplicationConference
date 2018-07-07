@@ -6,6 +6,7 @@ import com.teamthree.conferencescheduler.entities.Conference;
 import com.teamthree.conferencescheduler.entities.Session;
 import com.teamthree.conferencescheduler.entities.User;
 import com.teamthree.conferencescheduler.exceptions.ApplicationRuntimeException;
+import com.teamthree.conferencescheduler.service.api.ConferenceService;
 import com.teamthree.conferencescheduler.service.api.SessionService;
 import com.teamthree.conferencescheduler.service.api.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,7 @@ public class SessionController {
     private static SessionDto2 addSessionToHallDto;
     private SessionService sessionService;
     private UserService userService;
+    private ConferenceService conferenceService;
     //couldn't think of a smarter way atm... :/
     // private static long sessionId;
 
@@ -71,7 +73,17 @@ public class SessionController {
 
         try {
             addSessionToHallDto = this.sessionService.createSession(dto);
+            addSessionToHallDto = this.sessionService.createSession(dto);
         } catch (ApplicationRuntimeException are) {
+            UserDetails principal = (UserDetails) SecurityContextHolder
+                    .getContext()
+                    .getAuthentication()
+                    .getPrincipal();
+
+
+            User user = this.userService.findByUsername(principal.getUsername());
+            List<Conference> userConferences = this.sessionService.getAllConferencesOwnByUser(user);
+            model.addAttribute("conference", userConferences);
             model.addAttribute(VIEW_MESSAGE, are.getMessage());
             model.addAttribute(VIEW, CREATE_SESSION);
             return BASE_LAYOUT;
@@ -89,7 +101,8 @@ public class SessionController {
 
         //Session seminar=this.sessionService.addSessionToHall(dto,sessionWorkingOn);
         try {
-            Session seminar = this.sessionService.addSessionToHall(dto);
+            Conference conference = addSessionToHallDto.getConference();
+            Session seminar = this.sessionService.addSessionToHall(dto, conference);
             model.addAttribute("seminar", seminar);
             model.addAttribute(VIEW, SESSION_DETAILS);
             return BASE_LAYOUT;
