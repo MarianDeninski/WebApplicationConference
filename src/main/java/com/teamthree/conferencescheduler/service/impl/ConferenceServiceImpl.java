@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import javax.jws.soap.SOAPBinding;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +24,7 @@ public class ConferenceServiceImpl implements ConferenceService {
     private VenueRepository venueRepository;
 
     @Autowired
-    public ConferenceServiceImpl(ConferenceRepository conferenceRepository,UserRepository userRepository,VenueRepository venueRepository) {
+    public ConferenceServiceImpl(ConferenceRepository conferenceRepository, UserRepository userRepository, VenueRepository venueRepository) {
         this.conferenceRepository = conferenceRepository;
         this.userRepository = userRepository;
         this.venueRepository = venueRepository;
@@ -39,7 +38,7 @@ public class ConferenceServiceImpl implements ConferenceService {
 //
 //           // venue = new Venue(dto.getVenueAddress());
 //        }
-        Conference conference = new Conference(dto.getName(),dto.getDescription(),venue,dto.getStartDate(),dto.getEndDate(),ownerClass,new ArrayList<Session>());
+        Conference conference = new Conference(dto.getName(), dto.getDescription(), venue, dto.getStartDate(), dto.getEndDate(), ownerClass, new ArrayList<Session>());
         conferenceRepository.saveAndFlush(conference);
         return conference;
     }
@@ -61,9 +60,9 @@ public class ConferenceServiceImpl implements ConferenceService {
         conference.setDescription(dto.getDescription());
         conference.setEndDate(dto.getEndDate());
         Venue venue = venueRepository.findByName(dto.getVenue());
-        if(venue==null){
+        if (venue == null) {
         }
-       // conference.setVenue(newVenue);
+        // conference.setVenue(newVenue);
         return conference;
 
     }
@@ -85,9 +84,9 @@ public class ConferenceServiceImpl implements ConferenceService {
     }
 
     @Override
-    public boolean checkIfLoggedInUserIsOwner(UserDetails principal,Conference conference) {
+    public boolean checkIfLoggedInUserIsOwner(UserDetails principal, Conference conference) {
         User user = this.userRepository.findByUsername(principal.getUsername());
-        if(user.getId() == conference.getOwner().getId()){
+        if (user.getId() == conference.getOwner().getId()) {
             return true;
         }
         return false;
@@ -96,6 +95,11 @@ public class ConferenceServiceImpl implements ConferenceService {
     @Override
     public Conference getById(long id) {
         return this.conferenceRepository.getOne(id);
+    }
+
+    @Override
+    public Conference getByName(String conferenceName) {
+        return this.conferenceRepository.findByName(conferenceName);
     }
 
 }

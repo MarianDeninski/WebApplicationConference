@@ -27,4 +27,6 @@ public interface ConferenceService {
     boolean checkIfLoggedInUserIsOwner(UserDetails principal,Conference conference);
 
     Conference getById(long id);
+
+    Conference getByName(String conferenceName);
 }

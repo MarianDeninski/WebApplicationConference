@@ -10,4 +10,8 @@ import java.util.List;
 @Repository
 public interface SessionRepository extends JpaRepository<Session, Long> {
     List<Session> findByConference(Conference conference);
+
+    List<Session> findByConferenceAndDay(Conference conference, String targetDate);
+
+    List<Session> findByName(String name);
 }

@@ -1,11 +1,11 @@
 
-<div class="panel panel-info">
+<div class="panel panel-info info-box-custom custom-letters">
     <h1 class="panel-title text-center font-weight-bold" th:text="${seminar.name}"></h1>
     <div class="panel-body">
         <div class="row">
             <!--<img src="https://projectcontroltraining.com/wp-content/uploads/2016/02/project-controls-Conferences.jpg" style="width5%;"></img>-->
             <div class="col-lg-6 col-lg-offset-3 text-center">
-                <table class="table table-user-information">
+                <table class="table table-user-information ">
                     <tbody>
                     <tr>
                         <th>Description</th>
@@ -49,9 +49,13 @@
                     </tr>
                     </tbody>
                 </table>
+                <form method="post" th:action="@{/user/joinsession/__${seminar.id}__}">
+                    <button formmethod="post"  name="userJoinSession" type="submit" class="btn btn-success">Join us</button>
+                </form>
 
-              <!--  <a  th:href="/" class="btn btn-success">Join us</a> -->
-            <!--    <div th:if="${ownerButton}">
+            <!--
+             th:href="@{/user/joinsession/__${seminar.id}__}"
+             <div th:if="${ownerButton}">
                     <a th:href="@{/session/edit/__${seminar.id}__}" class="btn btn-primary">Edit</a>
                 </div>
                 -->

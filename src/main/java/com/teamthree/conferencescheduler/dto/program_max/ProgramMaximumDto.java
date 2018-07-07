@@ -10,6 +10,9 @@ public class ProgramMaximumDto implements Serializable {
     @NotNull
     private String targetDate;
 
+    public ProgramMaximumDto() {
+    }
+
     public ProgramMaximumDto(String conferenceName, String targetDate) {
         this.conferenceName = conferenceName;
         this.targetDate = targetDate;
