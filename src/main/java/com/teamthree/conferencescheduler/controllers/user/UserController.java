@@ -195,7 +195,7 @@ public class UserController {
     }
 
     @PostMapping("/programme_maximum")
-    public String processUserEditVenue(ProgramMaximumDto dto, Model model) {
+    public String processProgrameMaximum(ProgramMaximumDto dto, Model model) {
         Conference conference = this.conferenceService.getByName(dto.getConferenceName());
 
         List<Session> sessionsByConference =
