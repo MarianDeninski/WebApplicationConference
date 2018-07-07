@@ -4,10 +4,7 @@ import com.teamthree.conferencescheduler.dto.session.SessionDto;
 import com.teamthree.conferencescheduler.dto.session.SessionDto2;
 import com.teamthree.conferencescheduler.entities.*;
 import com.teamthree.conferencescheduler.exceptions.ApplicationRuntimeException;
-import com.teamthree.conferencescheduler.repositories.ConferenceRepository;
-import com.teamthree.conferencescheduler.repositories.HallRepository;
-import com.teamthree.conferencescheduler.repositories.SessionRepository;
-import com.teamthree.conferencescheduler.repositories.SpeakerRepository;
+import com.teamthree.conferencescheduler.repositories.*;
 import com.teamthree.conferencescheduler.service.api.SessionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,14 +21,16 @@ public class SessionServiceImpl implements SessionService {
     private SpeakerRepository speakerRepository;
     private ConferenceRepository conferenceRepository;
     private HallRepository hallRepository;
+    private UserRepository userRepository;
 
     @Autowired
     public SessionServiceImpl(SessionRepository sessionRepository, SpeakerRepository speakerRepository, ConferenceRepository conferenceRepository,
-                              HallRepository hallRepository) {
+                              HallRepository hallRepository, UserRepository userRepository) {
         this.sessionRepository = sessionRepository;
         this.speakerRepository = speakerRepository;
         this.conferenceRepository = conferenceRepository;
         this.hallRepository = hallRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -134,7 +133,9 @@ public class SessionServiceImpl implements SessionService {
     public void addUserToSession(User user, Long sessionId) {
         Session session = this.sessionRepository.getOne(sessionId);
         session.getUsersGoing().add(user);
+        user.getUserSessions().add(session);
         sessionRepository.saveAndFlush(session);
+        userRepository.saveAndFlush(user);
     }
 
     @Override
