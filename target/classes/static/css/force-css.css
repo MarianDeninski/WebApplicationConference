@@ -355,9 +355,10 @@ margin: 2% 0% 1% 0%;
      text-decoration: none !important;
  }
 
-.info-box-custom {
-    margin-bottom: 20px !important;
-    background-color: rgba(44, 22, 22, 0.42) !important;
-    border:1px solid white !important;
-    border-radius: 10px !important;
-}
+ .info-box-custom
+ {
+     margin-bottom: 20px !important;
+     background-color: rgba(44, 22, 22, 0.42)!important;
+     border: 1px solid white !important;
+     border-radius: 4px !important;
+ }
