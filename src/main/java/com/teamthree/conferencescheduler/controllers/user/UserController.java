@@ -23,6 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static com.teamthree.conferencescheduler.constants.errors.ErrorHandlingConstants.*;
@@ -194,18 +195,51 @@ public class UserController {
         return null;
     }
 
-    @RequestMapping(value = "/programmeMaximum", method = RequestMethod.GET)
+    @RequestMapping(value = "/programme_maximum", method = RequestMethod.GET)
     @PreAuthorize("isAuthenticated()")
-    public String programeMaximum(Principal principal) {
+    public String programeMaximum(Model model) {
+        // TODO: User should not be able to choose from confs that are past ?
+        List<Conference> allConferences = this.conferenceService.getAllConferences();
+
+
+        model.addAttribute("allConferences", allConferences);
+        model.addAttribute(VIEW, "programme_maximum/execute");
+        return BASE_LAYOUT;
+
+    }
+
+    @RequestMapping(value = "/programmeMaximum", method = RequestMethod.POST)
+    @PreAuthorize("isAuthenticated()")
+    public String processProgrameMaximum(Model model, Principal principal,
+                                         @PathVariable long id) {
+
+        Conference conference = this.conferenceService.getById(id);
+        List<Session> sessionsByConference =
+                this.sessionService.findByConference(conference);
+
+        List<Session> maximumSessions =
+                ProgramMaximumUtil.execute(sessionsByConference, DateUtil.getCurrentTimeAsString());
+
         User user = this.userService.findByUsername(principal.getName());
+        for (Session maximumSession : maximumSessions) {
+            this.sessionService.addUserToSession(user, maximumSession.getId());
+        }
 
-        List<Conference> allConferencesOwnByUser = this.sessionService.getAllConferencesOwnByUser(user);
-//
-//        List<Session> maximumSessions =
-//                ProgramMaximumUtil.execute(allConferencesOwnByUser, DateUtil.getCurrentTimeAsString());
+        model.addAttribute("maximumSessions", maximumSessions);
+        model.addAttribute(VIEW, "programme_maximum/info");
+        return BASE_LAYOUT;
+    }
+
+    @RequestMapping(value = "/programme_maximum/info", method = RequestMethod.GET)
+    @PreAuthorize("isAuthenticated()")
+    public String processInfoMaximum(Model model) {
+
+        List<Conference> allConferences = this.conferenceService.getAllConferences();
 
 
-        return null;
+        model.addAttribute("allConferences", allConferences);
+        model.addAttribute(VIEW, "programme_maximum/execute");
+        return BASE_LAYOUT;
 
     }
 

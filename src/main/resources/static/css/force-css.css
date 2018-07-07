@@ -107,6 +107,7 @@ body{
 .custom-letters{
     color: white; !important;
     text-align: center;
+
 }
 
 .custom-button{
@@ -289,7 +290,22 @@ margin: 2% 0% 1% 0%;
     background-color: transparent;
 }
 
+
+
+.letters-ren{
+    color: #f9f0f0; !important;
+    text-align: center !important;
+
+
+}
+
+
+.a-custom {
+    text-decoration: none !important;
+}
+
  .remove-underlying{
      color: white !important;
      text-decoration: none !important;
  }
+
