@@ -5,10 +5,7 @@ import com.teamthree.conferencescheduler.app_utils.ProgramMaximumUtil;
 import com.teamthree.conferencescheduler.dto.user.FileUploadDto;
 import com.teamthree.conferencescheduler.dto.user.UserRegisterDto;
 import com.teamthree.conferencescheduler.dto.venue.AddVenueDto;
-import com.teamthree.conferencescheduler.entities.Conference;
-import com.teamthree.conferencescheduler.entities.Role;
-import com.teamthree.conferencescheduler.entities.User;
-import com.teamthree.conferencescheduler.entities.Venue;
+import com.teamthree.conferencescheduler.entities.*;
 import com.teamthree.conferencescheduler.exceptions.ApplicationRuntimeException;
 import com.teamthree.conferencescheduler.service.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -203,7 +200,8 @@ public class UserController {
         User user = this.userService.findByUsername(principal.getName());
 
         List<Conference> allConferencesOwnByUser = this.sessionService.getAllConferencesOwnByUser(user);
-        ProgramMaximumUtil.execute(allConferencesOwnByUser, DateUtil.getCurrentTimeAsString());
+//        List<Session> maximumSessions =
+//                ProgramMaximumUtil.execute(allConferencesOwnByUser, DateUtil.getCurrentTimeAsString());
 
         return null;
 
