@@ -280,4 +280,11 @@ public class UserController {
         return "redirect:/session/details/"+sessionId;
     }
 
+    @RequestMapping(value = "/joinsession/{id}", method = RequestMethod.GET)
+    @PreAuthorize("isAuthenticated()")
+    public String getAddUserToSession(@PathVariable Long sessionId){
+        int debug = 0;
+        return null;
+    }
+
 }

@@ -72,12 +72,18 @@ public class ConferenceController {
             return BASE_LAYOUT;
         }
 
-        Conference conference = this.conferenceService.createNewConference(dto, owner);
+        try{
+            Conference conference = this.conferenceService.createNewConference(dto, owner);
+            model.addAttribute("conference", conference);
+            model.addAttribute(VIEW, CONFERENCE_DETAILS);
 
-        model.addAttribute("conference", conference);
-        model.addAttribute(VIEW, CONFERENCE_DETAILS);
+            return BASE_LAYOUT;
 
-        return BASE_LAYOUT;
+        }catch (ApplicationRuntimeException are) {
+            model.addAttribute(VIEW_MESSAGE, are.getMessage());
+            model.addAttribute(VIEW, CREATE_CONFERENCE);
+            return BASE_LAYOUT;
+        }
     }
 
     //Get all conferences
