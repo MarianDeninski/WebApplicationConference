@@ -1,7 +1,7 @@
 <main>
     <div class="container body-content span=8 offset=2">
         <div class="well background-home custom-letters">
-            <form class="form-horizontal" th:action="@{/user/programme_maximum}" method="post">
+            <form class="form-horizontal" th:action="@{/hall/add}" method="post">
 
                 <fieldset>
                     <legend class = "custom-letters">Programme Maximum</legend>
@@ -29,11 +29,7 @@
                     <div class="form-group">
                         <div class="col-sm-4 col-sm-offset-4">
                             <a class="btn btn-default" th:href="@{/}">Cancel</a>
-
-                            <!-- REMOVE THIS BUTTON ITS ONLY FOR TESTS -->
-                            <button type="submit" class="btn btn-primary color-letter a:hover">REMOVE ME</button>
-
-                            <a class="btn btn-default" th:href="@{/programme_maximum/info}">Submit</a>
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </div>
                 </fieldset>

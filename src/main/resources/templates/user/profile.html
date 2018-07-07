@@ -15,7 +15,7 @@
                         <th:block class = "custom-button" th:each="conference : ${conferences}">
                             <div class="custom-profile-container">
                                 <a class="remove-underlying" th:href="@{/user/conference/{id}(id=${conference.id})}">
-                                    <h3 class = "custom-letters" th:text="${conference.name}"></h3>
+                                    <h3 class = "custom-letters custom-letters-title" th:text="${conference.name}"></h3>
                                     <h4 class = "custom-letters" th:text="${conference.description}"></h4>
 
                                     <h5 class="dates custom-letters">Start date: </h5>
@@ -38,8 +38,9 @@
                         <th:block th:each="venue : ${venues}">
                             <div class="custom-profile-container">
                                 <a class="remove-underlying" th:href="@{/user/venue/{id}(id=${venue.id})}">
-                                    <h3 class = "custom-letters" th:text="${venue.name}"></h3>
+                                    <h3 class = "custom-letters custom-letters-title" th:text="${venue.name}"></h3>
                                     <h4 class = "custom-letters" th:text="${venue.address}"></h4>
+                                    <h5 class="custom-letters" th:text="'Halls: engaged ' + ${venue.halls.size()} + ' / 10 total'"></h5>
                                 </a>
                             </div>
                         </th:block>

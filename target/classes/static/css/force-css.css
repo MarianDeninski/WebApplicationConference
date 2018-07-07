@@ -14,17 +14,57 @@
 
 }
 
+.tex-carousel123{
+
+    font-size: 80% !important;
+
+}
+
+.image-carousel123{
+
+    width: 300%; !important;
+    height: 150px !important;
+
+}
+
+.arrow-carousel-left{
+    display: inline-block;!important;
+
+    width: 5% !important;
+    left: 15px !important;
+}
+.arrow-carousel{
+    display: inline-block;!important;
+    font-size: 220% !important;
+    width: 5% !important;
+    left: 1068px !important;
+
+
+}
+
+.carousel-finally{
+
+    padding-top:150px; !important;
+
+}
+
+.carousel-finally1{
+
+    padding-top:150px; !important;
+
+}
+
 .btn-default:hover {
-    color: #847777 !important;
-    background-color: #8c6b42; !important;
+    color: #f9f0f0 !important;
+    background-color: #342314!important;
     opacity: 0.7;
     border-color: #242020 !important;
 }
 
 
 .btn-default {
-    color: #141212 !important;
-    background-color: #8c6b42 !important;
+    color: #1d1b1b !important;
+    background-color: #e8d7c8 !important;
     opacity: 0.7;
     border-color: #242020 !important;
 }
@@ -32,21 +72,18 @@
 
 
 .btn-primary:hover  {
-    color: #847777 !important;
-    background-color: #342314 !important;
+    color: #1d1b1b !important;
+    background-color: #e8d7c8 !important;
     opacity: 0.7;
     border-color: #242020 !important;
 }
 
 
 .btn-primary {
-
-    color: #141212 !important;
-
+    color: #f9f0f0 !important;
     background-color: #342314!important;
     opacity: 0.7;
     border-color: #242020 !important;
-
 }
 
 .background-home{
@@ -60,23 +97,24 @@
 }
 
 .bottom-left {
+    font-size: 150%;
     position: absolute !important;
     color: white !important;
     font-family: Apple Chancery!important;
-    bottom: 20px !important;
+    bottom: 2px !important;
     left: 250px !important;
 }
 .date-homepage {
 
-    font-size: 150% !important;
+    font-size: 190% !important;
 
     font-weight: bold !important;
     font-family: Apple Chancery!important;
     color: white !important;
 
     position: absolute !important;
-    top: 120px !important;
-    left: 262px !important;
+    top: 95px !important;
+    left: 230px !important;
 }
 
 body{
@@ -86,7 +124,7 @@ body{
 
 .text-white-color{
     color:  white;
-    font-size: 350%;
+    font-size: 300%;
     text-align: right;
     font-weight: bold !important;
     font-family: Phosphate!important;
@@ -120,17 +158,15 @@ body{
 }
 
 .custom-profile-container{
-font-size: 19px;
 line-height: 1.5;
 background-color: rgba(44, 22, 22, 0.42);
 border-width: 1.5px;
 border-style: solid;
 border-color: #242020;
 width: 100%;
--webkit-padding-after: 20px;
--webkit-padding-before: 20px;
 border-radius: 14px;
 margin: 2% 0% 1% 0%;
+    padding-bottom: 5px;
 }
 .custom-profile-container:hover{
     background-color: rgba(44, 22, 22, 0.6);
@@ -143,11 +179,10 @@ margin: 2% 0% 1% 0%;
     border-width: 2px;
     border-style: solid;
     border-color: #242020;
-    width: 50%;
-    -webkit-padding-after: 20px;
-    -webkit-padding-before: 20px;
+    width: 60%;
+    padding-bottom: 5px;
     border-radius: 14px;
-    margin: 2% 25% 1% 25%;
+    margin: 2% 20% 1% 20%;
 }
 
 .custom-reg-field{
@@ -260,6 +295,10 @@ margin: 2% 0% 1% 0%;
     color: white;
 }
 
+.custom-letters-title{
+    font-weight: bolder;
+}
+
 /*
 .custom-drop-my123{
     color: #1d1b1b ;
@@ -282,23 +321,29 @@ margin: 2% 0% 1% 0%;
 }
 */
 
- .nav-br {
+ .nav-br a{
     color: #f9f0f0 !important;
 }
- .nav-br:hover {
+ .nav-br a:hover {
+
+ }
+.nav-br {
+    color: #f9f0f0 !important;
+}
+.nav-br:hover {
     color: #76614b !important;
     background-color: transparent;
 }
 
-
+.remove-underlying{
+    color: white !important;
+    text-decoration: none !important;
+}
 
 .letters-ren{
     color: #f9f0f0; !important;
     text-align: center !important;
-
-
 }
-
 
 .a-custom {
     text-decoration: none !important;
@@ -308,4 +353,3 @@ margin: 2% 0% 1% 0%;
      color: white !important;
      text-decoration: none !important;
  }
-

@@ -51,6 +51,7 @@ public class Venue {
         this.owner = owner;
         this.conferences = new ArrayList<>();
         this.halls = new ArrayList<>();
+        this.halls.size();
     }
 
     public List<Hall> getHalls() {

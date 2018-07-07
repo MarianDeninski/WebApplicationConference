@@ -1,16 +1,16 @@
-<div class="container tex-carousel123">
-    <h1 class="text-center text-white-color">Conferences</h1>
+<div class="container tex-carousel123" xmlns:display="http://www.w3.org/1999/xhtml">
+    <h1 class="text-center text-white-color ">Past Conferences</h1>
     <div class="row">
         <div class="col-md-12">
-            <div class="carousel slide multi-item-carousel" id="theCarousel1">
+            <div class="carousel slide multi-item-carousel" id="theCarousel0">
                 <div class="carousel-inner" id="colums">
                     <!--<th:block th:each="project : ${project}">-->
-                    <th:block th:each="conference: ${activeConferences}">
-                        <div class="item">
+                    <th:block th:each="conference: ${pastConferences}">
+                        <div class="item" id="here">
                             <a th:href="@{http://www.thymeleaf/documentation.html}">
                                 <div class="col-xs-4">
                                     <a th:href="@{/user/conference/{id}(id=${conference.id})}">
-                                        <img class="img-responsive image-carousel123" th:src="@{images/carousel/picHome.jpg}"
+                                        <img class="img-responsive image-carousel123" th:src="@{images/carousel/picHome.jpg} "
                                              alt="Conference"/>
 
                                         <div th:text="Date " class="date-homepage"></div>
@@ -26,21 +26,21 @@
 
 
                 </div>
-                <a class="left carousel-control arrow-carousel-left" href="#theCarousel1" data-slide="prev"><i
-                        class="glyphicon glyphicon-chevron-left"></i></a>
-                <a class="right carousel-control arrow-carousel" href="#theCarousel1" data-slide="next"><i
-                        class="glyphicon glyphicon-chevron-right"></i></a>
+                <a class="left carousel-control arrow-carousel-left" href="#theCarousel0" data-slide="prev"><i
+                        class="glyphicon glyphicon-chevron-left" ></i></a>
+                <a class="right carousel-control arrow-carousel" href="#theCarousel0" data-slide="next" ><i
+                        class="glyphicon glyphicon-chevron-right "></i></a>
             </div>
         </div>
 
         <script th:inline="javascript">
 
-            $('#theCarousel1').carousel({
+            $('#theCarousel0').carousel({
                 interval: false
             });
 
             counter = 0;
-            $('#theCarousel1 .item').each(function () {
+            $('#theCarousel0 .item').each(function () {
 
                 if (counter === 0) {
                     $(this).addClass('active');

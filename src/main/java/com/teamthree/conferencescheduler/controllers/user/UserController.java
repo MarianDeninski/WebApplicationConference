@@ -208,7 +208,7 @@ public class UserController {
 
     }
 
-    @RequestMapping(value = "/programmeMaximum", method = RequestMethod.POST)
+    @RequestMapping(value = "/programme_maximum", method = RequestMethod.POST)
     @PreAuthorize("isAuthenticated()")
     public String processProgrameMaximum(Model model, Principal principal,
                                          @PathVariable long id) {
@@ -225,9 +225,8 @@ public class UserController {
             this.sessionService.addUserToSession(user, maximumSession.getId());
         }
 
-        model.addAttribute("maximumSessions", maximumSessions);
-        model.addAttribute(VIEW, "programme_maximum/info");
-        return BASE_LAYOUT;
+
+        return REDIRECT_TO_MY_PROFILE;
     }
 
     @RequestMapping(value = "/programme_maximum/info", method = RequestMethod.GET)

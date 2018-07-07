@@ -7,7 +7,7 @@
                     <legend class="text-center custom-letters">Add hall and starting time of session</legend>
 
                     <div class="form-group">
-                        <label class="col-sm-4 control-label">Select Hall</label>
+                        <label class="col-sm-4 control-label custom-letters ">Select Hall</label>
                         <div class="col-sm-6">
                             <select class="dropdown-menu-custom-left" name="hall">
                                 <option class="col-sm-6" th:each="hall : ${conference.venue.halls}"
@@ -17,7 +17,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-4 control-label">Day of Session</label>
+                        <label class="col-sm-4 control-label custom-letters">Day of Session</label>
                         <div class="col-sm-6">
                             <input class="form-control custom-input-field" type="date" placeholder=""
                                    name="day" required="required"/>
@@ -25,7 +25,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" for="session_startDate">Start Hour</label>
+                        <label class="col-sm-4 control-label custom-letters" for="session_startDate">Start Hour</label>
                         <div class="col-sm-6">
                             <input class="form-control custom-input-field" type="time" id="session_startDate"
                                    placeholder="hh:MM"
@@ -34,7 +34,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-4 control-label">End Hour</label>
+                        <label class="col-sm-4 control-label custom-letters">End Hour</label>
                         <div class="col-sm-6">
                             <input class="form-control custom-input-field" type="time" placeholder="hh:MM"
                                    name="endHour" required="required"/>
@@ -43,9 +43,9 @@
 
                     <div class="form-group">
                         <div class="col-sm-5 col-sm-offset-5">
-                            <input value="Cancel" type="button" class="btn btn-primary btn-lg"
+                            <input value="Cancel" type="button" class="btn btn-default"
                                    style="border-style: none"/>
-                            <input value="Submit" type="submit" class="btn btn-primary btn-lg"
+                            <input value="Submit" type="submit" class="btn btn-primary"
                                    style="border-style: none"/>
                         </div>
                     </div>
