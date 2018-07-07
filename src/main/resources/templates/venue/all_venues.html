@@ -8,8 +8,9 @@
                 <th:block th:each="venue : ${venues}" >
                     <div class="venue custom-field-add-venue ">
                         <a th:href="@{/user/venue/{id}(id=${venue.id})}" class = "letters-ren a-custom">
-                            <div class = "custom-letters" th:text="${venue.name}"></div>
-                            <div class = "custom-letters" th:text="${venue.address}"></div>
+                            <h3 class = "custom-letters custom-letters-title" th:text="${venue.name}"></h3>
+                            <h4 class = "custom-letters" th:text="${venue.address}"></h4>
+                            <h5 class="custom-letters" th:text="'Halls: engaged ' + ${venue.halls.size()} + ' / 10 total'"></h5>
                         </a>
                     </div>
                 </th:block>

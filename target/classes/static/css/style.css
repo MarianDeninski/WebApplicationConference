@@ -3223,13 +3223,16 @@ fieldset[disabled] .btn-primary.focus {
   border-color: #2c3e50;
 }
 .btn-primary .badge {
-  color: #2c3e50;
-  background-color: #ffffff;
+  color: #1d1b1b !important;
+  background-color: #e8d7c8 !important;
+  opacity: 0.7;
+  border-color: #242020 !important;
 }
 .btn-success {
-  color: #ffffff;
-  background-color: #18bc9c;
-  border-color: #18bc9c;
+  color: #f9f0f0 !important;
+  background-color: #342314!important;
+  opacity: 0.7;
+  border-color: #242020 !important;
 }
 .btn-success:focus,
 .btn-success.focus {
@@ -3238,9 +3241,10 @@ fieldset[disabled] .btn-primary.focus {
   border-color: #0a4b3e;
 }
 .btn-success:hover {
-  color: #ffffff;
-  background-color: #128f76;
-  border-color: #11866f;
+  color: #f9f0f0 !important;
+  background-color: #342314!important;
+  opacity: 0.7;
+  border-color: #242020 !important;
 }
 .btn-success:active,
 .btn-success.active,
