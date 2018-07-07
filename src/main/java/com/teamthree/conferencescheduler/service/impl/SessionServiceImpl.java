@@ -10,6 +10,7 @@ import com.teamthree.conferencescheduler.service.api.SessionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,13 +37,15 @@ public class SessionServiceImpl implements SessionService {
         Speaker  speaker = new Speaker(dto.getSpeakerName(),dto.getSpeakerDescription(),dto.getSpeakerPhoto());
         Session session = new Session(dto.getName(),dto.getDescription(),conference);
 
-        //TODO find a way that save doesn't flush the data to the db, or just use AJAX and 1 page for creating session
+        //TODO find a way that save doesn't flush the data to the db, or just use AJAX and use 1 page for creating session
 
         this.sessionRepository.save(session);
         this.speakerRepository.save(speaker);
 
         speaker.setSession(session);
         session.setSpeaker(speaker);
+        //TODO detach/merge/evict
+        //EntityManager em =
         this.sessionRepository.saveAndFlush(session);
         this.speakerRepository.saveAndFlush(speaker);
         return  session;
