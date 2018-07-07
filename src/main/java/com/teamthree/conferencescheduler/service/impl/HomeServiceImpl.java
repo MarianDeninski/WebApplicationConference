@@ -42,10 +42,15 @@ public class HomeServiceImpl implements HomeService {
             if (DateUtil.comparatorByStringDates(today, conference.getStartDate()) >= 0 &&
                     DateUtil.comparatorByStringDates(today, conference.getEndDate()) <= 0) {
                 result.get("active").add(conference);
-            } else if (DateUtil.comparatorByStringDates(today, conference.getEndDate()) > 0) {
-                result.get("upcoming").add(conference);
-            } else if (DateUtil.comparatorByStringDates(today, conference.getEndDate()) < 0) {
+            } else if (DateUtil.comparatorByStringDates(today, conference.getStartDate()) > 0 &&
+                    DateUtil.comparatorByStringDates(today, conference.getStartDate()) > 0) {
                 result.get("past").add(conference);
+            } else if (DateUtil.comparatorByStringDates(today, conference.getEndDate()) < 0 &&
+                    DateUtil.comparatorByStringDates(today, conference.getStartDate()) < 0) {
+                result.get("upcoming").add(conference);
+            } else {
+                // just incase that something fails, it must still at least print the conference out
+                result.get("active").add(conference);
             }
         }
 
