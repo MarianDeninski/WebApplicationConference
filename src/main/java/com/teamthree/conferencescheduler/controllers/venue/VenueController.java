@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.ADD_VENUE;
@@ -47,7 +48,23 @@ public class VenueController {
     public String allVenue(Model model) {
 
         List<Venue> venues = this.venueService.getAllVenues();
-        model.addAttribute("venues", venues);
+
+        ArrayList<Venue> leftVenues = new ArrayList<Venue>();
+        ArrayList<Venue> rightVenue = new ArrayList<Venue>();
+
+        int size = venues.size();
+        for (int i=0; i<size;i++) {
+            if(i<size/2) {
+                leftVenues.add(venues.get(i));
+            }else {
+                rightVenue.add(venues.get(i));
+            }
+        }
+
+        model.addAttribute("leftVenues", leftVenues);
+        model.addAttribute("rightVenues", rightVenue);
+
+        //model.addAttribute("venues", venues);
         model.addAttribute(VIEW, ALL_VENUES);
         return BASE_LAYOUT;
     }
