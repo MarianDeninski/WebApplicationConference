@@ -62,10 +62,8 @@ public class ConferenceServiceImpl implements ConferenceService {
         conference.setEndDate(dto.getEndDate());
         Venue venue = venueRepository.findByName(dto.getVenue());
         if(venue==null){
-            //TODO add  venue name to the CreateConference dto so new venue can be inicializes
         }
        // conference.setVenue(newVenue);
-        //TODO add new session
         return conference;
 
     }

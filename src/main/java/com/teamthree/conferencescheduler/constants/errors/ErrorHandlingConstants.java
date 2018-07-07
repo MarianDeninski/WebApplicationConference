@@ -10,6 +10,9 @@ public final class ErrorHandlingConstants {
     public static final String VENUE_CANNOT_BE_NULL = "Venue cannot be empty!";
     public static final String VENUE_ALREADY_EXISTS = "Venue with that name already exists, please choose new one!";
 
+    public static final String HALL_IS_TAKEN = "Hall is reserved at this hour or day!";
+
+
     private ErrorHandlingConstants() {
         super();
     }

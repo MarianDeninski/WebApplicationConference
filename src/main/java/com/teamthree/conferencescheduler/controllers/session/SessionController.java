@@ -6,6 +6,7 @@ import com.teamthree.conferencescheduler.dto.session.SessionDto2;
 import com.teamthree.conferencescheduler.entities.Conference;
 import com.teamthree.conferencescheduler.entities.Session;
 import com.teamthree.conferencescheduler.entities.User;
+import com.teamthree.conferencescheduler.exceptions.ApplicationRuntimeException;
 import com.teamthree.conferencescheduler.repositories.SessionRepository;
 import com.teamthree.conferencescheduler.service.api.SessionService;
 import com.teamthree.conferencescheduler.service.api.UserService;
@@ -55,8 +56,6 @@ public class SessionController {
 
         User user = this.userService.findByUsername(principal.getUsername());
         List<Conference> userConferences = this.sessionService.getAllConferencesOwnByUser(user);
-
-        //TODO this have to be in thyme leaf if else statement , if he don't own conferences he cant create session
         if(userConferences.isEmpty()){
             //UserConferences should never be empty after we add constraints;
         }
@@ -71,7 +70,7 @@ public class SessionController {
     public String createSession(SessionDto dto, Model model){
         addSessionToHallDto =this.sessionService.createSession(dto);
 
-        Conference conference = this.addSessionToHallDto.getConference();
+        Conference conference = addSessionToHallDto.getConference();
       //  this.sessionId =this.staticSession.getId();
         model.addAttribute("conference", conference);
         model.addAttribute(VIEW, SESSION_ADD_HALL);
@@ -82,12 +81,23 @@ public class SessionController {
     @PreAuthorize("isAuthenticated()")
     public String addHall(SessionDto dto,Model model){
 
-        //TODO THIS SHIT HAVE TO BE FIXED
         //Session seminar=this.sessionService.addSessionToHall(dto,sessionWorkingOn);
-        Session seminar = this.sessionService.addSessionToHall(dto);
+        try{
+            Session seminar = this.sessionService.addSessionToHall(dto);
+            model.addAttribute("seminar",seminar);
+            model.addAttribute(VIEW,SESSION_DETAILS);
+            return BASE_LAYOUT;
+        }
+        catch (ApplicationRuntimeException ex) {
+            Conference conference = addSessionToHallDto.getConference();
+            model.addAttribute("conference", conference);
+            model.addAttribute(VIEW_MESSAGE, ex.getMessage());
+            model.addAttribute(VIEW, SESSION_ADD_HALL);
+            return BASE_LAYOUT;
+        }
 
-        model.addAttribute("seminar",seminar);
-        return "redirect:/";
+
+
     }
 
 //    @RequestMapping("addhall")
