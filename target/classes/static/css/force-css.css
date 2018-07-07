@@ -290,7 +290,7 @@ margin: 2% 0% 1% 0%;
     background-color: transparent;
 }
 
-<<<<<<< HEAD
+
 
 .letters-ren{
     color: #f9f0f0; !important;
@@ -299,20 +299,13 @@ margin: 2% 0% 1% 0%;
 
 }
 
-.letters-ren:hover{
-    color: #f9f0f0; !important;
-    text-align: center !important;
-    text-decoration: none !important;
-
-
-}
 
 .a-custom {
     text-decoration: none !important;
 }
-=======
+
  .remove-underlying{
      color: white !important;
      text-decoration: none !important;
  }
->>>>>>> a55a284e28ac9bed2b37858b3649162eda53d216
+
