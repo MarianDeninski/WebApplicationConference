@@ -109,8 +109,10 @@ public class SessionController {
 
         boolean checkIfUserIsOwnerOfConference= this.sessionService.checkIfUserIsOwnerOfConference(id, user);
         if(!checkIfUserIsOwnerOfConference){
-            return "redirect:/home/index";
+            return "redirect:/";
         }
+        Session seminar = this.sessionService.getById(id);
+        model.addAttribute("seminar",seminar);
         model.addAttribute(VIEW , SESSION_EDIT);
         return BASE_LAYOUT;
     }

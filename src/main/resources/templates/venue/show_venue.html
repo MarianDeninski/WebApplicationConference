@@ -5,14 +5,14 @@
                 <fieldset>
                     <legend class = "custom-letters">Edit Venue</legend>
 
-                    <div class="form-group custom-letters">
+                    <div class="form-group">
                         <label class="col-sm-4 control-label" for="venue_name">Venue Name</label>
                         <div class="col-sm-4">
                             <input type="text" class="form-control custom-input-field" id="venue_name" name="name" th:value="${venue.name}"/>
                         </div>
                     </div>
 
-                    <div class="form-group custom-letters">
+                    <div class="form-group">
                         <label class="col-sm-4 control-label" for="venue_address">Venue Address</label>
                         <div class="col-sm-6">
                             <textarea class="form-control custom-input-field" rows="6" id="venue_address" name="address" th:field="${venue.address}"></textarea>
@@ -22,7 +22,7 @@
                     <div class="form-group">
                         <div class="col-sm-4 col-sm-offset-4">
                             <a class="btn btn-default" th:href="@{/}">Cancel</a>
-                            <input type="submit" class="btn btn-primary" value="Edit"/>
+                            <input type="submit" class="btn btn-success" value="Edit"/>
                         </div>
                     </div>
                 </fieldset>

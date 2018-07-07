@@ -15,16 +15,16 @@
 }
 
 .btn-default:hover {
-    color: #f9f0f0 !important;
-    background-color: #342314!important;
+    color: #847777 !important;
+    background-color: #8c6b42; !important;
     opacity: 0.7;
     border-color: #242020 !important;
 }
 
 
 .btn-default {
-    color: #1d1b1b !important;
-    background-color: #e8d7c8 !important;
+    color: #141212 !important;
+    background-color: #8c6b42 !important;
     opacity: 0.7;
     border-color: #242020 !important;
 }
@@ -32,8 +32,8 @@
 
 
 .btn-primary:hover  {
-    color: #1d1b1b !important;
-    background-color: #e8d7c8 !important;
+    color: #847777 !important;
+    background-color: #342314 !important;
     opacity: 0.7;
     border-color: #242020 !important;
 }
@@ -41,7 +41,7 @@
 
 .btn-primary {
 
-    color: #f9f0f0 !important;
+    color: #141212 !important;
 
     background-color: #342314!important;
     opacity: 0.7;
@@ -110,12 +110,30 @@ body{
 
 }
 
-.custom-profile-container{
+.custom-button{
     background-color: rgba(44, 22, 22, 0.42);
-    border-width: 2px;
+    margin: 2% 0% 1% 0%;
+    border-width: 1.5px;
     border-style: solid;
     border-color: #242020;
     border-radius: 20px;
+}
+
+.custom-profile-container{
+font-size: 19px;
+line-height: 1.5;
+background-color: rgba(44, 22, 22, 0.42);
+border-width: 1.5px;
+border-style: solid;
+border-color: #242020;
+width: 100%;
+-webkit-padding-after: 20px;
+-webkit-padding-before: 20px;
+border-radius: 14px;
+margin: 2% 0% 1% 0%;
+}
+.custom-profile-container:hover{
+    background-color: rgba(44, 22, 22, 0.6);
 }
 
 .custom-field-add-venue{
@@ -152,23 +170,13 @@ body{
 }
 
 .custom-input-field{
-    color:black; !important;
+    color:#555555; !important;
 
     background-color: white!important;
     opacity: 0.7;
     border-color: #242020 !important;
     border-radius: 4px;
 }
-
-.textarea.custom-input-field{ /*todo doesnt work for description*/
-    color:black; !important;
-
-    background-color: blue!important;
-    opacity: 0.7;
-    border-color: #242020 !important;
-    border-radius: 4px;
-}
-
 
 /*dropdown menus*/
 .dropdown-menu-custom{
@@ -247,18 +255,24 @@ body{
     font-family: Phosphate!important;
 }
 
+
+.custom-letters li{
+    color: white;
+}
+
+/*
 .custom-drop-my123{
     color: #1d1b1b ;
-    background-color: white;
+    background-color: green;
     opacity: 0.7;
-    border-width: 1px;
+    border-width: 1px !important;
     border-radius: 4px;
-    border-style: solid;
+    border-style: solid !important;
     border-color: #342314;
 }
 
-.custom-drop-my123:hover{
-    background-color: #e8d7c8; /* light brown */
+.custom-drop-my123 option:hover{
+    background-color: #e8d7c8 !important;
 }
 
 /*
@@ -267,6 +281,7 @@ body{
     font-size: 30px; !important;
 }
 */
+
  .nav-br {
     color: #f9f0f0 !important;
 }
@@ -275,6 +290,7 @@ body{
     background-color: transparent;
 }
 
+<<<<<<< HEAD
 
 .letters-ren{
     color: #f9f0f0; !important;
@@ -287,3 +303,9 @@ body{
 .a-custom {
     text-decoration: none !important;
 }
+=======
+ .remove-underlying{
+     color: white !important;
+     text-decoration: none !important;
+ }
+>>>>>>> a55a284e28ac9bed2b37858b3649162eda53d216

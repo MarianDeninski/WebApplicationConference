@@ -14,7 +14,7 @@
                     <div class="task-column-body">
                         <th:block class = "custom-button" th:each="conference : ${conferences}">
                             <div class="custom-profile-container">
-                                <a th:href="@{/user/conference/{id}(id=${conference.id})}">
+                                <a class="remove-underlying" th:href="@{/user/conference/{id}(id=${conference.id})}">
                                     <h3 class = "custom-letters" th:text="${conference.name}"></h3>
                                     <h4 class = "custom-letters" th:text="${conference.description}"></h4>
 
@@ -37,7 +37,7 @@
                     <div class="task-column-body custom-letters">
                         <th:block th:each="venue : ${venues}">
                             <div class="custom-profile-container">
-                                <a th:href="@{/user/venue/{id}(id=${venue.id})}">
+                                <a class="remove-underlying" th:href="@{/user/venue/{id}(id=${venue.id})}">
                                     <h3 class = "custom-letters" th:text="${venue.name}"></h3>
                                     <h4 class = "custom-letters" th:text="${venue.address}"></h4>
                                 </a>
