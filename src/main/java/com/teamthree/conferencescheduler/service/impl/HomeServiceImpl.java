@@ -38,12 +38,14 @@ public class HomeServiceImpl implements HomeService {
         String today = DateUtil.getCurrentDateAsString();
 
         for (Conference conference : allConferences) {
-            if (DateUtil.comparatorByStringDates(today, conference.getEndDate()) < 0) {
-                result.get("past").add(conference);
+
+            if (DateUtil.comparatorByStringDates(today, conference.getStartDate()) >= 0 &&
+                    DateUtil.comparatorByStringDates(today, conference.getEndDate()) <= 0) {
+                result.get("active").add(conference);
             } else if (DateUtil.comparatorByStringDates(today, conference.getEndDate()) > 0) {
                 result.get("upcoming").add(conference);
-            } else {
-                result.get("active").add(conference);
+            } else if (DateUtil.comparatorByStringDates(today, conference.getEndDate()) < 0) {
+                result.get("past").add(conference);
             }
         }
 
