@@ -4,6 +4,7 @@ import com.teamthree.conferencescheduler.app_utils.DateUtil;
 import com.teamthree.conferencescheduler.dto.conference.CreateConferenceDto;
 import com.teamthree.conferencescheduler.entities.Conference;
 import com.teamthree.conferencescheduler.entities.Session;
+import com.teamthree.conferencescheduler.entities.User;
 import com.teamthree.conferencescheduler.entities.Venue;
 import com.teamthree.conferencescheduler.exceptions.ApplicationRuntimeException;
 import com.teamthree.conferencescheduler.service.api.ConferenceService;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -97,6 +99,8 @@ public class ConferenceController {
     public String getEditConference(@PathVariable long id, Model model) {
         Conference conference = conferenceService.getById(id);
         List<Venue> venues = conference.getOwner().getVenues();
+        model.addAttribute("venues",venues);
+        model.addAttribute("conference",conference);
         model.addAttribute(VIEW, CONFERENCE_EDIT);
         return BASE_LAYOUT;
     }
@@ -117,8 +121,13 @@ public class ConferenceController {
         Conference conference = conferenceService.findConference(id);
         List<Session> sessions = conference.getSessions();
         boolean ownerButton = false;
+        if(SecurityContextHolder
                 .getContext()
                 .getAuthentication()
+                .getPrincipal().equals("anonymousUser")){
+            ownerButton=false;
+        }
+        else {
 
             UserDetails principal = (UserDetails) SecurityContextHolder
                     .getContext()
@@ -126,8 +135,12 @@ public class ConferenceController {
                     .getPrincipal();
 
 
+            if(this.conferenceService.checkIfLoggedInUserIsOwner(principal,conference)) {
+                ownerButton=true;
             }
         }
+        model.addAttribute("ownerButton",ownerButton);
+        model.addAttribute("sessions",sessions);
         model.addAttribute(VIEW, CONFERENCE_DETAILS);
         model.addAttribute("conference", conference);
         return BASE_LAYOUT;
