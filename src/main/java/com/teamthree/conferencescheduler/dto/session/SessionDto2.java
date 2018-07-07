@@ -4,12 +4,12 @@ import com.teamthree.conferencescheduler.entities.Conference;
 import com.teamthree.conferencescheduler.entities.Hall;
 import com.teamthree.conferencescheduler.entities.Speaker;
 
-public  class SessionDto2 {
+public class SessionDto2 {
 
     private Conference conference;
- private Speaker speaker;
-    private  String description;
-    private  String name;
+    private Speaker speaker;
+    private String description;
+    private String name;
     private Hall hall;
     private String startHour;
     private String endHour;

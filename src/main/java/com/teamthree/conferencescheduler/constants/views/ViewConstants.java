@@ -26,4 +26,7 @@ public class ViewConstants {
     public static final String SESSION_EDIT = "session/editSession";
     public static final String SESSION_ADD_HALL="session/addHall";
 
+    //programme maximum
+    public static final String SHOW_TO_USER_PROGRAMME = "programme_maximum/listAllSessions";
+
 }

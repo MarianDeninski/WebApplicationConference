@@ -213,9 +213,10 @@ public class UserController {
         for (Session maximumSession : maximumSessions) {
             this.sessionService.addUserToSession(user, maximumSession.getId());
         }
+        model.addAttribute(VIEW,SHOW_TO_USER_PROGRAMME);
+        model.addAttribute("sessions",maximumSessions);
 
-
-        return REDIRECT_TO_MY_PROFILE;
+        return BASE_LAYOUT;
     }
 
     @RequestMapping(value = "/programme_maximum", method = RequestMethod.GET)
@@ -263,6 +264,20 @@ public class UserController {
         model.addAttribute(VIEW, "programme_maximum/execute");
         return BASE_LAYOUT;
 
+    }
+
+    @RequestMapping(value ="/joinsession/{id}",method = RequestMethod.POST)
+    @PreAuthorize("isAuthenticated()")
+    public String addUserToSession(@PathVariable Long sessionId){
+        UserDetails principal = (UserDetails) SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getPrincipal();
+
+        User user = this.userService.findByUsername(principal.getUsername());
+       // Session session = this.sessionService.getById(sessionId);
+        this.sessionService.addUserToSession(user,sessionId);
+        return "redirect:/session/details/"+sessionId;
     }
 
 }
