@@ -107,6 +107,7 @@ body{
 .custom-letters{
     color: white; !important;
     text-align: center;
+
 }
 
 .custom-profile-container{
@@ -272,4 +273,19 @@ body{
  .nav-br:hover {
     color: #76614b !important;
     background-color: transparent;
+}
+
+
+.letters-ren{
+    color: #f9f0f0; !important;
+    text-align: center !important;
+
+
+}
+
+.letters-ren:hover{
+    color: #f9f0f0; !important;
+    text-align: center !important;
+
+
 }
