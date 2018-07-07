@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class ProgramMaximumUtil {
 
-    public static List<Session> execute(List<Session> dbSessions, String dateNow) {
+    public static List<Session> execute(List<Session> dbSessions, String timeNow) {
         Map<Integer, Session> map = new HashMap<>();
 
         for (Session number : dbSessions) {
@@ -69,7 +69,7 @@ public class ProgramMaximumUtil {
                 (e1, e2) -> e2, LinkedHashMap::new));
 
 
-        String[] start = dateNow.split(":");
+        String[] start = timeNow.split(":");
 
         int hour = 0;
         int minute = 0;
