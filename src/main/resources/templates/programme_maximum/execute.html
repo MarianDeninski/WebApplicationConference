@@ -1,0 +1,39 @@
+<main>
+    <div class="container body-content span=8 offset=2">
+        <div class="well background-home custom-letters">
+            <form class="form-horizontal" th:action="@{/user/programme_maximum}" method="post">
+
+                <fieldset>
+                    <legend class = "custom-letters">Programme Maximum</legend>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Choose Conference</label>
+                        <div class="col-sm-4">
+                            <select class="form-control custom-input-field" name="conferenceName">
+                                <option class="drop-menu-option-custom" th:each="conference : ${allConferences}"
+                                        th:text="${conference.name}"></option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Choose Date</label>
+                        <div class="col-sm-6">
+                            <input class="form-control custom-input-field" type="date" placeholder="dd-MM-yyyy"
+                                   name="endDate" required="required"/>
+                        </div>
+                    </div>
+
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-4">
+                            <a class="btn btn-default" th:href="@{/}">Cancel</a>
+                            <a class="btn btn-default" th:href="@{/programme_maximum/info}">Submit</a>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</main>
