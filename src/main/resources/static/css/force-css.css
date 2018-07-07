@@ -320,17 +320,18 @@ margin: 2% 0% 1% 0%;
     font-size: 30px; !important;
 }
 */
-
- .nav-br a{
+.nav-br a{
     color: #f9f0f0 !important;
 }
- .nav-br a:hover {
+.nav-br a:hover{
+    color: #76614b !important;
+    background-color: transparent;
+}
 
- }
-.nav-br {
+.nav-br li a{
     color: #f9f0f0 !important;
 }
-.nav-br:hover {
+.nav-br li a:hover{
     color: #76614b !important;
     background-color: transparent;
 }
