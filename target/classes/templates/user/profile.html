@@ -18,14 +18,18 @@
                             <div class="custom-profile-container">
                                 <a class="remove-underlying" th:href="@{/user/conference/{id}(id=${conference.id})}">
                                     <h3 class="custom-letters custom-letters-title" th:text="${conference.name}"></h3>
+                                    <h4 class = "custom-letters" th:text="${conference.description}"></h4>
+                                    <table class="table table-view custom-letters">
+                                    <tbody>
+                                    <tr>
+                                        <th class= "text-left">Start date:</th>
+                                        <td th:text="${conference.startDate}"></td>
+                                        <th class= "text-right">End date:</th>
+                                        <td th:text="${conference.endDate}"></td>
+                                    </tr>
+                                    </tbody>
+                                    </table>
 
-                                    <h4 class="custom-letters" th:text="${conference.description}"></h4>
-
-                                    <h5 class="dates custom-letters">Start date: </h5>
-                                    <h5 class="datesStart custom-letters" th:text="${conference.startDate}"></h5>
-
-                                    <h5 class="dates custom-letters">End date: </h5>
-                                    <h5 class="datesEnd custom-letters" th:text="${conference.endDate}"></h5>
                                 </a>
                             </div>
                         </th:block>
