@@ -11,24 +11,16 @@
 <div th:if="${message != null}">
     <h1 class="message letters-ren" th:text="${message}"></h1>
 </div>
+<!---->
 
-<th:block th:each="conference: ${upcomingConferences}">
-<div th:if= "${upcomingConferences != null}">
 <main class="border-home-carousel carousel-finally1" th:include="${view2}"></main>
-</div>
-</th:block>
-<th:block th:each="conference: ${activeConferences}">
-<div th:if= "${activeConferences != null}">
+
+
 <main class="border-home-carousel" th:include="${view}"></main>
-</div>
-</th:block>
 
 
-<th:block th:each="conference: ${pastConferences}">
-    <div th:if= "${pastConferences != null}">
 <main class="border-home-carousel carousel-finally" th:include="${view1}"></main>
-    </div>
-</th:block>
+
 
 
 <footer th:include="fragments/footer"></footer>
