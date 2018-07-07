@@ -19,7 +19,7 @@ public class Session {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "start_Date")
+    @Column(name = "start_hour")
     private String startHour;
 
     @Column(name = "end_hour")

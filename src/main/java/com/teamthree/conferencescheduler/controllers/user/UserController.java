@@ -1,5 +1,6 @@
 package com.teamthree.conferencescheduler.controllers.user;
 
+import com.teamthree.conferencescheduler.dto.user.FileUploadDto;
 import com.teamthree.conferencescheduler.dto.user.UserRegisterDto;
 import com.teamthree.conferencescheduler.dto.venue.AddVenueDto;
 import com.teamthree.conferencescheduler.entities.Conference;
@@ -7,7 +8,10 @@ import com.teamthree.conferencescheduler.entities.Role;
 import com.teamthree.conferencescheduler.entities.User;
 import com.teamthree.conferencescheduler.entities.Venue;
 import com.teamthree.conferencescheduler.exceptions.ApplicationRuntimeException;
-import com.teamthree.conferencescheduler.service.api.*;
+import com.teamthree.conferencescheduler.service.api.ConferenceService;
+import com.teamthree.conferencescheduler.service.api.RoleService;
+import com.teamthree.conferencescheduler.service.api.UserService;
+import com.teamthree.conferencescheduler.service.api.VenueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -21,13 +25,11 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.teamthree.conferencescheduler.constants.errors.ErrorHandlingConstants.*;
-import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.USER_LOGIN;
-import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.USER_REGISTER;
+import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.*;
 import static com.teamthree.conferencescheduler.constants.user_roles.UserRoles.ROLE_USER;
 import static com.teamthree.conferencescheduler.constants.views.ViewConstants.*;
 
@@ -39,19 +41,15 @@ public class UserController {
     private RoleService roleService;
     private ConferenceService conferenceService;
     private VenueService venueService;
-    private SessionService sessionService;
-
 
     @Autowired
     public UserController(UserService userService, RoleService roleService,
-                          ConferenceService conferenceService, VenueService venueService,
-                          SessionService sessionService) {
+                          ConferenceService conferenceService, VenueService venueService) {
 
         this.userService = userService;
         this.roleService = roleService;
         this.conferenceService = conferenceService;
         this.venueService = venueService;
-        this.sessionService = sessionService;
     }
 
     @GetMapping("/login")
@@ -130,6 +128,7 @@ public class UserController {
         return "redirect:/user/login?logout";
     }
 
+
     @GetMapping("/profile")
 //    @PreAuthorize("isAuthenticated()")
     public String profilePage(Model model) {
@@ -156,6 +155,7 @@ public class UserController {
         Conference conference = this.conferenceService.findConference(id);
         return "redirect:/conference/details/" + id;
     }
+
 
     @GetMapping("/venue/{id}")
     @PreAuthorize("isAuthenticated()")
@@ -187,17 +187,17 @@ public class UserController {
         return REDIRECT_TO_MY_PROFILE;
     }
 
+    @PostMapping("/image/upload")
+    public String imageProcess(FileUploadDto dto) {
 
-    @RequestMapping(value = "/programmeMaximum", method = RequestMethod.GET)
-    @PreAuthorize("isAuthenticated()")
-    public String getProgrammeMaximum(Model model, Principal principal) {
-        User user = this.userService.findByUsername(principal.getName());
-
-        List<Conference> allConferencesOwnByUser =
-                this.sessionService.getAllConferencesOwnByUser(user);
-
-        model.addAttribute("conferences", allConferencesOwnByUser);
-        model.addAttribute(VIEW, "programme_maximum/execute");
-        return BASE_LAYOUT;
+        return null;
     }
+
+    @PostMapping("/programmeMaximum")
+    @PreAuthorize("isAuthenticated()")
+    public String programeMaximum(@PathVariable Long id) {
+        return null;
+    }
+
+    //public String
 }

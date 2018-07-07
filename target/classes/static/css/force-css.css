@@ -14,55 +14,17 @@
 
 }
 
-
-.carousel123{
-
-
-    color: white !important;
-    font-size: 100% !important;
-    font-weight: bold !important;
-    font-family: Phosphate!important;
-    position: absolute !important;
-    top: 44%!important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
-
-
-    border: #217dbb;
-
-}
-
-.carouse-three{
-
-    font-size: 100% !important;
-    font-weight: bold !important;
-    font-family: Phosphate!important;
-    position: absolute !important;
-    top: 75%!important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
-
-
-    border: #217dbb;
-
-}
-
-
-.comeOn{
-    color: green !important;
-}
-
 .btn-default:hover {
-    color: #f9f0f0 !important;
-    background-color: #342314!important;
+    color: #847777 !important;
+    background-color: #8c6b42; !important;
     opacity: 0.7;
     border-color: #242020 !important;
 }
 
 
 .btn-default {
-    color: #1d1b1b !important;
-    background-color: #e8d7c8 !important;
+    color: #141212 !important;
+    background-color: #8c6b42 !important;
     opacity: 0.7;
     border-color: #242020 !important;
 }
@@ -70,8 +32,8 @@
 
 
 .btn-primary:hover  {
-    color: #1d1b1b !important;
-    background-color: #e8d7c8 !important;
+    color: #847777 !important;
+    background-color: #342314 !important;
     opacity: 0.7;
     border-color: #242020 !important;
 }
@@ -79,7 +41,7 @@
 
 .btn-primary {
 
-    color: #f9f0f0 !important;
+    color: #141212 !important;
 
     background-color: #342314!important;
     opacity: 0.7;
@@ -147,7 +109,7 @@ body{
     text-align: center;
 }
 
-.custom-profile-container{
+.custom-button{
     background-color: rgba(44, 22, 22, 0.42);
     margin: 2% 0% 1% 0%;
     border-width: 1.5px;
@@ -279,6 +241,7 @@ body{
     font-family: Phosphate!important;
 }
 
+<<<<<<< HEAD
 .custom-letters li{
     color: white;
 }
@@ -304,15 +267,21 @@ body{
     font-size: 30px; !important;
 }
 */
+=======
+>>>>>>> b9969e705789816150e83b2b86cbbea73e33a758
  .nav-br {
     color: #f9f0f0 !important;
 }
  .nav-br:hover {
     color: #76614b !important;
     background-color: transparent;
+<<<<<<< HEAD
 }
 
  .remove-underlying{
      color: white !important;
      text-decoration: none !important;
  }
+=======
+}
+>>>>>>> b9969e705789816150e83b2b86cbbea73e33a758

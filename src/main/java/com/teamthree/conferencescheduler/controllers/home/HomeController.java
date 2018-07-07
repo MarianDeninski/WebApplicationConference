@@ -44,11 +44,12 @@ public class HomeController {
             }
         });
 
-        Map<String, List<Conference>> splitedByDate = this.homeService.splitByPastUpcomingActive(conferences);
+//        // TODO: Check for errors
+//        Map<String, List<Conference>> splitedByDate = this.homeService.splitByPastUpcomingActive(conferences);
 
-        model.addAttribute("pastConferences", splitedByDate.get("past"));
-        model.addAttribute("activeConferences", splitedByDate.get("active"));
-        model.addAttribute("upcomingConferences", splitedByDate.get("upcoming"));
+//        model.addAttribute("pastConferences",splitedByDate.get("past"));
+//        model.addAttribute("activeConferences",splitedByDate.get("active"));
+//        model.addAttribute("upcomingConferences",splitedByDate.get("upcoming"));
 
         model.addAttribute(VIEW, HOME_INDEX);
         return HOME_BASE_LAYOUT;

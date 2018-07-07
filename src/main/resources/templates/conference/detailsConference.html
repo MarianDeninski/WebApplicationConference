@@ -47,13 +47,13 @@
                         <th>Name</th>
                         <th>Description</th>
                         <th>Speaker Name</th>
-                        <th>Link</th>
+                        <th></th>
                     </tr>
                         <tr th:each="seminar : ${sessions}">
                         <td th:text="${seminar.name}"></td>
                         <td th:text="${seminar.description}"></td>
                         <td th:text="${seminar.speaker.name}"></td>
-                        <td> <a href="@{/session/details/__${seminar.id}__}"></a>  </td>
+                        <td> <a th:href="@{/session/details/__${seminar.id}__}" class="btn btn-primary">More about the session</a></td>
                     </tr>
 
                 </table>

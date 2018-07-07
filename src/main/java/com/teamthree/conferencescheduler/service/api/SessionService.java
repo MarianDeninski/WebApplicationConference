@@ -29,5 +29,4 @@ public interface SessionService {
 
     Conference getConferenceBySessionId(Long sessionId);
 
-
 }
