@@ -354,12 +354,12 @@ body{
     text-decoration: none !important;
 }
 
-<<<<<<< HEAD
+
 .remove-underlying{
     color: white !important;
     text-decoration: none !important;
 }
-=======
+
  .remove-underlying{
      color: white !important;
      text-decoration: none !important;
@@ -372,7 +372,7 @@ body{
      color: white;
 
  }
-<<<<<<< HEAD
+
 
  .max-programme{
      color: #f9f0f0 !important;
@@ -383,9 +383,6 @@ body{
      opacity: 0.7;
      border-radius: 14px;
      border-style: solid !important;
-     border-width: 2px !important;
+     border-width: 1px !important;
      border-color: #26110e !important;
  }
-=======
->>>>>>> 6074c15dd9e35f9f3526b2442dec223473a9a38a
->>>>>>> 1bfa354501e5429158d5166e7d69921ded16a62f
