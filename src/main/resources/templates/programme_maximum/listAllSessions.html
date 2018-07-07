@@ -1,18 +1,31 @@
-<h3>Sessions</h3>
-<table class="table table-stripped">
-    <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Speaker Name</th>
-        <th></th>
-    </tr>
-    <tr th:each="seminar : ${sessions}">
-        <td th:text="${seminar.name}"></td>
-        <td th:text="${seminar.description}"></td>
-        <td th:text="${seminar.speaker.name}"></td>
-        <td th:text="${seminar.startHour}"></td>
-        <td th:text="${seminar.endHour}"></td>
-        <td th:text="${seminar.day}"></td>
+<div class="panel panel-info background-home custom-letters ">
+    <h1 class="panel-title text-center font-weight-bold" style="font-size: 200%">Sessions</h1>
+    <div class="panel-body">
+        <div class="row">
 
-    </tr>
-</table>
+            <div class="col-lg-6 col-lg-offset-3 text-center">
+
+                <table class="table table-stripped custom-letters">
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Speaker Name</th>
+                        <th>Start Hour</th>
+                        <th>End Hour</th>
+                        <th>Day</th>
+                    </tr>
+                    <tr th:each="seminar : ${sessions}">
+                        <td th:text="${seminar.name}"></td>
+                        <td th:text="${seminar.description}"></td>
+                        <td th:text="${seminar.speaker.name}"></td>
+                        <td th:text="${seminar.startHour}"></td>
+                        <td th:text="${seminar.endHour}"></td>
+                        <td th:text="${seminar.day}"></td>
+
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
