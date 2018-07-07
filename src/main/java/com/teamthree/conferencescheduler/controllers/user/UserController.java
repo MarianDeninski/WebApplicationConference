@@ -242,4 +242,18 @@ public class UserController {
 
     }
 
+    @RequestMapping(value ="/joinsession/{id}",method = RequestMethod.POST)
+    @PreAuthorize("isAuthenticated()")
+    public String addUserToSession(@PathVariable Long sessionId){
+        UserDetails principal = (UserDetails) SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getPrincipal();
+
+        User user = this.userService.findByUsername(principal.getUsername());
+       // Session session = this.sessionService.getById(sessionId);
+        this.sessionService.addUserToSession(user,sessionId);
+        return "redirect:/session/details/"+sessionId;
+    }
+
 }

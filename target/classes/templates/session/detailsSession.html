@@ -49,9 +49,13 @@
                     </tr>
                     </tbody>
                 </table>
-    
-              <!--  <a  th:href="/" class="btn btn-success">Join us</a> -->
-            <!--    <div th:if="${ownerButton}">
+                <form method="post" th:action="@{/user/joinsession/__${seminar.id}__}">
+                    <button formmethod="post"  name="userJoinSession" type="submit" class="btn btn-success">Join us</button>
+                </form>
+
+            <!--
+             th:href="@{/user/joinsession/__${seminar.id}__}"
+             <div th:if="${ownerButton}">
                     <a th:href="@{/session/edit/__${seminar.id}__}" class="btn btn-primary">Edit</a>
                 </div>
                 -->

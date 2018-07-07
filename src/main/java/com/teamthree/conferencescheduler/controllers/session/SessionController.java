@@ -68,6 +68,7 @@ public class SessionController {
     @PostMapping("/create")
     @PreAuthorize("isAuthenticated()")
     public String createSession(SessionDto dto, Model model){
+        addSessionToHallDto = new SessionDto2();
         addSessionToHallDto =this.sessionService.createSession(dto);
 
         Conference conference = addSessionToHallDto.getConference();

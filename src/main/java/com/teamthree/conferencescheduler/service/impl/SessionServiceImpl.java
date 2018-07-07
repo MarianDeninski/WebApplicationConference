@@ -4,10 +4,7 @@ import com.teamthree.conferencescheduler.dto.session.SessionDto;
 import com.teamthree.conferencescheduler.dto.session.SessionDto2;
 import com.teamthree.conferencescheduler.entities.*;
 import com.teamthree.conferencescheduler.exceptions.ApplicationRuntimeException;
-import com.teamthree.conferencescheduler.repositories.ConferenceRepository;
-import com.teamthree.conferencescheduler.repositories.HallRepository;
-import com.teamthree.conferencescheduler.repositories.SessionRepository;
-import com.teamthree.conferencescheduler.repositories.SpeakerRepository;
+import com.teamthree.conferencescheduler.repositories.*;
 import com.teamthree.conferencescheduler.service.api.SessionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +21,7 @@ public class SessionServiceImpl implements SessionService {
     private ConferenceRepository conferenceRepository;
     private HallRepository hallRepository;
     private static SessionDto2 sessionDto2;
+    private UserRepository userRepository;
 
     @Autowired
     public SessionServiceImpl(SessionRepository sessionRepository, SpeakerRepository speakerRepository, ConferenceRepository conferenceRepository,
@@ -76,6 +74,7 @@ public class SessionServiceImpl implements SessionService {
         //session.setEndHour(dto.getEndHour());
         speakerRepository.saveAndFlush(speaker);
         sessionRepository.saveAndFlush(session);
+        sessionDto2 = new SessionDto2();
         return session;
     }
 
@@ -134,7 +133,9 @@ public class SessionServiceImpl implements SessionService {
     public void addUserToSession(User user, Long sessionId) {
         Session session = this.sessionRepository.getOne(sessionId);
         session.getUsersGoing().add(user);
+        user.getUserSessions().add(session);
         sessionRepository.saveAndFlush(session);
+        userRepository.saveAndFlush(user);
     }
 
     @Override
