@@ -4,10 +4,7 @@ import com.teamthree.conferencescheduler.dto.session.SessionDto;
 import com.teamthree.conferencescheduler.dto.session.SessionDto2;
 import com.teamthree.conferencescheduler.entities.*;
 import com.teamthree.conferencescheduler.exceptions.ApplicationRuntimeException;
-import com.teamthree.conferencescheduler.repositories.ConferenceRepository;
-import com.teamthree.conferencescheduler.repositories.HallRepository;
-import com.teamthree.conferencescheduler.repositories.SessionRepository;
-import com.teamthree.conferencescheduler.repositories.SpeakerRepository;
+import com.teamthree.conferencescheduler.repositories.*;
 import com.teamthree.conferencescheduler.service.api.SessionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,19 +16,21 @@ import static com.teamthree.conferencescheduler.constants.errors.ErrorHandlingCo
 
 @Service
 public class SessionServiceImpl implements SessionService {
+    private static SessionDto2 sessionDto2;
     private SessionRepository sessionRepository;
     private SpeakerRepository speakerRepository;
     private ConferenceRepository conferenceRepository;
     private HallRepository hallRepository;
-    private static SessionDto2 sessionDto2;
+    private UserRepository userRepository;
 
     @Autowired
     public SessionServiceImpl(SessionRepository sessionRepository, SpeakerRepository speakerRepository, ConferenceRepository conferenceRepository,
-                              HallRepository hallRepository) {
+                              HallRepository hallRepository, UserRepository userRepository) {
         this.sessionRepository = sessionRepository;
         this.speakerRepository = speakerRepository;
         this.conferenceRepository = conferenceRepository;
         this.hallRepository = hallRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -59,7 +58,7 @@ public class SessionServiceImpl implements SessionService {
     @Override
     public Session addSessionToHall(SessionDto dto) {
         Hall hall = this.hallRepository.findByName(dto.getHall());
-        Session session = new Session(sessionDto2.getName(),sessionDto2.getDescription(),dto.getStartHour(),dto.getEndHour(),hall,sessionDto2.getConference(),dto.getDay());
+        Session session = new Session(sessionDto2.getName(), sessionDto2.getDescription(), dto.getStartHour(), dto.getEndHour(), hall, sessionDto2.getConference(), dto.getDay());
         if (this.checkIfHallIsTakenAtThatMoment(hall, dto)) {
             throw new ApplicationRuntimeException(HALL_IS_TAKEN);
         }
@@ -70,7 +69,7 @@ public class SessionServiceImpl implements SessionService {
         session.setSpeaker(speaker);
         speaker.setSession(session);
 
-       // session.setHall(hall);
+        // session.setHall(hall);
         //session.setDay(dto.getDay());
         //session.setStartHour(dto.getStartHour());
         //session.setEndHour(dto.getEndHour());
@@ -134,7 +133,9 @@ public class SessionServiceImpl implements SessionService {
     public void addUserToSession(User user, Long sessionId) {
         Session session = this.sessionRepository.getOne(sessionId);
         session.getUsersGoing().add(user);
+        user.getUserSessions().add(session);
         sessionRepository.saveAndFlush(session);
+        userRepository.saveAndFlush(user);
     }
 
     @Override
@@ -150,6 +151,11 @@ public class SessionServiceImpl implements SessionService {
         }
 
         return this.sessionRepository.findByConference(conference);
+    }
+
+    @Override
+    public List<Session> findByConferenceAndDate(Conference conference, String date) {
+        return this.sessionRepository.findByConferenceAndDay(conference, date);
     }
 
     private boolean checkIfHallIsTakenAtThatMoment(Hall hall, SessionDto dto) {

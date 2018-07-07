@@ -32,4 +32,6 @@ public interface SessionService {
 
     List<Session> findByConference(Conference conference);
 
+    List<Session> findByConferenceAndDate(Conference conference, String date);
+
 }

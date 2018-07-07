@@ -93,4 +93,6 @@ public class DateUtil {
         String[] runtime = LocalDateTime.now().toString().split(":");
         return runtime[0].substring(runtime[0].length() - 2) + ":" + runtime[1];
     }
+
+
 }
