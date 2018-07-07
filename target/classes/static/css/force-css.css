@@ -172,17 +172,21 @@ margin: 2% 0% 1% 0%;
     background-color: rgba(44, 22, 22, 0.6);
 }
 
-.custom-field-add-venue{
+.all-venues-container{
     font-size: 19px;
     line-height: 1.5;
     background-color: rgba(44, 22, 22, 0.42);
     border-width: 2px;
     border-style: solid;
     border-color: #242020;
-    width: 60%;
+    width: 100%;
     padding-bottom: 5px;
     border-radius: 14px;
-    margin: 2% 20% 1% 20%;
+    margin: 2% 0% 1% 0%;
+}
+
+.all-venues-container:hover{
+    background-color: rgba(44, 22, 22, 0.6);
 }
 
 .custom-reg-field{
@@ -320,18 +324,18 @@ margin: 2% 0% 1% 0%;
     font-size: 30px; !important;
 }
 */
-.nav-br a{
+.header-font-color a{
     color: #f9f0f0 !important;
 }
-.nav-br a:hover{
+.header-font-color a:hover{
     color: #76614b !important;
     background-color: transparent;
 }
 
-.nav-br li a{
+.header-font-color li a{
     color: #f9f0f0 !important;
 }
-.nav-br li a:hover{
+.header-font-color li a:hover{
     color: #76614b !important;
     background-color: transparent;
 }
@@ -354,6 +358,16 @@ margin: 2% 0% 1% 0%;
      color: white !important;
      text-decoration: none !important;
  }
+
+
+ .show-all-venues-title {
+     text-align: center;
+     font-size: 24px;
+     font-weight: bolder;
+     color: white;
+
+ }
+=======
 <<<<<<< HEAD
 
  .info-box-custom
@@ -363,5 +377,9 @@ margin: 2% 0% 1% 0%;
      border: 1px solid white !important;
      border-radius: 4px !important;
  }
+<<<<<<< HEAD
+=======
 =======
 >>>>>>> 2e7d14cc06c882f972be999cf8c19ed07d013c10
+>>>>>>> 04417a9993b55be04cb9ca5955a1bf87669525e2
+>>>>>>> f024725d1ad298ecfb9625c4b254ebe44bb3a4ac
