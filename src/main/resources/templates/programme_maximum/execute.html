@@ -20,7 +20,7 @@
                         <label class="col-sm-4 control-label">Choose Date</label>
                         <div class="col-sm-6">
                             <input class="form-control custom-input-field" type="date" placeholder="dd-MM-yyyy"
-                                   name="endDate" required="required"/>
+                                   name="targetDate" required="required"/>
                         </div>
                     </div>
 
@@ -29,6 +29,10 @@
                     <div class="form-group">
                         <div class="col-sm-4 col-sm-offset-4">
                             <a class="btn btn-default" th:href="@{/}">Cancel</a>
+
+                            <!-- REMOVE THIS BUTTON ITS ONLY FOR TESTS -->
+                            <button type="submit" class="btn btn-primary color-letter a:hover">REMOVE ME</button>
+
                             <a class="btn btn-default" th:href="@{/programme_maximum/info}">Submit</a>
                         </div>
                     </div>

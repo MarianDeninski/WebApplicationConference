@@ -54,7 +54,9 @@ public class ConferenceController {
     public String createConference(CreateConferenceDto dto, Model model) {
 
         //Check if there is other conference in these days
-        boolean checkIfThereIsOtherConferenceInVenue = this.conferenceService.checkIfThereIsOtherConferenceInVenueAtThatTime(dto);
+        boolean checkIfThereIsOtherConferenceInVenue =
+                this.conferenceService.checkIfThereIsOtherConferenceInVenueAtThatTime(dto);
+
         if (checkIfThereIsOtherConferenceInVenue) {
             //Should not be able to add another conference
         }
