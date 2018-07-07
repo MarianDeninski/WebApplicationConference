@@ -1,19 +1,36 @@
 <div class="container body-container">
     <div class="center-fit">
         <div class="task-column">
-            <div class="task-column-header">
-                <h3 class = "custom-letters">All Venues</h3>
-            </div>
-            <div class="task-column-body ">
-                <th:block th:each="venue : ${venues}" >
-                    <div class="venue custom-field-add-venue ">
-                        <a th:href="@{/user/venue/{id}(id=${venue.id})}" class = "letters-ren a-custom">
-                            <h3 class = "custom-letters custom-letters-title" th:text="${venue.name}"></h3>
-                            <h4 class = "custom-letters" th:text="${venue.address}"></h4>
-                            <h5 class="custom-letters" th:text="'Halls: engaged ' + ${venue.halls.size()} + ' / 10 total'"></h5>
-                        </a>
+            <h3 class="show-all-venues-title">All Venues</h3>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="task-column-body ">
+                            <th:block th:each="venue : ${leftVenues}" >
+                                <div class="venue all-venues-container">
+                                    <a th:href="@{/user/venue/{id}(id=${venue.id})}" class = "letters-ren a-custom">
+                                        <h3 class = "custom-letters custom-letters-title" th:text="${venue.name}"></h3>
+                                        <h4 class = "custom-letters" th:text="${venue.address}"></h4>
+                                        <h5 class="custom-letters" th:text="'Halls: engaged ' + ${venue.halls.size()} + ' / 10 total'"></h5>
+                                    </a>
+                                </div>
+                            </th:block>
+                        </div>
                     </div>
-                </th:block>
+                    <div class="col-sm-6">
+                        <div class="task-column-body ">
+                            <th:block th:each="venue : ${rightVenues}" >
+                                <div class="venue all-venues-container">
+                                    <a th:href="@{/user/venue/{id}(id=${venue.id})}" class = "letters-ren a-custom">
+                                        <h3 class = "custom-letters custom-letters-title" th:text="${venue.name}"></h3>
+                                        <h4 class = "custom-letters" th:text="${venue.address}"></h4>
+                                        <h5 class="custom-letters" th:text="'Halls: engaged ' + ${venue.halls.size()} + ' / 10 total'"></h5>
+                                    </a>
+                                </div>
+                            </th:block>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
