@@ -283,9 +283,7 @@ body{
 
 }
 
-.letters-ren:hover{
-    color: #f9f0f0; !important;
-    text-align: center !important;
 
-
+.a-custom {
+    text-decoration: none !important;
 }

@@ -4,12 +4,12 @@
             <div class="task-column-header">
                 <h3 class = "custom-letters">All Venues</h3>
             </div>
-            <div class="task-column-body">
-                <th:block th:each="venue : ${venues}">
-                    <div class="venue custom-field-add-venue">
-                        <a th:href="@{/user/venue/{id}(id=${venue.id})}">
-                            <div class = "letters-ren" th:text="${venue.name}"></div>
-                            <div class = "letters-ren" th:text="${venue.address}"></div>
+            <div class="task-column-body ">
+                <th:block th:each="venue : ${venues}" >
+                    <div class="venue custom-field-add-venue ">
+                        <a th:href="@{/user/venue/{id}(id=${venue.id})}" class = "letters-ren a-custom">
+                            <div class = "custom-letters" th:text="${venue.name}"></div>
+                            <div class = "custom-letters" th:text="${venue.address}"></div>
                         </a>
                     </div>
                 </th:block>

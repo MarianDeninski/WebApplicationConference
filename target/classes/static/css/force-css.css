@@ -279,6 +279,18 @@ body{
 .letters-ren{
     color: #f9f0f0; !important;
     text-align: center !important;
-    text-underline:#f9f0f0 !important; ;
 
+
+}
+
+.letters-ren:hover{
+    color: #f9f0f0; !important;
+    text-align: center !important;
+    text-decoration: none !important;
+
+
+}
+
+.a-custom {
+    text-decoration: none !important;
 }
