@@ -39,6 +39,7 @@ public class SessionServiceImpl implements SessionService {
         if (this.sessionRepository.findByName(dto.getName()).size() > 0) {
             throw new ApplicationRuntimeException("This session name already exists!");
         }
+
         Speaker speaker = new Speaker(dto.getSpeakerName(), dto.getSpeakerDescription(), dto.getSpeakerPhoto());
         //Session session = new Session(dto.getName(), dto.getDescription(), conference);
         sessionDto2 = new SessionDto2();
