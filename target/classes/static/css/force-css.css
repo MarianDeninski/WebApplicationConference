@@ -148,6 +148,7 @@ body{
 .custom-letters{
     color: white; !important;
     text-align: center;
+
 }
 
 .custom-button{
@@ -330,7 +331,29 @@ body{
     background-color: transparent;
 }
 
+<<<<<<< HEAD
 .remove-underlying{
     color: white !important;
     text-decoration: none !important;
 }
+=======
+
+
+.letters-ren{
+    color: #f9f0f0; !important;
+    text-align: center !important;
+
+
+}
+
+
+.a-custom {
+    text-decoration: none !important;
+}
+
+ .remove-underlying{
+     color: white !important;
+     text-decoration: none !important;
+ }
+
+>>>>>>> 36af3b49f43fa166cc98488f05e80e849e41536b

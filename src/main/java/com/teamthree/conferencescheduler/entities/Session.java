@@ -28,6 +28,17 @@ public class Session {
     @OneToOne(mappedBy = "session", targetEntity = Speaker.class)
     private Speaker speaker;
 
+    public Session(String name, String description, String startHour, String endHour, Hall hall, Conference conference,  String day) {
+        this.name = name;
+        this.description = description;
+        this.startHour = startHour;
+        this.endHour = endHour;
+        this.hall = hall;
+        this.conference = conference;
+        this.usersGoing = new ArrayList<User>();
+        this.day = day;
+    }
+
     @ManyToOne()
     private Hall hall;
 
