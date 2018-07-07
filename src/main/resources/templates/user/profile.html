@@ -1,5 +1,7 @@
 <div class="container body-container">
     <section id="tasks">
+        <input value="Programme Maximum" type="submit" class="center-block max-programme"
+               style="border-style: none"/>
         <div class="row">
             <div class="col-md-12">
                 <div class="user_settings">
@@ -15,12 +17,10 @@
                         <th:block class = "custom-button" th:each="conference : ${conferences}">
                             <div class="custom-profile-container">
                                 <a class="remove-underlying" th:href="@{/user/conference/{id}(id=${conference.id})}">
-                                    <h3 class = "custom-letters custom-letters-title" th:text="${conference.name}"></h3>
-                                    <h4 class = "custom-letters" th:text="${conference.description}"></h4>
+                                    <h3 class="custom-letters custom-letters-title" th:text="${conference.name}"></h3>
 
-                                    <!-- <div class="col-sm-6">
+                                    <h4 class="custom-letters" th:text="${conference.description}"></h4>
 
-                                    </div> -->
                                     <h5 class="dates custom-letters">Start date: </h5>
                                     <h5 class="datesStart custom-letters" th:text="${conference.startDate}"></h5>
 
