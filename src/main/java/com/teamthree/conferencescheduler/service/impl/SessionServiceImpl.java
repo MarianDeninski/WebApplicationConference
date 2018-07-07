@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.teamthree.conferencescheduler.constants.errors.ErrorHandlingConstants.HALL_IS_TAKEN;
+
 @Service
 public class SessionServiceImpl implements SessionService {
     private SessionRepository sessionRepository;
@@ -43,15 +45,12 @@ public class SessionServiceImpl implements SessionService {
         sessionDto2.setDescription(dto.getDescription());
         sessionDto2.setConference(conference);
         sessionDto2.setSpeaker(speaker);
-        //TODO find a way that save doesn't flush the data to the db, or just use AJAX and use 1 page for creating session
 
         //this.sessionRepository.save(session);
         //this.speakerRepository.save(speaker);
 
         //speaker.setSession(session);
         //session.setSpeaker(speaker);
-        //TODO detach/merge/evict
-        //EntityManager em =
         //this.sessionRepository.saveAndFlush(session);
         //this.speakerRepository.saveAndFlush(speaker);
         return sessionDto2;
@@ -62,7 +61,7 @@ public class SessionServiceImpl implements SessionService {
         Hall hall = this.hallRepository.findByName(dto.getHall());
         Session session = new Session(sessionDto2.getName(),sessionDto2.getDescription(),dto.getStartHour(),dto.getEndHour(),hall,sessionDto2.getConference(),dto.getDay());
         if (this.checkIfHallIsTakenAtThatMoment(hall, dto)) {
-            //Throw error on view to choose another day or another hour
+            throw new ApplicationRuntimeException(HALL_IS_TAKEN);
         }
         Speaker speaker = sessionDto2.getSpeaker();
         this.sessionRepository.save(session);
