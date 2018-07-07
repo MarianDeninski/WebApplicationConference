@@ -195,7 +195,7 @@ public class UserController {
     }
 
     @PostMapping("/programme_maximum")
-    public String processUserEditVenue(ProgramMaximumDto dto, Model model) {
+    public String processProgrameMaximum(ProgramMaximumDto dto, Model model) {
         Conference conference = this.conferenceService.getByName(dto.getConferenceName());
 
         List<Session> sessionsByConference =
@@ -278,6 +278,13 @@ public class UserController {
        // Session session = this.sessionService.getById(sessionId);
         this.sessionService.addUserToSession(user,sessionId);
         return "redirect:/session/details/"+sessionId;
+    }
+
+    @RequestMapping(value = "/joinsession/{id}", method = RequestMethod.GET)
+    @PreAuthorize("isAuthenticated()")
+    public String getAddUserToSession(@PathVariable Long sessionId){
+        int debug = 0;
+        return null;
     }
 
 }
