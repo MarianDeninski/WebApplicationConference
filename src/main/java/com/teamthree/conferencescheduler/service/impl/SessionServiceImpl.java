@@ -1,5 +1,6 @@
 package com.teamthree.conferencescheduler.service.impl;
 
+import com.teamthree.conferencescheduler.app_utils.DateUtil;
 import com.teamthree.conferencescheduler.dto.session.SessionDto;
 import com.teamthree.conferencescheduler.dto.session.SessionDto2;
 import com.teamthree.conferencescheduler.entities.*;
@@ -59,12 +60,23 @@ public class SessionServiceImpl implements SessionService {
     }
 
     @Override
-    public Session addSessionToHall(SessionDto dto) {
+    public Session addSessionToHall(SessionDto dto, Conference conference) {
         Hall hall = this.hallRepository.findByName(dto.getHall());
+
         Session session = new Session(sessionDto2.getName(), sessionDto2.getDescription(), dto.getStartHour(), dto.getEndHour(), hall, sessionDto2.getConference(), dto.getDay());
         if (this.checkIfHallIsTakenAtThatMoment(hall, dto)) {
             throw new ApplicationRuntimeException(HALL_IS_TAKEN);
         }
+
+        String sessionDay = session.getDay();
+        boolean validate = DateUtil.comparatorByStringDates(sessionDay, conference.getStartDate()) >= 0 &&
+                DateUtil.comparatorByStringDates(sessionDay, conference.getEndDate()) <= 0;
+
+        if (!validate) {
+            throw new ApplicationRuntimeException("This session is not in the conference period. The period is: " + conference.getStartDate()
+                    + " - " + conference.getEndDate());
+        }
+
         Speaker speaker = sessionDto2.getSpeaker();
         this.sessionRepository.save(session);
         this.speakerRepository.save(speaker);

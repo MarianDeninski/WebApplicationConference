@@ -1,7 +1,8 @@
 <div class="container body-container">
     <section id="tasks">
-        <input value="Programme Maximum" type="submit" class="center-block btn-primary max-programme"
-               style="border-style: none"/>
+        <input  value="Programme Maximum" type="submit" onclick="window.location='/user/programme_maximum';" class="center-block max-programme"
+               style="border-style: none" />
+
         <div class="row">
             <div class="col-md-12">
                 <div class="user_settings">
@@ -18,14 +19,18 @@
                             <div class="custom-profile-container">
                                 <a class="remove-underlying" th:href="@{/user/conference/{id}(id=${conference.id})}">
                                     <h3 class="custom-letters custom-letters-title" th:text="${conference.name}"></h3>
+                                    <h4 class = "custom-letters" th:text="${conference.description}"></h4>
+                                    <table class="table table-view custom-letters">
+                                    <tbody>
+                                    <tr>
+                                        <th class= "text-left">Start date:</th>
+                                        <td th:text="${conference.startDate}"></td>
+                                        <th class= "text-right">End date:</th>
+                                        <td th:text="${conference.endDate}"></td>
+                                    </tr>
+                                    </tbody>
+                                    </table>
 
-                                    <h4 class="custom-letters" th:text="${conference.description}"></h4>
-
-                                    <h5 class="dates custom-letters">Start date: </h5>
-                                    <h5 class="datesStart custom-letters" th:text="${conference.startDate}"></h5>
-
-                                    <h5 class="dates custom-letters">End date: </h5>
-                                    <h5 class="datesEnd custom-letters" th:text="${conference.endDate}"></h5>
                                 </a>
                             </div>
                         </th:block>
@@ -39,11 +44,11 @@
                     </div>
                     <div class="task-column-body custom-letters">
                         <th:block th:each="venue : ${venues}">
-                            <div class="custom-profile-container">
+                            <div class="custom-profile-container profile-venue-padding">
                                 <a class="remove-underlying" th:href="@{/user/venue/{id}(id=${venue.id})}">
                                     <h3 class = "custom-letters custom-letters-title" th:text="${venue.name}"></h3>
                                     <h4 class = "custom-letters" th:text="${venue.address}"></h4>
-                                    <h5 class="custom-letters" th:text="'Halls: engaged ' + ${venue.halls.size()} + ' / 10 total'"></h5>
+                                    <h5 class="custom-letters" th:text="'Halls: ' + ${venue.halls.size()}"></h5>
                                 </a>
                             </div>
                         </th:block>
