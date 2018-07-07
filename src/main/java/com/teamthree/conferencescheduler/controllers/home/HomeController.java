@@ -12,8 +12,9 @@ import java.util.List;
 import java.util.Map;
 
 import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.HOME_INDEX;
-import static com.teamthree.conferencescheduler.constants.views.ViewConstants.HOME_BASE_LAYOUT;
-import static com.teamthree.conferencescheduler.constants.views.ViewConstants.VIEW;
+import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.HOME_INDEX1;
+import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.HOME_INDEX2;
+import static com.teamthree.conferencescheduler.constants.views.ViewConstants.*;
 
 @Controller
 public class HomeController {
@@ -52,6 +53,8 @@ public class HomeController {
         model.addAttribute("upcomingConferences",splitedByDate.get("upcoming"));
 
         model.addAttribute(VIEW, HOME_INDEX);
+        model.addAttribute(VIEW1, HOME_INDEX1);
+        model.addAttribute(VIEW2, HOME_INDEX2);
         return HOME_BASE_LAYOUT;
     }
 //    @GetMapping("/details")
