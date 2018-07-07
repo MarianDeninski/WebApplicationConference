@@ -77,6 +77,7 @@ public class SessionServiceImpl implements SessionService {
         //session.setEndHour(dto.getEndHour());
         speakerRepository.saveAndFlush(speaker);
         sessionRepository.saveAndFlush(session);
+        sessionDto2 = new SessionDto2();
         return session;
     }
 
