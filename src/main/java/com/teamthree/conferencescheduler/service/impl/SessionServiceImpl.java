@@ -55,11 +55,13 @@ public class SessionServiceImpl implements SessionService {
     public List<Conference> getAllConferencesOwnByUser(User user) {
         List<Conference> allConferences = this.conferenceRepository.findAll();
         List<Conference> userConferences = new ArrayList<Conference>();
+
         for (Conference conference : allConferences) {
             if (conference.getOwner().getId() == user.getId()) {
                 userConferences.add(conference);
             }
         }
+
         return userConferences;
     }
 
@@ -166,4 +168,5 @@ public class SessionServiceImpl implements SessionService {
         }
         return false;
     }
+
 }

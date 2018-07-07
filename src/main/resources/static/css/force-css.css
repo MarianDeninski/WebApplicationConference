@@ -14,17 +14,55 @@
 
 }
 
+
+.carousel123{
+
+
+    color: white !important;
+    font-size: 100% !important;
+    font-weight: bold !important;
+    font-family: Phosphate!important;
+    position: absolute !important;
+    top: 44%!important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+
+
+    border: #217dbb;
+
+}
+
+.carouse-three{
+
+    font-size: 100% !important;
+    font-weight: bold !important;
+    font-family: Phosphate!important;
+    position: absolute !important;
+    top: 75%!important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+
+
+    border: #217dbb;
+
+}
+
+
+.comeOn{
+    color: green !important;
+}
+
 .btn-default:hover {
-    color: #847777 !important;
-    background-color: #8c6b42; !important;
+    color: #f9f0f0 !important;
+    background-color: #342314!important;
     opacity: 0.7;
     border-color: #242020 !important;
 }
 
 
 .btn-default {
-    color: #141212 !important;
-    background-color: #8c6b42 !important;
+    color: #1d1b1b !important;
+    background-color: #e8d7c8 !important;
     opacity: 0.7;
     border-color: #242020 !important;
 }
@@ -32,8 +70,8 @@
 
 
 .btn-primary:hover  {
-    color: #847777 !important;
-    background-color: #342314 !important;
+    color: #1d1b1b !important;
+    background-color: #e8d7c8 !important;
     opacity: 0.7;
     border-color: #242020 !important;
 }
@@ -41,7 +79,7 @@
 
 .btn-primary {
 
-    color: #141212 !important;
+    color: #f9f0f0 !important;
 
     background-color: #342314!important;
     opacity: 0.7;
@@ -109,7 +147,7 @@ body{
     text-align: center;
 }
 
-.custom-button{
+.custom-profile-container{
     background-color: rgba(44, 22, 22, 0.42);
     border-width: 2px;
     border-style: solid;
@@ -246,6 +284,27 @@ body{
     font-family: Phosphate!important;
 }
 
+/*
+.custom-drop-my123{
+    color: #1d1b1b ;
+    background-color: green;
+    opacity: 0.7;
+    border-width: 1px !important;
+    border-radius: 4px;
+    border-style: solid !important;
+    border-color: #342314;
+}
+
+.custom-drop-my123 option:hover{
+    background-color: #e8d7c8 !important;
+}
+
+/*
+.color-header-123{
+    color: green; !important;
+    font-size: 30px; !important;
+}
+*/
  .nav-br {
     color: #f9f0f0 !important;
 }
