@@ -16,20 +16,25 @@ import static com.teamthree.conferencescheduler.constants.errors.ErrorHandlingCo
 
 @Service
 public class SessionServiceImpl implements SessionService {
+    private static SessionDto2 sessionDto2;
     private SessionRepository sessionRepository;
     private SpeakerRepository speakerRepository;
     private ConferenceRepository conferenceRepository;
     private HallRepository hallRepository;
+<<<<<<< HEAD
     private static SessionDto2 sessionDto2;
+=======
+>>>>>>> 3a2fdb89bbacf89b8ad7fc7b90a5fa9b98a28be1
     private UserRepository userRepository;
 
     @Autowired
     public SessionServiceImpl(SessionRepository sessionRepository, SpeakerRepository speakerRepository, ConferenceRepository conferenceRepository,
-                              HallRepository hallRepository) {
+                              HallRepository hallRepository, UserRepository userRepository) {
         this.sessionRepository = sessionRepository;
         this.speakerRepository = speakerRepository;
         this.conferenceRepository = conferenceRepository;
         this.hallRepository = hallRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -57,7 +62,7 @@ public class SessionServiceImpl implements SessionService {
     @Override
     public Session addSessionToHall(SessionDto dto) {
         Hall hall = this.hallRepository.findByName(dto.getHall());
-        Session session = new Session(sessionDto2.getName(),sessionDto2.getDescription(),dto.getStartHour(),dto.getEndHour(),hall,sessionDto2.getConference(),dto.getDay());
+        Session session = new Session(sessionDto2.getName(), sessionDto2.getDescription(), dto.getStartHour(), dto.getEndHour(), hall, sessionDto2.getConference(), dto.getDay());
         if (this.checkIfHallIsTakenAtThatMoment(hall, dto)) {
             throw new ApplicationRuntimeException(HALL_IS_TAKEN);
         }
@@ -68,7 +73,7 @@ public class SessionServiceImpl implements SessionService {
         session.setSpeaker(speaker);
         speaker.setSession(session);
 
-       // session.setHall(hall);
+        // session.setHall(hall);
         //session.setDay(dto.getDay());
         //session.setStartHour(dto.getStartHour());
         //session.setEndHour(dto.getEndHour());
@@ -151,6 +156,11 @@ public class SessionServiceImpl implements SessionService {
         }
 
         return this.sessionRepository.findByConference(conference);
+    }
+
+    @Override
+    public List<Session> findByConferenceAndDate(Conference conference, String date) {
+        return this.sessionRepository.findByConferenceAndDay(conference, date);
     }
 
     private boolean checkIfHallIsTakenAtThatMoment(Hall hall, SessionDto dto) {
