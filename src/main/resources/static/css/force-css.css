@@ -118,6 +118,19 @@ body{
     border-radius: 20px;
 }
 
+.custom-profile-container{
+font-size: 19px;
+line-height: 1.5;
+background-color: rgba(44, 22, 22, 0.42);
+border-width: 1.5px;
+border-style: solid;
+border-color: #242020;
+width: 100%;
+-webkit-padding-after: 20px;
+-webkit-padding-before: 20px;
+border-radius: 14px;
+margin: 2% 0% 1% 0%;
+}
 .custom-profile-container:hover{
     background-color: rgba(44, 22, 22, 0.6);
 }
@@ -241,7 +254,7 @@ body{
     font-family: Phosphate!important;
 }
 
-<<<<<<< HEAD
+
 .custom-letters li{
     color: white;
 }
@@ -267,21 +280,16 @@ body{
     font-size: 30px; !important;
 }
 */
-=======
->>>>>>> b9969e705789816150e83b2b86cbbea73e33a758
+
  .nav-br {
     color: #f9f0f0 !important;
 }
  .nav-br:hover {
     color: #76614b !important;
     background-color: transparent;
-<<<<<<< HEAD
 }
 
  .remove-underlying{
      color: white !important;
      text-decoration: none !important;
  }
-=======
-}
->>>>>>> b9969e705789816150e83b2b86cbbea73e33a758
