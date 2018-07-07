@@ -39,25 +39,43 @@
                 interval: false
             });
 
+            hello = false;
             counter = 0;
             $('#theCarousel0 .item').each(function () {
 
-                if (counter === 0) {
-                    $(this).addClass('active');
+                if(hello){
+                    return;
                 }
-                counter++;
-                var next = $(this).next();
 
-                if (!next.length) {
-                    next = $(this).siblings(':first');
-                }
-                $(next.children(0)[1]).clone().appendTo($(this));
+                if ($('#theCarousel0 .item').length === 2) {
 
-                if (next.next().length > 0) {
-                    $(next.next().children(0)[1]).clone().appendTo($(this));
+
+                    hello = true;
+
+                    let baw = $($(this).addClass('active').next().children(0)[1]).clone();
+                    baw.appendTo($(this));
+
                 } else {
-                    $($(this).siblings(':first').children(0)[1]).clone().appendTo($(this));
+
+                    if (counter === 0) {
+                        $(this).addClass('active');
+                    }
+                    counter++;
+
+                    var next = $(this).next();
+
+                    if (!next.length) {
+                        next = $(this).siblings(':first');
+                    }
+                    $(next.children(0)[1]).clone().appendTo($(this));
+
+                    if (next.next().length > 0) {
+                        $(next.next().children(0)[1]).clone().appendTo($(this));
+                    } else {
+                        $($(this).siblings(':first').children(0)[1]).clone().appendTo($(this));
+                    }
                 }
+
             });
         </script>
     </div>

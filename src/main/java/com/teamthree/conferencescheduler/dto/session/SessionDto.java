@@ -40,6 +40,9 @@ public class SessionDto implements Serializable {
         this.conferenceName = conferenceName;
     }
 
+    public SessionDto() {
+    }
+
     public String getConferenceName() {
         return conferenceName;
     }
@@ -48,11 +51,7 @@ public class SessionDto implements Serializable {
         this.conferenceName = conferenceName;
     }
 
-    public SessionDto() {
-    }
-
     public String getName() {
-
         return name;
     }
 
@@ -64,16 +63,16 @@ public class SessionDto implements Serializable {
         return description;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String getHall() {
         return hall;
     }
 
     public void setHall(String hall) {
         this.hall = hall;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public String getStartHour() {

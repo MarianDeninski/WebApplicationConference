@@ -5,6 +5,7 @@ import com.teamthree.conferencescheduler.entities.Conference;
 import com.teamthree.conferencescheduler.entities.Session;
 import com.teamthree.conferencescheduler.entities.User;
 import com.teamthree.conferencescheduler.entities.Venue;
+import com.teamthree.conferencescheduler.exceptions.ApplicationRuntimeException;
 import com.teamthree.conferencescheduler.repositories.ConferenceRepository;
 import com.teamthree.conferencescheduler.repositories.UserRepository;
 import com.teamthree.conferencescheduler.repositories.VenueRepository;
@@ -32,6 +33,10 @@ public class ConferenceServiceImpl implements ConferenceService {
 
     @Override
     public Conference createNewConference(CreateConferenceDto dto, String owner) {
+        Conference conferenceCheck = conferenceRepository.findByName(dto.getName());
+        if(conferenceCheck !=null){
+            throw new ApplicationRuntimeException("This session name already exists!");
+        }
         User ownerClass = this.userRepository.findByUsername(owner);
         Venue venue = venueRepository.findByName(dto.getVenue());
 //        if(venue==null) {

@@ -1,5 +1,5 @@
 <h3>Sessions</h3>
-<table class="table table-stripped">
+<table class="table table-stripped custom-letters">
     <tr>
         <th>Name</th>
         <th>Description</th>
@@ -10,6 +10,9 @@
         <td th:text="${seminar.name}"></td>
         <td th:text="${seminar.description}"></td>
         <td th:text="${seminar.speaker.name}"></td>
-        <td> <a th:href="@{/session/details/__${seminar.id}__}" class="btn btn-primary">More about the session</a></td>
+        <td th:text="${seminar.startHour}"></td>
+        <td th:text="${seminar.endHour}"></td>
+        <td th:text="${seminar.day}"></td>
+
     </tr>
 </table>

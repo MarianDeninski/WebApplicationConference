@@ -58,6 +58,7 @@ public class SessionController {
         if (userConferences.isEmpty()) {
             //UserConferences should never be empty after we add constraints;
         }
+
         model.addAttribute("conferences", userConferences);
         model.addAttribute(VIEW, CREATE_SESSION);
         return BASE_LAYOUT;
