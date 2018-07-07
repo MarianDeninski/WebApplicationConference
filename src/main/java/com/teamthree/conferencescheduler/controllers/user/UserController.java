@@ -200,8 +200,10 @@ public class UserController {
         User user = this.userService.findByUsername(principal.getName());
 
         List<Conference> allConferencesOwnByUser = this.sessionService.getAllConferencesOwnByUser(user);
+//
 //        List<Session> maximumSessions =
 //                ProgramMaximumUtil.execute(allConferencesOwnByUser, DateUtil.getCurrentTimeAsString());
+
 
         return null;
 

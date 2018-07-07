@@ -13,7 +13,7 @@ public interface SessionService {
 
     List<Conference> getAllConferencesOwnByUser(User user);
 
-    boolean checkIfUserIsOwnerOfConference(Long id,User user);
+    boolean checkIfUserIsOwnerOfConference(Long id, User user);
 
     Session editSession(Long id, SessionDto dto);
 
@@ -28,5 +28,7 @@ public interface SessionService {
     void addUserToSession(User user, Long sessionId);
 
     Conference getConferenceBySessionId(Long sessionId);
+
+    List<Session> findByConference(Conference conference);
 
 }

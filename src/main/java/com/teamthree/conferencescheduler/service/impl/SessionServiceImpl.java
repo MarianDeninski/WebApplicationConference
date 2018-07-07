@@ -2,6 +2,7 @@ package com.teamthree.conferencescheduler.service.impl;
 
 import com.teamthree.conferencescheduler.dto.session.SessionDto;
 import com.teamthree.conferencescheduler.entities.*;
+import com.teamthree.conferencescheduler.exceptions.ApplicationRuntimeException;
 import com.teamthree.conferencescheduler.repositories.ConferenceRepository;
 import com.teamthree.conferencescheduler.repositories.HallRepository;
 import com.teamthree.conferencescheduler.repositories.SessionRepository;
@@ -10,7 +11,6 @@ import com.teamthree.conferencescheduler.service.api.SessionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,10 +32,10 @@ public class SessionServiceImpl implements SessionService {
 
     @Override
     public Session createSession(SessionDto dto) {
-        Conference conference =conferenceRepository.findByName(dto.getConferenceName());
+        Conference conference = conferenceRepository.findByName(dto.getConferenceName());
 
-        Speaker  speaker = new Speaker(dto.getSpeakerName(),dto.getSpeakerDescription(),dto.getSpeakerPhoto());
-        Session session = new Session(dto.getName(),dto.getDescription(),conference);
+        Speaker speaker = new Speaker(dto.getSpeakerName(), dto.getSpeakerDescription(), dto.getSpeakerPhoto());
+        Session session = new Session(dto.getName(), dto.getDescription(), conference);
 
         //TODO find a way that save doesn't flush the data to the db, or just use AJAX and use 1 page for creating session
 
@@ -48,7 +48,7 @@ public class SessionServiceImpl implements SessionService {
         //EntityManager em =
         this.sessionRepository.saveAndFlush(session);
         this.speakerRepository.saveAndFlush(speaker);
-        return  session;
+        return session;
     }
 
     @Override
@@ -118,15 +118,24 @@ public class SessionServiceImpl implements SessionService {
 
     @Override
     public void addUserToSession(User user, Long sessionId) {
-        Session session=this.sessionRepository.getOne(sessionId);
+        Session session = this.sessionRepository.getOne(sessionId);
         session.getUsersGoing().add(user);
         sessionRepository.saveAndFlush(session);
     }
 
     @Override
     public Conference getConferenceBySessionId(Long sessionId) {
-        Session session =  this.sessionRepository.findOne(sessionId);
+        Session session = this.sessionRepository.findOne(sessionId);
         return session.getConference();
+    }
+
+    @Override
+    public List<Session> findByConference(Conference conference) {
+        if (conference == null) {
+            throw new ApplicationRuntimeException("Conference cannot be null.");
+        }
+
+        return this.sessionRepository.findByConference(conference);
     }
 
     private boolean checkIfHallIsTakenAtThatMoment(Hall hall, SessionDto dto) {
@@ -166,4 +175,6 @@ public class SessionServiceImpl implements SessionService {
         }
         return false;
     }
+
+
 }
