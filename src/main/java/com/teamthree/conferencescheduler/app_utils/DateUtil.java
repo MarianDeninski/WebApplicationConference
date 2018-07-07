@@ -3,6 +3,7 @@ package com.teamthree.conferencescheduler.app_utils;
 import com.teamthree.conferencescheduler.exceptions.ApplicationRuntimeException;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -47,7 +48,6 @@ public class DateUtil {
 
     }
 
-
     public static int comparatorByStringDates(String dateOne, String dateTwo) {
         Comparator<String> comparator = (x, y) -> {
             int[] xColect = Arrays.stream(x.split("-"))
@@ -87,5 +87,10 @@ public class DateUtil {
 
     public static String getCurrentDateAsString() {
         return LocalDate.now().toString();
+    }
+
+    public static String getCurrentTimeAsString() {
+        String[] runtime = LocalDateTime.now().toString().split(":");
+        return runtime[0].substring(runtime[0].length() - 2) + ":" + runtime[1];
     }
 }

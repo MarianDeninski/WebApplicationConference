@@ -18,8 +18,8 @@ public class HomeServiceImpl implements HomeService {
     ConferenceRepository conferenceRepository;
 
     @Autowired
-    public HomeServiceImpl(ConferenceRepository conferenceRepository){
-        this.conferenceRepository=conferenceRepository;
+    public HomeServiceImpl(ConferenceRepository conferenceRepository) {
+        this.conferenceRepository = conferenceRepository;
     }
 
     @Override
@@ -38,7 +38,7 @@ public class HomeServiceImpl implements HomeService {
         String today = DateUtil.getCurrentDateAsString();
 
         for (Conference conference : allConferences) {
-            if (DateUtil.comparatorByStringDates(today, conference.getStartDate()) < 0) {
+            if (DateUtil.comparatorByStringDates(today, conference.getEndDate()) < 0) {
                 result.get("past").add(conference);
             } else if (DateUtil.comparatorByStringDates(today, conference.getEndDate()) > 0) {
                 result.get("upcoming").add(conference);
