@@ -213,9 +213,10 @@ public class UserController {
         for (Session maximumSession : maximumSessions) {
             this.sessionService.addUserToSession(user, maximumSession.getId());
         }
+        model.addAttribute(VIEW,SHOW_TO_USER_PROGRAMME);
+        model.addAttribute("sessions",maximumSessions);
 
-
-        return REDIRECT_TO_MY_PROFILE;
+        return BASE_LAYOUT;
     }
 
     @RequestMapping(value = "/programme_maximum", method = RequestMethod.GET)

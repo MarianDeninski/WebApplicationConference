@@ -21,10 +21,6 @@ public class SessionServiceImpl implements SessionService {
     private SpeakerRepository speakerRepository;
     private ConferenceRepository conferenceRepository;
     private HallRepository hallRepository;
-<<<<<<< HEAD
-    private static SessionDto2 sessionDto2;
-=======
->>>>>>> 3a2fdb89bbacf89b8ad7fc7b90a5fa9b98a28be1
     private UserRepository userRepository;
 
     @Autowired
