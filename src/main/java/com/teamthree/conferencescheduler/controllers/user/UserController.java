@@ -1,5 +1,6 @@
 package com.teamthree.conferencescheduler.controllers.user;
 
+import com.teamthree.conferencescheduler.app_utils.DateUtil;
 import com.teamthree.conferencescheduler.app_utils.ProgramMaximumUtil;
 import com.teamthree.conferencescheduler.dto.user.FileUploadDto;
 import com.teamthree.conferencescheduler.dto.user.UserRegisterDto;
@@ -28,7 +29,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.teamthree.conferencescheduler.constants.errors.ErrorHandlingConstants.*;
-import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.*;
+import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.USER_LOGIN;
+import static com.teamthree.conferencescheduler.constants.roadsMappings.RoadMapping.USER_REGISTER;
 import static com.teamthree.conferencescheduler.constants.user_roles.UserRoles.ROLE_USER;
 import static com.teamthree.conferencescheduler.constants.views.ViewConstants.*;
 
@@ -201,7 +203,7 @@ public class UserController {
         User user = this.userService.findByUsername(principal.getName());
 
         List<Conference> allConferencesOwnByUser = this.sessionService.getAllConferencesOwnByUser(user);
-        ProgramMaximumUtil.execute(allConferencesOwnByUser, );
+        ProgramMaximumUtil.execute(allConferencesOwnByUser, DateUtil.getCurrentTimeAsString());
 
         return null;
 
